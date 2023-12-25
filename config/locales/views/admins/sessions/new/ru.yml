@@ -1,0 +1,9 @@
+ru:
+  admins:
+    sessions:
+      new:
+        sign_in: "Войти"
+        email: "Email"
+        password: "Пароль"
+        remember_me: "Запомнить меня"
+        submit: "Ок"

@@ -11,8 +11,33 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <header class="navbar navbar-expand-lg bg-light sticky-top">
+      <div class="container-fluid">
+        <%= link_to "Easyrent", admins_root_path, class: "navbar-brand" %>
+          <% if admin_signed_in? %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <%= link_to t(".cities"), admins_cities_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to t(".users"), admins_users_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to t(".reference_book"), admins_catalogues_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to t(".sign_out"), destroy_admin_session_path, method: :delete, class: "nav-link mr-3" %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

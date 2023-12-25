@@ -1,0 +1,8 @@
+ru:
+  layouts:
+    admins:
+      users: "Пользователи"
+      cities: "Города"
+      car_parks: "Автопарки"
+      reference_book: "Справочник"
+      sign_out: "Выйти"

@@ -1,0 +1,5 @@
+en:
+  admins:
+    welcome:
+      index:
+        description: "Welcome to the admin panel"

@@ -1,14 +1,15 @@
-import * as Turbo from '@hotwired/turbo-rails'
-window.Turbo = Turbo;
+// Disable Turbo Drive for the admin namespace
+// I guess temporarily until we get it working
+import "@hotwired/turbo-rails"
+Turbo.session.drive = false
 
-// import ActiveStorage from '@rails/activestorage'
-// ActiveStorage.start()
-//
-// // Import all channels.
-// const channels = import.meta.globEager('./**/*_channel.js')
+// Import Rails UJS for enable Turbolinks helpers
+import Rails from "@rails/ujs"
 
-// Example: Import a stylesheet in app/frontend/index.css
-// import '~/index.css'
+// Import Bootstrap CSS
+import './../src/admins/scss/main.scss';
+import 'bootstrap';
 
-import '../src/admins/controllers/index.js';
+import './../src/admins/js/controllers/index.js';
 
+Rails.start();
