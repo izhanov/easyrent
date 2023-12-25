@@ -46,17 +46,8 @@ module Admins
     end
 
     def destroy
-      operation = Operations::Admins::Cities::Destroy.new
-
-      result = operation.call(@city)
-
-      case result
-      in Success[city]
-        redirect_to admins_cities_path
-      in Failure[:validation_error, errors]
-        flash.now[:danger] = errors
-        render :edit
-      end
+      @city.destroy!
+      redirect_to admins_cities_path
     end
 
     private

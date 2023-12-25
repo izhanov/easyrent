@@ -31,4 +31,11 @@ feature "Admin visit cities show page" do
     expect(page).to have_current_path(edit_admins_city_path(city))
     expect(page).to have_selector("h1", text: "Edit #{city.title}")
   end
+
+  context "when click to Destroy city link" do
+    scenario "and see cities page" do
+      click_link "Destroy city"
+      expect(page).to have_current_path(admins_cities_path)
+    end
+  end
 end

@@ -28,4 +28,21 @@ feature "Admin visit edit city page" do
       expect(page).to have_selector("h1 small", text: "metropolis")
     end
   end
+
+  context "when fill in fields with invalid data" do
+    scenario "and click to Update city button" do
+      fill_in "Title", with: ""
+      click_button "Save"
+      expect(page).to have_selector("h1", text: "Edit #{city.title}")
+      expect(page).to have_content("title – is missing")
+    end
+  end
+
+  context "when click to Back link" do
+    scenario "and see cities page" do
+      click_link "Back"
+      expect(page).to have_current_path(admins_city_path(city))
+      expect(page).to have_selector("h1", text: city.title)
+    end
+  end
 end
