@@ -1,0 +1,6 @@
+en:
+  admins:
+    cities:
+      edit:
+        title: "Edit %{city}"
+        back: "Back"

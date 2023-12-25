@@ -1,0 +1,8 @@
+en:
+  admins:
+    cities:
+      show:
+        back: "Back"
+        edit: "Edit city"
+        destroy: "Destroy city"
+        sure?: "Are you sure?"

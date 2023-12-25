@@ -1,0 +1,8 @@
+ru:
+  admins:
+    cities:
+      show:
+        back: "Назад"
+        edit: "Редактировать город"
+        destroy: "Удалить город"
+        sure?: "Вы уверены?"

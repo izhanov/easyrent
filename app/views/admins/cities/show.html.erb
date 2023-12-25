@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    <%= @city.title %>
+    <small class="text-muted"><%= @city.slug %></small>
+  </h1>
+  <div>
+    <%= link_to t(".back"), admins_cities_path, class: "btn btn-primary" %>
+    <%= link_to t(".edit"), edit_admins_city_path(@city), class: "btn btn-warning" %>
+    <%= link_to t(".destroy"), admins_city_path(@city), method: :delete, class: "btn btn-danger", data: {confirm: t(".sure?")} %>
+  </div>
+</div>

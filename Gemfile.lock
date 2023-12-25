@@ -124,6 +124,10 @@ GEM
     cuprite (0.15)
       capybara (~> 3.0)
       ferrum (~> 0.14.0)
+    database_cleaner-active_record (2.1.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.3.4)
     debug (1.9.0)
       irb (~> 1.10)
@@ -404,6 +408,7 @@ DEPENDENCIES
   capybara (>= 3.39)
   cssbundling-rails
   cuprite
+  database_cleaner-active_record
   debug
   devise (>= 4.8.0)
   dry-monads (~> 1.6)

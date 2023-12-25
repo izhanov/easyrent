@@ -3,3 +3,5 @@ en:
     cities:
       index:
         title: "Cities"
+        no_cities: "Cities not exist"
+        new_city: "New city"

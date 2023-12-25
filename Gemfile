@@ -87,4 +87,5 @@ group :test do
   gem "capybara", ">= 3.39"
   gem "cuprite"
   gem "shoulda-matchers", "~> 6.0"
+  gem "database_cleaner-active_record"
 end

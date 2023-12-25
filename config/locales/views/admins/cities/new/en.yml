@@ -1,0 +1,6 @@
+en:
+  admins:
+    cities:
+      new:
+        title: "New city"
+        back: "Back"
