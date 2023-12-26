@@ -4,8 +4,12 @@ module Validations
   module Cities
     class Update < Base
       params do
-        optional(:title).filled(:string)
-        optional(:slug).filled(:string)
+        required(:title).filled(:string)
+        optional(:slug).value(:string)
+      end
+
+      rule(:slug) do
+        key.failure("wrong format") unless value&.match?(/^[a-z]+(?:-[a-z]+)*$/)
       end
     end
   end
