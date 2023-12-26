@@ -45,7 +45,7 @@ feature "Admin visit welcome page" do
 
     visit admins_root_path
     click_link "Sign out"
-    expect(page).to have_current_path("/")
+    expect(page).to have_current_path(new_admin_session_path)
     expect(page).to have_content("Signed out successfully.")
   end
 end

@@ -9,7 +9,7 @@ Capybara.register_driver(:cuprite) do |app|
     headless: true,
     js_errors: true,
     browser_options: {
-      process_timeout: 20,
+      process_timeout: 20
     },
     url_blacklist: [
       "https://fonts.googleapis.com",
