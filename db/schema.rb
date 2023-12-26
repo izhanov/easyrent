@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_25_082639) do
 
   create_table "brands", force: :cascade do |t|
     t.string "title", null: false
+    t.jsonb "synonyms", default: [], null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

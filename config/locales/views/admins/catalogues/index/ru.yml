@@ -3,3 +3,5 @@ ru:
     catalogues:
       index:
         title: "Справочник"
+        brands: "Марки автомобилей"
+        marks: "Модели автомобилей"

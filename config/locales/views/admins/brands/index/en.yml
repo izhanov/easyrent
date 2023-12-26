@@ -3,3 +3,6 @@ en:
     brands:
       index:
         title: "Brands"
+        new_brand: "New brand"
+        no_brands: "No brands"
+        back: "Back"

@@ -1,0 +1,8 @@
+ru:
+  admins:
+    brands:
+      show:
+        back: "Назад"
+        edit: "Редактировать марку"
+        destroy: "Удалить марку"
+        sure?: "Вы уверены?"

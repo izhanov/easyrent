@@ -47,6 +47,7 @@ module Admins
 
     def destroy
       @city.destroy!
+      flash[:success] = "success"
       redirect_to admins_cities_path
     end
 
