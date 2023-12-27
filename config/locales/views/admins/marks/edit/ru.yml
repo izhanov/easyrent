@@ -1,0 +1,7 @@
+ru:
+  admins:
+    marks:
+      edit:
+        title: "Редактировать %{mark}"
+        back: "Назад"
+

@@ -68,6 +68,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "annotate", "~> 3.2.0"
   gem "web-console"
   gem "capistrano", require: false
   gem "capistrano-bundler", require: false
@@ -89,3 +90,5 @@ group :test do
   gem "shoulda-matchers", "~> 6.0"
   gem "database_cleaner-active_record"
 end
+
+

@@ -1,0 +1,48 @@
+<%= form_with model: [:admins, mark] do |f| %>
+  <div class="col-4 m-4">
+    <div class="input-group">
+      <%= f.label :brand_id, class: "input-group-text" %>
+      <%= f.select(
+            :brand_id,
+            options_for_select(Brand.all.pluck(:title, :id), selected: f.object.brand_id),
+            {include_blank: true},
+            class: "form-select"
+          )
+      %>
+    </div>
+  </div>
+
+  <div class="col-4 m-4">
+    <div class="input-group">
+      <%= f.label :title, class: "input-group-text" %>
+      <%= f.text_field :title, class: "form-control"%>
+    </div>
+  </div>
+
+  <div class="col-4 m-4">
+    <div class="input-group">
+      <%= f.label :body, class: "input-group-text" %>
+      <%= f.select(
+            :body,
+            options_for_select(
+              Mark::BODY_TYPES.map { |type| [localize_body_type(type), type] },
+              selected: f.object.body
+            ),
+            {include_blank: true},
+            class: "form-select"
+          )
+      %>
+    </div>
+  </div>
+
+  <div class="col-4 m-4">
+    <div class="input-group">
+        <%= f.label :synonyms, class: "input-group-text"%>
+        <%= f.text_area "synonyms][", { class: "form-control", id: "mark_synonyms", value: f.object.synonyms.join(", ") }%>
+    </div>
+  </div>
+
+  <div class="col-4 m-4">
+    <%= f.submit t(".save"), class: "btn btn-success" %>
+  </div>
+<% end %>

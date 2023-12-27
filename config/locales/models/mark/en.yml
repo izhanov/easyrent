@@ -1,0 +1,27 @@
+en:
+  activerecord:
+    models:
+      mark: "Mark"
+    attributes:
+      mark:
+        title: "Title"
+        brand_id: "Brand"
+        body: "Body"
+        synonyms: "Synonyms"
+        bodies:
+          sedan: "Sedan"
+          hatchback: "Hatchback"
+          universal: "Wagon"
+          coupe: "Coupe"
+          convertible: "Convertible"
+          suv: "SUV"
+          pickup: "Pickup"
+          minivan: "Minivan"
+          van: "Van"
+          limousine: "Limousine"
+          crossover: "Crossover"
+          roadster: "Roadster"
+          truck: "Truck"
+          bus: "Bus"
+          other: "Other"
+

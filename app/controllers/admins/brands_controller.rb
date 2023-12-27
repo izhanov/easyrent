@@ -14,7 +14,7 @@ module Admins
 
     def create
       operation = Operations::Admins::Brands::Create.new
-      result = operation.call(brand_params.to_h)
+      result = operation.call(normalize_brands_synonyms(brand_params.to_h))
 
       case result
       in Success[brand]
@@ -35,7 +35,10 @@ module Admins
 
     def update
       operation = Operations::Admins::Brands::Update.new
-      result = operation.call(@brand, brand_params.to_h)
+      result = operation.call(
+        @brand,
+        normalize_brands_synonyms(brand_params.to_h)
+      )
 
       case result
       in Success[brand]
@@ -61,6 +64,18 @@ module Admins
 
     def find_brand
       @brand = Brand.find(params[:id])
+    end
+
+    def normalize_brands_synonyms(params)
+      params["synonyms"] =
+        params["synonyms"].map { |syn| syn.split(",") }.flatten
+
+      params["synonyms"] =
+        params["synonyms"].map { |syn|
+          syn.gsub(%r{[^a-zA-ZА-Яа-я\d\s]}, "").strip
+        }.reject(&:blank?)
+
+      params
     end
   end
 end

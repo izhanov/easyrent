@@ -15,25 +15,28 @@ feature "Admin visit catalogues index page" do
   context "when admin is sign in" do
     before do
       sign_in admin
-      visit admins_catalogues_path
     end
 
     scenario "and see catalogues page" do
+      visit admins_catalogues_path
       expect(page).to have_current_path(admins_catalogues_path)
       expect(page).to have_selector("h1", text: "Catalogues")
     end
 
     scenario "and see catalogues list" do
+      visit admins_catalogues_path
       expect(page).to have_link("Brands")
       expect(page).to have_link("Marks")
     end
 
     scenario "and clieck to brands link" do
+      visit admins_catalogues_path
       click_link "Brands"
       expect(page).to have_current_path(admins_brands_path)
     end
 
     scenario "and clieck to marks link" do
+      visit admins_catalogues_path
       click_link "Marks"
       expect(page).to have_current_path(admins_marks_path)
     end

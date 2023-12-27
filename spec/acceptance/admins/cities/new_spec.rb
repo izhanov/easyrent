@@ -7,10 +7,10 @@ feature "Admin visit cities new page" do
 
   before do
     sign_in admin
-    visit new_admins_city_path
   end
 
   scenario "and see form" do
+    visit new_admins_city_path
     expect(page).to have_current_path(new_admins_city_path)
     expect(page).to have_selector("h1", text: "New city")
     expect(page).to have_field("Title")
@@ -20,12 +20,14 @@ feature "Admin visit cities new page" do
   end
 
   scenario "and click to Back link" do
+    visit new_admins_city_path
     click_link "Back"
     expect(page).to have_current_path(admins_cities_path)
     expect(page).to have_selector("h1", text: "Cities")
   end
 
   scenario "and click to Save button" do
+    visit new_admins_city_path
     click_button "Save"
     expect(page).to have_selector("h1", text: "New city")
     expect(page).to have_content("title – is missing")
@@ -33,6 +35,7 @@ feature "Admin visit cities new page" do
 
   context "and fill form" do
     scenario "and fill form" do
+      visit new_admins_city_path
       fill_in "Title", with: "Gotham"
       fill_in "slug", with: "gotham"
       click_button "Save"

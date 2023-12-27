@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    <%= @mark.title %>
+  </h1>
+  <div>
+    <%= link_to t(".back"), admins_marks_path, class: "btn btn-primary" %>
+    <%= link_to t(".edit"), edit_admins_mark_path(@mark), class: "btn btn-warning" %>
+    <%= link_to t(".destroy"), admins_mark_path(@mark), method: :delete, class: "btn btn-danger", data: {confirm: t(".sure?")} %>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="list-unstyled">
+      <li><%= @mark.brand.title %></li>
+      <li><%= @mark.title %></li>
+      <li><%= localize_body_type(@mark.body)%></li>
+  </ul>
+</div>

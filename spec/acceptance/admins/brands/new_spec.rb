@@ -8,21 +8,23 @@ feature "Admin visit brands new page" do
 
     before do
       sign_in admin
-      visit new_admins_brand_path
     end
 
     scenario "and see new brand page" do
+      visit new_admins_brand_path
       expect(page).to have_current_path(new_admins_brand_path)
       expect(page).to have_selector("h1", text: "New brand")
     end
 
     scenario "and see new brand form" do
+      visit new_admins_brand_path
       expect(page).to have_field("Title")
       expect(page).to have_field("Synonyms")
       expect(page).to have_button("Save")
     end
 
     scenario "and fill in new brand form" do
+      visit new_admins_brand_path
       fill_in "Title", with: "Batcar"
       fill_in "Synonyms", with: "Batmobile, Pussy Wagon, Batpod"
       click_button "Save"

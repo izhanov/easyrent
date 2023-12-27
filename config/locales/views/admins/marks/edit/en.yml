@@ -1,0 +1,7 @@
+en:
+  admins:
+    marks:
+      edit:
+        title: "Edit %{mark}"
+        back: "Back"
+

@@ -8,10 +8,10 @@ feature "Admin visit cities show page" do
 
   before do
     sign_in admin
-    visit admins_city_path(city)
   end
 
   scenario "and see city" do
+    visit admins_city_path(city)
     expect(page).to have_current_path(admins_city_path(city))
     expect(page).to have_selector("h1", text: city.title)
     expect(page).to have_selector("h1 small", text: city.slug)
@@ -21,12 +21,14 @@ feature "Admin visit cities show page" do
   end
 
   scenario "and click to Back link" do
+    visit admins_city_path(city)
     click_link "Back"
     expect(page).to have_current_path(admins_cities_path)
     expect(page).to have_selector("h1", text: "Cities")
   end
 
   scenario "and click to Edit city link" do
+    visit admins_city_path(city)
     click_link "Edit city"
     expect(page).to have_current_path(edit_admins_city_path(city))
     expect(page).to have_selector("h1", text: "Edit #{city.title}")
@@ -34,6 +36,7 @@ feature "Admin visit cities show page" do
 
   context "when click to Destroy city link" do
     scenario "and see cities page" do
+      visit admins_city_path(city)
       click_link "Destroy city"
       expect(page).to have_current_path(admins_cities_path)
     end

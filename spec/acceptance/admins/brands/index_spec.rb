@@ -12,6 +12,7 @@ feature "Admin visit brands index page" do
 
   context "when admin is sign in" do
     let!(:admin) { create(:admin) }
+    let!(:brand) { create(:brand) }
 
     before do
       sign_in admin
@@ -25,9 +26,10 @@ feature "Admin visit brands index page" do
 
     scenario "and see brands list" do
       expect(page).to have_link("New brand")
+      expect(page).to have_link("Batcar")
     end
 
-    scenario "and clieck to new brand link" do
+    scenario "and click to new brand link" do
       click_link "New brand"
       expect(page).to have_current_path(new_admins_brand_path)
     end

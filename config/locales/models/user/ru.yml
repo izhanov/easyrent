@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    models:
+      user: "Пользователь"
+    attributes:
+      user:
+        email: "Почта"
+        phone: "Телефон"
+        kind: "Тип"

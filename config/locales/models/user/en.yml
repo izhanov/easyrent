@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      user: "User"
+    attributes:
+      user:
+        email: "Email"
+        phone: "Brand"
+        kind: "Kind"
