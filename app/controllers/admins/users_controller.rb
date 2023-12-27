@@ -19,11 +19,15 @@ module Admins
     end
 
     def create
-      @user = User.new(user_params)
+      operation = Operations::Admins::Users::Create.new
+      result = operation.call(user_params)
 
-      if @user.save
-        redirect_to admins_user_path(@user), notice: "User was successfully created."
-      else
+      case result
+      in Success[user]
+        redirect_to admins_user_path(user), notice: "User was successfully created."
+      in Failure[:validation_error, errors]
+        @user = User.new(user_params)
+        @user.errors.add(:base, errors)
         render :new
       end
     end
@@ -48,7 +52,7 @@ module Admins
     end
 
     def user_params
-      params.fetch(:user, {}).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :phone)
     end
   end
 end

@@ -7,3 +7,5 @@ ru:
         email: "Почта"
         phone: "Телефон"
         kind: "Тип"
+        first_name: "Имя"
+        last_name: "Фамилия"

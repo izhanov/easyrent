@@ -21,6 +21,15 @@ Rails.application.routes.draw do
   end
 
   namespace :office do
-    root to: "office/welcome#index"
+    root to: "welcome#index"
+
+    devise_for(
+      :users,
+      controllers: {
+        sessions: "office/sessions",
+        registrations: "office/registrations",
+        invitations: "office/invitations"
+      }
+    )
   end
 end

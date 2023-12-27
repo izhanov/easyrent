@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_25_082639) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "kind", default: "s", null: false
+    t.string "kind", default: "S", null: false
     t.string "phone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -9,7 +9,7 @@
 #  current_sign_in_ip     :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
-#  kind                   :string           default("s"), not null
+#  kind                   :string           default("S"), not null
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
 #  phone                  :string           not null
@@ -26,6 +26,13 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :validatable
+  devise(
+    :database_authenticatable,
+    :registerable,
+    :recoverable,
+    :rememberable,
+    :validatable
+  )
+
+  KINDS = %w[S M L XL].freeze
 end

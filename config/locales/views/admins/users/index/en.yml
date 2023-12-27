@@ -3,3 +3,11 @@ en:
     users:
       index:
         title: "Users"
+        invite_user: "Invite user"
+        no_users: "No users"
+        table:
+          header:
+            id: "ID"
+            email: "Email"
+            phone: "Phone"
+            kind: "Kind"
