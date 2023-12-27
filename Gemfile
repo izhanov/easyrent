@@ -52,6 +52,7 @@ gem "image_processing", "~> 1.2"
 gem "shrine", ">= 3.0.0"
 
 gem "devise", ">= 4.8.0"
+gem "devise_invitable", "~> 2.0.0"
 
 gem "dry-monads", "~> 1.6"
 gem "dry-validation", "~> 1.10"
