@@ -18,11 +18,11 @@ module Admins
 
       case result
       in Success[brand]
-        flash[:success] = "success"
-        redirect_to admins_brands_path
-      in Failure[:validation_error, errors]
-        flash[:danger] = errors
+        redirect_to admins_brands_path, flash: {success: success_resolver(operation)}
+      in Failure[error_code, errors]
+        flash[:error] = failure_resolver(operation, error_code: error_code)
         @brand = Brand.new(brand_params)
+        @errors = errors
         render :new
       end
     end
@@ -42,18 +42,17 @@ module Admins
 
       case result
       in Success[brand]
-        flash[:success] = "success"
-        redirect_to admins_brand_path(brand)
-      in Failure[:validation_error, errors]
-        flash[:danger] = errors
+        redirect_to admins_brand_path(brand), flash: {success: success_resolver(operation)}
+      in Failure[error_code, errors]
+        flash[:error] = failure_resolver(operation, error_code: error_code)
+        @errors = errors
         render :edit
       end
     end
 
     def destroy
       @brand.destroy!
-      flash[:success] = "success"
-      redirect_to admins_brands_path
+      redirect_to admins_brands_path, flash: {success: success_resolver(path: "brands.destroy")}
     end
 
     private

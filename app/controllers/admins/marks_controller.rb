@@ -21,10 +21,11 @@ module Admins
 
       case result
       in Success[mark]
-        redirect_to admins_mark_path(mark)
-      in Failure[:validation_error, errors]
-        flash.now[:danger] = errors
+        redirect_to admins_mark_path(mark), flash: {success: success_resolver(operation)}
+      in Failure[error_code, errors]
+        flash.now[:danger] = failure_resolver(operation, error_code: error_code)
         @mark = Mark.new(mark_params)
+        @errors = errors
         render :new
       end
     end
@@ -41,17 +42,17 @@ module Admins
 
       case result
       in Success[mark]
-        redirect_to admins_mark_path(@mark)
-      in Failure[:validation_error, errors]
-        flash.now[:danger] = errors
+        redirect_to admins_mark_path(@mark), flash: {success: success_resolver(operation)}
+      in Failure[error_code, errors]
+        flash.now[:error] = failure_resolver(operation, error_code: error_code)
+        @errors = errors
         render :edit
       end
     end
 
     def destroy
       @mark.destroy!
-      flash[:success] = "success"
-      redirect_to admins_marks_path
+      redirect_to admins_marks_path, flash: {success: success_resolver(path: "marks.destroy")}
     end
 
     private

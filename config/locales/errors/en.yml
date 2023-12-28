@@ -87,26 +87,10 @@ en:
       email?: "must include @"
 
       rules:
-        primary_phone:
-          phone_format: "phone number is wrong"
-
-        contact_phone:
-          phone_format: "phone number is wrong"
-
-        email:
-          email_format: "is in invalid format"
-
-        currency:
-          currency_format: "Must be in ISO4217 format"
-
-        password:
-          password_min_size?: "Password size cannot be less than 6 symbols"
-
-        password_confirmation:
-          password_confirmation_mismatch: "doesn't match Password"
-
-        kind:
-          invalid_kind: "invalid kind of social"
+        slug:
+          invalid_format: "Must contain only a-z, and -"
+        phone:
+          invalid_format: "Must be in correct format"
 
       size?:
         arg:

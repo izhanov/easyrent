@@ -1,0 +1,6 @@
+en:
+  admins:
+    users:
+      edit:
+        title: "Edit %{user}"
+        back: "Back"

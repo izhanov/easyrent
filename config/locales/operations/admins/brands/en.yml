@@ -1,0 +1,14 @@
+en:
+  operations:
+    admins:
+      brands:
+        create:
+          success: "Brand was successfully created."
+          errors:
+            validation_error: "Validation error."
+        update:
+          success: "Brand was successfully updated."
+          errors:
+            validation_error: "Validation error."
+        destroy:
+          success: "Brand was successfully destroyed."

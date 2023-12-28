@@ -19,10 +19,11 @@ module Admins
 
       case result
       in Success[city]
-        redirect_to admins_cities_path
-      in Failure[:validation_error, errors]
-        flash.now[:danger] = errors
+        redirect_to admins_cities_path, flash: {success: success_resolver(operation)}
+      in Failure[error_code, errors]
+        flash.now[:error] = failure_resolver(operation, error_code: error_code)
         @city = City.new(city_params)
+        @errors = errors
         render :new
       end
     end
@@ -38,17 +39,17 @@ module Admins
 
       case result
       in Success[city]
-        redirect_to admins_city_path(@city)
-      in Failure[:validation_error, errors]
-        flash.now[:danger] = errors
+        redirect_to admins_city_path(@city), flash: {success: success_resolver(operation)}
+      in Failure[error_code, errors]
+        flash.now[:error] = failure_resolver(operation, error_code: error_code)
+        @errors = errors
         render :edit
       end
     end
 
     def destroy
       @city.destroy!
-      flash[:success] = "success"
-      redirect_to admins_cities_path
+      redirect_to admins_cities_path, flash: {success: success_resolver(path: "cities.destroy")}
     end
 
     private

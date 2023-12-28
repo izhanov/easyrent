@@ -9,7 +9,7 @@ module Validations
       end
 
       rule(:slug) do
-        key.failure("wrong format") unless value&.match?(/^[a-z]+(?:-[a-z]+)*$/)
+        key.failure(:invalid_format) unless value&.match?(/^[a-z]+(?:-[a-z]+)*$/)
       end
     end
   end

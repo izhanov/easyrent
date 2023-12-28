@@ -1,0 +1,14 @@
+ru:
+  operations:
+    admins:
+      users:
+        create:
+          success: "Пользователь успешно создан."
+          errors:
+            validation_error: "Ошибка валидации при создании."
+        update:
+          success: "Пользователь успешно обновлен."
+          errors:
+            validation_error: "Ошибка валидации при обновлении."
+        destroy:
+          success: "Пользователь успешно удален."

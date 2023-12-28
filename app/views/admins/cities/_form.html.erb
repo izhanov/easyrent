@@ -1,4 +1,4 @@
-<%= form_with model: [:admins, city], html: {class: "mt-4 row align-items-center"} do |f| %>
+<%= form_with model: [:admins, city], html: {data: {turbo: false}, class: "mt-4 row align-items-center"} do |f| %>
   <div class="col-lg-4">
     <div class="input-group">
       <%= f.label :title, class: "input-group-text" %>

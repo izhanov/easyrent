@@ -76,6 +76,7 @@ group :development do
   gem "capistrano-rvm", require: false
   gem "capistrano-passenger", require: false
   gem "capistrano-sidekiq", require: false
+  gem "letter_opener"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -89,6 +90,5 @@ group :test do
   gem "cuprite"
   gem "shoulda-matchers", "~> 6.0"
   gem "database_cleaner-active_record"
+  gem "faker", "~> 3.2.2"
 end
-
-

@@ -1,5 +1,11 @@
-.alert-notice {
+.alert-success {
   background-color: oklch(92.68% 0.052 127.54);
   border-color: oklch(46.67% 0.121 138.27);
   color: oklch(46.67% 0.121 138.27);
+}
+
+.alert-error {
+  background-color: oklch(67.65% 0.242 28.59 / 83.91%);
+  border-color: oklch(56.57% 0.242 28.59);
+  color: oklch(99.85% 0.0001 65.65);
 }

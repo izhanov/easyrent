@@ -37,7 +37,7 @@ feature "Admin visit edit city page" do
       fill_in "Title", with: ""
       click_button "Save"
       expect(page).to have_selector("h1", text: "Edit #{city.title}")
-      expect(page).to have_content("title – is missing")
+      expect(page).to have_content("Validation error")
     end
   end
 

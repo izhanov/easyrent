@@ -1,0 +1,14 @@
+ru:
+  operations:
+    admins:
+      brands:
+        create:
+          success: "Бренд успешно создан."
+          errors:
+            validation_error: "Ошибка валидации при создании."
+        update:
+          success: "Марка успешно обновлена."
+          errors:
+            validation_error: "Ошибка валидации при обновлении."
+        destroy:
+          success: "Марка успешно удален."

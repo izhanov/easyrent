@@ -30,7 +30,7 @@ feature "Admin visit cities new page" do
     visit new_admins_city_path
     click_button "Save"
     expect(page).to have_selector("h1", text: "New city")
-    expect(page).to have_content("title – is missing")
+    expect(page).to have_content("Validation error.")
   end
 
   context "and fill form" do

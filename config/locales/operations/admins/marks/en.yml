@@ -1,0 +1,14 @@
+en:
+  operations:
+    admins:
+      marks:
+        create:
+          success: "Mark was successfully created."
+          errors:
+            validation_error: "Validation error."
+        update:
+          success: "Mark was successfully updated."
+          errors:
+            validation_error: "Validation error."
+        destroy:
+          success: "Mark was successfully destroyed."

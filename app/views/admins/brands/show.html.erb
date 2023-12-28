@@ -5,7 +5,7 @@
   <div>
     <%= link_to t(".back"), admins_brands_path, class: "btn btn-primary" %>
     <%= link_to t(".edit"), edit_admins_brand_path(@brand), class: "btn btn-warning" %>
-    <%= link_to t(".destroy"), admins_brand_path(@brand), method: :delete, class: "btn btn-danger", data: {confirm: t(".sure?")} %>
+    <%= link_to t(".destroy"), admins_brand_path(@brand), class: "btn btn-danger", data: {confirm: t(".sure?"), turbo_method: :delete} %>
   </div>
 </div>
 

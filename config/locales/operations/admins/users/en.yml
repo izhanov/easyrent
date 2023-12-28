@@ -1,0 +1,14 @@
+en:
+  operations:
+    admins:
+      users:
+        create:
+          success: "User successfully created."
+          errors:
+            validation_error: "Validation error."
+        update:
+          success: "User successfully updated."
+          errors:
+            validation_error: "Validation error."
+        destroy:
+          success: "User successfully destroyed."

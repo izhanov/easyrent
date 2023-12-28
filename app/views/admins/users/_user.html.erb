@@ -1,6 +1,6 @@
 <tr>
-  <td><%= user.id %></td>
-  <td><%= user.email %></td>
-  <td><%= user.phone %></td>
-  <td><%= user.kind %></td>
+  <td><%= link_to user.id, admins_user_path(user), class: "nav-link" %></td>
+  <td><%= link_to user.email, admins_user_path(user), class: "nav-link" %></td>
+  <td><%= link_to user.phone, admins_user_path(user), class: "nav-link" %></td>
+  <td><%= link_to user.kind, admins_user_path(user), class: "nav-link" %></td>
 </tr>

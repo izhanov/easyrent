@@ -23,4 +23,17 @@ feature "Admin visit brands show page" do
     expect(page).to have_link("Destroy")
     expect(page).to have_link("Back")
   end
+
+  scenario "and click to edit link" do
+    visit admins_brand_path(brand)
+    click_link "Edit"
+    expect(page).to have_current_path(edit_admins_brand_path(brand))
+  end
+
+  scenario "and click to destroy link" do
+    visit admins_brand_path(brand)
+    click_link "Destroy"
+    expect(page).to have_current_path(admins_brands_path)
+    expect(page).to have_content("Brand was successfully destroyed")
+  end
 end
