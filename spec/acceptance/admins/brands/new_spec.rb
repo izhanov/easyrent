@@ -32,5 +32,13 @@ feature "Admin visit brands new page" do
       expect(page).to have_selector("h1", text: "Brands")
       expect(page).to have_content("Batcar")
     end
+
+    scenario "when fill title field with existing title" do
+      brand = create(:brand)
+      visit new_admins_brand_path
+      fill_in "Title", with: brand.title
+      click_button "Save"
+      expect(page).to have_content("Brand already exists.")
+    end
   end
 end

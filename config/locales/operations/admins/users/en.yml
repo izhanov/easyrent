@@ -6,6 +6,7 @@ en:
           success: "User successfully created."
           errors:
             validation_error: "Validation error."
+            uniqueness_violation: "User with this email already exists."
         update:
           success: "User successfully updated."
           errors:

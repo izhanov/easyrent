@@ -6,6 +6,7 @@ ru:
           success: "Пользователь успешно создан."
           errors:
             validation_error: "Ошибка валидации при создании."
+            uniqueness_violation: "Пользователь с таким email уже существует."
         update:
           success: "Пользователь успешно обновлен."
           errors:

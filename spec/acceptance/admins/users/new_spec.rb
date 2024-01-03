@@ -31,4 +31,18 @@ feature "Admin visits a new user page" do
       expect(page).to have_content("Validation error.")
     end
   end
+
+  context "when fill in email field with existing email" do
+    scenario "and see violation error" do
+      exits_user = create(:user)
+      visit new_admins_user_path
+      fill_in "Email", with: exits_user.email
+      fill_in "Phone", with: "+7(999)999-99-99"
+      fill_in "First name", with: Faker::Name.first_name
+      fill_in "Last name", with: Faker::Name.last_name
+      page.select "L", from: "Kind"
+      click_button "Save"
+      expect(page).to have_content("User with this email already exists.")
+    end
+  end
 end

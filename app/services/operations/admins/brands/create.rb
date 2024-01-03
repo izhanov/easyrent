@@ -21,7 +21,7 @@ module Operations
         def commit(params)
           brand = Brand.create!(params)
           Success(brand)
-        rescue ActiveRecord::RecordNotUnique => e
+        rescue ActiveRecord::RecordNotUnique
           Failure[:uniqueness_violation, {}]
         end
       end

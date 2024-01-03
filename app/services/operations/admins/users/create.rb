@@ -26,7 +26,7 @@ module Operations
             temp_password: generate_temp_password
           )
           Success(user)
-        rescue ActiveRecord::RecordNotUnique
+        rescue ActiveRecord::RecordInvalid
           Failure[:uniqueness_violation, {}]
         end
 
