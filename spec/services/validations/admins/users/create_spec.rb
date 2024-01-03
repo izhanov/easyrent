@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Validations::Users::Create do
+RSpec.describe Validations::Admins::Users::Create do
   it "requires first name, last name, email, phone, kind" do
     result = subject.call({})
     expect(result.errors.to_h).to(

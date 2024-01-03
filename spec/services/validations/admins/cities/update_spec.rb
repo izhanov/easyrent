@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Validations::Cities::Update do
+RSpec.describe Validations::Admins::Cities::Update do
   it "requires title" do
     result = subject.call({})
 

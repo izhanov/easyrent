@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :mark do
     brand
-    title { "Gotham Knight" }
+    title { Faker::Vehicle.make_and_model }
     body { "sedan" }
-    synonyms { ["goat", "pussy wagon"] }
+    synonyms { [Faker::Vehicle.model] }
   end
 end

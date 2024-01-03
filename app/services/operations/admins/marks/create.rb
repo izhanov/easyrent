@@ -13,7 +13,7 @@ module Operations
         private
 
         def validate(params)
-          validation = Validations::Marks::Create.new.call(params)
+          validation = Validations::Admins::Marks::Create.new.call(params)
           validation.to_monad
             .or { |result| Failure[:validation_error, result.errors.to_h] }
         end
@@ -21,6 +21,8 @@ module Operations
         def commit(params)
           mark = Mark.create!(params)
           Success(mark)
+        rescue ActiveRecord::RecordNotUnique
+          Failure[:uniqueness_violation, {}]
         end
       end
     end

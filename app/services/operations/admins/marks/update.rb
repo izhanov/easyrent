@@ -13,7 +13,7 @@ module Operations
         private
 
         def validate(params)
-          validation = Validations::Marks::Update.new.call(params)
+          validation = Validations::Admins::Marks::Update.new.call(params)
           validation.to_monad
             .or { |result| Failure[:validation_error, result.errors.to_h] }
         end

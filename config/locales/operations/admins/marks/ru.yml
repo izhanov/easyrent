@@ -6,6 +6,7 @@ ru:
           success: "Модель успешно создана."
           errors:
             validation_error: "Ошибка валидации при создании."
+            uniqueness_violation: "Модель уже существует."
         update:
           success: "Модель успешно обновлена."
           errors:

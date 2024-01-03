@@ -15,6 +15,7 @@
 # Indexes
 #
 #  index_marks_on_brand_id  (brand_id)
+#  index_marks_on_title     (title) UNIQUE
 #
 # Foreign Keys
 #

@@ -38,4 +38,15 @@ feature "Admin visit marks new page" do
     click_button "Save"
     expect(page).to have_current_path(admins_marks_path)
   end
+
+  scenario "and try create new mark with exist title" do
+    exist_mark = create(:mark)
+    visit new_admins_mark_path
+    page.fill_in "mark[title]", with: exist_mark.title
+    page.select brand.title, from: "mark[brand_id]"
+    page.select "Sedan", from: "mark[body]"
+    click_button "Save"
+    expect(page).to have_current_path(admins_marks_path)
+    expect(page).to have_content("Mark already exist")
+  end
 end

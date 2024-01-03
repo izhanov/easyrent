@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :brand do
-    title { "Batcar" }
+    title { Faker::Vehicle.make }
   end
 end

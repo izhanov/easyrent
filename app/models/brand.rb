@@ -10,6 +10,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_brands_on_title  (title) UNIQUE
+#
 class Brand < ApplicationRecord
   has_many :marks, dependent: :destroy
 end

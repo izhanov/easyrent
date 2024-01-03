@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Validations::Brands::Update do
+RSpec.describe Validations::Admins::Brands::Create do
   it "requires title" do
     result = subject.call(params: {title: ""})
     expect(result.errors.to_h).to include(title: ["is missing"])
@@ -12,6 +12,12 @@ RSpec.describe Validations::Brands::Update do
   it "optional synonyms" do
     result = subject.call({synonyms: []})
     expect(result.errors.to_h).to include(title: ["is missing"])
+    expect(result.errors.to_h).to_not include(synonyms: ["is missing"])
+  end
+
+  it "requires title to be an unique" do
+    create(:brand, title: "Batcar")
+    result = subject.call({title: "Batcar"})
     expect(result.errors.to_h).to_not include(synonyms: ["is missing"])
   end
 

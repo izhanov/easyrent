@@ -14,7 +14,7 @@ module Operations
         private
 
         def validate(params)
-          validation = Validations::Users::Create.new.call(params)
+          validation = Validations::Admins::Users::Create.new.call(params)
           validation.to_monad
             .or { |failure| Failure[:validation_error, failure.errors.to_h] }
         end
@@ -26,6 +26,8 @@ module Operations
             temp_password: generate_temp_password
           )
           Success(user)
+        rescue ActiveRecord::RecordNotUnique
+          Failure[:uniqueness_violation, {}]
         end
 
         def generate_temp_password

@@ -6,6 +6,7 @@ en:
           success: "Mark was successfully created."
           errors:
             validation_error: "Validation error."
+            uniqueness_violation: "Mark already exists."
         update:
           success: "Mark was successfully updated."
           errors:

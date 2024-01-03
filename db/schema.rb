@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_28_045714) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_03_044053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_045714) do
     t.jsonb "synonyms", default: [], null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_brands_on_title", unique: true
   end
 
   create_table "cities", force: :cascade do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_045714) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_marks_on_brand_id"
+    t.index ["title"], name: "index_marks_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|

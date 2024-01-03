@@ -24,7 +24,9 @@ feature "Admins visit marks index page" do
     scenario "and see marks list" do
       visit admins_marks_path
       expect(page).to have_content("Marks")
-      expect(page).to have_link("Gotham Knight", count: 2)
+      marks_list.each do |mark|
+        expect(page).to have_link(mark.title, count: 1)
+      end
     end
   end
 end

@@ -26,7 +26,7 @@ feature "Admin visit brands index page" do
 
     scenario "and see brands list" do
       expect(page).to have_link("New brand")
-      expect(page).to have_link("Batcar")
+      expect(page).to have_link(brand.title)
     end
 
     scenario "and click to new brand link" do
