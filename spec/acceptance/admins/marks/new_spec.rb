@@ -40,7 +40,7 @@ feature "Admin visit marks new page" do
   end
 
   scenario "and try create new mark with exist title" do
-    exist_mark = create(:mark)
+    exist_mark = create(:mark, title: "Gotham Knight")
     visit new_admins_mark_path
     page.fill_in "mark[title]", with: exist_mark.title
     page.select brand.title, from: "mark[brand_id]"
