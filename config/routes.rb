@@ -28,8 +28,10 @@ Rails.application.routes.draw do
       controllers: {
         sessions: "office/sessions",
         registrations: "office/registrations",
-        invitations: "office/invitations"
+        passwords: "office/passwords"
       }
     )
+
+    resource :temp_password, only: [:edit, :update], path: "user/temp_password"
   end
 end

@@ -20,10 +20,13 @@ module Operations
         end
 
         def commit(params)
+          temp_password = generate_temp_password
+
           user = User.create!(
             **params,
-            password: generate_temp_password,
-            temp_password: generate_temp_password
+            password: temp_password,
+            password_confirmation: temp_password,
+            temp_password: temp_password
           )
           Success(user)
         rescue ActiveRecord::RecordInvalid

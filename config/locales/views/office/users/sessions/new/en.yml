@@ -1,0 +1,9 @@
+en:
+  office:
+    users:
+      sessions:
+        new:
+          sign_in: 'Sign in'
+          email: 'Email'
+          password: 'Password'
+          submit: 'Submit'

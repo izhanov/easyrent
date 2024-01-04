@@ -1,0 +1,8 @@
+ru:
+  operations:
+    office:
+      users:
+        change_password:
+          success: "Пароль успешно изменен."
+          user_not_found: "Пользователь не найден."
+

@@ -7,8 +7,8 @@ Turbo.session.drive = false
 import Rails from "@rails/ujs"
 
 // Import Bootstrap CSS
-import './../src/office/scss/main.scss';
 import 'bootstrap';
+import './../src/office/scss/main.scss';
 
 
 Rails.start();
