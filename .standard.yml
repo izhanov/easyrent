@@ -1,0 +1,14 @@
+ignore:
+  - .gitignore
+  - .gitattributes
+  - .gitmodules
+  - .dockerignore
+  - node_modules
+  - .byebug_history
+  - 'vendor/**/*'
+  - 'tmp/**/*'
+  - 'app/views/**/*'
+  - 'config/**/*'
+  - 'app/assets/**/*'
+  - 'app/javascript/**/*'
+  - 'db/**/*'

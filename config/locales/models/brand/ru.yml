@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      brand: "Марка"
+    attributes:
+      brand:
+        title: "Название"
+        synonyms: "Синонимы"

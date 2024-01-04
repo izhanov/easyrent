@@ -1,0 +1,8 @@
+ru:
+  admins:
+    cities:
+      index:
+        title: "Города"
+        no_cities: "Городов нет"
+        new_city: "Новый город"
+

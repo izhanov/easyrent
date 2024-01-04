@@ -1,0 +1,8 @@
+en:
+  admins:
+    marks:
+      show:
+        edit: "Edit"
+        destroy: "Destroy"
+        back: "Back"
+        sure?: "Are you sure?"

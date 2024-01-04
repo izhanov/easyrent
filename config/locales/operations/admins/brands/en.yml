@@ -1,0 +1,16 @@
+en:
+  operations:
+    admins:
+      brands:
+        create:
+          success: "Brand was successfully created."
+          errors:
+            validation_error: "Validation error."
+            uniqueness_violation: "Brand already exists."
+        update:
+          success: "Brand was successfully updated."
+          errors:
+            validation_error: "Validation error."
+            uniqueness_violation: "Brand already exists."
+        destroy:
+          success: "Brand was successfully destroyed."

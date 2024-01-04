@@ -1,0 +1,6 @@
+ru:
+  admins:
+    cities:
+      edit:
+        title: "Редактировать %{city}"
+        back: "Назад"

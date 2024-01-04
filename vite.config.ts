@@ -8,5 +8,5 @@ export default defineConfig({
     RubyPlugin(),
     StimulusHMR(),
     FullReload(['app/views/**/*.erb']),
-  ],
+  ]
 })

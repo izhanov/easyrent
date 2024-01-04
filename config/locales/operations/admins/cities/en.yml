@@ -1,0 +1,14 @@
+en:
+  operations:
+    admins:
+      cities:
+        create:
+          success: "City was successfully created."
+          errors:
+            validation_error: "Validation error."
+        update:
+          success: "City was successfully updated."
+          errors:
+            validation_error: "Validation error."
+        destroy:
+          success: "City was successfully destroyed."

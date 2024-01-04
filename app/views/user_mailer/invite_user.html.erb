@@ -1,0 +1,13 @@
+<h1>
+  <%= t(".greeting", name: @user.first_name) %>
+</h1>
+<p>
+  <%= t(".topic", host: "easyrent.kz", email: @user.email) %>
+</p>
+<p>
+  <%= t(".instructions.link", link: new_office_user_session_url) %>
+</p>
+<p>
+  <%= t(".instructions.temp_password", password: @user.temp_password) %>
+</p>
+<p><%= t(".thanks") %></p>

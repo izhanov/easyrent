@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    <%= @brand.title %>
+  </h1>
+  <div>
+    <%= link_to t(".back"), admins_brands_path, class: "btn btn-primary" %>
+    <%= link_to t(".edit"), edit_admins_brand_path(@brand), class: "btn btn-warning" %>
+    <%= link_to t(".destroy"), admins_brand_path(@brand), class: "btn btn-danger", data: {confirm: t(".sure?"), turbo_method: :delete} %>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="list-unstyled">
+    <% @brand.synonyms.each do |synonym| %>
+      <li>
+        <%= synonym %>
+      </li>
+    <% end %>
+  </ul>
+</div>

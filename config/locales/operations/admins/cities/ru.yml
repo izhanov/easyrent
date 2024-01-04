@@ -1,0 +1,15 @@
+ru:
+  operations:
+    admins:
+      cities:
+        create:
+          success: "Город успешно создан."
+          errors:
+            validation_error: "Ошибка валидации."
+        update:
+          success: "Город успешно обновлен."
+          errors:
+            validation_error: "Ошибка валидации."
+        destroy:
+          success: "Город успешно удален."
+

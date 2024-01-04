@@ -1,0 +1,6 @@
+ru:
+  admins:
+    users:
+      edit:
+        title: "Редактировать %{user}"
+        back: "Назад"

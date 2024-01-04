@@ -1,0 +1,6 @@
+ru:
+  admins:
+    users:
+      new:
+        title: "Новый пользователь"
+        back: "Назад"

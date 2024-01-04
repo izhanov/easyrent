@@ -1,0 +1,14 @@
+en:
+  office:
+    temp_passwords:
+      edit:
+        title: "Change temp password"
+        form:
+          new_password: "New password"
+          new_password_confirmation: "New password confirmation"
+          save: "Save"
+        article:
+          sentences:
+            first: "We found that you signed in with a temporary password"
+            second: "For the security and safety of your data, "
+            third: "we strongly ask you to change it to a permanent one."

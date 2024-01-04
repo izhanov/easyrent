@@ -1,0 +1,6 @@
+en:
+  admins:
+    brands:
+      edit:
+        title: "Edit %{brand}"
+        back: "Back"

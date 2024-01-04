@@ -1,0 +1,13 @@
+ru:
+  admins:
+    users:
+      index:
+        title: "Пользователи"
+        invite_user: "Пригласить пользователя"
+        no_users: "Нет пользователей"
+        table:
+          header:
+            id: "ID"
+            email: "Почта"
+            phone: "Телефон"
+            kind: "Тип"

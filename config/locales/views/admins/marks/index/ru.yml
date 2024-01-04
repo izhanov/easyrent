@@ -1,0 +1,8 @@
+ru:
+  admins:
+    marks:
+      index:
+        title: "Модели автомобилей"
+        back: "Назад"
+        new_mark: "Новая модель"
+        no_marks: "Нет моделей"

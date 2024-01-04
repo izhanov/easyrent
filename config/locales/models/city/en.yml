@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      city: "City"
+    attributes:
+      city:
+        title: "Title"
+        slug: "slug"

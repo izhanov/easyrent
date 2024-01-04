@@ -1,0 +1,10 @@
+ru:
+  user_mailer:
+    invite_user:
+      subject: "Приглашение в команду"
+      greeting: "Привет %{name}!"
+      topic: "Вас пригласили в команду %{host} с вашим %{email}"
+      instructions:
+        link: "Перейдите по ссылке, чтобы войти в систему с вашим email: %{link}"
+        temp_password: "И используйте ваш временный пароль: %{password}"
+      thanks: "Не забудьте изменить пароль после входа в систему. Удачи! :)"

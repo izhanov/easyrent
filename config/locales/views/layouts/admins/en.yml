@@ -1,0 +1,8 @@
+en:
+  layouts:
+    admins:
+      users: "Users"
+      cities: "Cities"
+      car_parks: "Car parks"
+      catalogues: "Catalogues"
+      sign_out: "Sign out"

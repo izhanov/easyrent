@@ -1,0 +1,8 @@
+en:
+  admins:
+    marks:
+      index:
+        title: "Marks"
+        back: "Back"
+        new_mark: "New mark"
+        no_marks: "Marks not exist"

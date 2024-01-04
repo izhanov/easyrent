@@ -1,0 +1,9 @@
+en:
+  admins:
+    sessions:
+      new:
+        sign_in: "Sing in"
+        email: "Email"
+        password: "Password"
+        remember_me: "Remember me"
+        submit: "Submit"

@@ -1,0 +1,6 @@
+ru:
+  layouts:
+    office:
+      car_parks: "Автопарки"
+      cars: "Автомобили"
+      sign_out: "Выйти"

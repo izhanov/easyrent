@@ -1,0 +1,8 @@
+ru:
+  admins:
+    brands:
+      index:
+        title: "Марки автомобилей"
+        new_brand: "Новая марка"
+        no_brands: "Марки отсутствуют"
+        back: "Назад"

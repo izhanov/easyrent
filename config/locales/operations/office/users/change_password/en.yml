@@ -1,0 +1,8 @@
+en:
+  operations:
+    office:
+      users:
+        change_password:
+          success: "Password was successfully changed."
+          user_not_found: "User not found."
+

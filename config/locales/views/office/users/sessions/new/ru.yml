@@ -1,0 +1,9 @@
+ru:
+  office:
+    users:
+      sessions:
+        new:
+          sign_in: "Войти"
+          email: "Почта"
+          password: "Пароль"
+          submit: "Ок"

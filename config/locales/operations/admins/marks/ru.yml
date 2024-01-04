@@ -1,0 +1,15 @@
+ru:
+  operations:
+    admins:
+      marks:
+        create:
+          success: "Модель успешно создана."
+          errors:
+            validation_error: "Ошибка валидации при создании."
+            uniqueness_violation: "Модель уже существует."
+        update:
+          success: "Модель успешно обновлена."
+          errors:
+            validation_error: "Ошибка валидации при обновлении."
+        destroy:
+          success: "Модель успешно удалена."

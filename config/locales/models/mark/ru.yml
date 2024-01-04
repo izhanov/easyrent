@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    models:
+      mark: "Модель"
+    attributes:
+      mark:
+        title: "Название"
+        brand_id: "Марка"
+        body: "Кузов"
+        synonyms: "Синонимы"
+        bodies:
+          sedan: "Седан"
+          hatchback: "Хэтчбек"
+          universal: "Универсал"
+          coupe: "Купе"
+          convertible: "Кабриолет"
+          suv: "Внедорожник"
+          pickup: "Пикап"
+          minivan: "Минивэн"
+          van: "Фургон"
+          limousine: "Лимузин"
+          crossover: "Кроссовер"
+          roadster: "Родстер"
+          truck: "Грузовик"
+          bus: "Автобус"
+          other: "Другое"

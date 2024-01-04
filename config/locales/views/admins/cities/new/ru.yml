@@ -1,0 +1,6 @@
+ru:
+  admins:
+    cities:
+      new:
+        title: "Новый город"
+        back: "Назад"

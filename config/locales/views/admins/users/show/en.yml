@@ -1,0 +1,8 @@
+en:
+  admins:
+    users:
+      show:
+        back: "Back"
+        edit: "Edit"
+        destroy: "Destroy"
+        sure?: "Are you sure?"

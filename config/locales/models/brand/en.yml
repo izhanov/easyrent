@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      brand: "Brand"
+    attributes:
+      brand:
+        title: "Title"
+        synonyms: "Synonyms"
