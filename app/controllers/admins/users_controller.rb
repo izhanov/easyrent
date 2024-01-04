@@ -49,7 +49,7 @@ module Admins
     end
 
     def destroy
-      @user.destroy
+      @user.destroy!
       redirect_to admins_users_path, flash: {success: success_resolver(path: "users.destroy")}
     end
 

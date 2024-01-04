@@ -2,16 +2,16 @@
   background-color: oklch(65% 0.242 28.59 / 30%);
   border-color: oklch(56.57% 0.242 28.59);
   color: oklch(75% 0.242 28.59);
-  transition: opacity 5s ease-in-out;
   opacity: 0;
+  transition: opacity 3s ease-in-out;
 }
 
 .alert-notice {
   background-color: oklch(70% 0.165 232.94 / 30%);
   border-color: oklch(65% 0.165 232.94);
   color: oklch(60% 0.165 232.94);
-  transition: opacity 5s ease-in-out;
   opacity: 0;
+  transition: opacity 3s ease-in-out;
 }
 
 .alert-success {
@@ -19,7 +19,7 @@
   border-color: oklch(46.67% 0.121 138.27);
   color: oklch(46.67% 0.121 138.27);
   opacity: 0;
-  transition: opacity 5s ease-in-out;
+  transition: opacity 3s ease-in-out;
 }
 
 .alert-error {
@@ -27,5 +27,5 @@
   border-color: oklch(56.57% 0.242 28.59);
   color: oklch(99.85% 0.0001 65.65);
   opacity: 0;
-  transition: opacity 5s ease-in-out;
+  transition: opacity 3s ease-in-out;
 }

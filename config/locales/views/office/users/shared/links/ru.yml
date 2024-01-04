@@ -1,0 +1,7 @@
+ru:
+  office:
+    users:
+      shared:
+        links:
+          sign_up: "Зарегистрироваться"
+          forgot_password?: "Забыли пароль?"

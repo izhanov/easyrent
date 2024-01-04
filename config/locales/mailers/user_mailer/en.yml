@@ -5,6 +5,7 @@ en:
       greeting: "Hello %{name}!"
       topic: "You have been invited to join %{host} with your %{email}"
       instructions:
-        link: "Follow the link to login with your email: %{link}"
+        link: "Follow the link below to login with your email: "
+        sign_in: "Sign in"
         temp_password: "And use Your temporary password: %{password}"
       thanks: "Don't forget to change your password after login. Good luck!"

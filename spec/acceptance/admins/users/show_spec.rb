@@ -30,4 +30,14 @@ feature "Admin visit users show page" do
       expect(page).to have_button("Save")
     end
   end
+
+  context "when click to Delete link" do
+    scenario "redirect to users page list and delete user" do
+      visit admins_user_path(user)
+      click_link "Destroy"
+      expect(page).to have_current_path(admins_users_path)
+      expect(page).to have_selector("h1", text: "Users")
+      expect(page).to have_selector("div", text: "User successfully destroyed.")
+    end
+  end
 end

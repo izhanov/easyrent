@@ -10,5 +10,6 @@ import Rails from "@rails/ujs"
 import 'bootstrap';
 import './../src/office/scss/main.scss';
 
+import './../src/office/js/imask.js';
 
 Rails.start();
