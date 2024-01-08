@@ -1,0 +1,27 @@
+<div class="col-lg-12 mb-3">
+  <div class="input-group">
+    <%= f.label :legal_address, class: "input-group-text" %>
+    <%= f.text_field :legal_address, class: "form-control" %>
+  </div>
+</div>
+
+<div class="col-lg-12 mb-3">
+  <div class="input-group">
+    <%= f.label :service_phone, class: "input-group-text" %>
+    <%= f.text_field :service_phone, class: "form-control", data: {mask: "phone"} %>
+  </div>
+</div>
+
+<div class="col-lg-12 mb-3">
+  <div class="input-group">
+    <%= f.label :bank_code, class: "input-group-text" %>
+    <%= f.text_field :bank_code, class: "form-control" %>
+  </div>
+</div>
+
+<div class="col-lg-12 mb-3">
+  <div class="input-group">
+    <%= f.label :benificiary_code, class: "input-group-text" %>
+    <%= f.text_field :benificiary_code, class: "form-control", value: 17 %>
+  </div>
+</div>

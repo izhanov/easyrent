@@ -1,0 +1,21 @@
+ru:
+  activerecord:
+    models:
+      car_park: "Автопарк"
+    attributes:
+      car_park:
+        title: "Наименование"
+        city_id: "Город"
+        business_id_number: "БИН/ИИН"
+        legal_address: "Юридический адрес"
+        contact_phone: "Контактный телефон"
+        card_id_number: "Номер удостоверения личности"
+        email: "Почта"
+        bank_name: "Наименование банка"
+        bank_account_number: "Номер банковского счета"
+        privateer_number: "Номер талона ИП"
+        privateer_date: "Дата выдачи талона ИП"
+        residence_address: "Адрес проживания"
+        bank_code: "БИК"
+        benificiary_code: "КБе"
+        service_phone: "Телефон сервисной линии"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_03_044053) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_04_064218) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -39,6 +39,31 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_03_044053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_brands_on_title", unique: true
+  end
+
+  create_table "car_parks", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.string "kind", null: false
+    t.string "business_id_number", null: false
+    t.string "contact_phone"
+    t.string "bank_name"
+    t.string "bank_account_number"
+    t.string "email"
+    t.string "card_id_number"
+    t.string "privateer_number"
+    t.date "privateer_date"
+    t.string "residence_address"
+    t.string "bank_code"
+    t.string "benificiary_code"
+    t.string "legal_address"
+    t.string "service_phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id", "business_id_number"], name: "index_car_parks_on_city_id_and_business_id_number", unique: true
+    t.index ["city_id"], name: "index_car_parks_on_city_id"
+    t.index ["user_id"], name: "index_car_parks_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -81,5 +106,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_03_044053) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "car_parks", "cities"
+  add_foreign_key "car_parks", "users"
   add_foreign_key "marks", "brands"
 end

@@ -51,4 +51,15 @@ RSpec.describe User, type: :model do
     is_expected.to(have_db_index(:email).unique(true))
     is_expected.to(have_db_index(:reset_password_token).unique(true))
   end
+
+  describe "Associations" do
+    it { is_expected.to have_many(:car_parks).dependent(:destroy) }
+  end
+
+  describe "#full_name" do
+    it "returns user's full name" do
+      user = User.new(first_name: "John", last_name: "Doe")
+      expect(user.full_name).to eq("John Doe")
+    end
+  end
 end

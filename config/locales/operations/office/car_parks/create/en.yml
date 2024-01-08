@@ -1,0 +1,8 @@
+en:
+  operations:
+    office:
+      car_parks:
+        create:
+          success: "Car park was successfully created"
+          errors:
+            validation_error: "Validation error"

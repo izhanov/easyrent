@@ -39,6 +39,9 @@ class User < ApplicationRecord
 
   KINDS = %w[S M L XL].freeze
 
+  # Associations
+  has_many :car_parks, dependent: :destroy
+
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -1,0 +1,6 @@
+en:
+  office:
+    welcome:
+      index:
+        no_car_parks: "You don't have any car parks. To start working you need to create at least one car park."
+        add_car_park: "Add car park"

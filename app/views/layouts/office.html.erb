@@ -14,21 +14,24 @@
     <header class="navbar navbar-expand-lg bg-light sticky-top">
       <div class="container-fluid">
         <%= link_to "Easyrent", office_root_path, class: "navbar-brand" %>
-          <% if office_user_signed_in? %>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-lg-flex align-item-center justify-content-between" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <%= link_to t(".car_parks"), "#", class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to t(".cars"), "#", class: "nav-link" %>
-                </li>
-              </ul>
-              <%= link_to t(".sign_out"), destroy_office_user_session_path, method: :delete, class: "btn btn-dark mr-4" %>
-            </div>
+        <% if office_user_signed_in? %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse d-lg-flex align-item-center justify-content-between" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <%= link_to t(".car_parks"), office_user_car_parks_path(current_office_user), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to t(".cars"), "#", class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to t(".bookings"), "#", class: "nav-link" %>
+              </li>
+            </ul>
+            <%= link_to t(".sign_out"), destroy_office_user_session_path, method: :delete, class: "btn btn-dark mr-4" %>
+          </div>
         <% end %>
       </div>
     </header>

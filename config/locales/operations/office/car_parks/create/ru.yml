@@ -1,0 +1,8 @@
+ru:
+  operations:
+    office:
+      car_parks:
+        create:
+          success: "Автопарк успешно создан"
+          errors:
+            validation_error: "Ошибка валидации"

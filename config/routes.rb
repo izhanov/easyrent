@@ -33,5 +33,11 @@ Rails.application.routes.draw do
     )
 
     resource :temp_password, only: [:edit, :update], path: "user/temp_password"
+
+    resources :users do
+      resources :car_parks do
+        resources :cars
+      end
+    end
   end
 end

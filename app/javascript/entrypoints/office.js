@@ -12,4 +12,5 @@ import './../src/office/scss/main.scss';
 
 import './../src/office/js/imask.js';
 
+import './../src/office/js/controllers';
 Rails.start();

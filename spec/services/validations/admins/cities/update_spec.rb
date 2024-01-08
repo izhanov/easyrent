@@ -18,6 +18,6 @@ RSpec.describe Validations::Admins::Cities::Update do
   it "requires slug to be valid" do
     result = subject.call({slug: "invalid slug"})
 
-    expect(result.errors.to_h).to include(slug: ["Must contain only a-z, and -"])
+    expect(result.errors.to_h).to include(slug: ["must contain only a-z, and -"])
   end
 end

@@ -88,9 +88,13 @@ en:
 
       rules:
         slug:
-          invalid_format: "Must contain only a-z, and -"
+          invalid_format: "must contain only a-z, and -"
         phone:
-          invalid_format: "Must be in correct format"
+          invalid_format: must be in correct format"
+        contact_phone:
+          invalid_format: "must be in correct format"
+        service_phone:
+          invalid_format: "must be in correct format"
 
       size?:
         arg:

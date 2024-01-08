@@ -1,0 +1,22 @@
+en:
+  activerecord:
+    models:
+      car_park: "Car park"
+    attributes:
+      car_park:
+        title: "Title"
+        city_id: "City"
+        business_id_number: "Bussines id number"
+        legal_address: "Legal address"
+        contact_phone: "Contact phone"
+        card_id_number: "Card id number"
+        email: "Email"
+        bank_name: "Bank name"
+        bank_account_number: "IBAN"
+        privateer_number: "Privateer number"
+        privateer_date: "Privateer date"
+        residence_address: "Residence address"
+        bank_code: "Bank code"
+        benificiary_code: "Benificiary code"
+        service_phone: "Service phone"
+

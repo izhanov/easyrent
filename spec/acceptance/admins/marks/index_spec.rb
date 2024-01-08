@@ -19,14 +19,14 @@ feature "Admins visit marks index page" do
   end
 
   context "when marks exist" do
-    let!(:marks_list) { create_list(:mark, 2, brand: brand) }
-
     scenario "and see marks list" do
+      mark1 = create(:mark, brand: brand)
+      mark2 = create(:mark, brand: brand)
+
       visit admins_marks_path
       expect(page).to have_content("Marks")
-      marks_list.each do |mark|
-        expect(page).to have_link(mark.title, count: 1)
-      end
+      expect(page).to have_link(mark1.title, count: 1)
+      expect(page).to have_link(mark2.title, count: 1)
     end
   end
 end

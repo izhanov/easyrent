@@ -3,4 +3,5 @@ ru:
     office:
       car_parks: "Автопарки"
       cars: "Автомобили"
+      bookings: "Заявки"
       sign_out: "Выйти"

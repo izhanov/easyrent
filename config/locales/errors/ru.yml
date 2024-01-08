@@ -85,6 +85,10 @@ ru:
           invalid_format: "Должен содержать только a-z, 0-9 и -"
         phone:
           invalid_format: "Должен быть в правильном формате"
+        contact_phone:
+          invalid_format: "Должен быть в правильном формате"
+        service_phone:
+          invalid_format: "Должен быть в правильном формате"
 
       size?:
         arg:
