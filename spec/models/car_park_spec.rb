@@ -25,6 +25,7 @@ RSpec.describe CarPark, type: :model do
   describe "Associations" do
     it { is_expected.to belong_to(:city) }
     it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:cars).dependent(:destroy) }
   end
 
   describe "KINDS constant" do

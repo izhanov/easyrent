@@ -38,6 +38,7 @@ class CarPark < ApplicationRecord
   belongs_to :city
   belongs_to :user
 
+  has_many :cars, as: :ownerable, dependent: :destroy
   # Kinds of car parks business forms
   # llp - Limited Liability Partnership (ТОО)
   # ie - Individual Entrepreneur (ИП)

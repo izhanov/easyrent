@@ -2,6 +2,8 @@
 
 module Office
   class CarParksController < BaseController
+    before_action :find_car_park, only: %i[show edit update destroy]
+
     def index
       @car_parks = current_office_user.car_parks
     end
@@ -25,7 +27,23 @@ module Office
       end
     end
 
+    def show
+    end
+
+    def edit
+    end
+
+    def update
+    end
+
+    def destroy
+    end
+
     private
+
+    def find_car_park
+      @car_park = current_office_user.car_parks.find(params[:id])
+    end
 
     def car_park_params
       params.require(:car_park).permit(

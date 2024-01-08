@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_04_064218) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_08_112133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -66,6 +66,28 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_04_064218) do
     t.index ["user_id"], name: "index_car_parks_on_user_id"
   end
 
+  create_table "cars", force: :cascade do |t|
+    t.bigint "mark_id", null: false
+    t.string "ownerable_type", null: false
+    t.bigint "ownerable_id", null: false
+    t.string "year"
+    t.string "vin_code", null: false
+    t.string "plate_number", null: false
+    t.string "klass"
+    t.string "technical_certificate_number"
+    t.string "mileage"
+    t.string "fuel"
+    t.string "color"
+    t.string "transmission"
+    t.string "status"
+    t.string "number_of_seats"
+    t.string "tank_volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mark_id"], name: "index_cars_on_mark_id"
+    t.index ["ownerable_type", "ownerable_id"], name: "index_cars_on_ownerable"
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "title", null: false
     t.string "slug"
@@ -108,5 +130,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_04_064218) do
 
   add_foreign_key "car_parks", "cities"
   add_foreign_key "car_parks", "users"
+  add_foreign_key "cars", "marks"
   add_foreign_key "marks", "brands"
 end

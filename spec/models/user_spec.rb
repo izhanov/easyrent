@@ -54,6 +54,7 @@ RSpec.describe User, type: :model do
 
   describe "Associations" do
     it { is_expected.to have_many(:car_parks).dependent(:destroy) }
+    it { is_expected.to have_many(:cars).through(:car_parks).dependent(:destroy) }
   end
 
   describe "#full_name" do

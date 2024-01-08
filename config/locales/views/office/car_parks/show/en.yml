@@ -1,0 +1,10 @@
+en:
+  office:
+    car_parks:
+      show:
+        back: "Back"
+        edit: "Edit"
+        destroy: "Destroy"
+        sure?: "Are you sure?"
+        no_cars: "No cars"
+        add_car: "Add car"

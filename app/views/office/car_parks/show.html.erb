@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    <%= @car_park.title %>
+  </h1>
+  <div>
+    <%= link_to t(".back"), office_user_car_parks_path(current_office_user), class: "btn btn-outline-primary" %>
+    <%= link_to t(".edit"), edit_office_user_car_park_path(current_office_user, @car_park), class: "btn btn-warning" %>
+    <%= link_to t(".destroy"), office_user_car_park_path(current_office_user, @car_park), class: "btn btn-danger", data: {confirm: t(".sure?"), method: :delete} %>
+  </div>
+</div>
+
+<div class="container">
+  <% if @car_park.cars.any?%>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th><%= t(".table.header.id")%></th>
+                <th><%= t(".table.header.city")%></th>
+                <th><%= t(".table.header.mark")%></th>
+                <th><%= t(".table.header.owner")%></th>
+                <th><%= t(".table.header.status")%></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render partial: "office/cars/car", locals: {cars: @car_park.cars} %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="alert alert-info" role="alert">
+      <%= t(".no_cars") %>
+      <%= link_to t(".add_car"), new_office_user_car_park_car_path(current_office_user, @car_park), class: "alert-link" %>
+    </div>
+  <% end %>
+</div>
