@@ -1,7 +1,7 @@
 // Disable Turbo Drive for the admin namespace
 // I guess temporarily until we get it working
 import "@hotwired/turbo-rails"
-Turbo.session.drive = false
+Turbo.setFormMode("off");
 
 // Import Rails UJS for enable Turbolinks helpers
 import Rails from "@rails/ujs"

@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      car: "Автомобиль"
+    attributes:
+      car:
+        mark: "Марка"
+

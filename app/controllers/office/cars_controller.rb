@@ -3,8 +3,17 @@
 module Office
   class CarsController < BaseController
     before_action :find_car, only: %i[show edit update destroy]
+    before_action :find_car_park, only: %i[new]
 
     def index
+      @cars = current_office_user.cars
+      respond_to do |format|
+        format.html
+        format.json do
+          byebug
+          render partial: "office/cars/search", locals: {cars: @cars}
+        end
+      end
     end
 
     def new
@@ -49,13 +58,17 @@ module Office
 
     def destroy
       @car.destroy!
-      redirect_to office_user_cars_path(current_office_user), flash: {success: t("office.cars.destroy.success")}
+      redirect_to office_user_cars_path(current_office_user), flash: {success: t("destroy.success")}
     end
 
     private
 
     def find_car
       @car = current_office_user.cars.find(params[:id])
+    end
+
+    def find_car_park
+      @car_park = current_office_user.car_parks.find(params[:car_park_id])
     end
   end
 end

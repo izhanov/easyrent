@@ -20,8 +20,18 @@ module Operations
         end
 
         def commit(params)
-          car_park = CarPark.create!(params)
+          normalized_params = normalize_phones(params)
+          car_park = CarPark.create!(normalized_params)
           Success(car_park)
+        end
+
+        def normalize_phones(params)
+          params.each do |key, value|
+            if key.to_s.match?(/_phone/)
+              params[key] = value.gsub(/[^+\d]/, "")
+            end
+          end
+          params
         end
       end
     end

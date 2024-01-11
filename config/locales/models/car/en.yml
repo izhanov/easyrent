@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      car: "Car"
+    attributes:
+      car:
+        mark: "Mark"
+

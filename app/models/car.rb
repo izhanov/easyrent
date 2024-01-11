@@ -33,4 +33,22 @@
 class Car < ApplicationRecord
   belongs_to :mark
   belongs_to :ownerable, polymorphic: true
+
+  # Requirements:
+  # Typesense server running on localhost:8108
+  # gem 'typesense'
+  include RTypesense
+
+  draw_schema do
+    string :id, optional: false
+    string :vin_code, optional: false, infix: true
+    string :year, optional: true
+    string :color, optional: true, infix: true
+    string :status, optional: false, infix: true
+    object :mark, optional: false do |object_name|
+      string [object_name, :title], optional: false
+      array_of_string [object_name, :synonyms], optional: true
+      string [object_name, :body], optional: true, infix: true
+    end
+  end
 end

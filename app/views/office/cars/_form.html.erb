@@ -1,0 +1,21 @@
+<%= form_with model: [:office, user, owner, car], html: {class: "row mt-12", data: {controller: "car-form"}} do |f| %>
+  <%= f.hidden_field :ownerable_id, value: owner.id %>
+  <%= f.hidden_field :ownerable_type, value: owner.class.name %>
+
+  <div class="col-12 mb-3" data-controller="search-bar" data-search-bar-url-value=<%= office_user_car_park_cars_path(user, owner)%>>
+    <div class="input-group">
+      <%= f.label :mark, class: "input-group-text" %>
+      <input
+        class="form-control"
+        data-search-bar-target="query"
+        data-action="keyup->search-bar#search"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      >
+
+      <div data-search-bar-target="results"
+      </div>
+    </div>
+  </div>
+<% end %>

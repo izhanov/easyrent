@@ -16,4 +16,12 @@
 #
 class Brand < ApplicationRecord
   has_many :marks, dependent: :destroy
+
+  include RTypesense
+
+  typesense_schema do
+    string :id, optional: false
+    string :title, optional: false, infix: true
+    array_of_string :synonyms, optional: true
+  end
 end
