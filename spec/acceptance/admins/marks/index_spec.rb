@@ -20,7 +20,7 @@ feature "Admins visit marks index page" do
 
   context "when marks exist" do
     scenario "and see marks list" do
-      mark1 = create(:mark, brand: brand)
+      mark1 = create(:mark, title: "Gotham Lincoln MKS", brand: brand)
       mark2 = create(:mark, brand: brand)
 
       visit admins_marks_path

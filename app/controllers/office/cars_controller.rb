@@ -5,15 +5,10 @@ module Office
     before_action :find_car, only: %i[show edit update destroy]
     before_action :find_car_park, only: %i[new]
 
+    helper Office::CarsHelper
+
     def index
       @cars = current_office_user.cars
-      respond_to do |format|
-        format.html
-        format.json do
-          byebug
-          render partial: "office/cars/search", locals: {cars: @cars}
-        end
-      end
     end
 
     def new
@@ -26,7 +21,8 @@ module Office
 
       case result
       in Success[car]
-        redirect_to office_user_car_path(current_office_user, car), flash: {success: success_resolver(operation)}
+        success_message = {success: success_resolver(operation)}
+        redirect_to office_user_car_path(current_office_user, car), flash: success_message
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
         @car = Car.new(car_params)
@@ -47,7 +43,8 @@ module Office
 
       case result
       in Success[car]
-        redirect_to office_user_car_path(current_office_user, car), flash: {success: success_resolver(operation)}
+        success_message = {success: success_resolver(operation)}
+        redirect_to office_user_car_path(current_office_user, car), flash: success_message
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
         @car = Car.new(car_params)
@@ -69,6 +66,28 @@ module Office
 
     def find_car_park
       @car_park = current_office_user.car_parks.find(params[:car_park_id])
+    end
+
+    def car_params
+      params.require(:car).permit(
+        :ownerable_id,
+        :ownerable_type,
+        :mark_id,
+        :vin_code,
+        :year,
+        :color,
+        :status,
+        :plate_number,
+        :klass,
+        :fuel,
+        :engine_capacity,
+        :engine_capacity_unit,
+        :mileage,
+        :number_of_seats,
+        :tank_volume,
+        :technical_certificate_number,
+        :transmission
+      )
     end
   end
 end

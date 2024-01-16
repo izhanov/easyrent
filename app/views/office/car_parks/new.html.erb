@@ -1,6 +1,8 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1><%= t(".title") %></h1>
-  <%= link_to t(".back"), office_user_car_parks_path(current_office_user), class: "btn btn-outline-primary" %>
+  <%= link_to office_user_car_parks_path(current_office_user), class: "btn btn-sm btn-outline-primary" do %>
+    <i class="bi bi-box-arrow-left"></i>
+  <% end %>
 </div>
 
 <div class="container">

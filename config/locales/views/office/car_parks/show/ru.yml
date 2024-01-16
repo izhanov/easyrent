@@ -8,3 +8,10 @@ ru:
         sure?: "Вы уверены?"
         no_cars: "Автопарк пустой"
         add_car: "Добавить автомобиль"
+        table:
+          header:
+            id: "ID"
+            city: "Город"
+            mark: "Марка"
+            plate_number: "Гос. номер"
+            status: "Статус"

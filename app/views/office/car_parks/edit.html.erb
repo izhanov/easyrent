@@ -1,0 +1,7 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1><%= t(".title", car_park: @car_park.title) %></h1>
+  <%= link_to office_user_car_parks_path(current_office_user), class: "btn btn-primary btn-sm"  do %>
+    <i class="bi bi-box-arrow-left"></i>
+  <% end %>
+</div>
+

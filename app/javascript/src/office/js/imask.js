@@ -8,4 +8,16 @@ document.addEventListener('turbo:load', () => {
       lazy: false
     });
   });
+
+  const mileageInputs = document.querySelectorAll("[data-mask='mileage']");
+  mileageInputs.forEach((mileageInput) => {
+    const numberMask = new Imask(mileageInput, {
+      mask: Number,
+      thousandsSeparator: ' ',
+      scale: 2,
+      radix: ".",
+      max: 1_500_000,
+      min: 0
+    });
+  });
 })

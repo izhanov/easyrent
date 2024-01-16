@@ -8,3 +8,10 @@ en:
         sure?: "Are you sure?"
         no_cars: "No cars"
         add_car: "Add car"
+        table:
+          header:
+            id: "ID"
+            city: "City"
+            mark: "Mark"
+            plate_number: "Plate number"
+            status: "Status"

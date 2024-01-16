@@ -2,20 +2,141 @@
   <%= f.hidden_field :ownerable_id, value: owner.id %>
   <%= f.hidden_field :ownerable_type, value: owner.class.name %>
 
-  <div class="col-12 mb-3" data-controller="search-bar" data-search-bar-url-value=<%= office_user_car_park_cars_path(user, owner)%>>
+  <div
+    class="col-6 mb-3"
+    data-controller="autocomplete"
+    data-autocomplete-url-value=<%= search_office_marks_path %>
+  >
     <div class="input-group">
-      <%= f.label :mark, class: "input-group-text" %>
-      <input
-        class="form-control"
-        data-search-bar-target="query"
-        data-action="keyup->search-bar#search"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      >
+      <%= f.label :mark, class: "input-group-text"%>
+      <input type="search" data-autocomplete-target="input" class="form-control"/>
+      <%= f.hidden_field :mark_id, data: { "autocomplete-target": "hidden" }%>
+    </div>
+    <ul class="list-group" data-autocomplete-target="results"></ul>
+  </div>
 
-      <div data-search-bar-target="results"
-      </div>
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :year, class: "input-group-text" %>
+      <%= f.number_field :year, class: "form-control" %>
     </div>
   </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :engine_capacity, class: "input-group-text" %>
+      <%= f.number_field :engine_capacity, max: 16, min: 0.5, step: 0.1, class: "form-control" %>
+
+      <%= f.label :engine_capacity_unit, class: "input-group-text" %>
+      <%= f.select(
+            :engine_capacity_unit,
+            [
+              [t(".units.liters"), "l"],
+              [t(".units.cubic_meters"), "cm3"]
+            ],
+            {include_blank: false},
+            class: "form-select"
+          )
+      %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :klass, class: "input-group-text" %>
+      <%= f.select(
+            :klass,
+            options_for_select(
+              Car::KLASS_TYPES.map { |type| [localize_klass_type(type), type] },
+              selected: f.object.klass
+            ),
+            {include_blank: true},
+            class: "form-select"
+          )
+      %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :fuel, class: "input-group-text" %>
+      <%= f.select(
+            :fuel,
+            options_for_select(
+              Car::FUEL_TYPES.map { |type| [localize_fuel_type(type), type] },
+              selected: f.object.fuel
+            ),
+            {include_blank: true},
+            class: "form-select"
+          )
+      %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :plate_number, class: "input-group-text" %>
+      <%= f.text_field :plate_number, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :vin_code, class: "input-group-text" %>
+      <%= f.text_field :vin_code, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :technical_certificate_number, class: "input-group-text" %>
+      <%= f.text_field :technical_certificate_number, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :transmission, class: "input-group-text" %>
+      <%= f.select(
+            :transmission,
+            options_for_select(
+              Car::TRANSMISSION_TYPES.map { |type| [localize_transmission_type(type), type] },
+              selected: f.object.transmission
+            ),
+            {include_blank: true},
+            class: "form-select"
+          )
+      %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :color, class: "input-group-text" %>
+      <%= f.text_field :color, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :number_of_seats, class: "input-group-text" %>
+      <%= f.number_field :number_of_seats, min: 2, max: 14, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :tank_volume, class: "input-group-text" %>
+      <%= f.number_field :tank_volume, max: 200, class: "form-control" %>
+    </div>
+  </div>
+  <div class="col-6 mb-3">
+    <div class="input-group">
+      <%= f.label :mileage, class: "input-group-text" %>
+      <%= f.text_field :mileage, class: "form-control", data: {mask: "mileage"} %>
+    </div>
+  </div>
+
+  <div class="col-12 mb-3">
+    <%= f.submit t(".save"), class: "btn btn-success" %>
 <% end %>

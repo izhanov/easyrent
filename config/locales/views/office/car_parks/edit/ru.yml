@@ -1,0 +1,5 @@
+ru:
+  office:
+    car_parks:
+      edit:
+        title: "%{car_park}"

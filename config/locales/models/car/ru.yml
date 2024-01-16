@@ -5,4 +5,33 @@ ru:
     attributes:
       car:
         mark: "Марка"
-
+        plate_number: "Гос. номер"
+        vin_code: "VIN код"
+        klass: "Класс"
+        year: "Год выпуска"
+        technical_certificate_number: "Номер тех. паспорта"
+        status: "Статус"
+        fuel: "Топливо"
+        mileage: "Пробег"
+        tank_volume: "Объем бака"
+        transmission: "Коробка передач"
+        color: "Цвет"
+        number_of_seats: "Количество мест"
+        engine_capacity: "Объем двигателя"
+        engine_capacity_unit: "л/см3"
+        fuel_types:
+          petrol: "Бензин"
+          diesel: "Дизель"
+          gas: "Газ"
+          electric: "Электричество"
+        klass_types:
+          economy: "Эконом"
+          comfort: "Комфорт"
+          business: "Бизнес"
+          premium: "Премиум"
+          ultima: "Ультима"
+        transmission_types:
+          manual: "МКПП"
+          automatic: "АКПП"
+          robotic_gearbox: "Робот"
+          cvt: "Вариатор"

@@ -1,0 +1,6 @@
+ru:
+  operations:
+    office:
+      cars:
+        create:
+          success: "Автомобиль успешно создан."

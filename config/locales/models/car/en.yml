@@ -5,4 +5,33 @@ en:
     attributes:
       car:
         mark: "Mark"
-
+        plate_number: "Plate number"
+        vin_code: "VIN code"
+        klass: "Class"
+        year: "Year"
+        technical_certificate_number: "Technical certificate number"
+        status: "Status"
+        fuel: "Fuel"
+        mileage: "Mileage"
+        tank_volume: "Tank volume"
+        transmission: "Transmission"
+        color: "Color"
+        number_of_seats: "Number of seats"
+        engine_capacity: "Engine capacity"
+        engine_capacity_unit: "l/cm3"
+        fuel_types:
+          petrol: "Бензин"
+          diesel: "Дизель"
+          gas: "Газ"
+          electric: "Электричество"
+        klass_types:
+          economy: "Economy"
+          comfort: "Comfort"
+          business: "Business"
+          premium: "Premium"
+          ultima: "Ultima"
+        transmission_types:
+          manual: "Manual"
+          automatic: "Automatic"
+          robotic_gearbox: "Robot gearbox"
+          cvt: "CVT"

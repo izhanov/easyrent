@@ -1,8 +1,16 @@
 <div class="d-flex justify-content-between align-items-center">
-  <h1><%= t(".title") %></h1>
+  <h1>
+    <%= t(".title") %>
+    <%= link_to new_office_user_car_park_path(current_office_user), class: "btn btn-primary btn-sm" do %>
+      <i class="bi bi-building-add"></i>
+      <%= t(".new_car_park") %>
+    <% end %>
+  </h1>
   <div>
-    <%= link_to t(".back"), office_root_path, class: "btn btn-outline-primary" %>
-    <%= link_to t(".new_car_park"), new_office_user_car_park_path(current_office_user), class: "btn btn-primary" %>
+    <%= link_to office_root_path, class: "btn btn-outline-primary btn-sm" do %>
+      <i class="bi bi-box-arrow-left"></i>
+    <% end %>
+
   </div>
 </div>
 

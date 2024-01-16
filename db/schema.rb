@@ -70,18 +70,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_112133) do
     t.bigint "mark_id", null: false
     t.string "ownerable_type", null: false
     t.bigint "ownerable_id", null: false
-    t.string "year"
+    t.integer "year", limit: 2, null: false
     t.string "vin_code", null: false
     t.string "plate_number", null: false
-    t.string "klass"
-    t.string "technical_certificate_number"
-    t.string "mileage"
+    t.string "klass", null: false
+    t.string "technical_certificate_number", null: false
+    t.integer "mileage"
     t.string "fuel"
     t.string "color"
-    t.string "transmission"
-    t.string "status"
-    t.string "number_of_seats"
-    t.string "tank_volume"
+    t.string "transmission", null: false
+    t.string "status", default: "vacant", null: false
+    t.integer "number_of_seats", limit: 2
+    t.integer "tank_volume", limit: 2
+    t.integer "engine_capacity", limit: 2
+    t.string "engine_capacity_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mark_id"], name: "index_cars_on_mark_id"

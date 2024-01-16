@@ -22,7 +22,19 @@
 #  fk_rails_0f38256888  (brand_id => brands.id)
 #
 class Mark < ApplicationRecord
-  belongs_to :brand
+  belongs_to :brand, inverse_of: :marks
+
+  include RTypesense
+
+  draw_schema do
+    string :id, optional: false
+    string :title, optional: false, infix: true
+    array_of_string :synonyms, optional: true
+    object :brand, optional: false do |brand|
+      string [brand, :title], optional: false
+      array_of_string [brand, :synonyms], optional: true
+    end
+  end
 
   BODY_TYPES = %w[
     sedan

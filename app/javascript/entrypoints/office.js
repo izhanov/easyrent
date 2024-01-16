@@ -7,9 +7,15 @@ Turbo.setFormMode("off");
 import Rails from "@rails/ujs"
 
 // Import Bootstrap CSS
+import 'bootstrap';
 import './../src/office/scss/main.scss';
 
 import './../src/office/js/imask.js';
 
 import './../src/office/js/controllers';
 Rails.start();
+
+
+document.addEventListener("autocomplete.change", function (event) {
+  console.log(event);
+});

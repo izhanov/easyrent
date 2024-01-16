@@ -4,12 +4,15 @@
 
 import { Application } from '@hotwired/stimulus';
 import { registerControllers } from 'stimulus-vite-helpers';
+import { Autocomplete } from 'stimulus-autocomplete'
 
 const application = Application.start();
 
 // Configure Stimulus development experience
 application.debug = false;
 window.Stimulus   = application;
+
+application.register('autocomplete', Autocomplete);
 
 const controllers = import.meta.glob('./**/*_controller.js', { eager: true });
 registerControllers(application, controllers);
