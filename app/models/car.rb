@@ -25,8 +25,10 @@
 #
 # Indexes
 #
-#  index_cars_on_mark_id    (mark_id)
-#  index_cars_on_ownerable  (ownerable_type,ownerable_id)
+#  index_cars_on_mark_id                                           (mark_id)
+#  index_cars_on_ownerable                                         (ownerable_type,ownerable_id)
+#  index_cars_on_ownerable_id_and_ownerable_type_and_plate_number  (ownerable_id,ownerable_type,plate_number) UNIQUE
+#  index_cars_on_ownerable_id_and_ownerable_type_and_vin_code      (ownerable_id,ownerable_type,vin_code) UNIQUE
 #
 # Foreign Keys
 #

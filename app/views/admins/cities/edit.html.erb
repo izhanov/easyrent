@@ -1,6 +1,8 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1><%= t(".title", city: @city.title) %></h1>
-  <%= link_to t(".back"), admins_city_path(@city), class: "btn btn-primary" %>
+  <%= link_to admins_city_path(@city), class: "btn btn-sm btn-primary", id: "cities-back-link" do %>
+    <i class="bi bi-box-arrow-left"></i>
+  <% end %>
 </div>
 
 <div class="container">

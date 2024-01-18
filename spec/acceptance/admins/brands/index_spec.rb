@@ -25,12 +25,13 @@ feature "Admin visit brands index page" do
     end
 
     scenario "and see brands list" do
-      expect(page).to have_link("New brand")
+      expect(page).to have_xpath("//a[@href='#{new_admins_brand_path}']")
+
       expect(page).to have_link(brand.title)
     end
 
     scenario "and click to new brand link" do
-      click_link "New brand"
+      find("//a[@href='#{new_admins_brand_path}']").click
       expect(page).to have_current_path(new_admins_brand_path)
     end
   end

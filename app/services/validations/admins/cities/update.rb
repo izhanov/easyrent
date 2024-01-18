@@ -6,7 +6,7 @@ module Validations
       class Update < Base
         params do
           required(:title).filled(:string)
-          optional(:slug).value(:string)
+          optional(:slug).filled(:string)
         end
 
         rule(:slug) do

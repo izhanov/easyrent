@@ -9,6 +9,7 @@
             class: "form-select"
           )
       %>
+      <%= error_field(@errors, :brand_id) %>
     </div>
   </div>
 
@@ -16,6 +17,7 @@
     <div class="input-group">
       <%= f.label :title, class: "input-group-text" %>
       <%= f.text_field :title, class: "form-control"%>
+      <%= error_field(@errors, :title) %>
     </div>
   </div>
 
@@ -32,13 +34,15 @@
             class: "form-select"
           )
       %>
+      <%= error_field(@errors, :body) %>
     </div>
   </div>
 
   <div class="col-4 m-4">
     <div class="input-group">
-        <%= f.label :synonyms, class: "input-group-text"%>
-        <%= f.text_area "synonyms][", { class: "form-control", id: "mark_synonyms", value: f.object.synonyms.join(", ") }%>
+      <%= f.label :synonyms, class: "input-group-text"%>
+      <%= f.text_area "synonyms][", { class: "form-control", id: "mark_synonyms", value: f.object.synonyms.join(", ") }%>
+      <%= error_field(@errors, :synonyms) %>
     </div>
   </div>
 

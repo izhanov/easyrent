@@ -6,6 +6,8 @@ module Office
 
     include Dry::Monads[:result]
 
+    helper FormHelper
+
     before_action :authenticate_office_user!
     before_action :reset_temp_password?
 

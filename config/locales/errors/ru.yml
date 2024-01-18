@@ -82,14 +82,31 @@ ru:
 
       rules:
         slug:
-          invalid_format: "Должен содержать только a-z, 0-9 и -"
+          invalid_format: "Должен содержать только a-z и -"
         phone:
           invalid_format: "Должен быть в правильном формате"
         contact_phone:
           invalid_format: "Должен быть в правильном формате"
         service_phone:
           invalid_format: "Должен быть в правильном формате"
-
+        price_range:
+          price_range_cell:
+            from_greater_than_to: "от не может быть больше чем до"
+            from_and_to_equal: "от и до не могут быть равны"
+            total_days_greater_than_30: "общее количество дней не может быть больше 30"
+            from_equal_last_to: "от не может быть равен последнему до"
+            from_already_exist: "значение от уже существует в диапазоне"
+        bank_account_number:
+          invalid_format: "Должен содержать KZ и 18 цифр"
+        city:
+          title:
+            uniqueness_violation: "должно быть уникальным"
+        brand:
+          title:
+            uniqueness_violation: "должно быть уникальным"
+        mark:
+          title:
+            uniqueness_violation: "должно быть уникальным"
       size?:
         arg:
           default: "размер должен быть %{size}"

@@ -16,7 +16,7 @@ feature "Admin visit edit city page" do
     expect(page).to have_selector("h1", text: "Edit #{city.title}")
     expect(page).to have_field("Title", with: city.title)
     expect(page).to have_field("slug", with: city.slug)
-    expect(page).to have_link("Back")
+    expect(page).to have_xpath("//a[@href='#{admins_city_path(city)}']")
   end
 
   context "when fill in fields with valid data" do
@@ -32,7 +32,7 @@ feature "Admin visit edit city page" do
   end
 
   context "when fill in fields with invalid data" do
-    scenario "and click to Update city button" do
+    scenario "and click to Update city button", js: true do
       visit edit_admins_city_path(city)
       fill_in "Title", with: ""
       click_button "Save"
@@ -44,7 +44,7 @@ feature "Admin visit edit city page" do
   context "when click to Back link" do
     scenario "and see cities page" do
       visit edit_admins_city_path(city)
-      click_link "Back"
+      find("#cities-back-link").click
       expect(page).to have_current_path(admins_city_path(city))
       expect(page).to have_selector("h1", text: city.title)
     end

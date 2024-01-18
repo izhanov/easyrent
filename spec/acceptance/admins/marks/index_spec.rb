@@ -14,14 +14,14 @@ feature "Admins visit marks index page" do
     scenario "and see message" do
       visit admins_marks_path
       expect(page).to have_content("Marks not exist")
-      expect(page).to have_link("New mark")
+      expect(page).to have_xpath("//a[@href='#{new_admins_mark_path}']")
     end
   end
 
   context "when marks exist" do
     scenario "and see marks list" do
       mark1 = create(:mark, title: "Gotham Lincoln MKS", brand: brand)
-      mark2 = create(:mark, brand: brand)
+      mark2 = create(:mark, title: "Gotham Bradley", brand: brand)
 
       visit admins_marks_path
       expect(page).to have_content("Marks")

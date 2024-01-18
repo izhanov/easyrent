@@ -21,5 +21,8 @@ class CreateCars < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+
+    add_index :cars, [:ownerable_id, :ownerable_type, :plate_number], unique: true
+    add_index :cars, [:ownerable_id, :ownerable_type, :vin_code], unique: true
   end
 end

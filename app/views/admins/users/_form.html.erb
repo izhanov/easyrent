@@ -2,22 +2,27 @@
   <div class="col-md-6">
     <%= f.label :first_name, class: "form-label" %>
     <%= f.text_field :first_name, class: "form-control" %>
+    <%= error_field(@errors, :first_name) %>
   </div>
   <div class="col-md-6">
     <%= f.label :last_name, class: "form-label" %>
     <%= f.text_field :last_name, class: "form-control" %>
+    <%= error_field(@errors, :last_name) %>
   </div>
   <div class="col-md-6">
     <%= f.label :email, class: "form-label" %>
     <%= f.email_field :email, class: "form-control" %>
+    <%= error_field(@errors, :email) %>
   </div>
   <div class="col-md-6">
     <%= f.label :phone, class: "form-label" %>
     <%= f.text_field :phone, class: "form-control", data: { mask: "phone"} %>
+    <%= error_field(@errors, :phone) %>
   </div>
   <div class="col-md-4">
     <%= f.label :kind, class: "form-label" %>
     <%= f.select :kind, User::KINDS, {}, class: "form-select" %>
+    <%= error_field(@errors, :kind) %>
   </div>
 
   <div class="col-12">

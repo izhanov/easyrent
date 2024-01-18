@@ -6,3 +6,7 @@ ru:
           success: "Автопарк успешно создан"
           errors:
             validation_error: "Ошибка валидации"
+        update:
+          success: "Автопарк успешно обновлен"
+          errors:
+            validation_error: "Ошибка валидации"

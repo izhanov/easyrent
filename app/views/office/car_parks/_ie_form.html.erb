@@ -1,27 +1,31 @@
-<div class="col mb-3">
+<div class="col mb-3 mb-lg-4">
   <div class="input-group">
     <%= f.label :card_id_number, class: "input-group-text" %>
     <%= f.text_field :card_id_number, class: "form-control" %>
+    <%= error_field(@errors, :card_id_number) %>
   </div>
 </div>
-<div class="col mb-3">
+<div class="col mb-3 mb-lg-4">
   <div class="input-group">
     <%= f.label :privateer_number, class: "input-group-text" %>
     <%= f.text_field :privateer_number, class: "form-control" %>
+    <%= error_field(@errors, :privateer_number) %>
   </div>
 </div>
 
-<div class="col mb-3">
+<div class="col mb-3 mb-lg-4">
   <div class="input-group">
     <%= f.label :privateer_date, class: "input-group-text" %>
     <%= f.date_field :privateer_date, class: "form-control" %>
+    <%= error_field(@errors, :privateer_date) %>
   </div>
 </div>
 
-<div class="col mb-3">
-  <div class="input-group">
+<div class="col mb-3 mb-lg-4">
+  <div class="input-group mb-lg-4">
     <%= f.label :residence_address, class: "input-group-text" %>
     <%= f.text_field :residence_address, class: "form-control" %>
+    <%= error_field(@errors, :residence_address) %>
   </div>
 </div>
 

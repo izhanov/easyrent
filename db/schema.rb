@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_08_112133) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_16_083116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -87,6 +87,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_112133) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mark_id"], name: "index_cars_on_mark_id"
+    t.index ["ownerable_id", "ownerable_type", "plate_number"], name: "index_cars_on_ownerable_id_and_ownerable_type_and_plate_number", unique: true
+    t.index ["ownerable_id", "ownerable_type", "vin_code"], name: "index_cars_on_ownerable_id_and_ownerable_type_and_vin_code", unique: true
     t.index ["ownerable_type", "ownerable_id"], name: "index_cars_on_ownerable"
   end
 
@@ -95,6 +97,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_112133) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_cities_on_title", unique: true
   end
 
   create_table "marks", force: :cascade do |t|
@@ -106,6 +109,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_112133) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_marks_on_brand_id"
     t.index ["title"], name: "index_marks_on_title", unique: true
+  end
+
+  create_table "price_range_cells", force: :cascade do |t|
+    t.bigint "price_range_id", null: false
+    t.integer "from", null: false
+    t.integer "to", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["price_range_id"], name: "index_price_range_cells_on_price_range_id"
+  end
+
+  create_table "price_ranges", force: :cascade do |t|
+    t.bigint "car_park_id", null: false
+    t.string "unit", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_park_id"], name: "index_price_ranges_on_car_park_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -134,4 +154,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_112133) do
   add_foreign_key "car_parks", "users"
   add_foreign_key "cars", "marks"
   add_foreign_key "marks", "brands"
+  add_foreign_key "price_range_cells", "price_ranges"
+  add_foreign_key "price_ranges", "car_parks"
 end

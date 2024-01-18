@@ -6,9 +6,11 @@ en:
           success: "City was successfully created."
           errors:
             validation_error: "Validation error."
+            uniqueness_violation: "City with this name already exists."
         update:
           success: "City was successfully updated."
           errors:
             validation_error: "Validation error."
+            uniqueness_violation: "City with this name already exists."
         destroy:
           success: "City was successfully destroyed."

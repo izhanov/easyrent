@@ -6,3 +6,7 @@ en:
           success: "Car park was successfully created"
           errors:
             validation_error: "Validation error"
+        update:
+          success: "Car park was successfully updated"
+          errors:
+            validation_error: "Validation error"

@@ -14,39 +14,44 @@
     </div>
   </div>
 
-  <div class="col-12 mb-3">
+  <div class="col-12 mb-3 mb-lg-4">
     <p class="mb-3 form-block-name">Общие данные</p>
     <div class="input-group">
       <%= f.label :title, class: "input-group-text" %>
       <%= f.text_field :title, class: "form-control"%>
+      <%= error_field(@errors, :title) %>
     </div>
   </div>
 
-  <div class="col-12 mb-3">
+  <div class="col-12 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :city_id, class: "input-group-text" %>
       <%= f.select :city_id, City.all.pluck(:title, :id), {include_blank: false}, class: "form-select" %>
+      <%= error_field(@errors, :city_id) %>
     </div>
   </div>
 
-  <div class="col-12 mb-3">
+  <div class="col-12 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :business_id_number, class: "input-group-text" %>
       <%= f.text_field :business_id_number, class: "form-control" %>
+      <%= error_field(@errors, :business_id_number) %>
     </div>
   </div>
 
-  <div class="col-12 mb-3">
+  <div class="col-12 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :contact_phone, class: "input-group-text" %>
       <%= f.text_field :contact_phone, class: "form-control", data: {mask: "phone"} %>
+      <%= error_field(@errors, :contact_phone) %>
     </div>
   </div>
 
-  <div class="col-12 mb-3">
+  <div class="col-12 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :email, class: "input-group-text" %>
       <%= f.email_field :email, class: "form-control" %>
+      <%= error_field(@errors, :email) %>
     </div>
   </div>
 
@@ -54,17 +59,19 @@
     <%= render "office/car_parks/ie_form", f: f %>
   </div>
 
-  <div class="col-12 mb-3">
+  <div class="col-12 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :bank_name, class: "input-group-text" %>
       <%= f.select :bank_name, Utils::Banks::CODES.to_a, {include_blank: true}, class: "form-select", data: {action: "change->car-park-form#changeBankName"} %>
+      <%= error_field(@errors, :bank_name) %>
     </div>
   </div>
 
-  <div class="col-12 mb-3">
+  <div class="col-12 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :bank_account_number, class: "input-group-text" %>
       <%= f.text_field :bank_account_number, class: "form-control" %>
+      <%= error_field(@errors, :bank_account_number) %>
     </div>
   </div>
 

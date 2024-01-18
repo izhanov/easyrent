@@ -23,6 +23,7 @@
 #
 class Mark < ApplicationRecord
   belongs_to :brand, inverse_of: :marks
+  has_many :cars
 
   include RTypesense
 

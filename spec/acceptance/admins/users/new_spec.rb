@@ -23,7 +23,7 @@ feature "Admin visits a new user page" do
   end
 
   context "when fill in fields with invalid data" do
-    scenario "and see errors" do
+    scenario "and see errors", js: true do
       visit new_admins_user_path
       fill_in "Email", with: ""
       fill_in "Phone", with: "77002552209"
@@ -33,13 +33,14 @@ feature "Admin visits a new user page" do
   end
 
   context "when fill in email field with existing email" do
-    scenario "and see violation error" do
+    scenario "and see violation error", js: true do
       exits_user = create(:user)
       visit new_admins_user_path
       fill_in "Email", with: exits_user.email
-      fill_in "Phone", with: "+7(999)999-99-99"
       fill_in "First name", with: Faker::Name.first_name
       fill_in "Last name", with: Faker::Name.last_name
+      find("#user_phone").click
+      fill_in "user[phone]", with: "77002571218"
       page.select "L", from: "Kind"
       click_button "Save"
       expect(page).to have_content("User with this email already exists.")

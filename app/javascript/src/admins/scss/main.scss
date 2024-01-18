@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Utils
-@import './utils/alert';
+@import './utils/toastify';
+@import './components/error_field';

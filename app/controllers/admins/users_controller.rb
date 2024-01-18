@@ -42,7 +42,6 @@ module Admins
         redirect_to admins_user_path(@user), flash: {success: success_resolver(operation)}
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
-        @user = User.new(user_params)
         @errors = errors
         render :edit, status: :unprocessable_entity
       end

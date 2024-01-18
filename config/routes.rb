@@ -42,6 +42,10 @@ Rails.application.routes.draw do
 
     resources :users do
       resources :car_parks do
+        resources :price_ranges do
+          resources :price_range_cells
+        end
+
         resources :cars
       end
     end

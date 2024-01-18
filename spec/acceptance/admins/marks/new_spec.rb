@@ -42,7 +42,7 @@ feature "Admin visit marks new page" do
     expect(page).to have_current_path(admins_marks_path)
   end
 
-  scenario "and try create new mark with exist title" do
+  scenario "and try create new mark with exist title", js: true do
     admin = create(:admin)
     sign_in admin
     brand = create(:brand, title: "Gotham Finest")

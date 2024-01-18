@@ -10,10 +10,10 @@ module Validations
           required(:title).filled(:string)
           required(:business_id_number).filled(:string)
           required(:kind).filled(:string)
+          required(:bank_name).filled(:string)
+          required(:bank_account_number).filled(:string)
           optional(:contact_phone).value(:string)
           optional(:email).value(:string)
-          optional(:bank_name).value(:string)
-          optional(:bank_account_number).value(:string)
         end
 
         params(CarParkSchema)
@@ -21,7 +21,7 @@ module Validations
         rule(:contact_phone).validate(:phone_format)
 
         rule(:bank_account_number) do
-          key.failure("must be in correct format") unless key? && value.match?(/\AKZ[A-Z0-9]{18}\z/)
+          key.failure(:invalid_format) unless key? && value.match?(/\AKZ[A-Z0-9]{18}\z/)
         end
       end
     end

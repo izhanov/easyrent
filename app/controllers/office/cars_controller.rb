@@ -3,7 +3,7 @@
 module Office
   class CarsController < BaseController
     before_action :find_car, only: %i[show edit update destroy]
-    before_action :find_car_park, only: %i[new]
+    before_action :find_car_park
 
     helper Office::CarsHelper
 
@@ -22,7 +22,7 @@ module Office
       case result
       in Success[car]
         success_message = {success: success_resolver(operation)}
-        redirect_to office_user_car_path(current_office_user, car), flash: success_message
+        redirect_to office_user_car_park_car_path(current_office_user, @car_park, car), flash: success_message
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
         @car = Car.new(car_params)

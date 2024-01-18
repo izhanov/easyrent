@@ -3,3 +3,5 @@ en:
     car_parks:
       edit:
         title: "%{car_park}"
+        price_ranges: "Price ranges"
+        seasons: "Seasons"

@@ -38,16 +38,7 @@
     <div class="container">
       <% if flash.any? %>
         <% flash.each do |key, msg| %>
-          <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
-            <% if msg.is_a?(Hash) %>
-              <% msg.each do |field, m| %>
-                <p><%= "#{field} – #{m.join}" %></p>
-              <% end %>
-            <% else%>
-              <%= msg %>
-            <% end %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+          <%= tag.span(data: {notification: msg, kind: key}).html_safe %>
         <% end %>
       <% end %>
       <%= yield %>

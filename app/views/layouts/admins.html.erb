@@ -30,7 +30,7 @@
                   <%= link_to t(".catalogues"), admins_catalogues_path, class: "nav-link" %>
                 </li>
               </ul>
-              <%= link_to t(".sign_out"), destroy_admin_session_path, method: :delete, class: "btn btn-dark mr-4" %>
+              <%= link_to t(".sign_out"), destroy_admin_session_path, data: {turbo_method: :delete}, class: "btn btn-dark mr-4" %>
             </div>
         <% end %>
       </div>
@@ -38,16 +38,7 @@
     <div class="container">
       <% if flash.any? %>
         <% flash.each do |key, msg| %>
-          <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
-            <% if msg.is_a?(Hash) %>
-              <% msg.each do |field, m| %>
-                <p><%= "#{field} – #{m.join}" %></p>
-              <% end %>
-            <% else%>
-              <%= msg %>
-            <% end %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+          <%= tag.span(data: {notification: msg, kind: key}).html_safe %>
         <% end %>
       <% end %>
       <%= yield %>

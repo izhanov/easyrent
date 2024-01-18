@@ -1,5 +1,7 @@
-ru:
+ru :
   office:
     car_parks:
       edit:
         title: "%{car_park}"
+        price_ranges: "Диапазоны цен"
+        seasons: "Сезоны"

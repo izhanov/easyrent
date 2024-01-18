@@ -34,9 +34,22 @@ module Office
     end
 
     def update
+      operation = Operations::Office::CarParks::Update.new
+      result = operation.call(@car_park, car_park_params.to_h)
+
+      case result
+      in Success[car_park]
+        redirect_to edit_office_user_car_park_path(current_office_user, car_park), flash: {success: success_resolver(operation)}
+      in Failure[error_code, errors]
+        flash.now[:error] = failure_resolver(operation, error_code: error_code)
+        @errors = errors
+        render :edit
+      end
     end
 
     def destroy
+      @car_park.destroy!
+      redirect_to office_user_car_parks_path(current_office_user), flash: {success: t("car_parks.destroy")}
     end
 
     private

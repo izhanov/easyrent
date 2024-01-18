@@ -1,0 +1,21 @@
+<%= form_with model: [:office, current_office_user, car_park, price_range], html: {class: "row"} do |f| %>
+  <div class="input-group">
+    <%= f.label :unit, class: "input-group-text" %>
+    <%= f.select :unit, options_for_select(PriceRange::UNITS.map { |unit| [t("activerecord.attributes.price_range.units.#{unit}"), unit] }), {include_blank: false}, class: "form-select" %>
+  </div>
+
+  <%= turbo_frame_tag "price_range_cells" do %>
+    <% @price_range.price_range_cells.order(id: :asc).each do |price_range_cell| %>
+      <%= render "office/price_range_cells/form", price_range: @price_range, price_range_cell: price_range_cell %>
+    <% end %>
+  <% end %>
+
+  <%= turbo_frame_tag PriceRangeCell.new %>
+
+  <div class="col-12 d-flex justify-content-center">
+    <%= link_to new_office_user_car_park_price_range_price_range_cell_path(current_office_user, car_park, price_range), class: "btn btn-outline-primary mt-3", data: {turbo: true, turbo_frame: dom_id(PriceRangeCell.new)} do %>
+      <i class="bi bi-plus"></i>
+    <% end %>
+  </div>
+
+<% end %>

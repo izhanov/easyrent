@@ -21,8 +21,11 @@ module Operations
 
         def commit(params)
           normalized_params = normalize_phones(params)
-          car_park = CarPark.create!(normalized_params)
-          Success(car_park)
+          ActiveRecord::Base.transaction do
+            car_park = CarPark.create!(normalized_params)
+            car_park.create_price_range!(unit: "day")
+            Success(car_park)
+          end
         end
 
         def normalize_phones(params)

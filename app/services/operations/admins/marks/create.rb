@@ -22,7 +22,8 @@ module Operations
           mark = Mark.create!(params)
           Success(mark)
         rescue ActiveRecord::RecordNotUnique
-          Failure[:uniqueness_violation, {}]
+          errors = {title: [I18n.t("dry_validation.errors.rules.mark.title.uniqueness_violation")]}
+          Failure[:uniqueness_violation, errors]
         end
       end
     end

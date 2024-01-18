@@ -1,7 +1,23 @@
 <div class="d-flex justify-content-between align-items-center">
-  <h1><%= t(".title", car_park: @car_park.title) %></h1>
-  <%= link_to office_user_car_parks_path(current_office_user), class: "btn btn-primary btn-sm"  do %>
+  <h1 class="text-align-center">
+    <%= t(".title", car_park: @car_park.title) %>
+  </h1>
+
+  <%= link_to office_user_car_park_path(current_office_user, @car_park), class: "btn btn-outline-primary btn-sm"  do %>
     <i class="bi bi-box-arrow-left"></i>
   <% end %>
 </div>
 
+<div class="mb-4">
+  <%= link_to office_user_car_park_price_range_path(current_office_user, @car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
+    <i class="bi bi-bar-chart-steps"></i>
+    <%= t(".price_ranges") %>
+  <% end %>
+  <%= link_to office_user_car_park_price_range_path(current_office_user, @car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
+    <i class="bi bi-bar-chart-steps"></i>
+    <%= t(".seasons") %>
+  <% end %>
+</div>
+
+
+<%= render "form", car_park: @car_park %>

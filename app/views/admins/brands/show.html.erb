@@ -3,9 +3,15 @@
     <%= @brand.title %>
   </h1>
   <div>
-    <%= link_to t(".back"), admins_brands_path, class: "btn btn-primary" %>
-    <%= link_to t(".edit"), edit_admins_brand_path(@brand), class: "btn btn-warning" %>
-    <%= link_to t(".destroy"), admins_brand_path(@brand), class: "btn btn-danger", data: {confirm: t(".sure?"), method: :delete} %>
+    <%= link_to admins_brands_path, class: "btn btn-sm btn-primary" do %>
+      <i class="bi bi-box-arrow-left"></i>
+    <% end %>
+    <%= link_to edit_admins_brand_path(@brand), class: "btn btn-sm btn-warning" do %>
+      <i class="bi bi-pencil-square"></i>
+    <% end %>
+    <%= link_to admins_brand_path(@brand), class: "btn btn-sm btn-danger", data: {confirm: t(".sure?"), turbo_method: :delete} do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
   </div>
 </div>
 
