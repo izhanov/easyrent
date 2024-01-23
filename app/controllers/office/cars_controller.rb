@@ -5,7 +5,7 @@ module Office
     before_action :find_car, only: %i[show edit update destroy]
     before_action :find_car_park
 
-    helper Office::CarsHelper
+    helper CarsHelper
 
     def index
       @cars = current_office_user.cars
@@ -47,7 +47,6 @@ module Office
         redirect_to office_user_car_path(current_office_user, car), flash: success_message
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
-        @car = Car.new(car_params)
         @errors = errors
         render :edit
       end

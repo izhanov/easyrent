@@ -11,5 +11,6 @@ ru:
           success: "Марка успешно обновлена."
           errors:
             validation_error: "Ошибка валидации при обновлении."
+            uniqueness_violation: "Марка уже существует."
         destroy:
           success: "Марка успешно удалена."

@@ -15,4 +15,5 @@
 #  index_cities_on_title  (title) UNIQUE
 #
 class City < ApplicationRecord
+  has_many :car_parks, dependent: :destroy
 end

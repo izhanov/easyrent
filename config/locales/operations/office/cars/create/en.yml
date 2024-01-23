@@ -1,6 +1,0 @@
-en:
-  operations:
-    office:
-      cars:
-        create:
-          success: "Car was successfully created."

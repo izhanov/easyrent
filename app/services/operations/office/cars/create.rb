@@ -16,6 +16,7 @@ module Operations
         def validate(params)
           validation = Validations::Office::Cars::Create.new.call(params)
           validation.to_monad
+            .or { |result| Failure[:validation_error, result.errors.to_h] }
         end
 
         def commit(params)

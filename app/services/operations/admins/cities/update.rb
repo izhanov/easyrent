@@ -21,6 +21,9 @@ module Operations
         def commit(city, params)
           city.update!(params)
           Success(city)
+        rescue ActiveRecord::RecordNotUnique
+          errors = { title: [I18n.t("dry_validation.errors.rules.city.title.uniqueness_violation")]}
+          Failure[:uniqueness_violation, errors]
         end
       end
     end

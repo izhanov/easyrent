@@ -42,6 +42,32 @@ class Car < ApplicationRecord
     "#{mark.brand.title} #{mark.title}"
   end
 
+  include AASM
+
+  aasm column: :status do
+    state :vacant, initial: true
+    state :booked
+    state :rented
+    state :repair_needed
+    state :in_service
+
+    event :book do
+      transitions from: :vacant, to: :booked
+    end
+
+    event :rent do
+      transitions from: :booked, to: :rented
+    end
+
+    event :survey do
+      transitions from: :rented, to: :repair_needed
+    end
+
+    event :repair do
+      transitions from: :repair_needed, to: :in_service
+    end
+  end
+
   # Requirements:
   # Typesense server running on localhost:8108
   # gem 'typesense'

@@ -1,0 +1,17 @@
+en:
+  operations:
+    office:
+      cars:
+        create:
+          success: "Car was successfully created."
+          errors:
+            validation_error: "Validation error on create."
+            uniqueness_violation: "Car already exists."
+        update:
+          success: "Car was successfully updated."
+          errors:
+            validation_error: "Validation error on update."
+            uniqueness_violation: "Car already exists."
+        destroy:
+          success: "Car was successfully destroyed."
+

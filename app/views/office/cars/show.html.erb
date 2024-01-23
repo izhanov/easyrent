@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    <%= @car.mark_title %>
+    <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
+  </h1>
+  <div>
+    <%= link_to office_user_car_park_path(current_office_user, @car.ownerable), class: "btn btn-sm btn-outline-primary" do %>
+      <i class="bi bi-box-arrow-left"></i>
+    <% end %>
+    <%= link_to edit_office_user_car_park_car_path(current_office_user, @car_park, @car), class: "btn btn-sm btn-warning" do %>
+      <i class="bi bi-pencil-square"></i>
+    <% end %>
+    <%= link_to office_user_car_park_path(current_office_user, @car_park), class: "btn btn-sm btn-danger", data: {confirm: t(".sure?"), method: :delete} do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
+  </div>
+</div>

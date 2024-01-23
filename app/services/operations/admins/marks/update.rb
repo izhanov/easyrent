@@ -21,6 +21,9 @@ module Operations
         def commit(mark, params)
           mark.update!(params)
           Success(mark)
+        rescue ActiveRecord::RecordNotUnique
+          errors = {title: [I18n.t("dry_validation.errors.rules.mark.title.uniqueness_violation")]}
+          Failure[:uniqueness_violation, errors]
         end
       end
     end

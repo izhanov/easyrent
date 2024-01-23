@@ -11,18 +11,20 @@
       <%= f.label :mark, class: "input-group-text"%>
       <input type="search" data-autocomplete-target="input" class="form-control"/>
       <%= f.hidden_field :mark_id, data: { "autocomplete-target": "hidden" }%>
+      <%= error_field(@errors, :mark_id) %>
     </div>
     <ul class="list-group" data-autocomplete-target="results"></ul>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :year, class: "input-group-text" %>
       <%= f.number_field :year, class: "form-control" %>
+      <%= error_field(@errors, :year) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :engine_capacity, class: "input-group-text" %>
       <%= f.number_field :engine_capacity, max: 16, min: 0.5, step: 0.1, class: "form-control" %>
@@ -38,10 +40,11 @@
             class: "form-select"
           )
       %>
+      <%= error_field(@errors, :engine_capacity) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :klass, class: "input-group-text" %>
       <%= f.select(
@@ -54,10 +57,11 @@
             class: "form-select"
           )
       %>
+      <%= error_field(@errors, :klass) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :fuel, class: "input-group-text" %>
       <%= f.select(
@@ -70,31 +74,35 @@
             class: "form-select"
           )
       %>
+      <%= error_field(@errors, :fuel) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :plate_number, class: "input-group-text" %>
       <%= f.text_field :plate_number, class: "form-control" %>
+      <%= error_field(@errors, :plate_number) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :vin_code, class: "input-group-text" %>
       <%= f.text_field :vin_code, class: "form-control" %>
+      <%= error_field(@errors, :vin_code) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :technical_certificate_number, class: "input-group-text" %>
       <%= f.text_field :technical_certificate_number, class: "form-control" %>
+      <%= error_field(@errors, :technical_certificate_number) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :transmission, class: "input-group-text" %>
       <%= f.select(
@@ -107,33 +115,38 @@
             class: "form-select"
           )
       %>
+      <%= error_field(@errors, :transmission) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :color, class: "input-group-text" %>
       <%= f.text_field :color, class: "form-control" %>
+      <%= error_field(@errors, :color) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :number_of_seats, class: "input-group-text" %>
       <%= f.number_field :number_of_seats, min: 2, max: 14, class: "form-control" %>
+      <%= error_field(@errors, :number_of_seats) %>
     </div>
   </div>
 
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :tank_volume, class: "input-group-text" %>
       <%= f.number_field :tank_volume, max: 200, class: "form-control" %>
+      <%= error_field(@errors, :tank_volume) %>
     </div>
   </div>
-  <div class="col-6 mb-3">
+  <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :mileage, class: "input-group-text" %>
       <%= f.text_field :mileage, class: "form-control", data: {mask: "mileage"} %>
+      <%= error_field(@errors, :mileage) %>
     </div>
   </div>
 

@@ -42,8 +42,7 @@ module Office
           format.html
           format.turbo_stream
         end
-      in Failure
-        @price_range_cell = PriceRangeCell.new(price_range_cell_params)
+      in Failure[error_code, errors]
         render :edit, status: :unprocessable_entity
       end
     end
