@@ -1,4 +1,4 @@
-<%= form_with model: [:office, :user, car_park], html: {class: "row mt-12", data: {controller: "car-park-form"}} do |f| %>
+<%= form_with model: [:office, car_park], html: {class: "row mt-12", data: {controller: "car-park-form"}} do |f| %>
   <%= f.hidden_field :user_id, value: current_office_user.id %>
 
   <div class="col-12 mb-3">

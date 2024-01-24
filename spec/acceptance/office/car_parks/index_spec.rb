@@ -7,7 +7,7 @@ feature "User visit car parks index page" do
     scenario "sees notification alert" do
       user = create(:user)
       sign_in user, scope: "office_user"
-      visit office_user_car_parks_path(user)
+      visit office_car_parks_path
       expect(page).to have_content("You have no car parks. To start working you need to create at least one car park.")
       expect(page).to have_link("New car park")
     end
@@ -18,7 +18,7 @@ feature "User visit car parks index page" do
       user = create(:user)
       car_park = create(:car_park, user: user)
       sign_in user, scope: "office_user"
-      visit office_user_car_parks_path(user)
+      visit office_car_parks_path
       expect(page).to have_content(car_park.title)
       expect(page).to have_link(car_park.title)
       expect(page).to have_xpath("//a[@href='#{office_root_path}']")

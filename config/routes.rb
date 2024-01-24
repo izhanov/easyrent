@@ -40,17 +40,18 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :users do
-      resources :car_parks do
-        resources :price_ranges do
-          resources :price_range_cells
-        end
+    resources :car_parks do
+      resources :price_ranges do
+        resources :price_range_cells
+      end
 
-        resources :additional_services
+      resources :additional_services
 
-        resources :cars do
-          resources :offers
-        end
+      resources :rental_rules, only: [:index] do
+      end
+
+      resources :cars do
+        resources :offers
       end
     end
   end

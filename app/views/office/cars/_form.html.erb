@@ -1,4 +1,4 @@
-<%= form_with model: [:office, user, owner, car], html: {class: "row mt-12", data: {controller: "car-form"}} do |f| %>
+<%= form_with model: [:office, owner, car], html: {class: "row mt-12", data: {controller: "car-form"}} do |f| %>
   <%= f.hidden_field :ownerable_id, value: owner.id %>
   <%= f.hidden_field :ownerable_type, value: owner.class.name %>
 

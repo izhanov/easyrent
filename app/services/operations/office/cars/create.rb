@@ -22,6 +22,10 @@ module Operations
         def commit(params)
           car = Car.create!(params)
           Success(car)
+        rescue ActiveRecord::RecordNotUnique => e
+
+          errors = {title: [I18n.t("dry_validation.errors.rules.car.title.uniqueness_violation")]}
+          Failure[:uniqueness_violation, errors]
         end
 
         def normalize_numbers(params)

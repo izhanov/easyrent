@@ -18,7 +18,7 @@ module Office
 
       case result
       in Success[car_park]
-        redirect_to office_user_car_park_path(current_office_user, car_park), flash: {success: success_resolver(operation)}
+        redirect_to office_car_park_path(car_park), flash: {success: success_resolver(operation)}
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
         @car_park = CarPark.new(car_park_params)
@@ -39,7 +39,7 @@ module Office
 
       case result
       in Success[car_park]
-        redirect_to edit_office_user_car_park_path(current_office_user, car_park), flash: {success: success_resolver(operation)}
+        redirect_to edit_office_car_park_path(car_park), flash: {success: success_resolver(operation)}
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
         @errors = errors
@@ -49,7 +49,7 @@ module Office
 
     def destroy
       @car_park.destroy!
-      redirect_to office_user_car_parks_path(current_office_user), flash: {success: t("car_parks.destroy")}
+      redirect_to office_car_parks_path, flash: {success: t("car_parks.destroy")}
     end
 
     private

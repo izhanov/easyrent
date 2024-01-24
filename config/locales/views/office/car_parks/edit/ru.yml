@@ -4,5 +4,5 @@ ru :
       edit:
         title: "%{car_park}"
         price_ranges: "Диапазоны цен"
-        seasons: "Сезоны"
+        rental_rules: "Правила аренды"
         services: "Дополнительные услуги"

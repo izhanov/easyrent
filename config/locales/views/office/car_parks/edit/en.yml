@@ -4,5 +4,5 @@ en:
       edit:
         title: "%{car_park}"
         price_ranges: "Price ranges"
-        seasons: "Seasons"
+        rental_rules: "Rental rules"
         services: "Services"
