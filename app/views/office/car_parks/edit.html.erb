@@ -8,13 +8,26 @@
   <% end %>
 </div>
 
-<div class="mb-4">
-  <%= link_to office_user_car_park_price_range_path(current_office_user, @car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
-    <i class="bi bi-bar-chart-steps"></i>
-    <%= t(".price_ranges") %>
-  <% end %>
-  <%= link_to office_user_car_park_price_range_path(current_office_user, @car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
-    <i class="bi bi-bar-chart-steps"></i>
-    <%= t(".seasons") %>
-  <% end %>
+
+<div class="d-flex justify-content-around">
+  <div class="col-3">
+    <%= link_to office_user_car_park_price_range_path(current_office_user, @car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
+      <i class="bi bi-bar-chart-steps"></i>
+      <%= t(".price_ranges") %>
+    <% end %>
+  </div>
+
+  <div class="col-3">
+    <%= link_to office_user_car_park_price_range_path(current_office_user, @car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
+      <i class="bi bi-bar-chart-steps"></i>
+      <%= t(".seasons") %>
+    <% end %>
+  </div>
+
+  <div class="col-3">
+    <%= link_to office_user_car_park_additional_services_path(current_office_user, @car_park), class: "btn btn-sm btn-warning"  do %>
+      <i class="bi bi-bar-chart-steps"></i>
+      <%= t(".services") %>
+    <% end %>
+  </div>
 </div>

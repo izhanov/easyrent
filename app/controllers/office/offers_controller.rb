@@ -2,7 +2,8 @@
 
 module Office
   class OffersController < BaseController
-    before_action :set_offer, only: %i[show edit update destroy]
+    before_action :find_offer, only: %i[show edit update destroy]
+    before_action :find_car
 
     def index
       @offers = Offer.all
@@ -17,12 +18,18 @@ module Office
     def edit; end
 
     def create
-      @offer = Offer.new(offer_params)
+      operation = Operations::Office::Offers::Create.new
+      result = operation.call(offer_params.to_h)
 
-      if @offer.save
-        redirect_to office_offer_path(@offer), notice: 'Offer was successfully created.'
-      else
-        render :new
+      case result
+      in Success[offer]
+        respond_to do |format|
+          format.html
+          format.turbo_stream
+        end
+      in Failure[error_code, errors]
+        @offer = Offer.new(offer_params)
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -41,12 +48,16 @@ module Office
 
     private
 
-    def set_offer
-      @offer = Offer.find(params[:id])
+    def find_offer
+      @offer = current_office_user.offers.find(params[:id])
+    end
+
+    def find_car
+      @car = current_office_user.cars.find(params[:car_id])
     end
 
     def offer_params
-      params.require(:offer).permit(:name, :description, :price, :image)
+      params.require(:offer).permit(:title, :car_id, prices: {}, services: {}, rules: {})
     end
   end
 end

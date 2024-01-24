@@ -1,0 +1,14 @@
+<%= turbo_frame_tag additional_service do %>
+  <div class="additional_service">
+    <%= link_to additional_service.title, office_user_car_park_additional_service_path(current_office_user, @car_park, additional_service), class: "list-group-item list-group-item-action" %>
+
+    <div class="additional_service__actions">
+      <%= button_to office_user_car_park_additional_service_path(current_office_user, @car_park, additional_service), method: :delete, class: "btn btn-sm btn-danger" do %>
+        <i class="bi bi-trash"></i>
+      <% end %>
+      <%= link_to edit_office_user_car_park_additional_service_path(current_office_user, @car_park, additional_service), class: "btn btn-sm btn-warning" do %>
+        <i class="bi bi-pencil"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

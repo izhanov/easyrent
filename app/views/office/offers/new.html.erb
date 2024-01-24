@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1><%= t(".title") %></h1>
+</div>
+
+
+<div class="container">
+  <%= turbo_frame_tag @offer do %>
+    <%= render "form", offer: @offer, car: @car, owner: @car.ownerable %>
+  <% end %>
+</div>

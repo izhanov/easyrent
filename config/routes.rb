@@ -46,7 +46,11 @@ Rails.application.routes.draw do
           resources :price_range_cells
         end
 
-        resources :cars
+        resources :additional_services
+
+        resources :cars do
+          resources :offers
+        end
       end
     end
   end

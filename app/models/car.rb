@@ -38,6 +38,8 @@ class Car < ApplicationRecord
   belongs_to :mark
   belongs_to :ownerable, polymorphic: true
 
+  has_many :offers, dependent: :destroy
+
   def mark_title
     "#{mark.brand.title} #{mark.title}"
   end

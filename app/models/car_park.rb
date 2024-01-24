@@ -37,8 +37,9 @@
 class CarPark < ApplicationRecord
   belongs_to :city
   belongs_to :user
-  has_one :price_range, dependent: :destroy
+  has_one :price_range, dependent: :destroy, class_name: "PriceRange", as: :owner
 
+  has_many :additional_services, as: :owner, dependent: :destroy
   has_many :cars, as: :ownerable, dependent: :destroy
   # Kinds of car parks business forms
   # llp - Limited Liability Partnership (ТОО)

@@ -1,5 +1,5 @@
 <%= turbo_frame_tag price_range_cell do %>
-  <%= form_with model: [:office, current_office_user, @car_park, price_range, price_range_cell] do  |f| %>
+  <%= form_with model: [:office, current_office_user, @car_park, price_range, price_range_cell], html: {data: {turbo: true, turbo_frame: price_range_cell}} do  |f| %>
     <%= f.hidden_field :price_range_id, value: price_range.id %>
 
     <div class="input-group mt-3">

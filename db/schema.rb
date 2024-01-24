@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_16_083116) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_23_091655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "additional_services", force: :cascade do |t|
+    t.string "owner_type", null: false
+    t.bigint "owner_id", null: false
+    t.string "title", null: false
+    t.decimal "price", precision: 10, scale: 2, null: false
+    t.string "slug", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_additional_services_on_owner"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -111,6 +122,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_083116) do
     t.index ["title"], name: "index_marks_on_title", unique: true
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.string "title", null: false
+    t.jsonb "prices", default: {}, null: false
+    t.jsonb "services", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_offers_on_car_id"
+  end
+
   create_table "price_range_cells", force: :cascade do |t|
     t.bigint "price_range_id", null: false
     t.integer "from", null: false
@@ -121,11 +142,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_083116) do
   end
 
   create_table "price_ranges", force: :cascade do |t|
-    t.bigint "car_park_id", null: false
+    t.string "owner_type", null: false
+    t.bigint "owner_id", null: false
     t.string "unit", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["car_park_id"], name: "index_price_ranges_on_car_park_id", unique: true
+    t.index ["owner_type", "owner_id"], name: "index_price_ranges_on_owner", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -154,6 +176,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_083116) do
   add_foreign_key "car_parks", "users"
   add_foreign_key "cars", "marks"
   add_foreign_key "marks", "brands"
+  add_foreign_key "offers", "cars"
   add_foreign_key "price_range_cells", "price_ranges"
-  add_foreign_key "price_ranges", "car_parks"
 end

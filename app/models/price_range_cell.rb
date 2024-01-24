@@ -21,4 +21,8 @@
 #
 class PriceRangeCell < ApplicationRecord
   belongs_to :price_range
+
+  def range
+    from..to
+  end
 end

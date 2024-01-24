@@ -5,3 +5,4 @@ en:
         title: "%{car_park}"
         price_ranges: "Price ranges"
         seasons: "Seasons"
+        services: "Services"

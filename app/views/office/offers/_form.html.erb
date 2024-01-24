@@ -1,0 +1,41 @@
+<%= form_with model: [:office, current_office_user, owner, car, offer], html: {class: "row mt-12", data: {}} do |f| %>
+  <%= f.hidden_field :car_id, value: car.id %>
+
+  <div class="col-6 mb-3 mb-lg-4">
+    <div class="input-group">
+      <%= f.label :title, class: "input-group-text" %>
+      <%= f.text_field :title, class: "form-control" %>
+      <%= error_field(@errors, :title) %>
+    </div>
+  </div>
+  <div class="row-lg row">
+    <h3>By days</h3>
+    <% owner.price_range.price_range_cells.order(id: :asc).each do |price_range_cell| %>
+      <div class="col-lg-2">
+        <div class="input-group">
+          <%= f.fields_for :prices do |pf| %>
+            <%= pf.label "#{price_range_cell.from} – #{price_range_cell.to}", class: "input-group-text" %>
+            <%= pf.hidden_field price_range_cell.range, value: price_range_cell.range, class: "form-control" %>
+            <%= pf.text_field price_range_cell.range, class: "form-control" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row-lg row">
+    <h3>Services</h3>
+    <% owner.price_range.price_range_cells.order(id: :asc).each do |price_range_cell| %>
+      <div class="col-lg-2">
+        <div class="input-group">
+          <%= f.fields_for :prices do |pf| %>
+            <%= pf.label "#{price_range_cell.from} – #{price_range_cell.to}", class: "input-group-text" %>
+            <%= pf.hidden_field price_range_cell.range, value: price_range_cell.range, class: "form-control" %>
+            <%= pf.text_field price_range_cell.range, class: "form-control" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>

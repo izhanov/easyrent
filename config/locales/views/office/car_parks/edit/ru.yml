@@ -5,3 +5,4 @@ ru :
         title: "%{car_park}"
         price_ranges: "Диапазоны цен"
         seasons: "Сезоны"
+        services: "Дополнительные услуги"

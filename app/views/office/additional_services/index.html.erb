@@ -1,0 +1,24 @@
+<div class="d-lg-flex justify-content-between align-items-center">
+  <h1>
+    <%= t(".title") %>
+  </h1>
+  <div>
+    <%= link_to edit_office_user_car_park_path(current_office_user, @car_park), class: "btn btn-outline-primary btn-sm" do %>
+      <i class="bi bi-box-arrow-left"></i>
+    <% end %>
+
+    <%= link_to new_office_user_car_park_additional_service_path(current_office_user, @car_park), class: "btn btn-primary btn-sm", data: {turbo: true, turbo_frame: dom_id(AdditionalService.new)} do %>
+      <i class="bi bi-building-add"></i>
+      <%= t(".new_additional_service") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <%= turbo_frame_tag AdditionalService.new %>
+
+  <%= turbo_frame_tag "additional_services" do %>
+    <%= render @additional_services %>
+  <% end %>
+</div>
+
