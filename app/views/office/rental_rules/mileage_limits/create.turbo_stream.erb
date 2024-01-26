@@ -1,0 +1,10 @@
+<%= turbo_stream.append(
+      "mileage_limits",
+      partial: "office/rental_rules/mileage_limits/mileage_limit",
+      locals: { mileage_limit: @mileage_limit}
+    )
+%>
+
+<%= turbo_stream.update dom_id(RentalRule::MileageLimit.new) do %>
+  <%= link_to t(".add_mileage_limits"), new_office_car_park_rental_rule_mileage_limit_path(@car_park), class: "rental_rule__link", data: {turbo: true, turbo_frame: dom_id(RentalRule::MileageLimit.new)} %>
+<% end %>

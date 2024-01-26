@@ -1,0 +1,6 @@
+en:
+  office:
+    rental_rules:
+      driving_experiences:
+        driving_experience:
+          description: "The client must have driving experience from %{level} years"

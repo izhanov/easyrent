@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      rental_rule/driving_experience: "Age restriction"
+    attributes:
+      rental_rule/driving_experience:
+        value: "Year"
+

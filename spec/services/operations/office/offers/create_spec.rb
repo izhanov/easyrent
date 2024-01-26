@@ -11,8 +11,8 @@ RSpec.describe Operations::Office::Offers::Create do
         params = {
           car_id: car.id,
           title: "Offer title",
-          prices: { "1-4" => "100", "5-10" => "200" },
-          services: { "delivery" => "100", "gps" => "200", "baby_seat" => "300" },
+          prices: {"1-4" => "100", "5-10" => "200"},
+          services: {"delivery" => "100", "gps" => "200", "baby_seat" => "300"}
         }
         result = subject.call(params)
         expect(result).to be_success

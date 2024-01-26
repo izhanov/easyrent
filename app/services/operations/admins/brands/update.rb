@@ -22,7 +22,7 @@ module Operations
           brand.update!(params)
           Success(brand)
         rescue ActiveRecord::RecordNotUnique
-          errors = { title: [I18n.t("dry_validation.errors.rules.brand.title.uniqueness_violation")]}
+          errors = {title: [I18n.t("dry_validation.errors.rules.brand.title.uniqueness_violation")]}
           Failure[:uniqueness_violation, errors]
         end
       end

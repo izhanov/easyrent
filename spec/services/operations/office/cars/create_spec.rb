@@ -26,8 +26,8 @@ RSpec.describe Operations::Office::Cars::Create do
         mark = create(:mark)
 
         params = {
-          ownerable_id: car_park.id,
-          ownerable_type: "CarPark",
+          owner_id: car_park.id,
+          owner_type: "CarPark",
           mark_id: mark.id,
           year: 2023,
           fuel: "gas",

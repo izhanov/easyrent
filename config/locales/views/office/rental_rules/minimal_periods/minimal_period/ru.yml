@@ -1,0 +1,6 @@
+ru:
+  office:
+    rental_rules:
+      minimal_periods:
+        minimal_period:
+          description: "Минимальный период аренды от %{days} суток"

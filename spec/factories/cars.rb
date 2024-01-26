@@ -17,7 +17,7 @@ FactoryBot.define do
     status { "vacant" }
 
     trait :belongs_to_car_park do
-      association :ownerable, factory: :car_park
+      association :owner, factory: :car_park
     end
   end
 end

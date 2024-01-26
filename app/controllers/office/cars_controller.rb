@@ -69,8 +69,8 @@ module Office
 
     def car_params
       params.require(:car).permit(
-        :ownerable_id,
-        :ownerable_type,
+        :owner_id,
+        :owner_type,
         :mark_id,
         :vin_code,
         :year,

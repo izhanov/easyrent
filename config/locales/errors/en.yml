@@ -102,6 +102,8 @@ en:
             total_days_greater_than_30: "total days cannot be greater than 30"
             from_equal_last_to: "from cannot be equal to last to"
             from_already_exist: "from value already exist in range"
+        mileage_limit:
+          only_markup_or_discount: "only markup or discount can be set"
 
         bank_account_number:
           invalid_format: "must be in correct format"

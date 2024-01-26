@@ -9,13 +9,15 @@ module Office
       @offers = Offer.all
     end
 
-    def show; end
+    def show
+    end
 
     def new
       @offer = Offer.new
     end
 
-    def edit; end
+    def edit
+    end
 
     def create
       operation = Operations::Office::Offers::Create.new
@@ -35,7 +37,7 @@ module Office
 
     def update
       if @offer.update(offer_params)
-        redirect_to office_offer_path(@offer), notice: 'Offer was successfully updated.'
+        redirect_to office_offer_path(@offer), notice: "Offer was successfully updated."
       else
         render :edit
       end
@@ -43,7 +45,7 @@ module Office
 
     def destroy
       @offer.destroy
-      redirect_to office_offers_url, notice: 'Offer was successfully destroyed.'
+      redirect_to office_offers_url, notice: "Offer was successfully destroyed."
     end
 
     private

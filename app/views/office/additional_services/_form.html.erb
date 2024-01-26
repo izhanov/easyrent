@@ -4,20 +4,20 @@
   <%= f.hidden_field :owner_type, value: @car_park.class.name %>
 
   <div class="row-lg row">
-    <div class="col-4">
+    <div class="col-lg-4 col-12">
       <div class="input-group">
         <%= f.label :title, class: "input-group-text" %>
         <%= f.text_field :title, class: "form-control", data: {transliterate: true, "transliterate-target-field" => "#{dom_class(@additional_service)}[slug]"} %>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-lg-4 col-12">
       <div class="input-group">
         <%= f.label :price, class: "input-group-text" %>
         <%= f.number_field :price, class: "form-control" %>
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-lg-4 col-12">
       <%= link_to office_car_park_additional_services_path(@car_park), class: "btn btn-sm btn-secondary" do %>
         <i class="bi bi-x"></i>
       <% end %>

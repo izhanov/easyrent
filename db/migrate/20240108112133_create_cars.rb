@@ -2,7 +2,7 @@ class CreateCars < ActiveRecord::Migration[7.1]
   def change
     create_table :cars do |t|
       t.references :mark, null: false, foreign_key: true
-      t.references :ownerable, polymorphic: true, null: false
+      t.references :owner, polymorphic: true, null: false
 
       t.integer :year, limit: 2, null: false
       t.string :vin_code, null: false
@@ -22,7 +22,7 @@ class CreateCars < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :cars, [:ownerable_id, :ownerable_type, :plate_number], unique: true
-    add_index :cars, [:ownerable_id, :ownerable_type, :vin_code], unique: true
+    add_index :cars, [:owner_id, :owner_type, :plate_number], unique: true
+    add_index :cars, [:owner_id, :owner_type, :vin_code], unique: true
   end
 end

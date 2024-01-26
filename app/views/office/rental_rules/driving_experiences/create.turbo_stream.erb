@@ -1,0 +1,3 @@
+<%= turbo_stream.replace RentalRule::DrivingExperience.new do %>
+  <%= render "office/rental_rules/driving_experiences/driving_experience", driving_experience: @driving_experience %>
+<% end %>

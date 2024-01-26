@@ -40,7 +40,14 @@ class CarPark < ApplicationRecord
   has_one :price_range, dependent: :destroy, class_name: "PriceRange", as: :owner
 
   has_many :additional_services, as: :owner, dependent: :destroy
-  has_many :cars, as: :ownerable, dependent: :destroy
+  has_many :cars, as: :owner, dependent: :destroy, class_name: "Car"
+
+  # Rental rules associations
+  has_one :age_restriction, as: :owner, dependent: :destroy, class_name: "RentalRule::AgeRestriction"
+  has_one :driving_experience, as: :owner, dependent: :destroy, class_name: "RentalRule::DrivingExperience"
+  has_many :mileage_limits, as: :owner, dependent: :destroy, class_name: "RentalRule::MileageLimit"
+  has_one :minimal_period, as: :owner, dependent: :destroy, class_name: "RentalRule::MinimalPeriod"
+
   # Kinds of car parks business forms
   # llp - Limited Liability Partnership (ТОО)
   # ie - Individual Entrepreneur (ИП)

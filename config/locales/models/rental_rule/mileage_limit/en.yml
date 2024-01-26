@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      rental_rule/mileage_limit: "Mileage limit"
+    attributes:
+      rental_rule/mileage_limit:
+        title: "Title"
+        value: "Value"
+        markup: "Markup"
+        discount: "Discount"
+        over_mileage_price: "Over mileage price"
+

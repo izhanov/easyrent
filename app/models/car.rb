@@ -10,7 +10,7 @@
 #  klass                        :string           not null
 #  mileage                      :integer
 #  number_of_seats              :integer
-#  ownerable_type               :string           not null
+#  owner_type                   :string           not null
 #  plate_number                 :string           not null
 #  status                       :string           default("vacant"), not null
 #  tank_volume                  :integer
@@ -21,14 +21,14 @@
 #  created_at                   :datetime         not null
 #  updated_at                   :datetime         not null
 #  mark_id                      :bigint           not null
-#  ownerable_id                 :bigint           not null
+#  owner_id                     :bigint           not null
 #
 # Indexes
 #
-#  index_cars_on_mark_id                                           (mark_id)
-#  index_cars_on_ownerable                                         (ownerable_type,ownerable_id)
-#  index_cars_on_ownerable_id_and_ownerable_type_and_plate_number  (ownerable_id,ownerable_type,plate_number) UNIQUE
-#  index_cars_on_ownerable_id_and_ownerable_type_and_vin_code      (ownerable_id,ownerable_type,vin_code) UNIQUE
+#  index_cars_on_mark_id                                   (mark_id)
+#  index_cars_on_owner                                     (owner_type,owner_id)
+#  index_cars_on_owner_id_and_owner_type_and_plate_number  (owner_id,owner_type,plate_number) UNIQUE
+#  index_cars_on_owner_id_and_owner_type_and_vin_code      (owner_id,owner_type,vin_code) UNIQUE
 #
 # Foreign Keys
 #
@@ -36,7 +36,7 @@
 #
 class Car < ApplicationRecord
   belongs_to :mark
-  belongs_to :ownerable, polymorphic: true
+  belongs_to :owner, polymorphic: true
 
   has_many :offers, dependent: :destroy
 

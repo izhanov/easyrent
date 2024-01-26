@@ -1,0 +1,3 @@
+<%= turbo_stream.replace RentalRule::MinimalPeriod.new do %>
+  <%= render "office/rental_rules/minimal_periods/minimal_period", minimal_period: @minimal_period %>
+<% end %>

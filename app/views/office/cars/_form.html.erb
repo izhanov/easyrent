@@ -1,6 +1,6 @@
 <%= form_with model: [:office, owner, car], html: {class: "row mt-12", data: {controller: "car-form"}} do |f| %>
-  <%= f.hidden_field :ownerable_id, value: owner.id %>
-  <%= f.hidden_field :ownerable_type, value: owner.class.name %>
+  <%= f.hidden_field :owner_id, value: owner.id %>
+  <%= f.hidden_field :owner_type, value: owner.class.name %>
 
   <div
     class="col-6 mb-3"

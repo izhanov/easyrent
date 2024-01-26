@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      rental_rule/minimal_period: "Минимальный период"
+    attributes:
+      rental_rule/minimal_period:
+        value: "Сутки"
+

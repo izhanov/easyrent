@@ -2,6 +2,7 @@
 
 module Admins
   class WelcomeController < BaseController
-    def index; end
+    def index
+    end
   end
 end

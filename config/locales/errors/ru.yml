@@ -96,6 +96,9 @@ ru:
             total_days_greater_than_30: "общее количество дней не может быть больше 30"
             from_equal_last_to: "от не может быть равен последнему до"
             from_already_exist: "значение от уже существует в диапазоне"
+        mileage_limit:
+          only_markup_or_discount: "только наценка или скидка могут быть установлены"
+
         bank_account_number:
           invalid_format: "Должен содержать KZ и 18 цифр"
         city:

@@ -6,10 +6,10 @@ RSpec.describe Car, type: :model do
       have_db_column(:mark_id).of_type(:integer).with_options(null: false)
     )
     is_expected.to(
-      have_db_column(:ownerable_type).of_type(:string).with_options(null: false)
+      have_db_column(:owner_type).of_type(:string).with_options(null: false)
     )
     is_expected.to(
-      have_db_column(:ownerable_id).of_type(:integer).with_options(null: false)
+      have_db_column(:owner_id).of_type(:integer).with_options(null: false)
     )
     is_expected.to have_db_column(:year).of_type(:integer).with_options(limit: 2)
     is_expected.to have_db_column(:vin_code).of_type(:string).with_options(null: false)
@@ -27,7 +27,7 @@ RSpec.describe Car, type: :model do
 
   describe "Associations" do
     it { is_expected.to belong_to(:mark) }
-    it { is_expected.to belong_to(:ownerable) }
+    it { is_expected.to belong_to(:owner) }
   end
 
   describe "#mark_title" do

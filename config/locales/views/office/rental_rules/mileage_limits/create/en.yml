@@ -1,0 +1,6 @@
+en:
+  office:
+    rental_rules:
+      mileage_limits:
+        create:
+          add_mileage_limits: "Add mileage limits"

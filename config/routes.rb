@@ -45,10 +45,16 @@ Rails.application.routes.draw do
         resources :price_range_cells
       end
 
-      resources :additional_services
+      namespace :rental_rules, as: :rental_rule do
+        root to: "welcome#index"
 
-      resources :rental_rules, only: [:index] do
+        resource :age_restriction
+        resource :driving_experience
+        resource :minimal_period
+        resources :mileage_limits
       end
+
+      resources :additional_services
 
       resources :cars do
         resources :offers

@@ -1,0 +1,6 @@
+en:
+  office:
+    rental_rules:
+      minimal_periods:
+        minimal_period:
+          description: "Minimal period starting from %{days} days"

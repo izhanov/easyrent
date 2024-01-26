@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      rental_rule/minimal_period: "Minimal period"
+    attributes:
+      rental_rule/minimal_period:
+        value: "Day"
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_23_091655) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_24_103953) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -79,8 +79,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_23_091655) do
 
   create_table "cars", force: :cascade do |t|
     t.bigint "mark_id", null: false
-    t.string "ownerable_type", null: false
-    t.bigint "ownerable_id", null: false
+    t.string "owner_type", null: false
+    t.bigint "owner_id", null: false
     t.integer "year", limit: 2, null: false
     t.string "vin_code", null: false
     t.string "plate_number", null: false
@@ -98,9 +98,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_23_091655) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mark_id"], name: "index_cars_on_mark_id"
-    t.index ["ownerable_id", "ownerable_type", "plate_number"], name: "index_cars_on_ownerable_id_and_ownerable_type_and_plate_number", unique: true
-    t.index ["ownerable_id", "ownerable_type", "vin_code"], name: "index_cars_on_ownerable_id_and_ownerable_type_and_vin_code", unique: true
-    t.index ["ownerable_type", "ownerable_id"], name: "index_cars_on_ownerable"
+    t.index ["owner_id", "owner_type", "plate_number"], name: "index_cars_on_owner_id_and_owner_type_and_plate_number", unique: true
+    t.index ["owner_id", "owner_type", "vin_code"], name: "index_cars_on_owner_id_and_owner_type_and_vin_code", unique: true
+    t.index ["owner_type", "owner_id"], name: "index_cars_on_owner"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -148,6 +148,46 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_23_091655) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_type", "owner_id"], name: "index_price_ranges_on_owner", unique: true
+  end
+
+  create_table "rental_rule_age_restrictions", force: :cascade do |t|
+    t.string "owner_type", null: false
+    t.bigint "owner_id", null: false
+    t.integer "value", default: 18, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_rental_rule_age_restrictions_on_owner", unique: true
+  end
+
+  create_table "rental_rule_driving_experiences", force: :cascade do |t|
+    t.string "owner_type", null: false
+    t.bigint "owner_id", null: false
+    t.integer "value", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_rental_rule_driving_experiences_on_owner", unique: true
+  end
+
+  create_table "rental_rule_mileage_limits", force: :cascade do |t|
+    t.string "owner_type", null: false
+    t.bigint "owner_id", null: false
+    t.string "title", null: false
+    t.integer "value", null: false
+    t.integer "markup", default: 0, null: false
+    t.integer "discount", default: 0, null: false
+    t.decimal "over_mileage_price", precision: 7, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_rental_rule_mileage_limits_on_owner"
+  end
+
+  create_table "rental_rule_minimal_periods", force: :cascade do |t|
+    t.string "owner_type", null: false
+    t.bigint "owner_id", null: false
+    t.integer "value", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_type", "owner_id"], name: "index_rental_rule_minimal_periods_on_owner"
   end
 
   create_table "users", force: :cascade do |t|

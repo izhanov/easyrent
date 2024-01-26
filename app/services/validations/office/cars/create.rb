@@ -5,8 +5,8 @@ module Validations
     module Cars
       class Create < Base
         params do
-          required(:ownerable_id).filled(:integer)
-          required(:ownerable_type).filled(:string)
+          required(:owner_id).filled(:integer)
+          required(:owner_type).filled(:string)
           required(:mark_id).filled(:integer)
           required(:year).filled(:integer, gt?: 1920)
           required(:engine_capacity).filled(:decimal, gt?: 0)
