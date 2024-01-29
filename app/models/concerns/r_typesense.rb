@@ -105,6 +105,11 @@ module RTypesense
       end
     end
 
+    def typesense_upsert(record)
+      typesense_client.collections[typesense_schema[:name]]
+        .documents.upsert(as_typesense_document(record))
+    end
+
     private
 
     def typesense_client

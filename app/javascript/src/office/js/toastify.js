@@ -4,7 +4,6 @@ document.addEventListener("turbo:load", () => {
   const notifications = document.querySelectorAll("[data-notification]")
 
   Array.from(notifications).forEach(notification => {
-    console.log(notification.dataset.notification)
     Toastify({
       text: notification.dataset.notification,
       duration: 3000,

@@ -110,6 +110,9 @@ ru:
         mark:
           title:
             uniqueness_violation: "должно быть уникальным"
+        offer:
+          prices:
+            empty_prices: "должен содержать диапазон цен"
       size?:
         arg:
           default: "размер должен быть %{size}"

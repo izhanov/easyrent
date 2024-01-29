@@ -27,6 +27,8 @@ class Mark < ApplicationRecord
 
   include RTypesense
 
+  after_commit :update_typesense_index, on: %i[create update]
+
   draw_schema do
     string :id, optional: false
     string :title, optional: false, infix: true
@@ -35,6 +37,10 @@ class Mark < ApplicationRecord
       string [brand, :title], optional: false
       array_of_string [brand, :synonyms], optional: true
     end
+  end
+
+  def update_typesense_index
+    Mark.typesense_upsert(self) unless Rails.env.test?
   end
 
   BODY_TYPES = %w[

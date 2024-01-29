@@ -4,13 +4,14 @@
 #
 # Table name: offers
 #
-#  id         :bigint           not null, primary key
-#  prices     :jsonb            not null
-#  services   :jsonb            not null
-#  title      :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  car_id     :bigint           not null
+#  id               :bigint           not null, primary key
+#  prices           :jsonb            not null
+#  published        :boolean          default(FALSE), not null
+#  title            :string           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  car_id           :bigint           not null
+#  mileage_limit_id :integer          not null
 #
 # Indexes
 #

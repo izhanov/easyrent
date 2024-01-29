@@ -3,10 +3,10 @@
 module Office
   class OffersController < BaseController
     before_action :find_offer, only: %i[show edit update destroy]
-    before_action :find_car
+    before_action :find_car, :find_car_park
 
     def index
-      @offers = Offer.all
+      @offers = current_office_user.offers.order(id: :asc)
     end
 
     def show
@@ -25,27 +25,35 @@ module Office
 
       case result
       in Success[offer]
+        @offer = offer
         respond_to do |format|
           format.html
           format.turbo_stream
         end
       in Failure[error_code, errors]
         @offer = Offer.new(offer_params)
+        @errors = errors
         render :new, status: :unprocessable_entity
       end
     end
 
     def update
       if @offer.update(offer_params)
-        redirect_to office_offer_path(@offer), notice: "Offer was successfully updated."
+        respond_to do |format|
+          format.html { redirect_to office_offers_url, notice: "Offer was successfully updated." }
+          format.turbo_stream
+        end
       else
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
-      @offer.destroy
-      redirect_to office_offers_url, notice: "Offer was successfully destroyed."
+      @offer.destroy!
+      respond_to do |format|
+        format.html { redirect_to office_offers_url, notice: "Offer was successfully destroyed." }
+        format.turbo_stream
+      end
     end
 
     private
@@ -58,8 +66,12 @@ module Office
       @car = current_office_user.cars.find(params[:car_id])
     end
 
+    def find_car_park
+      @car_park = current_office_user.car_parks.find(params[:car_park_id])
+    end
+
     def offer_params
-      params.require(:offer).permit(:title, :car_id, prices: {}, services: {}, rules: {})
+      params.require(:offer).permit(:title, :car_id, :published, :mileage_limit_id, prices: {})
     end
   end
 end

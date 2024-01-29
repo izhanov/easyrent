@@ -12,10 +12,8 @@
 
 
 <div class="mb-4">
-  <%= link_to new_office_car_park_car_offer_path(@car_park, @car), class: "btn btn-sm btn-warning", data: {turbo: true, turbo_frame: dom_id(Offer.new)}  do %>
-    <i class="bi bi-bar-chart-steps"></i>
+  <%= link_to office_car_park_car_offers_path(@car_park, @car), class: "btn btn-sm btn-warning"  do %>
+    <i class="bi bi-journal-plus"></i>
     <%= t(".offers") %>
   <% end %>
 </div>
-
-<%= turbo_frame_tag Offer.new %>

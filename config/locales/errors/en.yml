@@ -116,6 +116,9 @@ en:
         mark:
           title:
             uniqueness_violation: "must be unique"
+        offer:
+          prices:
+            empty_prices: "must be present"
       size?:
         arg:
           default: "size must be %{size}"

@@ -32,14 +32,4 @@ RSpec.describe Validations::Office::Offers::Create do
       }
     )
   end
-
-  it "requires services" do
-    result = subject.call({})
-    expect(result).to be_failure
-    expect(result.errors.to_h).to include(
-      {
-        services: ["is missing"]
-      }
-    )
-  end
 end

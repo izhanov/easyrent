@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    models:
+      offer: "Offer"
+    attributes:
+      offer:
+        title: "Название"
+        prices: "Цены"
+        car_id: "Автомобиль"
+        published: "Опубликован на сайте"
+        mileage_limit_id: "Ограничение по пробегу"

@@ -39,8 +39,10 @@ module Validations
           end
 
           rule(:from) do
-            if price_range.price_range_cells.detect { |cell| cell.from == value }.present?
-              key(price_range: :price_range_cell).failure(:from_already_exist)
+            unless price_range.price_range_cells.size.eql?(1)
+              if price_range.price_range_cells.detect { |cell| cell.from == value }.present?
+                key(price_range: :price_range_cell).failure(:from_already_exist)
+              end
             end
           end
         end

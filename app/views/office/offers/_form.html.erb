@@ -1,41 +1,54 @@
-<%= form_with model: [:office, owner, car, offer], html: {class: "row mt-12", data: {}} do |f| %>
+<%= form_with model: [:office, owner, car, offer], html: {class: "row", data: {}} do |f| %>
   <%= f.hidden_field :car_id, value: car.id %>
 
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :title, class: "input-group-text" %>
-      <%= f.text_field :title, class: "form-control" %>
-      <%= error_field(@errors, :title) %>
+  <div class="row-lg row mb-3">
+    <div class="col-lg col-sm-12">
+      <div class="form-check form-switch">
+        <%= f.label :published, class: "form-check-label" %>
+        <%= f.check_box :published, class: "form-check-input" %>
+      </div>
+
+      <div class="input-group">
+        <%= f.label :title, class: "input-group-text" %>
+        <%= f.text_field :title, class: "form-control" %>
+        <%= error_field(@errors, :title) %>
+      </div>
     </div>
   </div>
-  <div class="row-lg row">
-    <h3>By days</h3>
+
+  <div class="row-lg row mb-3">
+    <%= f.label :prices, class: "form-label" %>
     <% owner.price_range.price_range_cells.order(id: :asc).each do |price_range_cell| %>
-      <div class="col-lg-2">
+      <div class="col-lg col-sm-12">
         <div class="input-group">
           <%= f.fields_for :prices do |pf| %>
-            <%= pf.label "#{price_range_cell.from} – #{price_range_cell.to}", class: "input-group-text" %>
-            <%= pf.hidden_field price_range_cell.range, value: price_range_cell.range, class: "form-control" %>
-            <%= pf.text_field price_range_cell.range, class: "form-control" %>
+            <%= pf.label "#{price_range_cell.from} – #{price_range_cell.to}", for: "offer_prices_#{price_range_cell.range}", class: "input-group-text" %>
+            <%= pf.text_field price_range_cell.range, class: "form-control", value: f.object.prices[price_range_cell.range.to_s], data: {mask: "price"} %>
           <% end %>
         </div>
       </div>
     <% end %>
+    <%= error_field(@errors, :offer, :prices) %>
   </div>
 
-  <div class="row-lg row">
-    <h3>Services</h3>
-    <% owner.price_range.price_range_cells.order(id: :asc).each do |price_range_cell| %>
-      <div class="col-lg-2">
-        <div class="input-group">
-          <%= f.fields_for :prices do |pf| %>
-            <%= pf.label "#{price_range_cell.from} – #{price_range_cell.to}", class: "input-group-text" %>
-            <%= pf.hidden_field price_range_cell.range, value: price_range_cell.range, class: "form-control" %>
-            <%= pf.text_field price_range_cell.range, class: "form-control" %>
-          <% end %>
-        </div>
-      </div>
+  <div class="row-lg row mb-3">
+    <div class="col-lg col-sm-12">
+      <%= f.label :mileage_limit_id, class: "form-label" %>
+      <%= f.select :mileage_limit_id, owner.mileage_limits.order(id: :asc).map { |mileage_limit| ["#{mileage_limit.title} – #{mileage_limit.value} км", mileage_limit.id] }, {include_blank: false}, class: "form-select" %>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <%= link_to office_car_park_car_offers_path(owner, car), class: "btn btn-sm btn-outline-secondary" do %>
+      <i class="bi bi-x-lg"></i>
+    <% end %>
+    <% if offer.persisted? %>
+      <%= link_to office_car_park_car_offer_path(owner, car, offer), data: {turbo_method: :delete}, class: "btn btn-sm btn-outline-danger" do %>
+        <i class="bi bi-trash"></i>
+      <% end %>
+    <% end %>
+    <%= f.button nil, class: "btn btn-sm btn-success" do %>
+      <i class="bi bi-check-lg"></i>
     <% end %>
   </div>
-  <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>

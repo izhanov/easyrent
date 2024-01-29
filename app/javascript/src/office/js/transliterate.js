@@ -5,16 +5,18 @@ const transliterate = (string) => {
   return slugify(tr(string));
 };
 
-document.addEventListener("turbo:frame-render", () => {
-  const transliterateFields = document.querySelectorAll("[data-transliterate='true']");
+['turbo:load', 'turbo:frame-render'].forEach((event) => {
+  document.addEventListener(event, () => {
+    const transliterateFields = document.querySelectorAll("[data-transliterate='true']");
 
-  transliterateFields.forEach((field) => {
-    const transliterateTargetField = field.dataset.transliterateTargetField;
+    transliterateFields.forEach((field) => {
+      const transliterateTargetField = field.dataset.transliterateTargetField;
 
-    field.addEventListener("keyup", (e) => {
-      const transliteratedValue = transliterate(e.target.value);
-      const targetField = document.querySelector(`[name="${transliterateTargetField}"]`);
-      targetField.value = transliteratedValue;
+      field.addEventListener("keyup", (e) => {
+        const transliteratedValue = transliterate(e.target.value);
+        const targetField = document.querySelector(`[name="${transliterateTargetField}"]`);
+        targetField.value = transliteratedValue;
+      });
     });
   });
 });

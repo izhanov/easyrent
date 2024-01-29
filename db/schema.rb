@@ -126,7 +126,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_103953) do
     t.bigint "car_id", null: false
     t.string "title", null: false
     t.jsonb "prices", default: {}, null: false
-    t.jsonb "services", default: {}, null: false
+    t.integer "mileage_limit_id", null: false
+    t.boolean "published", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_offers_on_car_id"

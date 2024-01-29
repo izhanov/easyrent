@@ -75,6 +75,10 @@ class Car < ApplicationRecord
   # gem 'typesense'
   include RTypesense
 
+  def update_typesense_index
+    Car.typesense_upsert(self) unless Rails.env.test?
+  end
+
   draw_schema do
     string :id, optional: false
     string :vin_code, optional: false, infix: true
