@@ -6,10 +6,11 @@ module Validations
       module MileageLimits
         class Update < Base
           params do
+            required(:title).filled(:string)
             required(:value).filled(:integer, gt?: 0)
-            required(:over_mileage_price).filled(:decimal, gt?: 0)
-            optional(:markup).value(:integer)
-            optional(:discount).value(:integer)
+            optional(:over_mileage_price).filled(:decimal, gt?: 0)
+            optional(:markup).value(:integer, gt?: 0)
+            optional(:discount).value(:integer, gt?: 0)
           end
 
           rule(:markup, :discount) do

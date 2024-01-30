@@ -33,17 +33,25 @@ module Office
       in Failure[error_code, errors]
         @offer = Offer.new(offer_params)
         @errors = errors
+        flash.now[:error] = failure_resolver(operation, error_code: error_code)
         render :new, status: :unprocessable_entity
       end
     end
 
     def update
-      if @offer.update(offer_params)
+      operation = Operations::Office::Offers::Update.new
+      result = operation.call(@offer, offer_params.to_h)
+
+      case result
+      in Success[offer]
+        @offer = offer
         respond_to do |format|
-          format.html { redirect_to office_offers_url, notice: "Offer was successfully updated." }
+          format.html
           format.turbo_stream
         end
-      else
+      in Failure[error_code, errors]
+        flash.now[:error] = failure_resolver(operation, error_code: error_code)
+        @errors = errors
         render :edit, status: :unprocessable_entity
       end
     end
@@ -71,7 +79,14 @@ module Office
     end
 
     def offer_params
-      params.require(:offer).permit(:title, :car_id, :published, :mileage_limit_id, prices: {})
+      params.require(:offer).permit(
+        :title,
+        :car_id,
+        :published,
+        :mileage_limit_id,
+        :pledge_amount,
+        prices: {}
+      )
     end
   end
 end

@@ -44,7 +44,6 @@ module Office
             format.turbo_stream
           end
         in Failure[error_code, errors]
-          @driving_experience = RentalRule::DrivingExperience.new(driving_experience_params)
           render :edit, status: :unprocessable_entity
         end
       end

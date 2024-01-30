@@ -1,0 +1,14 @@
+ru:
+  operations:
+    office:
+      offers:
+        create:
+          success: "Тариф успешно создано."
+          errors:
+            validation_error: "Ошибка валидации при создании."
+        update:
+          success: "Тариф успешно обновлено."
+          errors:
+            validation_error: "Ошибка валидации при обновлении."
+        destroy:
+          success: "Тариф успешно удалено."

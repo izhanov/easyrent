@@ -38,12 +38,20 @@
     </div>
   </div>
 
+  <div class="row-lg row mb-3">
+    <div class="col-lg col-sm-12">
+      <%= f.label :pledge_amount, class: "form-label" %>
+      <%= f.text_field :pledge_amount, data: { mask: "price" }, class: "form-control" %>
+      <%= error_field(@errors, :pledge_amount) %>
+    </div>
+  </div>
+
   <div class="btn-group">
-    <%= link_to office_car_park_car_offers_path(owner, car), class: "btn btn-sm btn-outline-secondary" do %>
+    <%= link_to office_car_park_car_offers_path(owner, car), class: "btn btn-sm btn-secondary" do %>
       <i class="bi bi-x-lg"></i>
     <% end %>
     <% if offer.persisted? %>
-      <%= link_to office_car_park_car_offer_path(owner, car, offer), data: {turbo_method: :delete}, class: "btn btn-sm btn-outline-danger" do %>
+      <%= link_to office_car_park_car_offer_path(owner, car, offer), data: {turbo_method: :delete}, class: "btn btn-sm btn-danger" do %>
         <i class="bi bi-trash"></i>
       <% end %>
     <% end %>

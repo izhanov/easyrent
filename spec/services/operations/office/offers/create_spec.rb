@@ -15,6 +15,7 @@ RSpec.describe Operations::Office::Offers::Create do
           prices: {"1-4" => "100", "5-10" => "200"},
           services: {"delivery" => "100", "gps" => "200", "baby_seat" => "300"},
           mileage_limit_id: mileage_limit.id,
+          pledge_amount: 150_000.00,
           published: true
         }
         result = subject.call(params)
@@ -41,7 +42,8 @@ RSpec.describe Operations::Office::Offers::Create do
               title: ["size cannot be greater than 20 symbols"],
               prices: ["is missing"],
               mileage_limit_id: ["is missing"],
-              published: ["is missing"]
+              published: ["is missing"],
+              pledge_amount: ["is missing"]
             }
           ]
         )

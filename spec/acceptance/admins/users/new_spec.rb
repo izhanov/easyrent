@@ -16,7 +16,7 @@ feature "Admin visits a new user page" do
       fill_in "Phone", with: "+7(999)999-99-99"
       fill_in "First name", with: Faker::Name.first_name
       fill_in "Last name", with: Faker::Name.last_name
-      page.select "L", from: "Kind"
+      page.select "l", from: "Kind"
       click_button "Save"
       expect(page).to have_current_path(admins_user_path(User.last))
     end
@@ -41,7 +41,7 @@ feature "Admin visits a new user page" do
       fill_in "Last name", with: Faker::Name.last_name
       find("#user_phone").click
       fill_in "user[phone]", with: "77002571218"
-      page.select "L", from: "Kind"
+      page.select "l", from: "Kind"
       click_button "Save"
       expect(page).to have_content("User with this email already exists.")
     end

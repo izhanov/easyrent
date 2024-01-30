@@ -9,3 +9,4 @@ en:
         car_id: "Car"
         mileage_limit_id: "Mileage limit"
         published: "Published"
+        pledge_amount: "Pledge amount"

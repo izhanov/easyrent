@@ -9,3 +9,4 @@ ru:
         car_id: "Автомобиль"
         published: "Опубликован на сайте"
         mileage_limit_id: "Ограничение по пробегу"
+        pledge_amount: "Сумма залога"

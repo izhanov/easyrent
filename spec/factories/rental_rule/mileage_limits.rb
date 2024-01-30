@@ -3,6 +3,7 @@ FactoryBot.define do
     owner { nil }
     title { "Basic" }
     value { 200 }
+    over_mileage_price { 10.0 }
     markup { 0 }
     discount { 0 }
 

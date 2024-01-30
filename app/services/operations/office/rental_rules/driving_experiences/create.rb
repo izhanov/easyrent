@@ -6,13 +6,22 @@ module Operations
       module DrivingExperiences
         class Create < Base
           def call(params)
-            age_restriction = RentalRule::DrivingExperience.new(params)
+            validated_params = yield validate(params)
+            driving_experience = yield commit(validated_params.to_h)
+            Success(driving_experience)
+          end
 
-            if age_restriction.save!
-              Success(age_restriction)
-            else
-              Failure(:invalid_data, age_restriction.errors)
-            end
+          private
+
+          def validate(params)
+            validation = Validations::Office::RentalRules::DrivingExperiences::Create.new.call(params)
+            validation.to_monad
+              .or { |result| Failure[:validation_error, result.errors.to_h] }
+          end
+
+          def commit(params)
+            driving_experience = RentalRule::DrivingExperience.create!(params)
+            Success(driving_experience)
           end
         end
       end

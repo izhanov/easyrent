@@ -24,6 +24,13 @@ module Validations
           end
 
           rule(:from, :to) do
+            last_cell = price_range.price_range_cells.order(to: :desc).first
+            if last_cell.present? && values[:from] < last_cell.to
+              key(price_range: :price_range_cell).failure(:from_less_than_last_to)
+            end
+          end
+
+          rule(:from, :to) do
             exist_total_days = price_range.price_range_cells.sum { |cell| (cell.from..cell.to).count }
             extra_days = (values[:from]..values[:to]).count
 
@@ -33,8 +40,8 @@ module Validations
           end
 
           rule(:from, :to) do
-            last_cel = price_range.price_range_cells.order(to: :desc).first
-            if last_cel.present? && last_cel.to == values[:from]
+            last_cell = price_range.price_range_cells.order(to: :desc).first
+            if last_cell.present? && last_cell.to == values[:from]
               key(price_range: :price_range_cell).failure(:from_equal_last_to)
             end
           end

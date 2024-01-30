@@ -6,13 +6,22 @@ module Operations
       module MinimalPeriods
         class Create < Base
           def call(params)
-            minimal_period = RentalRule::MinimalPeriod.new(params)
+            validated_params = yield validate(params)
+            minimal_period = yield commit(validated_params.to_h)
+            Success(minimal_period)
+          end
 
-            if minimal_period.save!
-              Success(minimal_period)
-            else
-              Failure(:invalid_data, minimal_period.errors)
-            end
+          private
+
+          def validate(params)
+            validation = Validations::Office::RentalRules::MinimalPeriods::Create.new.call(params)
+            validation.to_monad
+              .or { |result| Failure[:validation_error, result.errors.to_h] }
+          end
+
+          def commit(params)
+            minimal_period = RentalRule::MinimalPeriod.create!(params)
+            Success(minimal_period)
           end
         end
       end

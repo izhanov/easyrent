@@ -66,7 +66,7 @@ RSpec.describe User, type: :model do
 
   describe "KINDS constant" do
     it "returns array of kinds" do
-      expect(described_class::KINDS).to eq(%w[S M L XL])
+      expect(described_class::KINDS).to eq(%w[s m l xl])
     end
   end
 end

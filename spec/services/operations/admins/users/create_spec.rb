@@ -19,7 +19,7 @@ RSpec.describe Operations::Admins::Users::Create do
           last_name: "Doe",
           email: "john@mail.com",
           phone: "+7(700)267-23-88",
-          kind: "S"
+          kind: "s"
         }
       end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_24_103953) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_29_084259) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -111,6 +111,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_103953) do
     t.index ["title"], name: "index_cities_on_title", unique: true
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "phone", null: false
+    t.string "identification_number", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "patronymic"
+    t.string "email"
+    t.string "passport_number"
+    t.string "driver_license_number"
+    t.date "driver_license_issued_date"
+    t.boolean "residence", default: true
+    t.string "kind", default: "individual", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["identification_number"], name: "index_clients_on_identification_number", unique: true
+    t.index ["phone"], name: "index_clients_on_phone", unique: true
+  end
+
   create_table "marks", force: :cascade do |t|
     t.bigint "brand_id", null: false
     t.string "title", null: false
@@ -127,6 +145,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_103953) do
     t.string "title", null: false
     t.jsonb "prices", default: {}, null: false
     t.integer "mileage_limit_id", null: false
+    t.decimal "pledge_amount", precision: 10, scale: 2, null: false
     t.boolean "published", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -202,7 +221,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_103953) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "kind", default: "S", null: false
+    t.string "kind", default: "s", null: false
     t.string "phone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
