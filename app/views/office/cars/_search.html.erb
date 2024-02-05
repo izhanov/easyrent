@@ -1,0 +1,5 @@
+<% cars.each do |car| %>
+  <li class="list-group-item" role="option" data-autocomplete-value=<%= car.id %> >
+    <%= "#{car.mark_title} – #{car.plate_number}" %>
+  </li>
+<% end %>

@@ -37,10 +37,15 @@
 class CarPark < ApplicationRecord
   belongs_to :city
   belongs_to :user
+
   has_one :price_range, dependent: :destroy, class_name: "PriceRange", as: :owner
 
   has_many :additional_services, as: :owner, dependent: :destroy
   has_many :cars, as: :owner, dependent: :destroy, class_name: "Car"
+  has_many :bookings, through: :cars, dependent: :destroy
+
+  has_many :clients_in_car_parks, dependent: :destroy
+  has_many :clients, through: :clients_in_car_parks, dependent: :destroy
 
   # Rental rules associations
   has_one :age_restriction, as: :owner, dependent: :destroy, class_name: "RentalRule::AgeRestriction"

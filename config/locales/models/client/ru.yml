@@ -1,0 +1,27 @@
+ru:
+  activerecord:
+    models:
+      client: "Клиент"
+    attributes:
+      client:
+        kind: "Тип"
+        citizen: "Гражданство"
+        name: "Имя"
+        surname: "Фамилия"
+        patronymic: "Отчество"
+        full_name_of_the_head: "Ф.И.О руководителя"
+        signed_on_basis: "Действует на основании"
+        identification_number: "ИИН"
+        phone: "Телефон"
+        email: "Почта"
+        driving_license: "Номер водительского удостоверение"
+        driving_license_issued_date: "Дата выдачи водительского удостоверения"
+        passport_number: "Номер паспорта"
+        bank_account_number: "Номер банковского счета (IBAN)"
+        legal_address: "Юридический адрес"
+        bank_code: "БИК"
+        kinds:
+          individual: "Физическое лицо"
+          legal: "Юридическое лицо"
+
+

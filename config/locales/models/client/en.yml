@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    models:
+      client: "Client"
+    attributes:
+      client:
+        kind: "Kind"
+        citizen: "Citizenship"
+        name: "Name"
+        surname: "Surname"
+        patronymic: "Patronymic"
+        phone: "Phone"
+        email: "Email"
+        driving_license: "Driver's license"
+        driving_license_issued_date: "Driver's license issued date"
+        full_name_of_the_head: "Full name of the head"
+        bank_code: "Bank code"
+        bank_account_number: "Bank account number"
+        legal_address: "Legal address"
+        signed_on_basis: "Signed on basis"
+        kinds:
+          individual: "Individual"
+          legal: "Legal"

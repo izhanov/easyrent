@@ -57,6 +57,16 @@ module Office
       redirect_to office_car_park_cars_path(@car_park), flash: {success: t("destroy.success")}
     end
 
+    def search
+      @q = Car.typesense(
+        q: params[:q],
+        query_by: "plate_number, mark.title, color, vin_code, klass, mark.synonyms",
+        infix: "always, always, always, always, always, always",
+      )
+      @cars = @car_park.cars.where(id: @q.pluck(:id))
+      render partial: "office/cars/search", locals: {cars: @cars}
+    end
+
     private
 
     def find_car

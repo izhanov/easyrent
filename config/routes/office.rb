@@ -18,6 +18,14 @@ namespace :office do
     end
   end
 
+  resources :bookings
+
+  resources :clients do
+    collection do
+      get :search
+    end
+  end
+
   resources :car_parks do
     resources :price_ranges do
       resources :price_range_cells
@@ -34,8 +42,13 @@ namespace :office do
 
     resources :additional_services
 
+    resources :bookings
+
     resources :cars do
-      resources :offers
+      resources :offers do
+        get :select, on: :collection
+      end
+      get :search, on: :collection
     end
   end
 end

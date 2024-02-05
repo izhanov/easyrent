@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_29_084259) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_31_053151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -42,6 +42,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_084259) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.bigint "client_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.datetime "actual_starts_at"
+    t.datetime "actual_ends_at"
+    t.string "pickup_location", null: false
+    t.string "drop_off_location", null: false
+    t.boolean "self_pickup", default: false
+    t.boolean "self_drop_off", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_bookings_on_car_id"
+    t.index ["client_id"], name: "index_bookings_on_client_id"
+    t.index ["ends_at"], name: "index_bookings_on_ends_at", using: :brin
+    t.index ["offer_id"], name: "index_bookings_on_offer_id"
+    t.index ["starts_at"], name: "index_bookings_on_starts_at", using: :brin
   end
 
   create_table "brands", force: :cascade do |t|
@@ -113,20 +134,34 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_084259) do
 
   create_table "clients", force: :cascade do |t|
     t.string "phone", null: false
-    t.string "identification_number", null: false
-    t.string "first_name"
-    t.string "last_name"
+    t.string "identification_number"
+    t.string "name"
+    t.string "surname"
     t.string "patronymic"
     t.string "email"
     t.string "passport_number"
-    t.string "driver_license_number"
-    t.date "driver_license_issued_date"
-    t.boolean "residence", default: true
-    t.string "kind", default: "individual", null: false
+    t.string "driving_license"
+    t.date "driving_license_issued_date"
+    t.boolean "citizen", default: true
+    t.string "kind", default: "individual"
+    t.string "bank_account_number"
+    t.string "bank_code"
+    t.string "legal_address"
+    t.string "signed_on_basis"
+    t.string "full_name_of_the_head"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["identification_number"], name: "index_clients_on_identification_number", unique: true
     t.index ["phone"], name: "index_clients_on_phone", unique: true
+  end
+
+  create_table "clients_in_car_parks", force: :cascade do |t|
+    t.bigint "client_id", null: false
+    t.bigint "car_park_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_park_id"], name: "index_clients_in_car_parks_on_car_park_id"
+    t.index ["client_id"], name: "index_clients_in_car_parks_on_client_id"
   end
 
   create_table "marks", force: :cascade do |t|
@@ -232,9 +267,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_084259) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "cars"
+  add_foreign_key "bookings", "clients"
+  add_foreign_key "bookings", "offers"
   add_foreign_key "car_parks", "cities"
   add_foreign_key "car_parks", "users"
   add_foreign_key "cars", "marks"
+  add_foreign_key "clients_in_car_parks", "car_parks"
+  add_foreign_key "clients_in_car_parks", "clients"
   add_foreign_key "marks", "brands"
   add_foreign_key "offers", "cars"
   add_foreign_key "price_range_cells", "price_ranges"

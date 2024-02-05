@@ -27,7 +27,7 @@
                 <%= link_to t(".cars"), "#", class: "nav-link" %>
               </li>
               <li class="nav-item">
-                <%= link_to t(".bookings"), "#", class: "nav-link" %>
+                <%= link_to t(".bookings"), office_bookings_path, class: "nav-link" %>
               </li>
             </ul>
             <%= button_to t(".sign_out"), destroy_office_user_session_path, method: :delete, class: "btn btn-dark mr-4" %>
@@ -36,11 +36,10 @@
       </div>
     </header>
     <div class="container">
-      <% if flash.any? %>
-        <% flash.each do |key, msg| %>
-          <%= tag.span(data: {notification: msg, kind: key}).html_safe %>
-        <% end %>
+      <%= turbo_frame_tag "flash" do %>
+        <%= render "layouts/flash" %>
       <% end %>
+
       <%= yield %>
     </div>
   </body>

@@ -24,4 +24,5 @@
 #
 class Offer < ApplicationRecord
   belongs_to :car
+  has_many :booking
 end

@@ -46,8 +46,10 @@ module RTypesense
       define_field(field_name, "int32", **options)
     end
 
-    def array_of_string(field_name, options = {})
-      define_field(field_name, "string[]", **options)
+    def array_of_string(field_name, options = {}, &block)
+      @typesense_schema[:enable_nested_fields] = true
+      object_field = define_field(field_name, "string[]", **options)
+      yield(object_field) if block
     end
 
     def object(class_name, options = {}, &block)
@@ -89,6 +91,13 @@ module RTypesense
           document[field.name] = objects.map do |object|
             nested_document(object, field.nested_fields)
           end
+        elsif field.array_of_string?
+          objects = record.send(field.name)
+          document[field.name] = objects.map do |object|
+            field.nested_fields.map do |nested_field|
+              type_cast(object.send(nested_field.name), nested_field.type)
+            end
+          end.flatten
         else
           document[field.name] = type_cast(record.send(field.name), field.type)
         end

@@ -38,5 +38,9 @@ module RTypesense
     def array_of_object?
       type == "object[]"
     end
+
+    def array_of_string?
+      type == "string[]"
+    end
   end
 end

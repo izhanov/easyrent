@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col">
+    <div class="form-check">
+      <%= f.label :citizen %>
+      <%= f.check_box :citizen, class: "form-check-input", data: {action: "clients-form#changeResidence", "clients-form-target": "citizen"} %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-lg-4">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+    <%= error_field(@errors, :name) %>
+  </div>
+  <div class="col-12 col-lg-4">
+    <%= f.label :surname %>
+    <%= f.text_field :surname, class: "form-control" %>
+    <%= error_field(@errors, :surname) %>
+  </div>
+  <div class="col-12 col-lg-4">
+    <%= f.label :patronymic %>
+    <%= f.text_field :patronymic, class: "form-control" %>
+    <%= error_field(@errors, :patronymic) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-lg-4" data-clients-form-target="identificationNumber">
+    <%= f.label :identification_number %>
+    <%= f.text_field :identification_number, class: "form-control" %>
+    <%= error_field(@errors, :identification_number) %>
+  </div>
+
+  <div class="col-12 col-lg-4" data-clients-form-target="passportNumber">
+    <%= f.label :passport_number %>
+    <%= f.text_field :passport_number, class: "form-control" %>
+    <%= error_field(@errors, :passport_number) %>
+  </div>
+
+  <div class="col-12 col-lg-4">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, class: "form-control" %>
+    <%= error_field(@errors, :phone) %>
+  </div>
+
+  <div class="col-12 col-lg-4">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %>
+    <%= error_field(@errors, :email) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 col-lg-4">
+    <%= f.label :bank_account_number %>
+    <%= f.text_field :bank_account_number, class: "form-control" %>
+    <%= error_field(@errors, :bank_account_number) %>
+  </div>
+  <div class="col-12 col-lg-4">
+    <%= f.label :driving_license %>
+    <%= f.text_field :driving_license, class: "form-control" %>
+    <%= error_field(@errors, :driving_license) %>
+  </div>
+  <div class="col-12 col-lg-4">
+    <%= f.label :driving_license_issued_date %>
+    <%= f.date_field :driving_license_issued_date, class: "form-control" %>
+    <%= error_field(@errors, :driving_license_issued_date) %>
+  </div>
+</div>
+
+

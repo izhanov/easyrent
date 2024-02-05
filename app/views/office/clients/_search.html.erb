@@ -1,0 +1,5 @@
+<% clients.each do |client| %>
+  <li class="list-group-item" role="option" data-autocomplete-value=<%= client.id %> >
+    <%= client.full_name %>
+  </li>
+<% end %>

@@ -6,7 +6,7 @@ module Office
     before_action :find_car, :find_car_park
 
     def index
-      @offers = current_office_user.offers.order(id: :asc)
+      @offers = @car.offers.order(id: :asc)
     end
 
     def show
@@ -62,6 +62,11 @@ module Office
         format.html { redirect_to office_offers_url, notice: "Offer was successfully destroyed." }
         format.turbo_stream
       end
+    end
+
+    def select
+      @offers = @car.offers.order(id: :asc)
+      render partial: "office/offers/select", locals: {offers: @offers}
     end
 
     private

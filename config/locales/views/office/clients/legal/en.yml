@@ -1,0 +1,6 @@
+en:
+  office:
+    clients:
+      legal:
+        name: "Name of company"
+        identification_number: "Identification number"

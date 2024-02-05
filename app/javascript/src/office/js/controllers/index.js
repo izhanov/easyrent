@@ -4,7 +4,7 @@
 
 import { Application } from '@hotwired/stimulus';
 import { registerControllers } from 'stimulus-vite-helpers';
-import { Autocomplete } from 'stimulus-autocomplete'
+import { Autocomplete } from 'stimulus-autocomplete';
 
 const application = Application.start();
 

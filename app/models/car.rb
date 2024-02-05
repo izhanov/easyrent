@@ -39,6 +39,7 @@ class Car < ApplicationRecord
   belongs_to :owner, polymorphic: true
 
   has_many :offers, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   def mark_title
     "#{mark.brand.title} #{mark.title}"
@@ -94,6 +95,11 @@ class Car < ApplicationRecord
         string [brand, :title], optional: false
         array_of_string [brand, :synonyms], optional: true
       end
+    end
+
+    object :owner, optional: false do |owner|
+      string [owner, :id], optional: false
+      string [owner, :city_id], optional: false
     end
   end
 

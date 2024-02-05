@@ -120,6 +120,9 @@ en:
         offer:
           prices:
             empty_prices: "must be present"
+        client:
+          identification_or_phone_number:
+            uniqueness_violation: "must be unique"
       size?:
         arg:
           default: "size must be %{size}"

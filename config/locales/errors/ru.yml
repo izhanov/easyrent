@@ -114,6 +114,9 @@ ru:
         offer:
           prices:
             empty_prices: "должен содержать диапазон цен"
+        client:
+          identification_or_phone_number:
+            uniqueness_violation: "должно быть уникальным"
       size?:
         arg:
           default: "размер должен быть %{size}"

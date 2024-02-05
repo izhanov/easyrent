@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "offers_to_select" do %>
+  <% if offers.any? %>
+    <%= select_tag "booking[offer_id]", options_for_select(offers.map { |offer| [offer.title, offer.id] }), class: "form-select" %>
+  <% end %>
+<% end %>

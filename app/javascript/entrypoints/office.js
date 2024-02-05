@@ -12,3 +12,7 @@ import './../src/office/js/toastify.js';
 import './../src/office/js/transliterate.js';
 
 import './../src/office/js/controllers';
+
+// Bookings namespace
+import './../src/office/js/bookings/new/insert_client.js';
+import './../src/office/js/bookings/new/insert_offer.js';
