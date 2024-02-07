@@ -11,6 +11,7 @@ set :repo_url, "git@github.com:rentacarsxeasyrent/easyrent.git"
 set :deploy_to, "/home/deployer/easyrent"
 set :deploy_user, "deployer"
 set :assets_prefix, "vite"
+set :use_sudo, true
 set :nvm_type, :user # or :system, depends on your nvm setup
 set :nvm_node, 'v20.10.0'
 set :nvm_map_bins, %w{rake node npm yarn}
