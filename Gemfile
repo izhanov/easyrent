@@ -58,6 +58,8 @@ gem "dry-validation", "~> 1.10"
 
 gem "rails-i18n", "~> 7.0"
 
+gem "annotate", "~> 3.2.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows]
@@ -68,7 +70,6 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "annotate", "~> 3.2.0"
   gem "web-console"
   gem "capistrano", require: false
   gem "capistrano-bundler", require: false
