@@ -81,6 +81,7 @@ group :development do
   gem "capistrano-passenger", require: false
   gem "capistrano-sidekiq", require: false
   gem "letter_opener"
+  gem "capistrano-nvm", require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
