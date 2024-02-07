@@ -18,7 +18,6 @@
   },
   "scripts": {
     "build": "vite build",
-    "build:css": "vite build",
     "dev": "vite",
     "start": "vite preview"
   },
