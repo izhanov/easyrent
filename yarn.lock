@@ -530,6 +530,11 @@ reusify@^1.0.4:
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
+rollup-plugin-gzip@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-gzip/-/rollup-plugin-gzip-3.1.1.tgz#b24ebc1dde5a7f16ac4918dceeab6ea6dc6a698c"
+  integrity sha512-KhRH3xc5TfbOFsnW0GrmMVf3KZF8oxXY8igqz0b/9JbY4WhRARq53isQPEYlrfgc8Mx3ofXoapfAPb7zyfyBeQ==
+
 rollup@^4.2.0:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-4.9.1.tgz#351d6c03e4e6bcd7a0339df3618d2aeeb108b507"
@@ -616,6 +621,11 @@ transliteration@^2.3.5:
   dependencies:
     yargs "^17.5.1"
 
+vite-plugin-environment@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/vite-plugin-environment/-/vite-plugin-environment-1.1.3.tgz#d01a04abb2f69730a4866c9c9db51d3dab74645b"
+  integrity sha512-9LBhB0lx+2lXVBEWxFZC+WO7PKEyE/ykJ7EPWCq95NEcCpblxamTbs5Dm3DLBGzwODpJMEnzQywJU8fw6XGGGA==
+
 vite-plugin-full-reload@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/vite-plugin-full-reload/-/vite-plugin-full-reload-1.1.0.tgz#ca6fa32631024a459ea9e5613dd4c0ff0f3b7995"
@@ -623,6 +633,23 @@ vite-plugin-full-reload@^1.1.0:
   dependencies:
     picocolors "^1.0.0"
     picomatch "^2.3.1"
+
+vite-plugin-manifest-sri@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-manifest-sri/-/vite-plugin-manifest-sri-0.2.0.tgz#cb1cfd11692ee81f5d1194926cbea6d3a38b8599"
+  integrity sha512-Zt5jt19xTIJ91LOuQTCtNG7rTFc5OziAjBz2H5NdCGqaOD1nxrWExLhcKW+W4/q8/jOPCg/n5ncYEQmqCxiGQQ==
+
+vite-plugin-rails@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-rails/-/vite-plugin-rails-0.5.0.tgz#fe29827b6f42abbc6e6537748963bb93871f468c"
+  integrity sha512-PR3zTHW96X8c7dRsuL2Mu1EAXXeO8fQjQ2KanwIC7EWgBST+D8AKjJyEUAr13IakrIYvd1cM3LcQUcrKmCMePg==
+  dependencies:
+    rollup-plugin-gzip "^3.1.0"
+    vite-plugin-environment "^1.1.3"
+    vite-plugin-full-reload "^1.1.0"
+    vite-plugin-manifest-sri "^0.2.0"
+    vite-plugin-ruby "^5.0.0"
+    vite-plugin-stimulus-hmr "^3.0.0"
 
 vite-plugin-ruby@^5.0.0:
   version "5.0.0"
