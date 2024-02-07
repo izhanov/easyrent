@@ -3,4 +3,5 @@ en:
     office:
       car_parks: "Car parks"
       cars: "Cars"
+      bookings: "Bookings"
       sign_out: "Sign out"

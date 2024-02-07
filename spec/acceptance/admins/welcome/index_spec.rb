@@ -40,7 +40,7 @@ feature "Admin visit welcome page" do
     expect(page).to have_selector("h1", text: "Catalogues")
   end
 
-  scenario "and click to Sign out link" do
+  scenario "and click to Sign out link", js: true do
     sign_in admin
 
     visit admins_root_path

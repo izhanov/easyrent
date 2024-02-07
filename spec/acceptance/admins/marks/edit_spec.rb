@@ -14,7 +14,7 @@ feature "Admins visit mark's edit page" do
     visit edit_admins_mark_path(mark)
     expect(page).to have_current_path(edit_admins_mark_path(mark))
     expect(page).to have_selector("h1", text: "Edit #{mark.title}")
-    expect(page).to have_link("Back")
+    expect(page).to have_xpath("//a[@href='#{admins_mark_path(mark)}']")
   end
 
   context "when fill in fields with valid data" do

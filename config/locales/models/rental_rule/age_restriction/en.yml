@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      rental_rule/age_restriction: "Age restriction"
+    attributes:
+      rental_rule/age_restriction:
+        value: "Age"
+

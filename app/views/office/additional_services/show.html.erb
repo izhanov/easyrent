@@ -1,0 +1,11 @@
+<%= turbo_frame_tag @additional_service do %>
+  <div class="additional_service">
+    <%= @additional_service.title %>
+    <%= @additional_service.price %>
+    <div class="additional_service__actions">
+      <%= link_to office_car_park_additional_services_path(@car_park), class: "btn btn-sm btn-secondary" do %>
+        <i class="bi bi-x"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

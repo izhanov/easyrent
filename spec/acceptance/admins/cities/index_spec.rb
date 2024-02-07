@@ -14,15 +14,15 @@ feature "Admin visit cities page" do
       visit admins_cities_path
       expect(page).to have_current_path(admins_cities_path)
       expect(page).to have_content("Cities not exist")
-      expect(page).to have_link("New city")
+      expect(page).to have_xpath("//a[@href='#{new_admins_city_path}']")
     end
 
     scenario "and click to New city link" do
       visit admins_cities_path
-      click_link "New city"
+      find("//a[@href='#{new_admins_city_path}']").click
       expect(page).to have_current_path(new_admins_city_path)
       expect(page).to have_selector("h1", text: "New city")
-      expect(page).to have_link("Back")
+      expect(page).to have_xpath("//a[@href='#{admins_cities_path}']")
     end
   end
 

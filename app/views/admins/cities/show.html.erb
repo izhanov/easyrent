@@ -4,8 +4,14 @@
     <small class="text-muted"><%= @city.slug %></small>
   </h1>
   <div>
-    <%= link_to t(".back"), admins_cities_path, class: "btn btn-primary" %>
-    <%= link_to t(".edit"), edit_admins_city_path(@city), class: "btn btn-warning" %>
-    <%= link_to t(".destroy"), admins_city_path(@city), class: "btn btn-danger", data: {confirm: t(".sure?"), method: :delete} %>
+    <%= link_to admins_cities_path, class: "btn btn-sm btn-primary", id: "cities-back-link" do %>
+      <i class="bi bi-box-arrow-left"></i>
+    <% end %>
+    <%= link_to edit_admins_city_path(@city), class: "btn btn-sm btn-warning" do %>
+      <i class="bi bi-building-fill-gear"></i>
+    <% end %>
+    <%= link_to admins_city_path(@city), class: "btn btn-sm btn-danger", data: {confirm: t(".sure?"), turbo_method: :delete} do %>
+      <i class="bi bi-building-fill-x"></i>
+    <% end %>
   </div>
 </div>

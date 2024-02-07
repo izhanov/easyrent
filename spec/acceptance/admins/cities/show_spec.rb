@@ -15,21 +15,21 @@ feature "Admin visit cities show page" do
     expect(page).to have_current_path(admins_city_path(city))
     expect(page).to have_selector("h1", text: city.title)
     expect(page).to have_selector("h1 small", text: city.slug)
-    expect(page).to have_link("Back")
-    expect(page).to have_link("Edit city")
-    expect(page).to have_link("Destroy city")
+    expect(page).to have_xpath("//a[@href='#{admins_cities_path}']")
+    expect(page).to have_xpath("//a[@href='#{edit_admins_city_path(city)}']")
+    expect(page).to have_xpath("//a[@href='#{admins_city_path(city)}']")
   end
 
   scenario "and click to Back link" do
     visit admins_city_path(city)
-    click_link "Back"
+    find("#cities-back-link").click
     expect(page).to have_current_path(admins_cities_path)
     expect(page).to have_selector("h1", text: "Cities")
   end
 
   scenario "and click to Edit city link" do
     visit admins_city_path(city)
-    click_link "Edit city"
+    find("//a[@href='#{edit_admins_city_path(city)}']").click
     expect(page).to have_current_path(edit_admins_city_path(city))
     expect(page).to have_selector("h1", text: "Edit #{city.title}")
   end
@@ -37,7 +37,7 @@ feature "Admin visit cities show page" do
   context "when click to Destroy city link" do
     scenario "and see cities page" do
       visit admins_city_path(city)
-      click_link "Destroy city"
+      find(".btn.btn-sm.btn-danger").click
       expect(page).to have_current_path(admins_cities_path)
     end
   end

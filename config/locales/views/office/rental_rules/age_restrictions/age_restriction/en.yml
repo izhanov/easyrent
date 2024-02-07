@@ -1,0 +1,6 @@
+en:
+  office:
+    rental_rules:
+      age_restrictions:
+        age_restriction:
+          description: "The client can rent from %{age} years of age"

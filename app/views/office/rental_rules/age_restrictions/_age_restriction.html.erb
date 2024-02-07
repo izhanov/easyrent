@@ -1,0 +1,5 @@
+<%= turbo_frame_tag age_restriction do %>
+  <span>
+    <%= link_to t(".description", age: age_restriction.value), edit_office_car_park_rental_rule_age_restriction_path(@car_park), data: {turbo: true, turbo_frame: dom_id(@car_park.age_restriction)}, class: "rental_rule__link" %>
+  </span>
+<% end %>

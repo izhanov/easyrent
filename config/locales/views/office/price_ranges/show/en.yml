@@ -1,0 +1,6 @@
+en:
+  office:
+    price_ranges:
+      show:
+        title: "Price ranges"
+        back: "Back"

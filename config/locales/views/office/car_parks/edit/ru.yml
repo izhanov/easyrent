@@ -1,0 +1,8 @@
+ru :
+  office:
+    car_parks:
+      edit:
+        title: "%{car_park}"
+        price_ranges: "Диапазоны цен"
+        rental_rules: "Правила аренды"
+        services: "Дополнительные услуги"

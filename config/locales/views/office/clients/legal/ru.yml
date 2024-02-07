@@ -1,0 +1,6 @@
+ru:
+  office:
+    clients:
+      legal:
+        name: "Наименование компании"
+        identification_number: "БИН"

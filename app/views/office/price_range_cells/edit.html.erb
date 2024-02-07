@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-between align-items-center">
+  <%= link_to office_car_parks_path, class: "btn btn-sm btn-outline-primary" do %>
+    <i class="bi bi-box-arrow-left"></i>
+  <% end %>
+</div>
+
+<%= turbo_frame_tag  @price_range_cell do %>
+  <%= render "form", price_range: @price_range, price_range_cell: @price_range_cell %>
+<% end %>

@@ -14,7 +14,7 @@ feature "Admin visit users index page" do
       visit admins_users_path
       expect(page).to have_selector("h1", text: "Users")
       expect(page).to have_content("No users")
-      expect(page).to have_link("Invite user")
+      expect(page).to have_xpath("//a[@href='#{new_admins_user_path}']")
     end
   end
 
@@ -32,7 +32,7 @@ feature "Admin visit users index page" do
   context "when click to Invite user link" do
     scenario "and see invite user form" do
       visit admins_users_path
-      click_link "Invite user"
+      find("//a[@href='#{new_admins_user_path}']").click
       expect(page).to have_selector("h1", text: "New user")
       expect(page).to have_field("Email")
       expect(page).to have_field("Phone")

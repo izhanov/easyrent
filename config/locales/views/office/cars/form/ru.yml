@@ -1,0 +1,8 @@
+ru:
+  office:
+    cars:
+      form:
+        save: "Сохранить"
+        units:
+          liters: "л"
+          cubic_meters: "см3"

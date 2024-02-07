@@ -1,0 +1,43 @@
+.rental_rule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  background-color: oklch(97.06% 0 53);
+  border-radius: 0.5rem;
+  box-shadow: 1px 3px 6px hsl(0 0% 0% / 0.1);
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+
+  &__link {
+    color: black;
+    padding: 1rem;
+    text-decoration: none;
+    background-color: oklch(93.06% 0 34);
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: oklch(87.06% 0 34);
+    }
+  }
+
+  &--column {
+    @extend .rental_rule;
+    flex-direction: column;
+    align-items: center;
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

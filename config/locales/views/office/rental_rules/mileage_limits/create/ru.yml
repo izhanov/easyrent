@@ -1,0 +1,6 @@
+ru:
+  office:
+    rental_rules:
+      mileage_limits:
+        create:
+          add_mileage_limits: "Добавить ограничения по пробегу"

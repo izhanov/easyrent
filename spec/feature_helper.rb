@@ -5,16 +5,16 @@ Capybara.register_driver(:cuprite) do |app|
   Capybara::Cuprite::Driver.new(
     app,
     window_size: [1200, 800],
-    timeout: 10,
-    headless: true,
+    timeout: 60,
+    headless: !ENV["SHOW_BROWSER"],
     js_errors: true,
-    browser_options: {
-      process_timeout: 20
-    },
+    inspector: true,
+    browser_options: {},
+    process_timeout: 60,
     url_blacklist: [
-      "https://fonts.googleapis.com",
-      "https://fonts.gstatic.com",
-      "https://cdnjs.cloudflare.com"
+      %r{https://fonts.googleapis.com},
+      %r{https://fonts.gstatic.com},
+      %r{https://cdnjs.cloudflare.com}
     ]
   )
 end

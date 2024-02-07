@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      price_range: "Price range"
+    attributes:
+      price_range:
+        unit: "Unit"
+        units:
+          day: "day"
+          mileage: "mileage"
+

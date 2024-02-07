@@ -16,6 +16,6 @@ RSpec.describe Validations::Admins::Users::Update do
 
   it "requires kind to be included in User::KINDS" do
     result = subject.call({kind: "invalid"})
-    expect(result.errors.to_h).to include(kind: ["must be one of: S, M, L, XL"])
+    expect(result.errors.to_h).to include(kind: ["must be one of: s, m, l, xl"])
   end
 end

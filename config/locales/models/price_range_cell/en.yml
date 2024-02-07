@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      price_range_cell: "Price range cell"
+    attributes:
+      price_range_cell:
+        from: "From"
+        to: "To"

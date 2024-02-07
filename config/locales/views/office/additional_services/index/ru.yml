@@ -1,0 +1,11 @@
+ru:
+  office:
+    additional_services:
+      index:
+        title: "Дополнительные услуги"
+        new_additional_service: "Новая дополнительная услуга"
+        table:
+          header:
+            id: "ID"
+            title: "Название"
+            price: "Цена"

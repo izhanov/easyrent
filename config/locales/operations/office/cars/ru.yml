@@ -1,0 +1,16 @@
+ru:
+  operations:
+    office:
+      cars:
+        create:
+          success: "Автомобиль успешно создан."
+          errors:
+            validation_error: "Ошибка валидации при создании."
+            uniqueness_violation: "Автомобиль уже существует."
+        update:
+          success: "Автомобиль успешно обновлен."
+          errors:
+            validation_error: "Ошибка валидации при обновлении."
+            uniqueness_violation: "Автомобиль уже существует."
+        destroy:
+          success: "Автомобиль успешно удален."

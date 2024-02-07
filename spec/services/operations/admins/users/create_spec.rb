@@ -19,7 +19,7 @@ RSpec.describe Operations::Admins::Users::Create do
           last_name: "Doe",
           email: "john@mail.com",
           phone: "+7(700)267-23-88",
-          kind: "S"
+          kind: "s"
         }
       end
 
@@ -37,7 +37,7 @@ RSpec.describe Operations::Admins::Users::Create do
             "invite_user",
             "deliver_now",
             Hash # It's stands for args in UserMailer#deliver_now(user)
-                 # seems tricky, but I couldn't find a better way to test it
+            # seems tricky, but I couldn't find a better way to test it
           )
         )
       end

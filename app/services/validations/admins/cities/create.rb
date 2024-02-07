@@ -8,6 +8,12 @@ module Validations
           required(:title).filled(:string)
           optional(:slug).value(:string)
         end
+
+        rule(:slug) do
+          if value.present?
+            key.failure(:invalid_format) unless value&.match?(/^[a-z]+(?:-[a-z]+)*$/)
+          end
+        end
       end
     end
   end

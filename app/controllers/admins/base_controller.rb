@@ -2,8 +2,11 @@
 
 module Admins
   class BaseController < ApplicationController
-    include Dry::Monads[:result]
     layout "admins"
+
+    include Dry::Monads[:result]
+
+    helper FormHelper
 
     before_action :authenticate_admin!
 

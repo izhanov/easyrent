@@ -9,7 +9,7 @@ feature "Admin vist edit user page" do
     sign_in admin
 
     visit admins_user_path(user)
-    click_link "Edit"
+    find("//a[@href='#{edit_admins_user_path(user)}']").click
     expect(page).to have_selector("h1", text: "Edit #{user.full_name}")
     expect(page).to have_field("Email")
     expect(page).to have_field("Phone")

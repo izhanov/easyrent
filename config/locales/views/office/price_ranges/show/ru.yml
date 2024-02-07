@@ -1,0 +1,6 @@
+ru:
+  office:
+    price_ranges:
+      show:
+        title: "Диапазоны цен"
+        back: "Назад"

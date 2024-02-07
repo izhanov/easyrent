@@ -1,0 +1,6 @@
+<%= turbo_stream.update Client.new, "" %>
+
+<%= turbo_stream.update "created_client_credential" do %>
+  <%= hidden_field_tag :id, @client.id, id: "created_client_id" %>
+  <%= hidden_field_tag :full_name, @client.full_name, id: "created_client_full_name" %>
+<% end %>

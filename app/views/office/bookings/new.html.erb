@@ -1,0 +1,65 @@
+<div class="d-lg-flex justify-content-between align-items-center">
+  <h1>
+    Новая заявка
+  </h1>
+</div>
+
+
+<%= form_with model: [:office, @booking] do |f| %>
+  <div class="row d-flex justify-content-between align-items-center mb-4">
+    <div
+      class="col"
+      data-controller="bookings--client-autocomplete bookings--upsert-client"
+      data-bookings--client-autocomplete-url-value=<%= search_office_clients_path %>
+    >
+      <div class="col input-group">
+        <%= label_tag :client, "Клиент", class: "input-group-text"%>
+        <%= text_field_tag :client, nil, type: "search", placeholder: "Введите фамилию или ИИН, номер паспорта клиента", class: "form-control", data: {"bookings--client-autocomplete-target":"input"} %>
+        <%= f.hidden_field :client_id, data: { "bookings--client-autocomplete-target": "hidden" }%>
+      </div>
+      <ul class="list-group" data-bookings--client-autocomplete-target="results"></ul>
+    </div>
+    <div class="col">
+      <%= link_to new_office_client_path, class: "btn btn-sm btn-primary", data: {turbo: true, turbo_frame: dom_id(Client.new)} do %>
+        <i class="bi bi-person-plus"></i>
+      <% end %>
+    </div>
+
+    <% # Insert new client from client autocomplete partial link via Turbo %>
+    <%= turbo_frame_tag dom_id(Client.new)%>
+
+    <% # Insert created client credential via JS %>
+    <% # see app/javascript/src/office/js/bookings/new/insert_client.js %>
+    <%= turbo_frame_tag "created_client_credential" %>
+  </div>
+
+  <div
+    class="row d-flex justify-content-between align-items-center mb-4"
+    data-controller="bookings--car-park-select"
+    data-bookings--car-park-select-urls-value=<%=current_office_user.car_parks.each_with_object({}) { |car_park, result| result[car_park.id] = search_office_car_park_cars_path(car_park.id) }.to_json %> >
+    <div class="col">
+      <div class="input-group">
+        <%= label_tag :car_park, "Aвтопарк", class: "input-group-text"%>
+        <%= select_tag :car_park, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl"} %>
+      </div>
+    </div>
+    <div
+      class="col"
+      data-controller="autocomplete"
+      data-autocomplete-url-value="">
+      <div class="col">
+        <%= text_field_tag :car, nil, type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input"} %>
+        <%= f.hidden_field :car_id, data: { "autocomplete-target": "hidden" }%>
+      </div>
+      <ul class="list-group" data-autocomplete-target="results"></ul>
+    </div>
+
+    <% #Insert offers to select fires via JS after selecting a car %>
+    <% # see app/javascript/src/office/js/bookings/new/insert_offer.js %>
+    <%= turbo_frame_tag "offers_to_select" %>
+
+    <% # Insert new offer from offers select partial link via Turbo %>
+    <%= turbo_frame_tag Offer.new %>
+  </div>
+  <%= f.submit "Создать", class: "btn btn-primary" %>
+<% end %>

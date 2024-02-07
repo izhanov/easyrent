@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    models:
+      price_range: "Диапазон цен"
+    attributes:
+      price_range:
+        unit: "Единица измерения"
+        units:
+          day: "сутки"
+          mileage: "километраж"
+

@@ -1,0 +1,22 @@
+<%= form_with model: [:office, @client], html: {data: {controller: "clients-form"}} do |f| %>
+  <div class="row">
+    <div class="col-lg-3 col">
+      <%= f.label :kind %>
+      <%= f.select :kind, Client::KINDS.map { |kind| [t("activerecord.attributes.client.kinds.#{kind}"), kind]}, {include_blank: false}, class: "form-select", data: {action: "clients-form#changeKind", "clients-form-target": "kind"} %>
+    </div>
+  </div>
+
+  <div data-clients-form-target="individualForm">
+    <%= render "individual", f: f %>
+  </div>
+
+  <div data-clients-form-target="legalForm">
+    <%= render "legal", f: f %>
+  </div>
+
+  <%= link_to :back, class: "btn btn-sm btn-outline-primary" do %>
+    <i class="bi bi-x"></i>
+  <% end %>
+
+  <%= f.submit "Сохранить", class: "btn btn-sm btn-success" %>
+<% end %>

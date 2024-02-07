@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      rental_rule/driving_experience: "Ограничение по опыту вождения"
+    attributes:
+      rental_rule/driving_experience:
+        value: "Опыт вождения"
+

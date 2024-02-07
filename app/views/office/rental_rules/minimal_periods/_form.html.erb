@@ -1,0 +1,19 @@
+<%= turbo_frame_tag minimal_period do %>
+  <%= form_with model: [:office, @car_park, minimal_period], url: office_car_park_rental_rule_minimal_period_path(@car_park) do |f| %>
+    <%= f.hidden_field :owner_id, value: @car_park.id %>
+    <%= f.hidden_field :owner_type, value: @car_park.class.name %>
+
+    <div class="input-group">
+      <%= f.label :value, class: "input-group-text"%>
+      <%= f.number_field :value, class: "form-control" %>
+
+      <%= link_to office_car_park_rental_rule_root_path(@car_park), class: "btn btn-sm btn-secondary" do %>
+        <i class="bi bi-x"></i>
+      <% end %>
+
+      <%= f.button nil, class: "btn btn-sm btn-success" do %>
+        <i class="bi bi-check"></i>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

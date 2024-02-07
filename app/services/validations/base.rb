@@ -8,7 +8,11 @@ module Validations
     config.messages.load_paths << Rails.root.join("config/locales/errors/ru.yml")
 
     register_macro(:phone_format) do
-      key.failure(:invalid_format) unless value.match? Utils::Regexp::PHONE
+      key.failure(:invalid_format) unless key? && value.match?(Utils::Regexp::PHONE)
+    end
+
+    register_macro(:bank_account_number_format) do
+      key.failure(:invalid_format) unless key? && value.match?(/\AKZ[A-Z0-9]{18}\z/)
     end
   end
 end

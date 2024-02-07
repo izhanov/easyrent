@@ -1,0 +1,6 @@
+ru:
+  office:
+    price_ranges:
+      index:
+        title: "Cезоны"
+        back: "Назад"

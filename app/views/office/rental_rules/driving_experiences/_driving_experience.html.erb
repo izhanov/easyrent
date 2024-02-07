@@ -1,0 +1,5 @@
+<%= turbo_frame_tag driving_experience do %>
+  <span>
+    <%= link_to t(".description", level: driving_experience.value), edit_office_car_park_rental_rule_driving_experience_path(@car_park), data: {turbo: true, turbo_frame: dom_id(@car_park.driving_experience)}, class: "rental_rule__link" %>
+  </span>
+<% end %>

@@ -1,0 +1,3 @@
+<%= turbo_stream.replace @age_restriction do %>
+  <%= render "office/rental_rules/age_restrictions/age_restriction", age_restriction: @age_restriction %>
+<% end %>

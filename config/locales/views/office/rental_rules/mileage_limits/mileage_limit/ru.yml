@@ -1,0 +1,6 @@
+ru:
+  office:
+    rental_rules:
+      mileage_limits:
+        mileage_limit:
+          description: "Минимальный период от %{days} суток"

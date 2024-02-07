@@ -1,0 +1,6 @@
+ru:
+  office:
+    rental_rules:
+      driving_experiences:
+        driving_experience:
+          description: "Клиент должен быть с опытом вождения от %{level} лет"

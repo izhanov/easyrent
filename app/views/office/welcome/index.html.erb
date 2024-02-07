@@ -1,0 +1,8 @@
+<div class="container mt-4">
+  <% unless current_office_user.car_parks.any? %>
+    <div class="alert alert-info" role="alert">
+      <%= t(".no_car_parks") %>
+      <%= link_to t(".add_car_park"), new_office_car_park_path, class: "alert-link" %>
+    </div>
+  <% end %>
+</div>

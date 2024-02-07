@@ -1,4 +1,8 @@
 @import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
-@import './utils/alert'
+@import './utils/toastify';
+@import './components/error_field';
+@import './components/additional_service';
+@import './components/rental_rule';
+

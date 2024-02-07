@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    <%= t(".title") %>
+  </h1>
+  <div>
+    <%= link_to edit_office_car_park_path(@car_park), class: "btn btn-outline-primary btn-sm" do %>
+      <i class="bi bi-box-arrow-left"></i>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="rental_rule">
+    <% if @car_park.age_restriction %>
+      <%= render "office/rental_rules/age_restrictions/age_restriction", age_restriction: @car_park.age_restriction %>
+    <% else %>
+      <%= turbo_frame_tag RentalRule::AgeRestriction.new do %>
+        <%= link_to t(".add_age_restriction"), new_office_car_park_rental_rule_age_restriction_path(@car_park), class: "rental_rule__link", data: {turbo: true, turbo_frame: dom_id(RentalRule::AgeRestriction.new)} %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="rental_rule">
+    <% if @car_park.driving_experience %>
+      <%= render "office/rental_rules/driving_experiences/driving_experience", driving_experience: @car_park.driving_experience %>
+    <% else %>
+      <%= turbo_frame_tag RentalRule::DrivingExperience.new do %>
+        <%= link_to t(".add_driving_experience"), new_office_car_park_rental_rule_driving_experience_path(@car_park), class: "rental_rule__link", data: {turbo: true, turbo_frame: dom_id(RentalRule::DrivingExperience.new)} %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="rental_rule">
+    <% if @car_park.minimal_period %>
+      <%= render "office/rental_rules/minimal_periods/minimal_period", minimal_period: @car_park.minimal_period %>
+    <% else %>
+      <%= turbo_frame_tag RentalRule::MinimalPeriod.new do %>
+        <%= link_to t(".add_minimal_period"), new_office_car_park_rental_rule_minimal_period_path(@car_park), class: "rental_rule__link", data: {turbo: true, turbo_frame: dom_id(RentalRule::MinimalPeriod.new)} %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="rental_rule--column">
+    <div class="rental_rule--column__list">
+      <%= turbo_frame_tag "mileage_limits" do %>
+        <%= render partial: "office/rental_rules/mileage_limits/mileage_limit", collection: @car_park.mileage_limits %>
+      <% end %>
+    </div>
+
+    <%= turbo_frame_tag RentalRule::MileageLimit.new do %>
+      <%= link_to t(".add_mileage_limits"), new_office_car_park_rental_rule_mileage_limit_path(@car_park), class: "rental_rule__link", data: {turbo: true, turbo_frame: dom_id(RentalRule::MileageLimit.new)} %>
+    <% end %>
+  </div>
+</div>

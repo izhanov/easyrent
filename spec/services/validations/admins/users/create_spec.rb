@@ -19,7 +19,7 @@ RSpec.describe Validations::Admins::Users::Create do
   it "requires kind to be one of User::KINDS" do
     result = subject.call(kind: "invalid")
     expect(result.errors.to_h).to(
-      include(kind: ["must be one of: S, M, L, XL"])
+      include(kind: ["must be one of: s, m, l, xl"])
     )
   end
 end

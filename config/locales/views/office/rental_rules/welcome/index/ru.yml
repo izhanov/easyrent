@@ -1,0 +1,11 @@
+ru:
+  office:
+    rental_rules:
+      welcome:
+        index:
+          title: "Правила аренды"
+          add_age_restriction: "Добавить ограничение по возрасту"
+          add_mileage_limits: "Добавить ограничения по пробегу"
+          add_driving_experience: "Добавить ограничение по стажу вождения"
+          add_minimal_period: "Добавить минимальный период аренды"
+

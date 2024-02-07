@@ -15,18 +15,18 @@ feature "Admin visit cities new page" do
     expect(page).to have_selector("h1", text: "New city")
     expect(page).to have_field("Title")
     expect(page).to have_field("slug")
-    expect(page).to have_link("Back")
+    expect(page).to have_xpath("//a[@href='#{admins_cities_path}']")
     expect(page).to have_button("Save")
   end
 
   scenario "and click to Back link" do
     visit new_admins_city_path
-    click_link "Back"
+    find("#cities-back-link").click
     expect(page).to have_current_path(admins_cities_path)
     expect(page).to have_selector("h1", text: "Cities")
   end
 
-  scenario "and click to Save button" do
+  scenario "and click to Save button", js: true do
     visit new_admins_city_path
     click_button "Save"
     expect(page).to have_selector("h1", text: "New city")

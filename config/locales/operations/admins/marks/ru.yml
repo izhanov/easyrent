@@ -11,5 +11,6 @@ ru:
           success: "Модель успешно обновлена."
           errors:
             validation_error: "Ошибка валидации при обновлении."
+            uniqueness_violation: "Модель уже существует."
         destroy:
           success: "Модель успешно удалена."

@@ -1,0 +1,11 @@
+en:
+  office:
+    additional_services:
+      index:
+        title: "Additional services"
+        new_additional_service: "New additional service"
+        table:
+          header:
+            id: "ID"
+            title: "Title"
+            price: "Price"

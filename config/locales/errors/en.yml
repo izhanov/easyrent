@@ -88,10 +88,41 @@ en:
 
       rules:
         slug:
-          invalid_format: "Must contain only a-z, and -"
+          invalid_format: "must contain only a-z, and -"
         phone:
-          invalid_format: "Must be in correct format"
+          invalid_format: "must be in correct format"
+        contact_phone:
+          invalid_format: "must be in correct format"
+        service_phone:
+          invalid_format: "must be in correct format"
+        price_range:
+          price_range_cell:
+            from_greater_than_to: "from cannot be greater than to"
+            from_and_to_equal: "from and to cannot be equal"
+            total_days_greater_than_30: "total days cannot be greater than 30"
+            from_equal_last_to: "from cannot be equal to last to"
+            from_already_exist: "from value already exist in range"
+            from_less_than_last_to: "from cannot be less than last to"
+        mileage_limit:
+          only_markup_or_discount: "only markup or discount can be set"
 
+        bank_account_number:
+          invalid_format: "must be in correct format"
+        city:
+          title:
+            uniqueness_violation: "must be unique"
+        brand:
+          title:
+            uniqueness_violation: "must be unique"
+        mark:
+          title:
+            uniqueness_violation: "must be unique"
+        offer:
+          prices:
+            empty_prices: "must be present"
+        client:
+          identification_or_phone_number:
+            uniqueness_violation: "must be unique"
       size?:
         arg:
           default: "size must be %{size}"

@@ -1,0 +1,8 @@
+en:
+  office:
+    car_parks:
+      edit:
+        title: "%{car_park}"
+        price_ranges: "Price ranges"
+        rental_rules: "Rental rules"
+        services: "Services"

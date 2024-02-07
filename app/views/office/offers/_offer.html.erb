@@ -1,0 +1,3 @@
+<%= turbo_frame_tag offer do %>
+  <%= link_to offer.title, edit_office_car_park_car_offer_path(@car_park, @car, offer), class: "list-group-item list-group-item-action", data: {turbo_frame: dom_id(offer)} %>
+<% end %>

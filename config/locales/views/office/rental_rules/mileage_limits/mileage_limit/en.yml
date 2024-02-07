@@ -1,0 +1,6 @@
+en:
+  office:
+    rental_rules:
+      mileage_limits:
+        mileage_limit:
+          description: "Minimal period starting from %{days} days"

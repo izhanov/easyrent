@@ -1,0 +1,15 @@
+en:
+  operations:
+    office:
+      offers:
+        create:
+          success: "Offer was successfully created."
+          errors:
+            validation_error: "Validation error on create."
+            uniqueness_violation: "Offer already exists."
+        update:
+          success: "Offer was successfully updated."
+          errors:
+            validation_error: "Validation error on update."
+        destroy:
+          success: "Offer was successfully destroyed."

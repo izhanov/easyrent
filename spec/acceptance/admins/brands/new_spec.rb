@@ -33,7 +33,7 @@ feature "Admin visit brands new page" do
       expect(page).to have_content("Batcar")
     end
 
-    scenario "when fill title field with existing title" do
+    scenario "when fill title field with existing title", js: true do
       brand = create(:brand)
       visit new_admins_brand_path
       fill_in "Title", with: brand.title

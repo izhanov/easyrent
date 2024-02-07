@@ -41,7 +41,7 @@ feature "User sign in" do
       expect(page).to have_current_path(new_office_user_session_path)
     end
 
-    scenario "with correct email and password" do
+    scenario "with correct email and password", js: true do
       user = create(:user)
       visit new_office_user_session_path
       fill_in "office_user[email]", with: user.email

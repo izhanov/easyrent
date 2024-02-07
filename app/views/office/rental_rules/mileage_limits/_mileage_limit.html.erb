@@ -1,0 +1,11 @@
+<%= turbo_frame_tag mileage_limit do %>
+  <div class="rental_rule--column__list__item">
+    <span><%= mileage_limit.title %></span>
+    <%= link_to edit_office_car_park_rental_rule_mileage_limit_path(mileage_limit.owner, mileage_limit), class: "btn btn-sm btn-warning" do %>
+      <i class="bi bi-pencil-square"></i>
+    <% end %>
+    <%= link_to office_car_park_rental_rule_mileage_limit_path(mileage_limit.owner, mileage_limit), data: {turbo_confirm: "are you sure?", turbo_method: :delete}, class: "btn btn-outline-danger btn-sm" do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
+  </div>
+<% end %>

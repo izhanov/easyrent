@@ -1,0 +1,5 @@
+<% marks.each do |mark| %>
+  <li class="list-group-item" role="option" data-autocomplete-value=<%= mark.id %> >
+    <%= "#{mark.brand.title} #{mark.title}" %>
+  </li>
+<% end %>

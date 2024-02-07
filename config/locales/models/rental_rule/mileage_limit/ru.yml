@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    models:
+      rental_rule/mileage_limit: "Ограничение по пробегу"
+    attributes:
+      rental_rule/mileage_limit:
+        title: "Название"
+        value: "Лимит, км"
+        markup: "Наценка, %"
+        discount: "Скидка, %"
+        over_mileage_price: "Цена за превышение пробега, тг/км"
+

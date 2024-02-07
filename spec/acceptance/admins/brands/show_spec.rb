@@ -19,20 +19,21 @@ feature "Admin visit brands show page" do
 
   scenario "and see edit, destroy and back links" do
     visit admins_brand_path(brand)
-    expect(page).to have_link("Edit")
-    expect(page).to have_link("Destroy")
-    expect(page).to have_link("Back")
+    expect(page).to have_xpath("//a[@href='#{edit_admins_brand_path(brand)}']")
+    expect(page).to have_xpath("//a[@href='#{admins_brand_path(brand)}']")
+    expect(page).to have_xpath("//a[@href='#{admins_catalogues_path}']")
   end
 
   scenario "and click to edit link" do
     visit admins_brand_path(brand)
-    click_link "Edit"
+    find("//a[@href='#{edit_admins_brand_path(brand)}']").click
     expect(page).to have_current_path(edit_admins_brand_path(brand))
   end
 
-  scenario "and click to destroy link" do
+  scenario "and click to destroy link", js: true do
     visit admins_brand_path(brand)
-    click_link "Destroy"
+
+    find(".btn.btn-sm.btn-danger").click
     expect(page).to have_current_path(admins_brands_path)
     expect(page).to have_content("Brand was successfully destroyed")
   end

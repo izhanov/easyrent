@@ -1,0 +1,5 @@
+<%= turbo_frame_tag minimal_period do %>
+  <span>
+    <%= link_to t(".description", days: minimal_period.value), edit_office_car_park_rental_rule_minimal_period_path(@car_park), data: {turbo: true, turbo_frame: dom_id(minimal_period)}, class: "rental_rule__link" %>
+  </span>
+<% end %>
