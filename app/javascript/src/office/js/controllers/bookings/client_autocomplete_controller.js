@@ -135,7 +135,7 @@ export default class ClientAutocomplete extends Controller {
     const textValue = selected.getAttribute("data-autocomplete-label") || selected.textContent.trim()
     const value = selected.getAttribute("data-autocomplete-value") || textValue
     this.inputTarget.value = textValue
-    console.log(value)
+
     if (this.hasHiddenTarget) {
       this.hiddenTarget.value = value
       this.hiddenTarget.dispatchEvent(new Event("input"))

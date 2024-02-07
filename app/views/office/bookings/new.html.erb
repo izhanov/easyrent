@@ -24,8 +24,12 @@
         <i class="bi bi-person-plus"></i>
       <% end %>
     </div>
+
+    <% # Insert new client from client autocomplete partial link via Turbo %>
     <%= turbo_frame_tag dom_id(Client.new)%>
 
+    <% # Insert created client credential via JS %>
+    <% # see app/javascript/src/office/js/bookings/new/insert_client.js %>
     <%= turbo_frame_tag "created_client_credential" %>
   </div>
 
@@ -50,7 +54,12 @@
       <ul class="list-group" data-autocomplete-target="results"></ul>
     </div>
 
+    <% #Insert offers to select fires via JS after selecting a car %>
+    <% # see app/javascript/src/office/js/bookings/new/insert_offer.js %>
     <%= turbo_frame_tag "offers_to_select" %>
+
+    <% # Insert new offer from offers select partial link via Turbo %>
+    <%= turbo_frame_tag Offer.new %>
   </div>
   <%= f.submit "Создать", class: "btn btn-primary" %>
 <% end %>

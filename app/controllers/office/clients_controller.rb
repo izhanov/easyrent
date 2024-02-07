@@ -43,8 +43,9 @@ module Office
     def search
       @q = Client.typesense(
         q: params[:q],
-        query_by: "name, surname, full_name_of_the_head, identification_number, phone",
-        infix: "always, always, always, off, always"
+        query_by: "surname, name, identification_number, full_name_of_the_head, phone",
+        infix: "off, always, always, always, always",
+        query_by_weights: "5, 3, 4, 1, 1"
       )
       @clients = Client.where(id: @q.pluck(:id))
       render partial: "office/clients/search", locals: {clients: @clients}
