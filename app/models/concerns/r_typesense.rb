@@ -93,11 +93,7 @@ module RTypesense
           end
         elsif field.array_of_string?
           objects = record.send(field.name)
-          document[field.name] = objects.map do |object|
-            field.nested_fields.map do |nested_field|
-              type_cast(object.send(nested_field.name), nested_field.type)
-            end
-          end.flatten
+          document[field.name] = objects
         else
           document[field.name] = type_cast(record.send(field.name), field.type)
         end
