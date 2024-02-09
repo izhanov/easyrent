@@ -93,7 +93,13 @@ module RTypesense
           end
         elsif field.array_of_string?
           objects = record.send(field.name)
-          document[field.name] = objects
+          document[field.name] = if objects.is_a?(Array)
+            objects
+          elsif objects.all? { |object| object.is_a?(ApplicationRecord) }
+            objects.map do |object|
+              nested_array(object, field.nested_fields)
+            end.flatten
+          end
         else
           document[field.name] = type_cast(record.send(field.name), field.type)
         end
@@ -107,6 +113,12 @@ module RTypesense
         else
           type_cast(object.send(nested_field.name), nested_field.type)
         end
+      end
+    end
+
+    def nested_array(object, nested_fields)
+      nested_fields.each_with_object([]) do |nested_field, nested_array|
+        nested_array << type_cast(object.send(nested_field.name), nested_field.type)
       end
     end
 
