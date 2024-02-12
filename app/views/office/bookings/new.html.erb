@@ -40,7 +40,7 @@
     <div class="col">
       <div class="input-group">
         <%= label_tag :car_park, "Aвтопарк", class: "input-group-text"%>
-        <%= select_tag :car_park, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl"} %>
+        <%= select_tag :car_park, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices"} %>
       </div>
     </div>
     <div
@@ -60,6 +60,35 @@
 
     <% # Insert new offer from offers select partial link via Turbo %>
     <%= turbo_frame_tag Offer.new %>
+    <%= turbo_frame_tag "additional_services_checkboxes" %>
   </div>
+
+  <div class="row d-flex justify-content-between align-items-center mb-4">
+    <div class="col">
+      <div class="input-group">
+        <%= f.label :starts_at, class: "input-group-text"%>
+        <%= f.datetime_field :starts_at, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="input-group">
+        <%= f.label :ends_at, class: "input-group-text"%>
+        <%= f.datetime_field :ends_at, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <% # checkboxes with car park additional services %>
+  <div class="row d-flex justify-content-between align-items-center mb-4">
+    <%= f.fields_for :services do |service| %>
+      <div class="col">
+        <div class="form-check">
+          <%= service.check_box :additional_driver, class: "form-check-input" %>
+          <%= service.label :additional_driver, class: "form-check-label" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <%= f.submit "Создать", class: "btn btn-primary" %>
 <% end %>

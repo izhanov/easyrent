@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    models:
+      booking: "Заявка"
+    attributes:
+      booking:
+        client_id: "Клиент"
+        car_id: "Автомобиль"
+        offer_id: "Тариф"
+        starts_at: "Дата и время начала"
+        ends_at: "Дата и время окончания"
