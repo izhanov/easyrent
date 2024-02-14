@@ -22,6 +22,7 @@ export default class extends Controller {
   }
 
   changeServices(event) {
-
+    const carParkID = event.target.value;
+    Turbo.visit(`/office/car_parks/${carParkID}/additional_services/booking_checkboxes`, {frame: "additional_services_checkboxes"})
   }
 }

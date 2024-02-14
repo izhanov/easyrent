@@ -13,7 +13,7 @@ export default class ClientAutocomplete extends Controller {
     minLength: Number,
     delay: { type: Number, default: 300 },
     queryParam: { type: String, default: "q" },
-    searchUrls: Array
+    carParkIdParam: { type: String, default: "car_park_id" }
   }
   static uniqOptionId = 0
 
@@ -35,7 +35,6 @@ export default class ClientAutocomplete extends Controller {
     if (this.inputTarget.hasAttribute("autofocus")) {
       this.inputTarget.focus()
     }
-
     this.readyValue = true
   }
 
@@ -213,10 +212,12 @@ export default class ClientAutocomplete extends Controller {
   }
 
   buildURL(query) {
-    if (this.hasSearchUrlsValue) {
-      const url = new URL(this.searchUrlsValue[0], window.location.href)
+    if (this.carParkIdParamValue) {
+      const url = new URL(this.urlValue, window.location.href)
       const params = new URLSearchParams(url.search.slice(1))
+      const carParkId = document.querySelector('select[id="car_park"]').value
       params.append(this.queryParamValue, query)
+      params.append(this.carParkIdParamValue, carParkId)
       url.search = params.toString()
       return url.toString()
     } else {

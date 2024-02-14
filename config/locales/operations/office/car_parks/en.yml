@@ -10,3 +10,5 @@ en:
           success: "Car park was successfully updated"
           errors:
             validation_error: "Validation error"
+        destroy:
+          success: "Car park was successfully destroyed"

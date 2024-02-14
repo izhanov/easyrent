@@ -10,8 +10,9 @@ module Office
     end
 
     def create
-      operation = Operations::Office::Clients::Create.new
-      result = operation.call(client_params.to_h)
+      operation = Operations::Office::Clients::Accession.new
+      @car_park = current_office_user.car_parks.find(params[:car_park_id])
+      result = operation.call(@car_park, client_params.to_h)
 
       case result
       in Success[client]
@@ -47,7 +48,8 @@ module Office
         infix: "off, always, always, always, always",
         query_by_weights: "5, 3, 4, 1, 1"
       )
-      @clients = Client.where(id: @q.pluck(:id))
+      @car_park = current_office_user.car_parks.find(params[:car_park_id])
+      @clients = @car_park.clients.where(id: @q.pluck(:id))
       render partial: "office/clients/search", locals: {clients: @clients}
     end
 
@@ -70,7 +72,8 @@ module Office
         :signed_on_basis,
         :legal_address,
         :bank_account_number,
-        :bank_code
+        :bank_code,
+        :car_park_id
       )
     end
   end

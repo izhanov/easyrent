@@ -61,5 +61,16 @@ RSpec.describe Operations::Office::Clients::Create do
         end
       end
     end
+
+    context "when client already present in DB" do
+      it "returns success with existing client" do
+        client = create(:client)
+        params = client.attributes.symbolize_keys
+
+        result = described_class.new.call(params)
+        expect(result).to be_success
+        expect(result.value!).to eq(client)
+      end
+    end
   end
 end

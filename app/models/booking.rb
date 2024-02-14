@@ -54,4 +54,6 @@ class Booking < ApplicationRecord
       object [offer, :title], optional: false
     end
   end
+
+  PAYMENT_METHODS = %w[cash cashless]
 end

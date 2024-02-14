@@ -9,3 +9,9 @@ en:
         offer_id: "Offer"
         starts_at: "Starts at"
         ends_at: "Ends at"
+        pickup_location: "Pickup location"
+        drop_off_location: "Drop off location"
+        payment_method: "Payment method"
+        payment_methods:
+          cash: "Cash"
+          cashless: "Cashless"

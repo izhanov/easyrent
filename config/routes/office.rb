@@ -40,7 +40,9 @@ namespace :office do
       resources :mileage_limits
     end
 
-    resources :additional_services
+    resources :additional_services do
+      get :booking_checkboxes, on: :collection
+    end
 
     resources :bookings
 

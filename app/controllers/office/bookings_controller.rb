@@ -2,6 +2,8 @@
 
 module Office
   class BookingsController < BaseController
+    around_action :set_time_zone, if: :current_office_user
+
     def index
       @bookings = current_office_user.bookings
     end
@@ -12,19 +14,17 @@ module Office
 
     def create
       operation = Operations::Office::Bookings::Create.new
-      result = operation.call(booking_params)
-
+      puts booking_params.to_h
+      result = operation.call(current_office_user, booking_params.to_h)
       case result
       in Success[booking]
-        @booking = booking
         respond_to do |format|
-          format.html
-          format.turbo_stream
+          format.js { render json: {booking: booking}, status: :created }
         end
-      in Failure[:validation_error, errors]
-        @booking = Booking.new(booking_params)
-        @errors = errors
-        render :new, status: :unprocessable_entitys
+      in Failure[error_code, errors]
+        respond_to do |format|
+          format.js { render json: {errors: errors}, status: :unprocessable_entity }
+        end
       end
     end
 
@@ -40,8 +40,16 @@ module Office
         :self_pickup,
         :self_drop_off,
         :pickup_location,
-        :drop_off_location
+        :drop_off_location,
+        :car,
+        :client,
+        :payment_method,
+        services: {}
       )
+    end
+
+    def set_time_zone(&block)
+      Time.use_zone("Asia/Almaty", &block)
     end
   end
 end

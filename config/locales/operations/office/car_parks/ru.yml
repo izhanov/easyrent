@@ -10,3 +10,5 @@ ru:
           success: "Автопарк успешно обновлен"
           errors:
             validation_error: "Ошибка валидации"
+        destroy:
+          success: "Автопарк успешно удален"

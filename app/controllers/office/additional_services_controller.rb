@@ -65,6 +65,11 @@ module Office
       end
     end
 
+    def booking_checkboxes
+      @car_park = current_office_user.car_parks.find(params[:car_park_id])
+      render partial: "booking_checkboxes", locals: { car_park: @car_park }
+    end
+
     private
 
     def find_car_park

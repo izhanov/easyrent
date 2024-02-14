@@ -11,5 +11,19 @@ FactoryBot.define do
     driving_license_issued_date { "2018-01-29" }
     citizen { true }
     kind { "individual" }
+    bank_account_number { "KZ123456789012345678" }
+  end
+
+  trait :legal do
+    kind { "legal" }
+    full_name_of_the_head { "John Doe" }
+    legal_address { "Almaty, Kazakhstan" }
+    bank_code { "KZ123456" }
+    bank_account_number { "KZ123456789012345678" }
+    signed_on_basis { "John Doe" }
+  end
+
+  trait :individual do
+    kind { "individual" }
   end
 end

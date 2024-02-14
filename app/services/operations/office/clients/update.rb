@@ -5,7 +5,7 @@ module Operations
     module Clients
       class Update < Base
         def call(client, params)
-          kind = yield define_kind(params[:kind])
+          kind = client.kind
           validated_params = yield validate(kind, params)
           updated_client = yield commit(client, validated_params.to_h)
           Success(updated_client)

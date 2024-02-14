@@ -49,7 +49,7 @@ module Office
 
     def destroy
       @car_park.destroy!
-      redirect_to office_car_parks_path, flash: {success: t("car_parks.destroy")}
+      redirect_to office_car_parks_path, flash: {success: success_resolver(path: "car_parks.destroy")}
     end
 
     private

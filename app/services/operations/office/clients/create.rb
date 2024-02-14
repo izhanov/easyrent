@@ -7,7 +7,7 @@ module Operations
         def call(params)
           kind = yield define_kind(params[:kind])
           validated_params = yield validate(kind, params)
-          client = yield commit(validated_params.to_h)
+          client = yield find_or_create(validated_params.to_h)
           Success(client)
         end
 
@@ -18,6 +18,11 @@ module Operations
           validation = validation_klass.new.call(params)
           validation.to_monad
             .or { |failure| Failure[:validation_error, failure.errors.to_h] }
+        end
+
+        def find_or_create(params)
+          exsiting_client = Client.find_by(params)
+          exsiting_client ? Success(exsiting_client) : commit(params)
         end
 
         def commit(params)

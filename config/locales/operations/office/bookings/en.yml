@@ -1,0 +1,6 @@
+en:
+  operations:
+    office:
+      bookings:
+        create:
+          car_is_not_vacant: "Car in not vacant. Booked: %{booked_dates}"

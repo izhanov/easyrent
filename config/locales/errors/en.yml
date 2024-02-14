@@ -123,6 +123,11 @@ en:
         client:
           identification_or_phone_number:
             uniqueness_violation: "must be unique"
+        starts_at:
+          in_the_past: "cannot be in the past"
+        ends_at:
+          in_the_past: "cannot be in the past"
+          less_than_starts_at: "cannot be less than starts at"
       size?:
         arg:
           default: "size must be %{size}"

@@ -4,33 +4,19 @@
   </h1>
 </div>
 
+<%#  Alert from error handler %>
 
-<%= form_with model: [:office, @booking] do |f| %>
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div
-      class="col"
-      data-controller="bookings--client-autocomplete bookings--upsert-client"
-      data-bookings--client-autocomplete-url-value=<%= search_office_clients_path %>
-    >
-      <div class="col input-group">
-        <%= label_tag :client, "Клиент", class: "input-group-text"%>
-        <%= text_field_tag :client, nil, type: "search", placeholder: "Введите фамилию или ИИН, номер паспорта клиента", class: "form-control", data: {"bookings--client-autocomplete-target":"input"} %>
-        <%= f.hidden_field :client_id, data: { "bookings--client-autocomplete-target": "hidden" }%>
+
+<%= form_with model: [:office, @booking], html: {data: {controller: "bookings--form bookings--error-handler", action: "bookings--form:error->bookings--error-handler#show"}} do |f| %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="alert alert-danger alert-dismissible fade d-none" role="alert" data-bookings--error-handler-target="errorMessage">
+          <div data-bookings--error-handler-target="booking"></div>
+          <button type="button" class="btn-close" data-action="bookings--error-handler#closeErrorMessage" aria-label="Close"></button>
+        </div>
       </div>
-      <ul class="list-group" data-bookings--client-autocomplete-target="results"></ul>
     </div>
-    <div class="col">
-      <%= link_to new_office_client_path, class: "btn btn-sm btn-primary", data: {turbo: true, turbo_frame: dom_id(Client.new)} do %>
-        <i class="bi bi-person-plus"></i>
-      <% end %>
-    </div>
-
-    <% # Insert new client from client autocomplete partial link via Turbo %>
-    <%= turbo_frame_tag dom_id(Client.new)%>
-
-    <% # Insert created client credential via JS %>
-    <% # see app/javascript/src/office/js/bookings/new/insert_client.js %>
-    <%= turbo_frame_tag "created_client_credential" %>
   </div>
 
   <div
@@ -48,8 +34,8 @@
       data-controller="autocomplete"
       data-autocomplete-url-value="">
       <div class="col">
-        <%= text_field_tag :car, nil, type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input"} %>
-        <%= f.hidden_field :car_id, data: { "autocomplete-target": "hidden" }%>
+        <%= text_field_tag :car, @car, type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
+        <%= f.hidden_field :car_id, data: { "autocomplete-target": "hidden", "bookings--form-target": "carId" }%>
       </div>
       <ul class="list-group" data-autocomplete-target="results"></ul>
     </div>
@@ -60,35 +46,90 @@
 
     <% # Insert new offer from offers select partial link via Turbo %>
     <%= turbo_frame_tag Offer.new %>
-    <%= turbo_frame_tag "additional_services_checkboxes" %>
+  </div>
+
+  <div class="row d-flex justify-content-between align-items-center mb-4">
+    <div
+      class="col"
+      data-controller="bookings--client-autocomplete bookings--upsert-client"
+      data-bookings--client-autocomplete-url-value=<%= search_office_clients_path %>
+    >
+      <div class="col input-group">
+        <%= label_tag :client, "Клиент", class: "input-group-text"%>
+        <%= text_field_tag :client, @client, type: "search", placeholder: "Введите фамилию или ИИН, номер паспорта клиента", class: "form-control", data: {"bookings--client-autocomplete-target":"input", "bookings--error-handler-target": "clientId"} %>
+        <%= f.hidden_field :client_id, data: { "bookings--client-autocomplete-target": "hidden" }%>
+      </div>
+      <ul class="list-group" data-bookings--client-autocomplete-target="results"></ul>
+    </div>
+    <div class="col">
+      <%= link_to new_office_client_path, class: "btn btn-sm btn-primary", data: {turbo: true, turbo_frame: dom_id(Client.new) } do %>
+        <i class="bi bi-person-plus"></i>
+      <% end %>
+    </div>
+
+    <% # Insert new client from client autocomplete partial link via Turbo %>
+    <%= turbo_frame_tag dom_id(Client.new) %>
+
+    <% # Insert created client credential via JS %>
+    <% # see app/javascript/src/office/js/bookings/new/insert_client.js %>
+    <%= turbo_frame_tag "created_client_credential" %>
   </div>
 
   <div class="row d-flex justify-content-between align-items-center mb-4">
     <div class="col">
       <div class="input-group">
         <%= f.label :starts_at, class: "input-group-text"%>
-        <%= f.datetime_field :starts_at, class: "form-control" %>
+        <%= f.datetime_field :starts_at, class: "form-control", data: {"bookings--error-handler-target": "startsAt"} %>
       </div>
     </div>
     <div class="col">
       <div class="input-group">
         <%= f.label :ends_at, class: "input-group-text"%>
-        <%= f.datetime_field :ends_at, class: "form-control" %>
+        <%= f.datetime_field :ends_at, class: "form-control", data: {"bookings--error-handler-target": "endsAt"} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-between align-items-center mb-4">
+    <div class="col">
+      <div class="input-group">
+        <%= f.label :pickup_location, class: "input-group-text"%>
+        <%= f.text_field :pickup_location, class: "form-control", data: {"bookings--error-handler-target": "pickupLocation"} %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="input-group">
+        <%= f.label :drop_off_location, class: "input-group-text"%>
+        <%= f.text_field :drop_off_location, class: "form-control", data: {"bookings--error-handler-target": "dropOffLocation"} %>
       </div>
     </div>
   </div>
 
   <% # checkboxes with car park additional services %>
   <div class="row d-flex justify-content-between align-items-center mb-4">
-    <%= f.fields_for :services do |service| %>
-      <div class="col">
-        <div class="form-check">
-          <%= service.check_box :additional_driver, class: "form-check-input" %>
-          <%= service.label :additional_driver, class: "form-check-label" %>
-        </div>
-      </div>
+    <%= turbo_frame_tag "additional_services_checkboxes" do %>
+      <%= f.fields_for :services do |service_form| %>
+        <% @services ||= current_office_user.car_parks.first.additional_services %>
+        <% @services.each do |service| %>
+          <div class="col">
+            <div class="form-check">
+              <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
+              <%= service_form.label service.title.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 
-  <%= f.submit "Создать", class: "btn btn-primary" %>
+  <div class="row d-flex justify-content-between align-items-center mb-4">
+    <div class="col-6">
+      <div class="input-group">
+        <%= f.label :payment_method, class: "input-group-text"%>
+        <%= f.select :payment_method, options_for_select(Booking::PAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {blank_included: false}, class: "form-select" %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit "Создать", data: {action: "bookings--form#submit"}, class: "btn btn-primary" %>
 <% end %>

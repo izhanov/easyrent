@@ -11,6 +11,13 @@
 
       clientIDInput.value = createdClientID;
       clientFullNameInput.value = createdClientFullName;
+      clientIDInput.setAttribute('data-client-id', createdClientFullName);
     }
   });
 })
+
+document.addEventListener('turbo:load', (e) => {
+  const clientIDInput = document.querySelector('input[id$="_client_id"]');
+});
+
+

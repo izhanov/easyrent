@@ -117,6 +117,11 @@ ru:
         client:
           identification_or_phone_number:
             uniqueness_violation: "должно быть уникальным"
+        starts_at:
+          in_the_past: "не должно быть в прошлом"
+        ends_at:
+          in_the_past: "не должно быть в прошлом"
+          less_than_starts_at: "не должно быть меньше чем начало"
       size?:
         arg:
           default: "размер должен быть %{size}"

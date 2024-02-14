@@ -1,0 +1,12 @@
+<%= turbo_frame_tag "additional_services_checkboxes" do %>
+  <%= fields_for :"booking[services]" do |services_form| %>
+    <% car_park.additional_services.each do |service| %>
+      <div class="col">
+        <div class="form-check">
+          <%= services_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
+          <%= services_form.label service.title.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

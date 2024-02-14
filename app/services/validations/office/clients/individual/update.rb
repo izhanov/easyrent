@@ -4,13 +4,11 @@ module Validations
   module Office
     module Clients
       module Individual
-        class Create < Base
+        class Update < Base
           params do
             required(:name).filled(:string)
-            required(:surname).filled(:string)
-            required(:identification_number).filled(:string)
             required(:phone).filled(:string)
-            required(:kind).filled(:string)
+            required(:surname).filled(:string)
             required(:citizen).filled(:bool)
             required(:email).filled(:string)
             required(:driving_license).filled(:string)

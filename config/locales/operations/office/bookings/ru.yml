@@ -1,0 +1,6 @@
+ru:
+  operations:
+    office:
+      bookings:
+        create:
+          car_is_not_vacant: "Автомобиль не свободен. Забронирован на даты: %{booked_dates}"
