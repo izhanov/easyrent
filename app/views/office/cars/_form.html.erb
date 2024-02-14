@@ -19,7 +19,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :year, class: "input-group-text" %>
-      <%= f.number_field :year, class: "form-control" %>
+      <%= f.number_field :year, class: "form-control #{@errors && @errors.dig(:year).present? ? 'is-invalid' : ''}" %>
       <%= error_field(@errors, :year) %>
     </div>
   </div>
@@ -27,7 +27,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :engine_capacity, class: "input-group-text" %>
-      <%= f.number_field :engine_capacity, max: 16, min: 0.5, step: 0.1, class: "form-control" %>
+      <%= f.number_field :engine_capacity, max: 16, min: 0.5, step: 0.1, class: "form-control #{@errors && @errors.dig(:engine_capacity).present? ? 'is-invalid' : ''}" %>
 
       <%= f.label :engine_capacity_unit, class: "input-group-text" %>
       <%= f.select(
@@ -54,7 +54,7 @@
               selected: f.object.klass
             ),
             {include_blank: true},
-            class: "form-select"
+            class: "form-select #{@errors && @errors.dig(:klass).present? ? 'is-invalid' : ''}"
           )
       %>
       <%= error_field(@errors, :klass) %>
@@ -71,7 +71,7 @@
               selected: f.object.fuel
             ),
             {include_blank: true},
-            class: "form-select"
+            class: "form-select #{@errors && @errors.dig(:fuel).present? ? 'is-invalid' : ''}"
           )
       %>
       <%= error_field(@errors, :fuel) %>
@@ -81,7 +81,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :plate_number, class: "input-group-text" %>
-      <%= f.text_field :plate_number, class: "form-control" %>
+      <%= f.text_field :plate_number, class: "form-control #{@errors && @errors.dig(:plate_number).present? ? 'is-invalid' : ''}" %>
       <%= error_field(@errors, :plate_number) %>
     </div>
   </div>
@@ -89,7 +89,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :vin_code, class: "input-group-text" %>
-      <%= f.text_field :vin_code, class: "form-control" %>
+      <%= f.text_field :vin_code, class: "form-control #{@errors && @errors.dig(:vin_code).present? ? 'is-invalid' : ''}" %>
       <%= error_field(@errors, :vin_code) %>
     </div>
   </div>
@@ -97,7 +97,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :technical_certificate_number, class: "input-group-text" %>
-      <%= f.text_field :technical_certificate_number, class: "form-control" %>
+      <%= f.text_field :technical_certificate_number, class: "form-control #{@errors && @errors.dig(:technical_certificate_number).present? ? 'is-invalid' : ''}" %>
       <%= error_field(@errors, :technical_certificate_number) %>
     </div>
   </div>
@@ -112,7 +112,7 @@
               selected: f.object.transmission
             ),
             {include_blank: true},
-            class: "form-select"
+            class: "form-select #{@errors && @errors.dig(:transmission).present? ? 'is-invalid' : ''}"
           )
       %>
       <%= error_field(@errors, :transmission) %>
@@ -122,7 +122,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :color, class: "input-group-text" %>
-      <%= f.text_field :color, class: "form-control" %>
+      <%= f.text_field :color, class: "form-control #{@errors && @errors.dig(:color).present? ? 'is-invalid' : ''}" %>
       <%= error_field(@errors, :color) %>
     </div>
   </div>
@@ -130,7 +130,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :number_of_seats, class: "input-group-text" %>
-      <%= f.number_field :number_of_seats, min: 2, max: 14, class: "form-control" %>
+      <%= f.number_field :number_of_seats, min: 2, max: 14, class: "form-control #{@errors && @errors.dig(:number_of_seats).present? ? 'is-invalid' : ''}" %>
       <%= error_field(@errors, :number_of_seats) %>
     </div>
   </div>
@@ -138,14 +138,14 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :tank_volume, class: "input-group-text" %>
-      <%= f.number_field :tank_volume, max: 200, class: "form-control" %>
+      <%= f.number_field :tank_volume, max: 200, class: "form-control #{@errors && @errors.dig(:tank_volume).present? ? 'is-invalid' : ''}" %>
       <%= error_field(@errors, :tank_volume) %>
     </div>
   </div>
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :mileage, class: "input-group-text" %>
-      <%= f.text_field :mileage, class: "form-control", data: {mask: "mileage"} %>
+      <%= f.text_field :mileage, class: "form-control #{@errors && @errors.dig(:mileage).present? ? 'is-invalid' : ''}", data: {mask: "mileage"} %>
       <%= error_field(@errors, :mileage) %>
     </div>
   </div>
