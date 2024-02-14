@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import * as camelize from 'camelize';
+import camelcaseKeys from 'camelcase-keys';
 
 export default class extends Controller {
   static targets = [
@@ -18,7 +18,7 @@ export default class extends Controller {
       Turbo.visit(`/office/bookings/${data.booking.id}`)
     } else {
       const errors = data.errors
-      this.dispatch("error", {detail: camelize(errors)})
+      this.dispatch("error", {detail: camelcaseKeys(errors)})
     }
   }
 }
