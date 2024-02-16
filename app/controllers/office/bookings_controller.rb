@@ -2,10 +2,10 @@
 
 module Office
   class BookingsController < BaseController
-    around_action :set_time_zone, if: :current_office_user
+    before_action :find_car_park, only: %i[create]
 
     def index
-      @bookings = current_office_user.bookings
+      @bookings = current_office_user.bookings.left_joins(:car, :client, :offer).group_by(&:status)
     end
 
     def new
@@ -14,8 +14,8 @@ module Office
 
     def create
       operation = Operations::Office::Bookings::Create.new
-      puts booking_params.to_h
-      result = operation.call(current_office_user, booking_params.to_h)
+      result = operation.call(@car_park, booking_params.to_h)
+
       case result
       in Success[booking]
         respond_to do |format|
@@ -26,6 +26,10 @@ module Office
           format.js { render json: {errors: errors}, status: :unprocessable_entity }
         end
       end
+    end
+
+    def show
+      @booking = current_office_user.bookings.find(params[:id])
     end
 
     private
@@ -48,8 +52,8 @@ module Office
       )
     end
 
-    def set_time_zone(&block)
-      Time.use_zone("Asia/Almaty", &block)
+    def find_car_park
+      @car_park = current_office_user.car_parks.find(params[:car_park_id])
     end
   end
 end

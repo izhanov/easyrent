@@ -26,6 +26,8 @@ module Operations
             car_park.create_price_range!(unit: "day")
             Success(car_park)
           end
+        rescue ActiveRecord::RecordNotUnique
+          Failure[:uniqueness_violation, I18n.t("dry_validation.errors.rules.car_park.name.uniqueness_violation")]
         end
 
         def normalize_phones(params)

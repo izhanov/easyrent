@@ -19,3 +19,4 @@ ru:
         bank_code: "БИК"
         benificiary_code: "КБе"
         service_phone: "Телефон сервисной линии"
+        booking_prefix: "Префикс заявки"

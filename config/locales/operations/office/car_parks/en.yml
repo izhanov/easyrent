@@ -10,5 +10,6 @@ en:
           success: "Car park was successfully updated"
           errors:
             validation_error: "Validation error"
+            uniqueness_violation: "BIN/IIN and request prefix must be unique"
         destroy:
           success: "Car park was successfully destroyed"

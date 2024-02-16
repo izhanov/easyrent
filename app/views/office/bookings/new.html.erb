@@ -2,9 +2,13 @@
   <h1>
     Новая заявка
   </h1>
-</div>
 
-<%#  Alert from error handler %>
+  <div>
+    <%= link_to office_bookings_path, class: "btn btn-sm btn-outline-primary" do %>
+      <i class="bi bi-box-arrow-left"></i>
+    <% end %>
+  </div>
+</div>
 
 
 <%= form_with model: [:office, @booking], html: {data: {controller: "bookings--form bookings--error-handler", action: "bookings--form:error->bookings--error-handler#show"}} do |f| %>
@@ -25,8 +29,8 @@
     data-bookings--car-park-select-urls-value=<%=current_office_user.car_parks.each_with_object({}) { |car_park, result| result[car_park.id] = search_office_car_park_cars_path(car_park.id) }.to_json %> >
     <div class="col">
       <div class="input-group">
-        <%= label_tag :car_park, "Aвтопарк", class: "input-group-text"%>
-        <%= select_tag :car_park, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices"} %>
+        <%= label_tag :car_park_id, "Aвтопарк", class: "input-group-text"%>
+        <%= select_tag :car_park_id, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices"} %>
       </div>
     </div>
     <div
@@ -109,15 +113,17 @@
   <div class="row d-flex justify-content-between align-items-center mb-4">
     <%= turbo_frame_tag "additional_services_checkboxes" do %>
       <%= f.fields_for :services do |service_form| %>
-        <% @services ||= current_office_user.car_parks.first.additional_services %>
-        <% @services.each do |service| %>
-          <div class="col">
-            <div class="form-check">
-              <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
-              <%= service_form.label service.title.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+        <% @services ||= current_office_user.car_parks.first&.additional_services %>
+        <% if @services.present? && @services.any? %>
+          <% @services.each do |service| %>
+            <div class="col">
+              <div class="form-check">
+                <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
+                <%= service_form.label service.title.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        <%end %>
       <% end %>
     <% end %>
   </div>

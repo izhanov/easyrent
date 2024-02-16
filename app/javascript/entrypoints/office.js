@@ -18,3 +18,10 @@ import './../src/office/js/bookings/new/insert_client.js';
 import './../src/office/js/bookings/new/insert_offer.js';
 import './../src/office/js/bookings/new/additional_services.js';
 import './../src/office/js/bookings/new/insert_car_park_id.js';
+
+// Set time zone to cookies
+
+document.addEventListener('turbo:load', () => {
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  document.cookie = `timezone=${timezone};`;
+});

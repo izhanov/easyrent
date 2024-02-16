@@ -2,16 +2,59 @@
   <h1>
     Заявки
   </h1>
+
+  <div>
+    <%= link_to new_office_booking_path, class: "btn btn-sm btn-primary"  do %>
+      <i class="bi bi-file-earmark-plus"></i>
+      <%= t(".add_booking") %>
+    <% end %>
+  </div>
 </div>
 
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <%= link_to new_office_booking_path, class: "btn btn-sm btn-primary"  do %>
-        <i class="bi bi-file-earmark-plus"></i>
-        <%= t(".add_booking") %>
-      <% end %>
-    </div>
+<div style="overflow-x: auto;" class="row flex-nowrap min-vh-100">
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Новые</h6>
+    <%= render partial: "office/bookings/cards/new", collection: @bookings["new"], as: :booking %>
+  </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Подтвержденные</h6>
+    <%= render partial: "office/bookings/cards/confirmed", collection: @bookings["confirmed"], as: :booking %>
+  </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Предоплата принята</h6>
+    <%= render partial: "office/bookings/cards/prepayment_accepted", collection: @bookings["prepayment_accepted"], as: :booking %>
+  </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+     <h6>Оплата принята</h6>
+    <%= render partial: "office/bookings/cards/payment_accepted", collection: @bookings["payment_accepted"], as: :booking %>
+  </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Выдать авто</h6>
+    <%= render partial: "office/bookings/cards/give_out_the_car", collection: @bookings["give_out_the_car"], as: :booking %>
+  </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Принять авто</h6>
+    <%= render partial: "office/bookings/cards/accept_the_car", collection: @bookings["accept_the_car"], as: :booking %>
+  </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Вернуть залог</h6>
+    <%= render partial: "office/bookings/cards/return_the_deposit", collection: @bookings["return_the_deposit"], as: :booking %>
+  </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Отмененные</h6>
+    <%= render partial: "office/bookings/cards/canceled", collection: @bookings["canceled"], as: :booking %>
+  </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Завершенные</h6>
+    <%= render partial: "office/bookings/cards/finished", collection: @bookings["finished"], as: :booking %>
   </div>
 </div>

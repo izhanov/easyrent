@@ -10,6 +10,7 @@ module Office
 
     before_action :authenticate_office_user!
     before_action :reset_temp_password?
+    around_action :set_time_zone, if: :current_office_user
 
     private
 
@@ -31,6 +32,10 @@ module Office
       else
         t("operations.office.#{options[:path]}.success")
       end
+    end
+
+    def set_time_zone(&block)
+      Time.use_zone(cookies[:timezone], &block)
     end
   end
 end

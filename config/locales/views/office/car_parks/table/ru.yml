@@ -1,0 +1,10 @@
+ru:
+  office:
+    car_parks:
+      table:
+        header:
+          id: 'ID'
+          city: 'Город'
+          mark: 'Марка'
+          plate_number: 'Гос. номер'
+          status: 'Статус'

@@ -9,10 +9,14 @@
 #  actual_starts_at  :datetime
 #  drop_off_location :string           not null
 #  ends_at           :datetime         not null
+#  number            :string
+#  payment_method    :string
 #  pickup_location   :string           not null
 #  self_drop_off     :boolean          default(FALSE)
 #  self_pickup       :boolean          default(FALSE)
+#  services          :jsonb
 #  starts_at         :datetime         not null
+#  status            :string           default("new"), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  car_id            :bigint           not null
@@ -56,4 +60,19 @@ class Booking < ApplicationRecord
   end
 
   PAYMENT_METHODS = %w[cash cashless]
+  STATUSES = %w[
+    new
+    confirmed
+    prepayment_accepted
+    payment_accepted
+    give_out_the_car
+    accept_the_car
+    return_the_deposit
+    canceled
+    finished
+  ]
+
+  def booked_dates
+    starts_at.to_date..ends_at.to_date
+  end
 end

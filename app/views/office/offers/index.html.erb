@@ -5,7 +5,7 @@
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
   <div>
-    <%= link_to edit_office_car_park_car_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary" do %>
+    <%= link_to office_car_park_car_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary" do %>
       <i class="bi bi-box-arrow-left"></i>
     <% end %>
     <%= link_to new_office_car_park_car_offer_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(Offer.new)} do %>

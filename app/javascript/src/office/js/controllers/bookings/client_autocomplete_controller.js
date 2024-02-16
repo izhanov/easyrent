@@ -215,7 +215,7 @@ export default class ClientAutocomplete extends Controller {
     if (this.carParkIdParamValue) {
       const url = new URL(this.urlValue, window.location.href)
       const params = new URLSearchParams(url.search.slice(1))
-      const carParkId = document.querySelector('select[id="car_park"]').value
+      const carParkId = document.querySelector('select[id="car_park_id"]').value
       params.append(this.queryParamValue, query)
       params.append(this.carParkIdParamValue, carParkId)
       url.search = params.toString()

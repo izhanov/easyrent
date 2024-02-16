@@ -8,7 +8,7 @@ export default class extends Controller {
   connect() {
     const autocomplete = document.querySelector('div[data-controller="autocomplete"]');
     const urls = JSON.parse(this.urlsValue);
-    const selectedCarPark = document.querySelector('select[id="car_park"]').value;
+    const selectedCarPark = document.querySelector('select[id="car_park_id"]').value;
 
     autocomplete.setAttribute('data-autocomplete-url-value', urls[selectedCarPark]);
   }

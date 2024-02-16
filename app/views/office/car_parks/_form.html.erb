@@ -23,6 +23,14 @@
     </div>
   </div>
 
+  <div class="col-3 mb-3 mb-lg-4">
+    <div class="input-group">
+      <%= f.label :booking_prefix, class: "input-group-text" %>
+      <%= f.text_field :booking_prefix, class: "form-control #{@errors && @errors.dig(:booking_prefix).present? ? 'is-invalid' : ''}"%>
+      <%= error_field(@errors, :booking_prefix) %>
+    </div>
+  </div>
+
   <div class="col-12 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :city_id, class: "input-group-text" %>

@@ -9,25 +9,10 @@
 </div>
 
 
-<div class="d-lg-flex justify-content-between">
-  <div class="col-lg-3 mb-3">
-    <%= link_to office_car_park_price_range_path(@car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
-      <i class="bi bi-bar-chart-steps"></i>
-      <%= t(".price_ranges") %>
-    <% end %>
-  </div>
-
-  <div class="col-lg-3 mb-3">
-    <%= link_to office_car_park_rental_rule_root_path(@car_park), class: "btn btn-sm btn-warning"  do %>
-      <i class="bi bi-bar-chart-steps"></i>
-      <%= t(".rental_rules") %>
-    <% end %>
-  </div>
-
-  <div class="col-lg-3 mb-3">
-    <%= link_to office_car_park_additional_services_path(@car_park), class: "btn btn-sm btn-warning"  do %>
-      <i class="bi bi-bar-chart-steps"></i>
-      <%= t(".services") %>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= render "form", car_park: @car_park %>
+    </div>
   </div>
 </div>

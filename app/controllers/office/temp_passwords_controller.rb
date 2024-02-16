@@ -14,11 +14,12 @@ module Office
       result = operation.call(params[:user_id], params[:password], params[:password_confirmation])
 
       case result
-      in Success
-        sign_in(:office_user, result.value!)
+      in Success[user]
+        sign_out(user)
+        sign_in(user)
         redirect_to office_root_path, flash: {success: success_resolver(operation)}
       in Failure[error_code, errors]
-        flash.now[:error] = error_resolver(operation, error_code, errors)
+        flash.now[:error] = failure_resolver(operation, error_code, errors)
         render :edit
       end
     end

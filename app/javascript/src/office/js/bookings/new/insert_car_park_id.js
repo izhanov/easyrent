@@ -6,7 +6,7 @@ document.addEventListener('turbo:frame-render', (event) => {
     hiddenCarParkIDInput.type = 'hidden';
     hiddenCarParkIDInput.id = 'car_park_id';
     hiddenCarParkIDInput.name = 'car_park_id';
-    hiddenCarParkIDInput.value = document.querySelector('select[id="car_park"]').value;
+    hiddenCarParkIDInput.value = document.querySelector('select[id="car_park_id"]').value;
     frame.firstElementChild.prepend(hiddenCarParkIDInput);
   }
 })

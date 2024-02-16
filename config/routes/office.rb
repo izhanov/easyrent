@@ -44,8 +44,6 @@ namespace :office do
       get :booking_checkboxes, on: :collection
     end
 
-    resources :bookings
-
     resources :cars do
       resources :offers do
         get :select, on: :collection

@@ -23,7 +23,8 @@ RSpec.describe Operations::Office::CarParks::Create do
             email: Faker::Internet.email,
             bank_code: "ATYNKZKA",
             benificiary_code: "17",
-            service_phone: "+7(700)789-23-87"
+            service_phone: "+7(700)789-23-87",
+            booking_prefix: "NYC"
           }
 
           result = subject.call(params)
@@ -48,7 +49,8 @@ RSpec.describe Operations::Office::CarParks::Create do
             email: Faker::Internet.email,
             bank_code: "ATYNKZKA",
             benificiary_code: "17",
-            service_phone: "+7(700)789-23-87"
+            service_phone: "+7(700)789-23-87",
+            booking_prefix: "NYC"
           }
 
           result = subject.call(params)
@@ -100,7 +102,8 @@ RSpec.describe Operations::Office::CarParks::Create do
             card_id_number: "123456789",
             privateer_number: "123456789",
             privateer_date: Date.today,
-            residence_address: "Residence address"
+            residence_address: "Residence address",
+            booking_prefix: "NYC"
           }
 
           result = subject.call(params)
@@ -126,7 +129,8 @@ RSpec.describe Operations::Office::CarParks::Create do
             card_id_number: "123456789",
             privateer_number: "123456789",
             privateer_date: Date.today,
-            residence_address: "Residence address"
+            residence_address: "Residence address",
+            booking_prefix: "NYC"
           }
 
           result = subject.call(params)

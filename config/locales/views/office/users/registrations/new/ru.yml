@@ -1,0 +1,14 @@
+ru:
+  office:
+    users:
+      registrations:
+        new:
+          sign_up: 'Регистрация'
+          first_name: 'Имя'
+          last_name: 'Фамилия'
+          phone: 'Телефон'
+          kind: 'Тип'
+          email: 'Электронная почта'
+          password: 'Пароль'
+          password_confirmation: 'Подтверждение пароля'
+          submit: 'Сохранить'

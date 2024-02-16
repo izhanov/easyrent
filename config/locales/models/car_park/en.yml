@@ -19,4 +19,5 @@ en:
         bank_code: "Bank code"
         benificiary_code: "Benificiary code"
         service_phone: "Service phone"
+        booking_prefix: "Order prefix"
 

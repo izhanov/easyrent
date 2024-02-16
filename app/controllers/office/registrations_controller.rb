@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Office::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   layout "office"
   # GET /resource/sign_up
@@ -10,9 +10,23 @@ class Office::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    validation = Validations::Office::Users::Create.new.call(sign_up_params.to_h)
+
+    if validation.success?
+      resource_params[:phone] = sanitize_phone_number(sign_up_params[:phone])
+      super
+    else
+      flash[:alert] = "fuck you"
+      @resource = build_resource(sign_up_params)
+
+      validation.errors.to_h.each do |error_key, error_message|
+        @resource.errors.add(error_key.to_sym, error_message.join)
+      end
+
+      render :new
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -41,9 +55,19 @@ class Office::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit(
+        :email,
+        :password,
+        :password_confirmation,
+        :phone,
+        :kind,
+        :first_name,
+        :last_name
+      )
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -51,9 +75,13 @@ class Office::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    office_root_path
+  end
+
+  def sanitize_phone_number(phone_number)
+    phone_number.gsub(/[^0-9\+]/, "")
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

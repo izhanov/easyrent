@@ -122,6 +122,10 @@ ru:
         ends_at:
           in_the_past: "не должно быть в прошлом"
           less_than_starts_at: "не должно быть меньше чем начало"
+        password_confirmation:
+          not_equal_to_password: "пароль подтверждения должен совпадать с паролем"
+        car_park:
+          uniqueness_violation: "БИН/ИИН и префикс заявки должны быть уникальными"
       size?:
         arg:
           default: "размер должен быть %{size}"

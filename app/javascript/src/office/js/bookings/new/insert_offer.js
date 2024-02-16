@@ -1,7 +1,7 @@
 import { Turbo } from "@hotwired/turbo-rails";
 
 document.addEventListener("turbo:load", () => {
-  const selectedCarPark = document.getElementById("car_park");
+  const selectedCarPark = document.getElementById("car_park_id");
   const selectedCar = document.getElementById("booking_car_id");
 
   if (selectedCar) {
@@ -34,7 +34,7 @@ document.addEventListener("turbo:load", () => {
 })
 
 document.addEventListener("turbo:before-stream-render", (event) => {
-  const selectedCarPark = document.getElementById("car_park");
+  const selectedCarPark = document.getElementById("car_park_id");
   const selectedCar = document.getElementById("booking_car_id");
 
   const stream = event.detail.newStream;

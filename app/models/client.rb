@@ -34,9 +34,16 @@ class Client < ApplicationRecord
 
   has_many :clients_in_car_parks, dependent: :destroy
   has_many :car_parks, through: :clients_in_car_parks, dependent: :destroy
+
+  after_commit :update_typesense_index, on: %i[create update]
+
   KINDS = %w[individual legal].freeze
 
   include RTypesense
+
+  def update_typesense_index
+    Client.typesense_upsert(self) unless Rails.env.test?
+  end
 
   draw_schema do
     string :id, optional: false, locale: I18n.default_locale
@@ -55,5 +62,9 @@ class Client < ApplicationRecord
 
   def full_name
     (kind == "individual") ? "#{name} #{surname} #{patronymic}" : full_name_of_the_head
+  end
+
+  def surname_with_initials
+    (kind == "individual") ? "#{surname} #{name[0]}.#{patronymic[0]}." : full_name_of_the_head
   end
 end

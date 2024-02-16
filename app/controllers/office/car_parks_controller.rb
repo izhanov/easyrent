@@ -76,7 +76,8 @@ module Office
         :bank_code,
         :benificiary_code,
         :email,
-        :service_phone
+        :service_phone,
+        :booking_prefix
       )
     end
   end

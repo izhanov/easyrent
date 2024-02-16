@@ -1,0 +1,21 @@
+<%= link_to office_booking_path(booking), class: "text-decoration-none" do %>
+  <div class="card my-2" style="font-size: 10px;">
+    <div class="card-header bg-dark text-white">
+      <%= booking.number %>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <span>Марка: <%= booking.car.mark_title %></span>
+      </li>
+      <li class="list-group-item">
+        <span>Гос. номер: <%= booking.car.plate_number %></span>
+      </li>
+      <li class="list-group-item">
+        <span>Ф.И.О: <%= booking.client.surname_with_initials %></span>
+      </li>
+      <li class="list-group-item">
+        <span>Даты: <%= booking.booked_dates %></span>
+      </li>
+    </ul>
+  </div>
+<% end %>

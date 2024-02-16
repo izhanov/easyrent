@@ -1,5 +1,6 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1>
+    Автопарк
     <%= @car_park.title %>
   </h1>
   <div>
@@ -15,37 +16,75 @@
   </div>
 </div>
 
-<div class="container">
-  <% if @car_park.cars.any?%>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <%= link_to new_office_car_park_car_path(@car_park), class: "btn btn-sm btn-primary"  do %>
-            <i class="bi bi-file-earmark-plus"></i>
-            <%= t(".add_car") %>
-          <% end %>
 
-          <table class="table table-striped table-hover mt-4">
-            <thead class="table-dark">
-              <tr>
-                <th><%= t(".table.header.id")%></th>
-                <th><%= t(".table.header.city")%></th>
-                <th><%= t(".table.header.mark")%></th>
-                <th><%= t(".table.header.plate_number")%></th>
-                <th><%= t(".table.header.status")%></th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= render @car_park.cars %>
-            </tbody>
-          </table>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= link_to new_office_car_park_car_path(@car_park), class: "btn btn-sm btn-primary"  do %>
+        <i class="bi bi-file-earmark-plus"></i>
+        <%= t(".add_car") %>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <% if @car_park.cars.any?%>
+        <%= render "table", cars: @car_park.cars %>
+      <% else %>
+        <div class="alert alert-info mt-3" role="alert">
+          <%= t(".no_cars") %>
+          <%= link_to t(".add_car"), new_office_car_park_car_path(@car_park), class: "alert-link" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-6">
+      <div class="d-lg-flex flex-column">
+        <div class="col-12 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Диапазоны дней проката</h5>
+              <p class="card-text">
+                Настройка позволяющая установить диапазоны дней проката для автомобилей.
+              </p>
+              <%= link_to office_car_park_price_range_path(@car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
+                <i class="bi bi-bar-chart-steps"></i>
+                Настроить
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Правила проката в автопарке</h5>
+              <p class="card-text">
+                Настройка позволяющая установить правила проката для автомобилей – минимальный срок проката, минимальный возраст водителя, минимальный стаж водителя и лимиты пробега.
+              </p>
+              <%= link_to office_car_park_rental_rule_root_path(@car_park), class: "btn btn-sm btn-warning"  do %>
+                <i class="bi bi-bar-chart-steps"></i>
+                Настроить
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Дополнительные услуги</h5>
+              <p class="card-text">
+                Настройка позволяющая установить дополнительные услуги для автомобилей.
+              </p>
+
+              <%= link_to office_car_park_additional_services_path(@car_park), class: "btn btn-sm btn-warning"  do %>
+                <i class="bi bi-bar-chart-steps"></i>
+                Настроить
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  <% else %>
-    <div class="alert alert-info" role="alert">
-      <%= t(".no_cars") %>
-      <%= link_to t(".add_car"), new_office_car_park_car_path(@car_park), class: "alert-link" %>
-    </div>
-  <% end %>
+  </div>
 </div>
+

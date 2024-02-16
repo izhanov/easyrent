@@ -8,6 +8,7 @@ module Validations
           required(:user_id).filled(:integer)
           required(:city_id).filled(:integer)
           required(:title).filled(:string)
+          required(:booking_prefix).filled(:string, max_size?: 4, format?: /^[A-Z]{1,4}$/)
           required(:business_id_number).filled(:string)
           required(:kind).filled(:string)
           required(:bank_name).filled(:string)

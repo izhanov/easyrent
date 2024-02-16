@@ -6,9 +6,11 @@ module Operations
       class Create < Base
         def call(office_user, params)
           validated_params = yield validate(params)
+
           car_id = validated_params[:car_id]
           starts_at = validated_params[:starts_at]
           ends_at = validated_params[:ends_at]
+
           yield vacant?(car_id, starts_at, ends_at)
           booking = yield commit(validated_params.to_h)
           Success(booking)
@@ -44,7 +46,8 @@ module Operations
         end
 
         def commit(params)
-          booking = Booking.create!(params)
+          booking_number = Utils::Bookings::NextNumber.new(params[:car_id]).get
+          booking = Booking.create!(params.merge(number: booking_number))
           Success(booking)
         end
 

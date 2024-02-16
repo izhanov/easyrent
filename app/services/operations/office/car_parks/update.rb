@@ -22,6 +22,8 @@ module Operations
           normalized_params = normalize_phones(params)
           car_park.update!(normalized_params)
           Success(car_park)
+        rescue ActiveRecord::RecordNotUnique
+          Failure[:uniqueness_violation, {}]
         end
 
         def normalize_phones(params)

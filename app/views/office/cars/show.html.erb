@@ -15,3 +15,25 @@
     <% end %>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Тарифы</h5>
+          <p class="card-text">
+            Добавьте тарифы для автомобиля.
+          </p>
+
+          <%= link_to office_car_park_car_offers_path(@car_park, @car), class: "btn btn-sm btn-warning"  do %>
+            Перейти к тарифам
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
