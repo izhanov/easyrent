@@ -28,6 +28,9 @@ RSpec.describe Car, type: :model do
   describe "Associations" do
     it { is_expected.to belong_to(:mark) }
     it { is_expected.to belong_to(:owner) }
+    it { is_expected.to have_many(:offers).dependent(:destroy) }
+    it { is_expected.to have_many(:bookings).dependent(:destroy) }
+    it { is_expected.to have_many(:photos).dependent(:destroy) }
   end
 
   describe "#mark_title" do

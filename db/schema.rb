@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_16_120157) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_19_054537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -192,6 +192,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_16_120157) do
     t.index ["car_id"], name: "index_offers_on_car_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.text "image_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_photos_on_car_id"
+  end
+
   create_table "price_range_cells", force: :cascade do |t|
     t.bigint "price_range_id", null: false
     t.integer "from", null: false
@@ -282,5 +290,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_16_120157) do
   add_foreign_key "clients_in_car_parks", "clients"
   add_foreign_key "marks", "brands"
   add_foreign_key "offers", "cars"
+  add_foreign_key "photos", "cars"
   add_foreign_key "price_range_cells", "price_ranges"
 end

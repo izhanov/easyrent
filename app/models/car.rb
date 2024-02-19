@@ -40,6 +40,7 @@ class Car < ApplicationRecord
 
   has_many :offers, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :photos, dependent: :destroy
 
   after_commit :update_typesense_index, on: %i[create update]
 
