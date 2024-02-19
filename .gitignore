@@ -56,3 +56,6 @@ node_modules
 /config/credentials/test.key
 
 /config/credentials/production.key
+
+/public/.DS_Store
+/.DS_Store

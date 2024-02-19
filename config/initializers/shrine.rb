@@ -11,3 +11,5 @@ Shrine.storages = {
 Shrine.plugin :activerecord
 Shrine.plugin :cached_attachment_data
 Shrine.plugin :restore_cached_data
+Shrine.plugin :pretty_location
+Shrine.plugin :derivatives, create_on_promote: true
