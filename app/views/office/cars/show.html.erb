@@ -10,7 +10,7 @@
     <%= link_to edit_office_car_park_car_path(@car_park, @car), class: "btn btn-sm btn-warning" do %>
       <i class="bi bi-pencil-square"></i>
     <% end %>
-    <%= link_to office_car_park_path(@car_park), class: "btn btn-sm btn-danger", data: {turbo_confirm: t(".sure?"), method: :delete} do %>
+    <%= link_to office_car_park_car_path(@car_park, @car), class: "btn btn-sm btn-danger", data: {turbo_confirm: t(".sure?"), turbo_method: :delete} do %>
       <i class="bi bi-trash"></i>
     <% end %>
   </div>
@@ -19,6 +19,11 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
+      <% @car.photos.each do |photo| %>
+        <%= link_to photo.image.url, target: "_blank" do %>
+          <%= image_tag photo.image(:small).url, class: "img-thumbnail" %>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="col-6">

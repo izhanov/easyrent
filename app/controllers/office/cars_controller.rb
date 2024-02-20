@@ -54,7 +54,8 @@ module Office
 
     def destroy
       @car.destroy!
-      redirect_to office_car_park_cars_path(@car_park), flash: {success: t("destroy.success")}
+      flash[:success] = success_resolver(path: "cars.destroy")
+      redirect_to office_car_park_path(@car_park), status: :see_other
     end
 
     def search
@@ -95,7 +96,8 @@ module Office
         :number_of_seats,
         :tank_volume,
         :technical_certificate_number,
-        :transmission
+        :transmission,
+        photos_attributes: []
       )
     end
   end

@@ -20,6 +20,12 @@ module Operations
         end
 
         def commit(params)
+          photos_attributes =
+            params[:photos_attributes].each_with_object({}).with_index do |(photo, attributes), index|
+              attributes[index] = {image: photo}
+            end
+
+          params[:photos_attributes] = photos_attributes
           car = Car.create!(params)
           Success(car)
         rescue ActiveRecord::RecordNotUnique => e
