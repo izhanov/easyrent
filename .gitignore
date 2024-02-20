@@ -31,6 +31,7 @@
 !/tmp/storage/.keep
 
 /public/assets
+/public/uploads/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -58,4 +59,4 @@ node_modules
 /config/credentials/production.key
 
 /public/.DS_Store
-/.DS_Store
+.DS_Store
