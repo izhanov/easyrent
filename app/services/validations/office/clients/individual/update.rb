@@ -13,7 +13,7 @@ module Validations
             required(:email).filled(:string)
             required(:driving_license).filled(:string)
             required(:driving_license_issued_date).filled(:date)
-            required(:bank_account_number).filled(:string)
+            optional(:bank_account_number).value(:string)
             optional(:patronymic).value(:string)
             optional(:passport_number).value(:string)
           end

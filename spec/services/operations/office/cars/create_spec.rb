@@ -41,7 +41,8 @@ RSpec.describe Operations::Office::Cars::Create do
           technical_certificate_number: "12345678901234567",
           mileage: 100_000,
           number_of_seats: 4,
-          tank_volume: 50
+          tank_volume: 50,
+          photos_attributes: []
         }
 
         result = subject.call(params)

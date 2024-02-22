@@ -4,6 +4,25 @@
     <%= @booking.number %>
   </h1>
   <div>
+    <% status_manager = Utils::Bookings::StatusManager.new %>
+    <%# status change select %>
+    <%= form_with model: @booking, url: change_status_office_booking_path(@booking), method: :patch do |f| %>
+      <div class="input-group">
+        <%= f.label :status, class: "input-group-text" %>
+        <%= f.select(
+              :status,
+              options_for_select(
+                status_manager.available_statuses_from(@booking.status),
+                selected: @booking.status
+              ),
+              {include_blank: false},
+              class: "form-select"
+            ) %>
+        <%= f.submit "Изменить", class: "btn btn-sm btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div>
     <%= link_to office_bookings_path, class: "btn btn-sm btn-outline-primary" do %>
       <i class="bi bi-box-arrow-left"></i>
     <% end %>
@@ -13,5 +32,88 @@
   </div>
 </div>
 
+<% calculator = Utils::Bookings::Calculator.new(@booking) %>
 
-<%# booking status %>
+<div class="container">
+  <div class="row">
+    <h2>
+      Итого: <span class="badge bg-primary rounded-pill"><%= calculator.run.to_fs(:currency, locale: :kk) %></span>
+    </h2>
+
+    <div class="col-6">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Даты бронирования:</strong>
+          <%= @booking.booked_dates %>
+        </li>
+        <li class="list-group-item">
+          <strong>Автомобиль:</strong>
+          <%= @booking.car.mark_title %> <%= @booking.car.plate_number %>
+        </li>
+        <li class="list-group-item">
+          <strong>Водитель:</strong>
+          <ul>
+            <li>
+              <strong>Ф.И.О</strong>
+              <%= @booking.client.surname_with_initials %>
+            </li>
+            <li>
+              <strong>Телефон:</strong>
+              <%= @booking.client.phone %>
+            </li>
+            <li>
+              <strong>ИИН:</strong>
+              <%= @booking.client.identification_number %>
+            </li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <strong>Тариф:</strong>
+          <%= @booking.offer.title %>
+        </li>
+        <li class="list-group-item">
+          <strong>Цена за сутки:</strong>
+          <span class="badge bg-primary rounded-pill">
+            <%= calculator.get(:price_for_rent_period).to_fs(:currency, locale: :kk) %>
+          </span>
+        </li>
+        <li class="list-group-item">
+          <strong>Сумма залога:</strong>
+          <span class="badge bg-primary rounded-pill">
+            <%= calculator.get(:offer_pledge_amount).to_fs(:currency, locale: :kk) %>
+          </span>
+        </li>
+        <li class="list-group-item">
+          <strong>Доп. услуги:</strong>
+          <ul>
+            <% @booking.services.each do |service, price| %>
+              <li>
+                <%= AdditionalService.find(service).title_ru %>
+                <span class="badge bg-primary rounded-pill">
+                  <%= BigDecimal(price).to_fs(:currency, locale: :kk) %>
+                </span>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Количество суток:</strong>
+          <span class="badge bg-warning"><%= @booking.booked_dates_count %></span>
+        </li>
+
+        <li class="list-group-item">
+          <strong>Место приёмки:</strong>
+          <%= @booking.pickup_location %>
+        </li>
+        <li class="list-group-item">
+          <strong>Место возврата:</strong>
+          <%= @booking.drop_off_location %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

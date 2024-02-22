@@ -6,7 +6,7 @@ RSpec.describe Operations::Office::Offers::Create do
   describe "#call" do
     context "when params are valid" do
       it "returns success with offer" do
-        car = create(:car)
+        car = create(:car, :belongs_to_car_park)
         mileage_limit = create(:rental_rule_mileage_limit, owner: car.owner)
 
         params = {
@@ -26,7 +26,7 @@ RSpec.describe Operations::Office::Offers::Create do
 
     context "when params are invalid" do
       it "returns failure with validation errors" do
-        car = create(:car)
+        car = create(:car, :belongs_to_car_park)
         params = {
           car_id: car.id,
           title: "Offer title with mega super long description",

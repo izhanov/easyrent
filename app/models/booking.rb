@@ -38,9 +38,9 @@
 #  fk_rails_9c126c1dd5  (offer_id => offers.id)
 #
 class Booking < ApplicationRecord
-  belongs_to :car
-  belongs_to :client
-  belongs_to :offer
+  belongs_to :car, inverse_of: :bookings
+  belongs_to :client, inverse_of: :bookings
+  belongs_to :offer, inverse_of: :booking
 
   include RTypesense
 
@@ -63,9 +63,9 @@ class Booking < ApplicationRecord
   STATUSES = %w[
     new
     confirmed
-    prepayment_accepted
     payment_accepted
     give_out_the_car
+    car_in_rent
     accept_the_car
     return_the_deposit
     canceled
@@ -74,5 +74,9 @@ class Booking < ApplicationRecord
 
   def booked_dates
     starts_at.to_date..ends_at.to_date
+  end
+
+  def booked_dates_count
+    booked_dates.to_set.size
   end
 end

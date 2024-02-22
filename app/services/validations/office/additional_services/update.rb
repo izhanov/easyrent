@@ -7,7 +7,6 @@ module Validations
         params do
           required(:title).filled(:string)
           required(:price).filled(:decimal, gt?: 0)
-          required(:slug).filled(:string)
         end
       end
     end

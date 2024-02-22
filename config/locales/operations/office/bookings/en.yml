@@ -4,3 +4,8 @@ en:
       bookings:
         create:
           car_is_not_vacant: "Car in not vacant. Booked: %{booked_dates}"
+        change_status:
+          success: "Status changed successfully"
+          errors:
+            validation_error: "Validation error"
+            invalid_status: "Invalid status"

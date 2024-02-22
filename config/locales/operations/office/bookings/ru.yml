@@ -4,3 +4,8 @@ ru:
       bookings:
         create:
           car_is_not_vacant: "Автомобиль не свободен. Забронирован на даты: %{booked_dates}"
+        change_status:
+          success: "Статус успешно изменен"
+          errors:
+            validation_error: "Ошибка валидации"
+            invalid_status: "Неверный статус"

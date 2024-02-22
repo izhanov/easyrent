@@ -1,6 +1,6 @@
 <%= turbo_frame_tag additional_service do %>
   <div class="additional_service">
-    <%= link_to additional_service.title, office_car_park_additional_service_path(@car_park, additional_service), class: "list-group-item list-group-item-action" %>
+    <%= link_to additional_service.title_ru, office_car_park_additional_service_path(@car_park, additional_service), class: "list-group-item list-group-item-action" %>
 
     <div class="additional_service__actions">
       <%= button_to office_car_park_additional_service_path(@car_park, additional_service), method: :delete, class: "btn btn-sm btn-danger" do %>

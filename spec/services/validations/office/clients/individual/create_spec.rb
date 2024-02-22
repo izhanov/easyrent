@@ -17,15 +17,13 @@ RSpec.describe Validations::Office::Clients::Individual::Create do
     )
   end
 
-  it "requires email, driving_license, driving_license_issued_date, bank_account_number" do
+  it "requires driving_license, driving_license_issued_date" do
     result = subject.call({})
 
     expect(result).to be_failure
     expect(result.errors.to_h).to include(
-      email: ["is missing"],
       driving_license: ["is missing"],
       driving_license_issued_date: ["is missing"],
-      bank_account_number: ["is missing"]
     )
   end
 

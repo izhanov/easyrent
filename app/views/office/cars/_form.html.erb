@@ -9,9 +9,13 @@
   >
     <div class="input-group">
       <%= f.label :mark, class: "input-group-text"%>
-      <input type="search" data-autocomplete-target="input" class="form-control"/>
-      <%= f.hidden_field :mark_id, data: { "autocomplete-target": "hidden" }%>
-      <%= error_field(@errors, :mark_id) %>
+      <% if car.new_record? %>
+        <input type="search" data-autocomplete-target="input" class="form-control"/>
+        <%= f.hidden_field :mark_id, data: { "autocomplete-target": "hidden" }%>
+        <%= error_field(@errors, :mark_id) %>
+      <% else %>
+        <%= f.text_field :mark, class: "form-control", disabled: true, value: car.mark_title %>
+      <% end %>
     </div>
     <ul class="list-group" data-autocomplete-target="results"></ul>
   </div>
@@ -19,6 +23,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.file_field :photos_attributes, multiple: true, include_hidden: false, class: "form-control" %>
+      <%= error_field(@errors, :photos_attributes) %>
     </div>
   </div>
 
@@ -33,7 +38,7 @@
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
       <%= f.label :engine_capacity, class: "input-group-text" %>
-      <%= f.number_field :engine_capacity, max: 16, min: 0.5, step: 0.1, class: "form-control #{@errors && @errors.dig(:engine_capacity).present? ? 'is-invalid' : ''}" %>
+      <%= f.number_field :engine_capacity, min: 0.5, step: 0.1, class: "form-control #{@errors && @errors.dig(:engine_capacity).present? ? 'is-invalid' : ''}" %>
 
       <%= f.label :engine_capacity_unit, class: "input-group-text" %>
       <%= f.select(

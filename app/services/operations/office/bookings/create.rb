@@ -47,7 +47,7 @@ module Operations
 
         def commit(params)
           booking_number = Utils::Bookings::NextNumber.new(params[:car_id]).get
-          booking = Booking.create!(params.merge(number: booking_number))
+          booking = Booking.create!(params.merge(number: booking_number, status: "confirmed"))
           Success(booking)
         end
 

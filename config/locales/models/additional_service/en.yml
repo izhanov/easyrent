@@ -1,0 +1,20 @@
+en:
+  activerecord:
+    models:
+      additional_service: "Additional Service"
+    attributes:
+      additional_service:
+        title: "Title"
+        price: "price"
+        services:
+          gps_navigator: "GPS Navigator"
+          child_seat: "Child Seat"
+          booster: "Booster"
+          ski_and_snowboard_rack: "Ski and Snowboard Rack"
+          wifi_router: "Wi-Fi Router"
+          tourist_equipment: "Tourist Equipment"
+          delivery_to_the_address: "Delivery to the Address"
+          return_to_the_address: "Return to the Address"
+          phone_holder: "Phone Holder"
+          usb_for_phone: "USB for Phone"
+          additional_driver: "Additional Driver"

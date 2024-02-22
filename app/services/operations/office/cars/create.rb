@@ -36,7 +36,7 @@ module Operations
         def normalize_numbers(params)
           %w[year mileage number_of_seats tank_volume engine_capacity].each do |key|
             if params.key?(key)
-              params[key] = params[key].to_s.gsub(/[^0-9]/, "").to_f
+              params[key] = params[key].to_s.gsub(/[^0-9,.]/, "").to_f
             end
           end
           params

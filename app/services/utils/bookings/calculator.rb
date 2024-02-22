@@ -1,0 +1,63 @@
+# frozen_string_literal: true
+
+module Utils
+  module Bookings
+    class Calculator
+      attr_reader :booking
+
+      def initialize(booking)
+        @booking = booking
+      end
+
+      def run
+        (booking.booked_dates_count * price_for_rent_period) + services_total_price + offer_pledge_amount
+      end
+
+      def get(name)
+        send(name)
+      end
+
+      private
+
+      def offer
+        @offer ||= booking.offer
+      end
+
+      def prices
+        @prices ||=
+          booking.offer.prices.transform_keys { |key| string_range_to_range(key) }
+      end
+
+      def services_prices
+        @services_prices ||= booking.services
+      end
+
+      def offer_pledge_amount
+        offer.pledge_amount
+      end
+
+      def price_for_rent_period
+        needed_range = prices.keys.detect { |range| range.cover?(booking.booked_dates_count) }
+
+        if needed_range
+          price_string_to_decimal(prices[needed_range])
+        else
+          nearest_range = prices.keys.min_by { |range| (range.max - booking.booked_dates_count).abs }
+          price_string_to_decimal(prices[nearest_range])
+        end
+      end
+
+      def services_total_price
+        services_prices.values.map { |price| price_string_to_decimal(price) }.sum
+      end
+
+      def string_range_to_range(string_range)
+        Range.new(*string_range.split("..").map(&:to_i))
+      end
+
+      def price_string_to_decimal(price_string)
+        BigDecimal(price_string.to_s.gsub(/[^0-9,.]/, ""))
+      end
+    end
+  end
+end

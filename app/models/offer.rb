@@ -24,5 +24,5 @@
 #
 class Offer < ApplicationRecord
   belongs_to :car
-  has_many :booking, dependent: :destroy
+  has_many :booking, dependent: :destroy, inverse_of: :offer
 end

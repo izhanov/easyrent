@@ -4,7 +4,7 @@ import "@hotwired/turbo-rails"
 Turbo.setFormMode("optin");
 
 // Import Bootstrap CSS
-import 'bootstrap';
+import * as bootstrap from 'bootstrap';
 import './../src/office/scss/main.scss';
 
 import './../src/office/js/imask.js';
@@ -25,3 +25,10 @@ document.addEventListener('turbo:load', () => {
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   document.cookie = `timezone=${timezone};`;
 });
+
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+
+popoverTriggerList.forEach(function (popoverTriggerEl) {
+
+  new bootstrap.Popover(popoverTriggerEl)
+})

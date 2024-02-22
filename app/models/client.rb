@@ -30,7 +30,7 @@
 #  index_clients_on_phone                  (phone) UNIQUE
 #
 class Client < ApplicationRecord
-  has_many :bookings, dependent: :destroy
+  has_many :bookings, dependent: :destroy, inverse_of: :client
 
   has_many :clients_in_car_parks, dependent: :destroy
   has_many :car_parks, through: :clients_in_car_parks, dependent: :destroy

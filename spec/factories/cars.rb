@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :car do
     mark
-    belongs_to_car_park
+    owner_id { nil }
+    owner_type { nil }
     year { 2021 }
     engine_capacity { 1.6 }
     engine_capacity_unit { "l" }

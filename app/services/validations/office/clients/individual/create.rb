@@ -12,10 +12,10 @@ module Validations
             required(:phone).filled(:string)
             required(:kind).filled(:string)
             required(:citizen).filled(:bool)
-            required(:email).filled(:string)
             required(:driving_license).filled(:string)
             required(:driving_license_issued_date).filled(:date)
-            required(:bank_account_number).filled(:string)
+            optional(:email).value(:string)
+            optional(:bank_account_number).value(:string)
             optional(:patronymic).value(:string)
             optional(:passport_number).value(:string)
           end
@@ -23,8 +23,6 @@ module Validations
           rule(:passport_number) do
             key(:passport_number).failure(:filled?) if key?(:citizen) && values[:citizen] == false
           end
-
-          rule(:bank_account_number).validate(:bank_account_number_format)
         end
       end
     end

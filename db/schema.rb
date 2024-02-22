@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_19_054537) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_22_090655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_054537) do
     t.bigint "owner_id", null: false
     t.string "title", null: false
     t.decimal "price", precision: 10, scale: 2, null: false
-    t.string "slug", null: false
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_type", "owner_id"], name: "index_additional_services_on_owner"
@@ -119,7 +119,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_054537) do
     t.string "status", default: "vacant", null: false
     t.integer "number_of_seats", limit: 2
     t.integer "tank_volume", limit: 2
-    t.integer "engine_capacity", limit: 2
+    t.decimal "engine_capacity", precision: 7, scale: 2
     t.string "engine_capacity_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

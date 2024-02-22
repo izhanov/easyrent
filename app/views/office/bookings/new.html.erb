@@ -119,7 +119,7 @@
             <div class="col">
               <div class="form-check">
                 <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
-                <%= service_form.label service.title.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+                <%= service_form.label service.title_ru.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
               </div>
             </div>
           <% end %>

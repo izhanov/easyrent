@@ -29,9 +29,9 @@ RSpec.describe Booking, type: :model do
         %w[
           new
           confirmed
-          prepayment_accepted
           payment_accepted
           give_out_the_car
+          car_in_rent
           accept_the_car
           return_the_deposit
           canceled

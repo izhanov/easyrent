@@ -17,8 +17,6 @@ module Validations
             required(:bank_account_number).filled(:string)
             required(:signed_on_basis).filled(:string)
           end
-
-          rule(:bank_account_number).validate(:bank_account_number_format)
         end
       end
     end

@@ -1,0 +1,20 @@
+ru:
+  activerecord:
+    models:
+      additional_service: "Дополнительная услуга"
+    attributes:
+      additional_service:
+        title: "Название"
+        price: "Цена"
+        services:
+          gps_navigator: "GPS Навигатор"
+          child_seat: "Детское Кресло"
+          booster: "Бустер"
+          ski_and_snowboard_rack: "Держатель для Лыж и Сноуборда"
+          wifi_router: "Wi-Fi Роутер"
+          tourist_equipment: "Туристическое снаряжение"
+          delivery_to_the_address: "Доставка по адресу"
+          return_to_the_address: "Возврат по адресу"
+          phone_holder: "Держатель для телефона"
+          usb_for_phone: "USB для телефона"
+          additional_driver: "Дополнительный водитель"

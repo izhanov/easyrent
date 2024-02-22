@@ -12,6 +12,17 @@ en:
         pickup_location: "Pickup location"
         drop_off_location: "Drop off location"
         payment_method: "Payment method"
+        status: "Status"
         payment_methods:
           cash: "Cash"
           cashless: "Cashless"
+        statuses:
+          new: "New"
+          confirmed: "Confirmed"
+          payment_accepted: "Payment accepted"
+          give_out_the_car: "Give out the car"
+          car_in_rent: "Car in rent"
+          accept_the_car: "Accept the car"
+          return_the_deposit: "Return the deposit"
+          finished: "Finished"
+          canceled: "Canceled"

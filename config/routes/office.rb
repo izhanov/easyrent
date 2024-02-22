@@ -18,7 +18,9 @@ namespace :office do
     end
   end
 
-  resources :bookings
+  resources :bookings do
+    patch :change_status, on: :member
+  end
 
   resources :clients do
     collection do

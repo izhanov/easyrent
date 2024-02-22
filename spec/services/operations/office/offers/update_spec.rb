@@ -6,7 +6,8 @@ RSpec.describe Operations::Office::Offers::Update do
   describe "#call" do
     context "when params invalid" do
       it "returns failure with validation errors" do
-        offer = create(:offer)
+        car = create(:car, :belongs_to_car_park)
+        offer = create(:offer, car: car)
         params = {
           id: offer.id,
           title: "Offer title with mega super long description",

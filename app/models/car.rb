@@ -4,7 +4,7 @@
 #
 #  id                           :bigint           not null, primary key
 #  color                        :string
-#  engine_capacity              :integer
+#  engine_capacity              :decimal(7, 2)
 #  engine_capacity_unit         :string
 #  fuel                         :string
 #  klass                        :string           not null
@@ -39,7 +39,7 @@ class Car < ApplicationRecord
   belongs_to :owner, polymorphic: true
 
   has_many :offers, dependent: :destroy
-  has_many :bookings, dependent: :destroy
+  has_many :bookings, dependent: :destroy, inverse_of: :car
   has_many :photos, dependent: :destroy
 
   accepts_nested_attributes_for :photos, allow_destroy: true

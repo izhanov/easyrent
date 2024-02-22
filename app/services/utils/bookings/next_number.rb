@@ -19,16 +19,19 @@ module Utils
       private
 
       def current_day_bookings
-        Booking.where(
-          bookings_table[:car_id].eq(car.id).
-            and(
-              date_function(bookings_table[:created_at]).eq(Date.current)
-            )
+        Booking.left_joins(:car).where(
+          cars_table[:owner_id].eq(car.owner_id).and(
+            date_function(bookings_table[:created_at]).eq(Date.current)
+          )
         )
       end
 
       def bookings_table
         Booking.arel_table
+      end
+
+      def cars_table
+        Car.arel_table
       end
 
       def date_function(field)

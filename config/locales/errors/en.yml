@@ -132,6 +132,9 @@ en:
           not_equal: "must be equal to password"
         car_park:
           uniqueness_violation: "identificaiton number and bookings prefix must be unique"
+        booking:
+          status:
+            invalid: "Invalid status"
       size?:
         arg:
           default: "size must be %{size}"

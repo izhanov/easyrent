@@ -6,7 +6,6 @@ module Validations
       class Create < Base
         params do
           required(:title).filled(:string)
-          required(:slug).filled(:string)
           required(:price).filled(:decimal, gt?: 0)
           required(:owner_type).filled(:string)
           required(:owner_id).filled(:integer)
