@@ -32,8 +32,9 @@
 class Client < ApplicationRecord
   has_many :bookings, dependent: :destroy, inverse_of: :client
 
-  has_many :clients_in_car_parks, dependent: :destroy
-  has_many :car_parks, through: :clients_in_car_parks, dependent: :destroy
+  has_many :clients_in_users_companies, dependent: :destroy
+  has_many :users, through: :clients_in_users_companies
+  has_many :car_parks, through: :users, source: :car_parks
 
   after_commit :update_typesense_index, on: %i[create update]
 

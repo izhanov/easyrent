@@ -23,6 +23,12 @@ module Validations
           rule(:passport_number) do
             key(:passport_number).failure(:filled?) if key?(:citizen) && values[:citizen] == false
           end
+
+          rule(:bank_account_number) do
+            if value.present?
+              key.failure(:invalid_format) unless value.match?(/\AKZ[A-Z0-9]{18}\z/)
+            end
+          end
         end
       end
     end

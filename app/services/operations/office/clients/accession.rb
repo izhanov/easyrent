@@ -27,9 +27,8 @@ module Operations
         end
 
         def accession(car_park, client)
-          car_park.clients_in_car_parks.create!(
-            client: client
-          )
+          user = car_park.user # a.k.a Owner of car park
+          user.clients_in_users_companies.create!(client: client)
           Success(true)
         end
       end

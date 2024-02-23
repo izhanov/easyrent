@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: users
+# Table name: users a.k.a Owners of car parks
 #
 #  id                     :bigint           not null, primary key
 #  current_sign_in_at     :datetime
@@ -44,6 +44,8 @@ class User < ApplicationRecord
   has_many :cars, through: :car_parks, dependent: :destroy
   has_many :offers, through: :cars, dependent: :destroy
   has_many :bookings, through: :cars, dependent: :destroy
+  has_many :clients_in_users_companies, dependent: :destroy
+  has_many :clients, through: :clients_in_users_companies, dependent: :destroy
 
   def full_name
     "#{first_name} #{last_name}"

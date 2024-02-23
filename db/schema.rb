@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_22_090655) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_23_092718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -160,13 +160,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_090655) do
     t.index ["phone"], name: "index_clients_on_phone", unique: true
   end
 
-  create_table "clients_in_car_parks", force: :cascade do |t|
+  create_table "clients_in_users_companies", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.bigint "client_id", null: false
-    t.bigint "car_park_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["car_park_id"], name: "index_clients_in_car_parks_on_car_park_id"
-    t.index ["client_id"], name: "index_clients_in_car_parks_on_client_id"
+    t.index ["client_id"], name: "index_clients_in_users_companies_on_client_id"
+    t.index ["user_id"], name: "index_clients_in_users_companies_on_user_id"
   end
 
   create_table "marks", force: :cascade do |t|
@@ -286,8 +286,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_090655) do
   add_foreign_key "car_parks", "cities"
   add_foreign_key "car_parks", "users"
   add_foreign_key "cars", "marks"
-  add_foreign_key "clients_in_car_parks", "car_parks"
-  add_foreign_key "clients_in_car_parks", "clients"
+  add_foreign_key "clients_in_users_companies", "clients"
+  add_foreign_key "clients_in_users_companies", "users"
   add_foreign_key "marks", "brands"
   add_foreign_key "offers", "cars"
   add_foreign_key "photos", "cars"

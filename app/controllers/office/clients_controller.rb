@@ -48,8 +48,7 @@ module Office
         infix: "off, always, always, always, always",
         query_by_weights: "5, 3, 4, 1, 1"
       )
-      @car_park = current_office_user.car_parks.find(params[:car_park_id])
-      @clients = @car_park.clients.where(id: @q.pluck(:id))
+      @clients = current_office_user.clients.where(id: @q.pluck(:id))
       render partial: "office/clients/search", locals: {clients: @clients}
     end
 
