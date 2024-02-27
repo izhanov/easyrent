@@ -8,7 +8,6 @@ module Validations
           required(:title).filled(:string, max_size?: 20)
           required(:prices).filled(:hash)
           required(:mileage_limit_id).filled(:integer)
-          required(:pledge_amount).filled(:decimal, gt?: 0)
           optional(:published).value(:bool)
         end
 

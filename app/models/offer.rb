@@ -5,7 +5,6 @@
 # Table name: offers
 #
 #  id               :bigint           not null, primary key
-#  pledge_amount    :decimal(10, 2)   not null
 #  prices           :jsonb            not null
 #  published        :boolean          default(FALSE), not null
 #  title            :string           not null

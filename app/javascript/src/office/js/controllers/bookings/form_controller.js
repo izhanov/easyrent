@@ -4,7 +4,9 @@ import camelcaseKeys from 'camelcase-keys';
 export default class extends Controller {
   static targets = [
     "carTitle",
-    "carId"
+    "carId",
+    "pledgeAmount",
+    "totalAmount"
   ]
 
   connect() {
@@ -21,4 +23,12 @@ export default class extends Controller {
       this.dispatch("error", {detail: camelcaseKeys(errors)})
     }
   }
+
+  handlePledgeAmount(e) {
+    if (this.pledgeAmountTarget.disabled) {
+      this.pledgeAmountTarget.removeAttribute('disabled');
+    } else {
+      this.pledgeAmountTarget.setAttribute('disabled', 'disabled');
+    }
+  };
 }

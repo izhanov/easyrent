@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: users a.k.a Owners of car parks
+# Table name: users
 #
 #  id                     :bigint           not null, primary key
 #  current_sign_in_at     :datetime

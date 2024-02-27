@@ -10,7 +10,7 @@ module Utils
       end
 
       def run
-        (booking.booked_dates_count * price_for_rent_period) + services_total_price + offer_pledge_amount
+        (booking.booked_dates_count * price_for_rent_period) + services_total_price + booking_pledge_amount
       end
 
       def get(name)
@@ -32,8 +32,8 @@ module Utils
         @services_prices ||= booking.services
       end
 
-      def offer_pledge_amount
-        offer.pledge_amount
+      def booking_pledge_amount
+        booking.pledge_amount
       end
 
       def price_for_rent_period

@@ -3,6 +3,11 @@
     Новая заявка
   </h1>
 
+  <div class="fs-4">
+    <strong>Итого:</strong>
+    <span class="badge bg-primary" id='total-amount'><%= 0.to_fs(:currency, locale: :kk) %></span>
+  </div>
+
   <div>
     <%= link_to office_bookings_path, class: "btn btn-sm btn-outline-primary" do %>
       <i class="bi bi-box-arrow-left"></i>
@@ -30,7 +35,7 @@
     <div class="col">
       <div class="input-group">
         <%= label_tag :car_park_id, "Aвтопарк", class: "input-group-text"%>
-        <%= select_tag :car_park_id, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices"} %>
+        <%= select_tag :car_park_id, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices bookings--car-park-select#resetTotalPrice"} %>
       </div>
     </div>
     <div
@@ -111,25 +116,41 @@
 
   <% # checkboxes with car park additional services %>
   <div class="row d-flex justify-content-between align-items-center mb-4">
-    <%= turbo_frame_tag "additional_services_checkboxes" do %>
-      <%= f.fields_for :services do |service_form| %>
-        <% @services ||= current_office_user.car_parks.first&.additional_services %>
-        <% if @services.present? && @services.any? %>
-          <% @services.each do |service| %>
-            <div class="col">
-              <div class="form-check">
-                <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
-                <%= service_form.label service.title_ru.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+    <div class="col-lg-6 col-12">
+      <%= turbo_frame_tag "additional_services_checkboxes" do %>
+        <%= f.fields_for :services do |service_form| %>
+          <% @services ||= current_office_user.car_parks.first&.additional_services %>
+          <% if @services.present? && @services.any? %>
+            <% @services.each do |service| %>
+              <div class="col">
+                <div class="form-check">
+                  <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
+                  <%= service_form.label service.title_ru.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+                </div>
               </div>
-            </div>
-          <% end %>
-        <%end %>
+            <% end %>
+          <%end %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
   <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div class="col-6">
+    <div class="col-12">
+      <div class="form-check">
+        <%= f.label :with_pledge_amount, class: "form-check-label"%>
+        <%= f.check_box :with_pledge_amount, class: "form-check-input", data: {action: "change->bookings--form#handlePledgeAmount"}%>
+      </div>
+
+      <div class="input-group">
+        <%= f.label :pledge_amount, class: "input-group-text"%>
+        <%= f.number_field :pledge_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "pledgeAmount", "bookings--error-handler-target": "pledgeAmount"} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-between align-items-center mb-4">
+    <div class="col-12">
       <div class="input-group">
         <%= f.label :payment_method, class: "input-group-text"%>
         <%= f.select :payment_method, options_for_select(Booking::PAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {blank_included: false}, class: "form-select" %>

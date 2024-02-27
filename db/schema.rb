@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_23_092718) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_26_062500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_23_092718) do
     t.string "payment_method"
     t.string "number"
     t.string "status", default: "new", null: false
+    t.decimal "pledge_amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.boolean "with_pledge_amount", default: false, null: false
     t.index ["car_id"], name: "index_bookings_on_car_id"
     t.index ["client_id"], name: "index_bookings_on_client_id"
     t.index ["ends_at"], name: "index_bookings_on_ends_at", using: :brin
@@ -185,7 +187,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_23_092718) do
     t.string "title", null: false
     t.jsonb "prices", default: {}, null: false
     t.integer "mileage_limit_id", null: false
-    t.decimal "pledge_amount", precision: 10, scale: 2, null: false
     t.boolean "published", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

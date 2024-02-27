@@ -8,7 +8,7 @@ RSpec.describe Utils::Bookings::Calculator do
       it "returns price for rent period" do
         car_park = create(:car_park)
         car = create(:car, owner: car_park)
-        offer = create(:offer, car: car, prices: {"1..3" => 100, "4..7" => 200}, pledge_amount: 100)
+        offer = create(:offer, car: car, prices: {"1..3" => 100, "4..7" => 200})
         booking = create(
           :booking,
           starts_at: Time.current,
@@ -19,7 +19,7 @@ RSpec.describe Utils::Bookings::Calculator do
 
         calculator = described_class.new(booking)
         result = calculator.run
-        expect(result).to eq(900)
+        expect(result).to eq(809.99)
       end
     end
 
@@ -27,7 +27,7 @@ RSpec.describe Utils::Bookings::Calculator do
       it "returns price for rent period in the cells of the last price ranges" do
         car_park = create(:car_park)
         car = create(:car, owner: car_park)
-        offer = create(:offer, car: car, prices: {"1..3" => 100, "4..7" => 200}, pledge_amount: 100)
+        offer = create(:offer, car: car, prices: {"1..3" => 100, "4..7" => 200})
         booking = create(
           :booking,
           starts_at: Time.current,
@@ -39,7 +39,7 @@ RSpec.describe Utils::Bookings::Calculator do
         calculator = described_class.new(booking)
         result = calculator.run
 
-        expect(result).to eq(2100)
+        expect(result).to eq(2009.99)
       end
     end
   end

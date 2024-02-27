@@ -87,6 +87,8 @@ module Office
         :car,
         :client,
         :payment_method,
+        :with_pledge_amount,
+        :pledge_amount,
         services: {}
       )
     end

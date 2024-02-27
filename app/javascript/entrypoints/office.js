@@ -18,6 +18,7 @@ import './../src/office/js/bookings/new/insert_client.js';
 import './../src/office/js/bookings/new/insert_offer.js';
 import './../src/office/js/bookings/new/additional_services.js';
 import './../src/office/js/bookings/new/insert_car_park_id.js';
+import './../src/office/js/bookings/new/calculator.js';
 
 // Set time zone to cookies
 

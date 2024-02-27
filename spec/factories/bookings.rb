@@ -7,6 +7,7 @@ FactoryBot.define do
     ends_at { "2024-01-30 12:26:59" }
     actual_starts_at { "2024-01-30 12:26:59" }
     actual_ends_at { "2024-01-30 12:26:59" }
+    pledge_amount { "9.99" }
     pickup_location { "MyString" }
     drop_off_location { "MyString" }
     self_pickup { false }

@@ -10,7 +10,6 @@ module Validations
           required(:prices).filled(:hash)
           required(:mileage_limit_id).filled(:integer)
           required(:published).filled(:bool)
-          required(:pledge_amount).filled(:decimal, gt?: 0)
         end
 
         rule(:prices) do

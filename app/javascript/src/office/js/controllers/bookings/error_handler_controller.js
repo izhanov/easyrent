@@ -8,6 +8,7 @@ export default class extends Controller {
     "endsAt",
     "pickupLocation",
     "dropOffLocation",
+    "pledgeAmount",
     "errorMessage"
   ]
 
@@ -18,7 +19,7 @@ export default class extends Controller {
     this.addChangeListener(this.endsAtTarget)
     this.addChangeListener(this.pickupLocationTarget)
     this.addChangeListener(this.dropOffLocationTarget)
-
+    this.addChangeListener(this.pledgeAmountTarget)
 
   }
 

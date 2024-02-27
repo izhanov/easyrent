@@ -24,5 +24,10 @@ export default class extends Controller {
   changeServices(event) {
     const carParkID = event.target.value;
     Turbo.visit(`/office/car_parks/${carParkID}/additional_services/booking_checkboxes`, {frame: "additional_services_checkboxes"})
+    setTimeout(() => document.dispatchEvent(new CustomEvent('calculator:services-changed')), 650);
+  }
+
+  resetTotalPrice() {
+    document.dispatchEvent(new CustomEvent('calculator:reset-total-price'));
   }
 }

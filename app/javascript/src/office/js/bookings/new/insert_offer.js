@@ -7,6 +7,7 @@ document.addEventListener("turbo:load", () => {
   if (selectedCar) {
     selectedCar.addEventListener("change", (event) => {
       Turbo.visit(`/office/car_parks/${selectedCarPark.value}/cars/${selectedCar.value}/offers/select`, {action: "replace", frame: "offers_to_select"});
+      setTimeout(offerSelected, 650);
     });
   }
 
@@ -49,7 +50,21 @@ document.addEventListener("turbo:before-stream-render", (event) => {
 
       if (offersSelect) {
         offersSelect.lastElementChild.selected = 'selected';
+        offerSelected();
       }
     }, 400)
   }
 })
+
+
+function offerSelected() {
+  const offersForSelectFrame = document.querySelector('turbo-frame[id="offers_to_select"]');
+  const offersSelect = offersForSelectFrame.querySelector('select');
+
+  document.dispatchEvent(
+    new CustomEvent("calculator:offer-selected",
+      {
+        detail: {offersSelect: offersSelect}
+      }
+    ));
+}

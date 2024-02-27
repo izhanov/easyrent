@@ -4,24 +4,26 @@
 #
 # Table name: bookings
 #
-#  id                :bigint           not null, primary key
-#  actual_ends_at    :datetime
-#  actual_starts_at  :datetime
-#  drop_off_location :string           not null
-#  ends_at           :datetime         not null
-#  number            :string
-#  payment_method    :string
-#  pickup_location   :string           not null
-#  self_drop_off     :boolean          default(FALSE)
-#  self_pickup       :boolean          default(FALSE)
-#  services          :jsonb
-#  starts_at         :datetime         not null
-#  status            :string           default("new"), not null
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  car_id            :bigint           not null
-#  client_id         :bigint           not null
-#  offer_id          :bigint           not null
+#  id                 :bigint           not null, primary key
+#  actual_ends_at     :datetime
+#  actual_starts_at   :datetime
+#  drop_off_location  :string           not null
+#  ends_at            :datetime         not null
+#  number             :string
+#  payment_method     :string
+#  pickup_location    :string           not null
+#  pledge_amount      :decimal(10, 2)   default(0.0), not null
+#  self_drop_off      :boolean          default(FALSE)
+#  self_pickup        :boolean          default(FALSE)
+#  services           :jsonb
+#  starts_at          :datetime         not null
+#  status             :string           default("new"), not null
+#  with_pledge_amount :boolean          default(FALSE), not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  car_id             :bigint           not null
+#  client_id          :bigint           not null
+#  offer_id           :bigint           not null
 #
 # Indexes
 #
@@ -77,6 +79,6 @@ class Booking < ApplicationRecord
   end
 
   def booked_dates_count
-    booked_dates.to_set.size
+    (ends_at.to_date - starts_at.to_date).to_i
   end
 end

@@ -53,4 +53,11 @@ namespace :office do
       get :search, on: :collection
     end
   end
+
+  namespace :ajax do
+    resources :offers, only: [:show]
+    resources :bookings do
+      post :calculate, on: :collection
+    end
+  end
 end

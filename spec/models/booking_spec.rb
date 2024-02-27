@@ -9,6 +9,15 @@ RSpec.describe Booking, type: :model do
     is_expected.to have_db_column(:ends_at).of_type(:datetime).with_options(null: false)
     is_expected.to have_db_column(:status).of_type(:string).with_options(null: false)
     is_expected.to have_db_column(:services).of_type(:jsonb)
+    is_expected.to have_db_column(:pickup_location).of_type(:string).with_options(null: false)
+    is_expected.to have_db_column(:drop_off_location).of_type(:string).with_options(null: false)
+    is_expected.to have_db_column(:self_pickup).of_type(:boolean)
+    is_expected.to have_db_column(:self_drop_off).of_type(:boolean)
+    is_expected.to have_db_column(:actual_starts_at).of_type(:datetime)
+    is_expected.to have_db_column(:actual_ends_at).of_type(:datetime)
+    is_expected.to have_db_column(:payment_method).of_type(:string)
+    is_expected.to have_db_column(:pledge_amount).of_type(:decimal).with_options(precision: 10, scale: 2)
+    is_expected.to have_db_column(:with_pledge_amount).of_type(:boolean).with_options(default: false)
   end
 
   describe "Associations" do

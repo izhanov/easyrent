@@ -129,6 +129,8 @@ ru:
         booking:
           status:
             invalid: "неверный статус"
+        pledge_amount:
+          less_than_zero: "не может быть меньше нуля"
       size?:
         arg:
           default: "размер должен быть %{size}"

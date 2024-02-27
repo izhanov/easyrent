@@ -21,8 +21,7 @@ RSpec.describe Operations::Office::Offers::Update do
             {
               title: ["size cannot be greater than 20 symbols"],
               prices: ["is missing"],
-              mileage_limit_id: ["is missing"],
-              pledge_amount: ["is missing"]
+              mileage_limit_id: ["is missing"]
             }
           ]
         )

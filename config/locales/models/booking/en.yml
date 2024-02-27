@@ -13,6 +13,8 @@ en:
         drop_off_location: "Drop off location"
         payment_method: "Payment method"
         status: "Status"
+        pledge_amount: "Pledge amount"
+        with_pledge_amount: "With pledge amount"
         payment_methods:
           cash: "Cash"
           cashless: "Cashless"
