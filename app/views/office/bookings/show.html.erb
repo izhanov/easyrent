@@ -86,9 +86,10 @@
         <li class="list-group-item">
           <strong>Доп. услуги:</strong>
           <ul>
-            <% @booking.services.each do |service, price| %>
+            <% @booking.services.each do |service_id, price| %>
+              <% next if AdditionalService.find_by(id: service_id).nil? %>
               <li>
-                <%= AdditionalService.find(service).title_ru %>
+                <%= AdditionalService.find_by(id: service_id).title_ru %>
                 <span class="badge bg-primary rounded-pill">
                   <%= BigDecimal(price).to_fs(:currency, locale: :kk) %>
                 </span>
