@@ -19,7 +19,7 @@ RSpec.describe Utils::Bookings::Calculator do
 
         calculator = described_class.new(booking)
         result = calculator.run
-        expect(result).to eq(809.99)
+        expect(result).to eq(309.99)
       end
     end
 
@@ -39,7 +39,7 @@ RSpec.describe Utils::Bookings::Calculator do
         calculator = described_class.new(booking)
         result = calculator.run
 
-        expect(result).to eq(2009.99)
+        expect(result).to eq(1809.99)
       end
     end
   end

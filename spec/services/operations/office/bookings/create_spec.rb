@@ -18,7 +18,7 @@ RSpec.describe Operations::Office::Bookings::Create do
           drop_off_location: "office"
         }
 
-        result = described_class.new.call(user, params)
+        result = described_class.new.call(params, user)
         expect(result).to be_failure
         expect(result.failure).to match_array(
           [
@@ -61,7 +61,7 @@ RSpec.describe Operations::Office::Bookings::Create do
           drop_off_location: "office"
         }
 
-        result = described_class.new.call(user, params)
+        result = described_class.new.call(params, user)
         expect(result).to be_failure
         expect(result.failure).to match_array(
           [
@@ -92,9 +92,34 @@ RSpec.describe Operations::Office::Bookings::Create do
           drop_off_location: "office"
         }
 
-        result = described_class.new.call(user, params)
+        result = described_class.new.call(params, user)
+        booking = result.value!
         expect(result).to be_success
-        expect(result.value!).to be_a(Booking)
+        expect(booking).to be_a(Booking)
+      end
+
+      it "change car status to `booked`" do
+        user = create(:user)
+        car_park = create(:car_park, user: user)
+        car = create(:car, owner: car_park)
+        offer = create(:offer, car: car)
+        client = create(:client)
+
+        params = {
+          car_id: car.id,
+          offer_id: offer.id,
+          client_id: client.id,
+          starts_at: Time.current + 1.day,
+          ends_at: Time.current + 3.days,
+          pickup_location: "office",
+          drop_off_location: "office"
+        }
+
+        result = subject.call(params, user)
+        booking = result.value!
+        car = booking.car
+
+        expect(car.status).to eq("booked")
       end
     end
   end

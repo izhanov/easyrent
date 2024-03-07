@@ -4,15 +4,14 @@ module Operations
   module Office
     module Bookings
       class Create < Base
-        def call(office_user, params)
+        def call(params, responsible)
           validated_params = yield validate(params)
 
           car_id = validated_params[:car_id]
           starts_at = validated_params[:starts_at]
           ends_at = validated_params[:ends_at]
-
           yield vacant?(car_id, starts_at, ends_at)
-          booking = yield commit(validated_params.to_h)
+          booking = yield commit(validated_params.to_h, responsible)
           Success(booking)
         end
 
@@ -45,10 +44,15 @@ module Operations
           end
         end
 
-        def commit(params)
-          booking_number = Utils::Bookings::NextNumber.new(params[:car_id]).get
-          booking = Booking.create!(params.merge(number: booking_number, status: "confirmed"))
-          Success(booking)
+        def commit(params, responsible)
+          ActiveRecord::Base.transaction do
+            booking_number = Utils::Bookings::NextNumber.new(params[:car_id]).get
+            audit_as_user(responsible) do
+              booking = Booking.create!(params.merge(number: booking_number))
+              Operations::Office::Cars::Book.new.call(booking.car, responsible)
+              Success(booking)
+            end
+          end
         end
 
         def bookings_table

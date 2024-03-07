@@ -1,6 +1,6 @@
 <div class="d-lg-flex justify-content-between align-items-center">
   <h1>
-    Заявки
+    Бронирования
   </h1>
 
   <div>
@@ -15,17 +15,12 @@
 <div style="overflow-x: auto;" class="row flex-nowrap min-vh-100">
   <div class="col-2 bg-light rounded-1 mx-1">
     <h6>Новые</h6>
-    <%= render partial: "office/bookings/cards/new", collection: @bookings["new"], as: :booking %>
+    <%= render partial: "office/bookings/cards/initial", collection: @bookings["initial"], as: :booking %>
   </div>
 
   <div class="col-2 bg-light rounded-1 mx-1">
     <h6>Подтвержденные</h6>
     <%= render partial: "office/bookings/cards/confirmed", collection: @bookings["confirmed"], as: :booking %>
-  </div>
-
-  <div class="col-2 bg-light rounded-1 mx-1">
-     <h6>Оплата принята</h6>
-    <%= render partial: "office/bookings/cards/payment_accepted", collection: @bookings["payment_accepted"], as: :booking %>
   </div>
 
   <div class="col-2 bg-light rounded-1 mx-1">
@@ -35,8 +30,14 @@
 
   <div class="col-2 bg-light rounded-1 mx-1">
     <h6>Автомобиль в аренде</h6>
-    <%= render partial: "office/bookings/cards/car_in_rent", collection: @bookings["car_in_rent"], as: :booking %>
+    <%= render partial: "office/bookings/cards/start_the_rent", collection: @bookings["start_the_rent"], as: :booking %>
   </div>
+
+  <div class="col-2 bg-light rounded-1 mx-1">
+    <h6>Аренда завершается</h6>
+    <%= render partial: "office/bookings/cards/end_the_rent", collection: @bookings["end_the_rent"], as: :booking %>
+  </div>
+
 
   <div class="col-2 bg-light rounded-1 mx-1">
     <h6>Принять авто</h6>
@@ -50,11 +51,11 @@
 
   <div class="col-2 bg-light rounded-1 mx-1">
     <h6>Отмененные</h6>
-    <%= render partial: "office/bookings/cards/canceled", collection: @bookings["canceled"], as: :booking %>
+    <%= render partial: "office/bookings/cards/cancelled", collection: @bookings["cancelled"], as: :booking %>
   </div>
 
   <div class="col-2 bg-light rounded-1 mx-1">
     <h6>Завершенные</h6>
-    <%= render partial: "office/bookings/cards/finished", collection: @bookings["finished"], as: :booking %>
+    <%= render partial: "office/bookings/cards/completed", collection: @bookings["completed"], as: :booking %>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1>
-    Заявка №
+    Бронь №
     <%= @booking.number %>
   </h1>
   <div>
@@ -10,7 +10,113 @@
   </div>
 </div>
 
-<%= form_with model: [:office, @booking] do |f| %>
+<% calculator = Utils::Bookings::Calculator.new(@booking) %>
 
-<% end %>
+<div class="container">
+  <h2>
+    <strong>Итого:</strong>
+    <span class="badge bg-primary" id='total-amount'><%= calculator.run.to_fs(:currency, locale: :kk) %></span>
+  </h2>
+
+  <%= form_with model: [:office, @booking] do |f| %>
+    <% if @errors && @errors[:booking_dates].any? %>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="alert alert-danger alert-dismissible" role="alert">
+              <div>
+                <span>Машина занята по датам:</span>
+                <%= @errors[:booking_dates].join(", ") %>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row d-flex justify-content-between align-items-center mb-4">
+      <div class="col">
+        <div class="input-group">
+          <%= f.label :offer_id, class: "input-group-text" %>
+          <%= f.select :offer_id, options_for_select(@booking.car.offers.map { |offer| [offer.title, offer.id] }, selected: f.object.offer_id), {blank_included: false}, class: "form-select" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between align-items-center mb-4">
+      <div class="col">
+        <div class="input-group">
+          <%= f.label :starts_at, class: "input-group-text"%>
+          <%= f.datetime_field :starts_at, class: "form-control"%>
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-group">
+          <%= f.label :ends_at, class: "input-group-text"%>
+          <%= f.datetime_field :ends_at, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between align-items-center mb-4">
+      <div class="col">
+        <div class="input-group">
+          <%= f.label :pickup_location, class: "input-group-text"%>
+          <%= f.text_field :pickup_location, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col">
+        <div class="input-group">
+          <%= f.label :drop_off_location, class: "input-group-text"%>
+          <%= f.text_field :drop_off_location, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <% # checkboxes with car park additional services %>
+    <div class="row d-flex justify-content-between align-items-center mb-4">
+      <div class="col-lg-6 col-12">
+          <%= f.fields_for :services do |service_form| %>
+            <% @services ||= @booking.car.owner.additional_services %>
+            <% if @services.present? && @services.any? %>
+              <% @services.each do |service| %>
+                <div class="col">
+                  <div class="form-check">
+                    <%= service_form.check_box service.id, {class: "form-check-input", checked: @booking.services[service.id.to_s].to_i.positive? ? true : false}, service.price, 0 %>
+                    <%= service_form.label service.title_ru.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+                  </div>
+                </div>
+              <% end %>
+            <%end %>
+          <% end %>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between align-items-center mb-4">
+      <div class="col-12">
+        <div class="form-check">
+          <%= f.label :with_pledge_amount, class: "form-check-label"%>
+          <%= f.check_box :with_pledge_amount, class: "form-check-input" %>
+        </div>
+
+        <div class="input-group">
+          <%= f.label :pledge_amount, class: "input-group-text"%>
+          <%= f.number_field :pledge_amount, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-between align-items-center mb-4">
+      <div class="col-12">
+        <div class="input-group">
+          <%= f.label :payment_method, class: "input-group-text"%>
+          <%= f.select :payment_method, options_for_select(Booking::PAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {blank_included: false}, class: "form-select" %>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit "Сохранить", data: {action: "bookings--form#submit"}, class: "btn btn-primary" %>
+  <% end %>
+</div>
 

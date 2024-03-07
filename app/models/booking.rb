@@ -44,6 +44,8 @@ class Booking < ApplicationRecord
   belongs_to :client, inverse_of: :bookings
   belongs_to :offer, inverse_of: :booking
 
+  audited
+
   include RTypesense
 
   draw_schema do
@@ -63,15 +65,15 @@ class Booking < ApplicationRecord
 
   PAYMENT_METHODS = %w[cash cashless]
   STATUSES = %w[
-    new
+    initial
     confirmed
-    payment_accepted
     give_out_the_car
-    car_in_rent
+    start_the_rent
+    end_the_rent
     accept_the_car
     return_the_deposit
-    canceled
-    finished
+    cancelled
+    completed
   ]
 
   def booked_dates
@@ -80,5 +82,9 @@ class Booking < ApplicationRecord
 
   def booked_dates_count
     (ends_at.to_date - starts_at.to_date).to_i
+  end
+
+  def editable?
+    %w[initial confirmed].include?(status)
   end
 end

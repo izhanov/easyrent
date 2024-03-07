@@ -12,7 +12,7 @@ RSpec.describe Operations::Office::Offers::Create do
         params = {
           car_id: car.id,
           title: "Offer title",
-          prices: {"1-4" => "100", "5-10" => "200"},
+          prices: {"1..4" => "10 000", "5..10" => "8 000"},
           services: {"delivery" => "100", "gps" => "200", "baby_seat" => "300"},
           mileage_limit_id: mileage_limit.id,
           published: true

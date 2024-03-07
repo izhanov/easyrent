@@ -16,6 +16,7 @@
 # Indexes
 #
 #  index_offers_on_car_id  (car_id)
+#  index_offers_on_prices  (prices) USING gin
 #
 # Foreign Keys
 #
@@ -24,4 +25,6 @@
 class Offer < ApplicationRecord
   belongs_to :car
   has_many :booking, dependent: :destroy, inverse_of: :offer
+
+  audited
 end

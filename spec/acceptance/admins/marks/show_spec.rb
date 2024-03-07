@@ -36,7 +36,9 @@ feature "Admin visit marks show page" do
   context "when click to Destroy mark link", js: true do
     scenario "and see marks page" do
       visit admins_mark_path(mark)
-      find(".btn.btn-sm.btn-danger").click
+      accept_prompt do
+        find(".btn.btn-sm.btn-danger").click
+      end
       expect(page).to have_current_path(admins_marks_path)
     end
   end

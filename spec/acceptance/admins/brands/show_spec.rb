@@ -33,7 +33,9 @@ feature "Admin visit brands show page" do
   scenario "and click to destroy link", js: true do
     visit admins_brand_path(brand)
 
-    find(".btn.btn-sm.btn-danger").click
+    accept_prompt do
+      find(".btn.btn-sm.btn-danger").click
+    end
     expect(page).to have_current_path(admins_brands_path)
     expect(page).to have_content("Brand was successfully destroyed")
   end

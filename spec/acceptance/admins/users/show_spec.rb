@@ -34,7 +34,9 @@ feature "Admin visit users show page" do
   context "when click to Delete link" do
     scenario "redirect to users page list and delete user", js: true do
       visit admins_user_path(user)
-      find(".btn.btn-sm.btn-danger").click
+      accept_prompt do
+        find(".btn.btn-sm.btn-danger").click
+      end
       expect(page).to have_current_path(admins_users_path)
       expect(page).to have_selector("h1", text: "Users")
       expect(page).to have_selector("div", text: "User successfully destroyed.")

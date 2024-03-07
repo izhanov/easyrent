@@ -10,6 +10,16 @@ document.addEventListener("turbo:load", (e) => {
     calculateTotalAmount(store)
   });
 
+  const offersSelect = document.getElementById('booking_offer_id');
+
+  if (offersSelect) {
+    store.offerId = offersSelect.value;
+    offersSelect.addEventListener('change', (e) => {
+      store.offerId = e.target.value;
+      calculateTotalAmount(store);
+    });
+  }
+
   document.addEventListener('calculator:offer-selected', (customEvent) => {
     const offersSelect = customEvent.detail.offersSelect;
     store.offerId = offersSelect.value;
@@ -26,6 +36,11 @@ document.addEventListener("turbo:load", (e) => {
   const endsAt = document.getElementById('booking_ends_at');
 
   if (startsAt && endsAt) {
+    if (startsAt.value && endsAt.value) {
+      store.startsAt = new Date(startsAt.value);
+      store.endsAt = new Date(endsAt.value);
+    }
+
     startsAt.addEventListener('focusout', (e) => {
       store.startsAt = new Date(e.target.value);
       calculateTotalAmount(store);
@@ -40,11 +55,17 @@ document.addEventListener("turbo:load", (e) => {
   let servicesCheckboxes = document.querySelectorAll('[id^="booking_services_"]');
 
   servicesCheckboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      const serviceId = checkbox.id.split('_')[2];
+      store.services[serviceId] = checkbox.value;
+    }
+
     checkbox.addEventListener('change', (e) => {
       const serviceId = e.target.id.split('_')[2];
 
       if (e.target.checked) {
         store.services[serviceId] = e.target.value;
+        console.log(store)
       } else {
         delete store.services[serviceId];
       }
@@ -56,6 +77,8 @@ document.addEventListener("turbo:load", (e) => {
   const pledgeAmount = document.getElementById('booking_pledge_amount');
 
   if (pledgeAmount) {
+    store.pledgeAmount = pledgeAmount.value;
+
     pledgeAmount.addEventListener('keyup', (e) => {
       if (e.target.disabled) {
         store.pledgeAmount = 0;

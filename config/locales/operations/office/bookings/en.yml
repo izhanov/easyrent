@@ -3,7 +3,12 @@ en:
     office:
       bookings:
         create:
+          success: "Booking created successfully"
           car_is_not_vacant: "Car in not vacant. Booked: %{booked_dates}"
+        update:
+          success: "Booking updated successfully"
+          errors:
+            car_is_not_vacant: "Car in not vacant."
         change_status:
           success: "Status changed successfully"
           errors:

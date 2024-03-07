@@ -46,35 +46,7 @@ class Car < ApplicationRecord
 
   after_commit :update_typesense_index, on: %i[create update]
 
-  def mark_title
-    "#{mark.brand.title} #{mark.title}"
-  end
-
-  include AASM
-
-  aasm column: :status do
-    state :vacant, initial: true
-    state :booked
-    state :rented
-    state :repair_needed
-    state :in_service
-
-    event :book do
-      transitions from: :vacant, to: :booked
-    end
-
-    event :rent do
-      transitions from: :booked, to: :rented
-    end
-
-    event :survey do
-      transitions from: :rented, to: :repair_needed
-    end
-
-    event :repair do
-      transitions from: :repair_needed, to: :in_service
-    end
-  end
+  audited
 
   # Requirements:
   # Typesense server running on localhost:8108
@@ -112,4 +84,8 @@ class Car < ApplicationRecord
   KLASS_TYPES = %w[economy comfort business premium ultima].freeze
   TRANSMISSION_TYPES = %w[manual automatic robotic_gearbox cvt].freeze
   ENGINE_CAPACITY_UNITS = %w[cm3 l].freeze
+
+  def mark_title
+    "#{mark.brand.title} #{mark.title}"
+  end
 end

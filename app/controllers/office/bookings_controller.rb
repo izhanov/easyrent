@@ -15,10 +15,12 @@ module Office
 
     def create
       operation = Operations::Office::Bookings::Create.new
-      result = operation.call(@car_park, booking_params.to_h)
+      result = operation.call(booking_params.to_h, current_office_user)
 
       case result
       in Success[booking]
+        Operations::Office::Bookings::Confirm.new.call(booking, current_office_user)
+
         respond_to do |format|
           format.js { render json: {booking: booking}, status: :created }
         end
@@ -37,7 +39,7 @@ module Office
 
     def update
       operation = Operations::Office::Bookings::Update.new
-      result = operation.call(@booking, booking_params.to_h)
+      result = operation.call(@booking, booking_params.to_h, current_office_user)
 
       case result
       in Success[booking]
@@ -58,7 +60,7 @@ module Office
 
     def change_status
       operation = Operations::Office::Bookings::ChangeStatus.new
-      result = operation.call(@booking, params[:booking][:status])
+      result = operation.call(@booking, params[:booking][:status], current_office_user)
 
       case result
       in Success[booking]

@@ -20,5 +20,13 @@ FactoryBot.define do
     trait :belongs_to_car_park do
       association :owner, factory: :car_park
     end
+
+    trait :booked do
+      status { "booked" }
+    end
+
+    trait :occupied do
+      status { "occupied" }
+    end
   end
 end

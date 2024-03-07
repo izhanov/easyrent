@@ -36,15 +36,15 @@ RSpec.describe Booking, type: :model do
     it "returns array of statuses" do
       expect(Booking::STATUSES).to eq(
         %w[
-          new
+          initial
           confirmed
-          payment_accepted
           give_out_the_car
-          car_in_rent
+          start_the_rent
+          end_the_rent
           accept_the_car
           return_the_deposit
-          canceled
-          finished
+          cancelled
+          completed
         ]
       )
     end
