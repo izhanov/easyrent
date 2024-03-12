@@ -4,9 +4,42 @@
     <%= @booking.number %>
   </h1>
   <div>
+    <div class="modal fade" data-controller="bookings--modal-form" id="car-inspect" tabindex="-1" aria-labelledby="car-inspect-label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="car-inspect-label">Состояние машины</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <%= form_with model: @booking.car, url: inspect_office_ajax_car_path(@booking.car), local: false, method: :patch, html: {data: {"bookings--modal-form-target": "form"}} do |f| %>
+            <%= hidden_field_tag "responsible[id]", current_office_user.id %>
+            <%= hidden_field_tag "responsible[type]", current_office_user.class %>
+
+            <div class="modal-body">
+                <div class="row m-1">
+                  <div class="input-group">
+                    <%= f.label :technical_condition, class: "input-group-text" %>
+                    <%= f.select :technical_condition, options_for_select(Car::TECHNICAL_CONDITION_TYPES.map { |technical_condition| [localize_technical_condition_type(technical_condition), technical_condition]}), {include_blank: false}, class: "form-select" %>
+                  </div>
+                </div>
+                <div class="row m-1">
+                  <div class="input-group">
+                    <%= f.label :appearance, class: "input-group-text" %>
+                    <%= f.select :appearance, options_for_select(Car::APPEARANCE_TYPES.map { |appearance| [localize_appearance_type(appearance), appearance] }), {include_blank: false}, class: "form-select" %>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+              <%= f.submit "Изменить", class: "btn btn-primary", data: {action: "click->bookings--modal-form#submit"} %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
     <% status_manager = Utils::Bookings::StatusManager.new %>
     <%# status change select %>
-    <%= form_with model: @booking, url: change_status_office_booking_path(@booking), method: :patch do |f| %>
+    <%= form_with model: @booking, url: change_status_office_booking_path(@booking), html: { data: {controller: "bookings--change-status"}}, method: :patch do |f| %>
       <div class="input-group">
         <%= f.label :status, class: "input-group-text" %>
         <%= f.select(
@@ -16,7 +49,8 @@
                 selected: @booking.status
               ),
               {include_blank: false},
-              class: "form-select"
+              class: "form-select",
+              data: {action: "change->bookings--change-status#changeStatus"}
             ) %>
         <%= f.submit "Изменить", class: "btn btn-sm btn-primary" %>
       </div>

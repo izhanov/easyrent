@@ -65,7 +65,6 @@ document.addEventListener("turbo:load", (e) => {
 
       if (e.target.checked) {
         store.services[serviceId] = e.target.value;
-        console.log(store)
       } else {
         delete store.services[serviceId];
       }

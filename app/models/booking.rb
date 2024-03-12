@@ -17,7 +17,7 @@
 #  self_pickup        :boolean          default(FALSE)
 #  services           :jsonb
 #  starts_at          :datetime         not null
-#  status             :string           default("new"), not null
+#  status             :string           default("initial"), not null
 #  with_pledge_amount :boolean          default(FALSE), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

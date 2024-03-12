@@ -3,6 +3,7 @@
 # Table name: cars
 #
 #  id                           :bigint           not null, primary key
+#  appearance                   :string           default("clean"), not null
 #  color                        :string
 #  engine_capacity              :decimal(7, 2)
 #  engine_capacity_unit         :string
@@ -15,6 +16,7 @@
 #  status                       :string           default("vacant"), not null
 #  tank_volume                  :integer
 #  technical_certificate_number :string           not null
+#  technical_condition          :string           default("good"), not null
 #  transmission                 :string           not null
 #  vin_code                     :string           not null
 #  year                         :integer          not null
@@ -84,6 +86,8 @@ class Car < ApplicationRecord
   KLASS_TYPES = %w[economy comfort business premium ultima].freeze
   TRANSMISSION_TYPES = %w[manual automatic robotic_gearbox cvt].freeze
   ENGINE_CAPACITY_UNITS = %w[cm3 l].freeze
+  APPEARANCE_TYPES = %w[clean dirty].freeze
+  TECHNICAL_CONDITION_TYPES = %w[good need_repair under_repair].freeze
 
   def mark_title
     "#{mark.brand.title} #{mark.title}"

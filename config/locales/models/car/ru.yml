@@ -19,6 +19,8 @@ ru:
         number_of_seats: "Количество мест"
         engine_capacity: "Объем двигателя"
         engine_capacity_unit: "л/см3"
+        technical_condition: "Техническое состояние"
+        appearance: "Внешний вид"
         fuel_types:
           petrol: "Бензин"
           diesel: "Дизель"
@@ -35,3 +37,10 @@ ru:
           automatic: "АКПП"
           robotic_gearbox: "Робот"
           cvt: "Вариатор"
+        technical_condition_types:
+          good: "Хорошее"
+          need_repair: "Требует ремонта"
+          under_repair: "На ремонте"
+        appearance_types:
+          clean: "Чистый"
+          dirty: "Грязный"

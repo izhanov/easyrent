@@ -18,7 +18,7 @@
     <span class="badge bg-primary" id='total-amount'><%= calculator.run.to_fs(:currency, locale: :kk) %></span>
   </h2>
 
-  <%= form_with model: [:office, @booking] do |f| %>
+  <%= form_with model: [:office, @booking], html: {data: {controller: "bookings--form"}} do |f| %>
     <% if @errors && @errors[:booking_dates].any? %>
       <div class="container">
         <div class="row">
@@ -97,12 +97,12 @@
       <div class="col-12">
         <div class="form-check">
           <%= f.label :with_pledge_amount, class: "form-check-label"%>
-          <%= f.check_box :with_pledge_amount, class: "form-check-input" %>
+          <%= f.check_box :with_pledge_amount, class: "form-check-input", data: {action: "change->bookings--form#handlePledgeAmount"} %>
         </div>
 
         <div class="input-group">
           <%= f.label :pledge_amount, class: "input-group-text"%>
-          <%= f.number_field :pledge_amount, class: "form-control" %>
+          <%= f.number_field :pledge_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "pledgeAmount"} %>
         </div>
       </div>
     </div>
@@ -116,7 +116,7 @@
       </div>
     </div>
 
-    <%= f.submit "Сохранить", data: {action: "bookings--form#submit"}, class: "btn btn-primary" %>
+    <%= f.submit "Сохранить", class: "btn btn-primary" %>
   <% end %>
 </div>
 

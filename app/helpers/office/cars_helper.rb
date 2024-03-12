@@ -13,5 +13,13 @@ module Office
     def localize_transmission_type(transmission_type)
       I18n.t("activerecord.attributes.car.transmission_types.#{transmission_type}")
     end
+
+    def localize_technical_condition_type(tech_condition)
+      I18n.t("activerecord.attributes.car.technical_condition_types.#{tech_condition}")
+    end
+
+    def localize_appearance_type(appearance)
+      I18n.t("activerecord.attributes.car.appearance_types.#{appearance}")
+    end
   end
 end

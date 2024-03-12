@@ -59,5 +59,9 @@ namespace :office do
     resources :bookings do
       post :calculate, on: :collection
     end
+
+    resources :cars do
+      patch :inspect, on: :member
+    end
   end
 end

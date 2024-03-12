@@ -5,6 +5,8 @@ module Office
     before_action :find_car_park, only: %i[create]
     before_action :find_booking, only: %i[show edit update destroy change_status]
 
+    helper CarsHelper
+
     def index
       @bookings = current_office_user.bookings.left_joins(:car, :client, :offer).group_by(&:status)
     end

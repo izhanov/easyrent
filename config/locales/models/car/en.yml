@@ -19,6 +19,8 @@ en:
         number_of_seats: "Number of seats"
         engine_capacity: "Engine capacity"
         engine_capacity_unit: "l/cm3"
+        technical_condition: "Technical condition"
+        appearance: "Appearance"
         fuel_types:
           petrol: "Бензин"
           diesel: "Дизель"
@@ -35,3 +37,10 @@ en:
           automatic: "Automatic"
           robotic_gearbox: "Robot gearbox"
           cvt: "CVT"
+        technical_condition_types:
+          good: "Good"
+          need_repair: "Need repair"
+          under_repair: "Under repair"
+        appearance_types:
+          clean: "Clean"
+          dirty: "Dirty"

@@ -14,6 +14,7 @@ module Operations
         def complete(booking, responsible)
           audit_as_user(responsible) do
             booking.update!(status: "completed")
+            Operations::Office::Cars::Release.new.call(booking.car, responsible)
           end
           Success(booking.reload)
         end

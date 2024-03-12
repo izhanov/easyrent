@@ -97,6 +97,8 @@ module Office
         :tank_volume,
         :technical_certificate_number,
         :transmission,
+        :technical_condition,
+        :appearance,
         photos_attributes: []
       )
     end

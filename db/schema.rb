@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_29_112911) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_11_094548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -82,7 +82,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_29_112911) do
     t.jsonb "services", default: {}
     t.string "payment_method"
     t.string "number"
-    t.string "status", default: "new", null: false
+    t.string "status", default: "initial", null: false
     t.decimal "pledge_amount", precision: 10, scale: 2, default: "0.0", null: false
     t.boolean "with_pledge_amount", default: false, null: false
     t.index ["car_id"], name: "index_bookings_on_car_id"
@@ -147,6 +147,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_29_112911) do
     t.string "engine_capacity_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "technical_condition", default: "good", null: false
+    t.string "appearance", default: "clean", null: false
     t.index ["mark_id"], name: "index_cars_on_mark_id"
     t.index ["owner_id", "owner_type", "plate_number"], name: "index_cars_on_owner_id_and_owner_type_and_plate_number", unique: true
     t.index ["owner_id", "owner_type", "vin_code"], name: "index_cars_on_owner_id_and_owner_type_and_vin_code", unique: true
