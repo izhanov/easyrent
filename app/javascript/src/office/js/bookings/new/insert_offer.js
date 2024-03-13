@@ -7,7 +7,19 @@ document.addEventListener("turbo:load", () => {
   if (selectedCar) {
     selectedCar.addEventListener("change", (event) => {
       Turbo.visit(`/office/car_parks/${selectedCarPark.value}/cars/${selectedCar.value}/offers/select`, {action: "replace", frame: "offers_to_select"});
-      setTimeout(offerSelected, 650);
+
+      const offersForSelectFrame = document.querySelector('turbo-frame[id="offers_to_select"]');
+
+      offersForSelectFrame.addEventListener("turbo:frame-load", (event) => {
+        let offersSelect = offersForSelectFrame.querySelector('select');
+
+        document.dispatchEvent(
+          new CustomEvent("calculator:offer-selected",
+            {
+              detail: {offersSelect: offersSelect}
+            }
+          ));
+      });
     });
   }
 
@@ -40,31 +52,23 @@ document.addEventListener("turbo:before-stream-render", (event) => {
 
   const stream = event.detail.newStream;
 
-  if (stream.target == "new_offer") {
+  if (stream.target == "new_offer" && stream.action == "update") {
     Turbo.cache.clear();
     Turbo.visit(`/office/car_parks/${selectedCarPark.value}/cars/${selectedCar.value}/offers/select`, {action: "replace", frame: "offers_to_select"});
 
-    setTimeout(() => {
-      const offersForSelectFrame = document.querySelector('turbo-frame[id="offers_to_select"]');
-      const offersSelect = offersForSelectFrame.querySelector('select');
+    const offersForSelectFrame = document.querySelector('turbo-frame[id="offers_to_select"]');
 
-      if (offersSelect) {
-        offersSelect.lastElementChild.selected = 'selected';
-        offerSelected();
-      }
-    }, 400)
+    offersForSelectFrame.addEventListener("turbo:frame-load", (event) => {
+      let offersSelect = offersForSelectFrame.querySelector('select');
+      offersSelect.lastElementChild.selected = 'selected';
+
+      document.dispatchEvent(
+        new CustomEvent("calculator:offer-selected",
+          {
+            detail: {offersSelect: offersSelect}
+          }
+        ));
+    });
   }
-})
+});
 
-
-function offerSelected() {
-  const offersForSelectFrame = document.querySelector('turbo-frame[id="offers_to_select"]');
-  const offersSelect = offersForSelectFrame.querySelector('select');
-
-  document.dispatchEvent(
-    new CustomEvent("calculator:offer-selected",
-      {
-        detail: {offersSelect: offersSelect}
-      }
-    ));
-}
