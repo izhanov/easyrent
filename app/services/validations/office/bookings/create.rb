@@ -12,8 +12,15 @@ module Validations
           required(:ends_at).filled(:time)
           required(:pickup_location).filled(:string)
           required(:drop_off_location).filled(:string)
+          required(:payment_method).filled(:string)
+          optional(:without_prepayment_amount).value(:bool)
+          optional(:prepayment_amount).value(:decimal)
+          optional(:prepayment_method).value(:string)
           optional(:with_pledge_amount).value(:bool)
           optional(:pledge_amount).value(:decimal)
+          optional(:kaspi_method_amount).value(:decimal)
+          optional(:halyk_method_amount).value(:decimal)
+          optional(:cash_method_amount).value(:decimal)
           optional(:services).value(:hash)
         end
 

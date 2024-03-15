@@ -114,6 +114,12 @@
           </span>
         </li>
         <li class="list-group-item">
+          <strong>Сумма предоплаты:</strong>
+          <span class="badge bg-primary rounded-pill">
+            <%= calculator.get(:booking_prepayment_amount).to_fs(:currency, locale: :kk) %>
+          </span>
+        </li>
+        <li class="list-group-item">
           <strong>Сумма залога:</strong>
           <span class="badge bg-primary rounded-pill">
             <%= calculator.get(:booking_pledge_amount).to_fs(:currency, locale: :kk) %>
@@ -149,6 +155,14 @@
         <li class="list-group-item">
           <strong>Место возврата:</strong>
           <%= @booking.drop_off_location %>
+        </li>
+        <li class="list-group-item">
+          <strong>Метод оплаты:</strong>
+          <%= @booking.payment_method %>
+        </li>
+        <li class="list-group-item">
+          <strong>Метод оплаты залога:</strong>
+          <%= @booking.prepayment_method %>
         </li>
       </ul>
     </div>

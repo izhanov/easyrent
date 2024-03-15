@@ -6,7 +6,10 @@ export default class extends Controller {
     "carTitle",
     "carId",
     "pledgeAmount",
-    "totalAmount"
+    "prepaymentAmount",
+    "totalAmount",
+    "paymentMethods",
+    "paymentMethodAmount",
   ]
 
   connect() {
@@ -31,4 +34,27 @@ export default class extends Controller {
       this.pledgeAmountTarget.setAttribute('disabled', 'disabled');
     }
   };
+
+  handlePrepaymentAmount() {
+    if (this.prepaymentAmountTarget.disabled) {
+      this.prepaymentAmountTarget.removeAttribute('disabled');
+    } else {
+      this.prepaymentAmountTarget.value = 0.0;
+      this.prepaymentAmountTarget.setAttribute('disabled', 'disabled');
+    }
+  }
+
+  handlePaymentMethod(e) {
+    if (e.target.value === "mixed") {
+      this.paymentMethodsTarget.classList.remove("d-none");
+      this.paymentMethodAmountTargets.forEach((el) => {
+        el.removeAttribute('disabled');
+      });
+    } else {
+      this.paymentMethodAmountTargets.forEach((el) => {
+        el.setAttribute('disabled', 'disabled');
+      });
+      this.paymentMethodsTarget.classList.add("d-none");
+    }
+  }
 }

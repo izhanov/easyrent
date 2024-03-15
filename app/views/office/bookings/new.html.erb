@@ -138,6 +138,20 @@
   <div class="row d-flex justify-content-between align-items-center mb-4">
     <div class="col-12">
       <div class="form-check">
+        <%= f.label :without_prepayment_amount, class: "form-check-label"%>
+        <%= f.check_box :without_prepayment_amount, class: "form-check-input", data: {action: "change->bookings--form#handlePrepaymentAmount"}%>
+      </div>
+
+      <div class="input-group">
+        <%= f.label :prepayment_amount, class: "input-group-text"%>
+        <%= f.number_field :prepayment_amount, class: "form-control", data: {"bookings--form-target": "prepaymentAmount" } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row d-flex justify-content-between align-items-center mb-4">
+    <div class="col-12">
+      <div class="form-check">
         <%= f.label :with_pledge_amount, class: "form-check-label"%>
         <%= f.check_box :with_pledge_amount, class: "form-check-input", data: {action: "change->bookings--form#handlePledgeAmount"}%>
       </div>
@@ -146,6 +160,11 @@
         <%= f.label :pledge_amount, class: "input-group-text"%>
         <%= f.number_field :pledge_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "pledgeAmount", "bookings--error-handler-target": "pledgeAmount"} %>
       </div>
+
+      <div class="input-group mt-3">
+        <%= f.label :pledge_method, class: "input-group-text"%>
+        <%= f.select :pledge_method, options_for_select(Booking::PLEDGE_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {blank_included: false}, class: "form-select" %>
+      </div>
     </div>
   </div>
 
@@ -153,7 +172,38 @@
     <div class="col-12">
       <div class="input-group">
         <%= f.label :payment_method, class: "input-group-text"%>
-        <%= f.select :payment_method, options_for_select(Booking::PAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {blank_included: false}, class: "form-select" %>
+        <%= f.select(
+          :payment_method,
+          options_for_select(Booking::PAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }),
+          {blank_included: false},
+          class: "form-select",
+          data: {
+            action: "change->bookings--form#handlePaymentMethod"
+          }
+        )%>
+      </div>
+    </div>
+
+    <div class="row mt-3 d-none" data-bookings--form-target="paymentMethods">
+      <div class="col-4">
+        <div class="input-group">
+          <%= f.label :kaspi_method_amount, class: "input-group-text"%>
+          <%= f.number_field :kaspi_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "kaspiMethodAmount"} %>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="input-group">
+          <%= f.label :halyk_method_amount, class: "input-group-text"%>
+          <%= f.number_field :halyk_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "halykMethodAmount"} %>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="input-group">
+          <%= f.label :cash_method_amount, class: "input-group-text"%>
+          <%= f.number_field :cash_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "halykMethodAmount"} %>
+        </div>
       </div>
     </div>
   </div>

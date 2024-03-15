@@ -14,10 +14,23 @@ en:
         payment_method: "Payment method"
         status: "Status"
         pledge_amount: "Pledge amount"
+        pledge_method: "Pledge method"
         with_pledge_amount: "With pledge amount"
+        prepayment_amount: "Prepayment amount"
+        prepayment_method: "Prepayment method"
+        without_prepayment_amount: "Without prepayment amount"
+        kaspi_method_amount: "Kaspi method amount"
+        halyk_method_amount: "Halyk method amount"
+        cash_method_amount: "Cash method amount"
         payment_methods:
           cash: "Cash"
           cashless: "Cashless"
+          kaspi: "Kaspi"
+          halyk: "Halyk"
+          mixed: "Mixed"
+        pledge_methods:
+          halyk: "Halyk"
+          cash: "Cash"
         statuses:
           initial: "New"
           confirmed: "Confirmed"

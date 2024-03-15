@@ -36,6 +36,22 @@ module Utils
         booking.pledge_amount
       end
 
+      def booking_prepayment_amount
+        booking.prepayment_amount
+      end
+
+      def booking_kaspi_method_amount
+        booking.kaspi_method_amount
+      end
+
+      def booking_halyk_method_amount
+        booking.halyk_method_amount
+      end
+
+      def booking_chash_method_amount
+        booking.cash_method_amount
+      end
+
       def price_for_rent_period
         needed_range = prices.keys.detect { |range| range.cover?(booking.booked_dates_count) }
 

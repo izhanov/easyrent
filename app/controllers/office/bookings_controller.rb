@@ -93,6 +93,12 @@ module Office
         :payment_method,
         :with_pledge_amount,
         :pledge_amount,
+        :pledge_method,
+        :without_prepayment_amount,
+        :prepayment_amount,
+        :kaspi_method_amount,
+        :halyk_method_amount,
+        :cash_method_amount,
         services: {}
       )
     end

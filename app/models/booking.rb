@@ -4,26 +4,33 @@
 #
 # Table name: bookings
 #
-#  id                 :bigint           not null, primary key
-#  actual_ends_at     :datetime
-#  actual_starts_at   :datetime
-#  drop_off_location  :string           not null
-#  ends_at            :datetime         not null
-#  number             :string
-#  payment_method     :string
-#  pickup_location    :string           not null
-#  pledge_amount      :decimal(10, 2)   default(0.0), not null
-#  self_drop_off      :boolean          default(FALSE)
-#  self_pickup        :boolean          default(FALSE)
-#  services           :jsonb
-#  starts_at          :datetime         not null
-#  status             :string           default("initial"), not null
-#  with_pledge_amount :boolean          default(FALSE), not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  car_id             :bigint           not null
-#  client_id          :bigint           not null
-#  offer_id           :bigint           not null
+#  id                        :bigint           not null, primary key
+#  actual_ends_at            :datetime
+#  actual_starts_at          :datetime
+#  cash_method_amount        :decimal(10, 2)   default(0.0), not null
+#  drop_off_location         :string           not null
+#  ends_at                   :datetime         not null
+#  halyk_method_amount       :decimal(10, 2)   default(0.0), not null
+#  kaspi_method_amount       :decimal(10, 2)   default(0.0), not null
+#  number                    :string
+#  payment_method            :string
+#  pickup_location           :string           not null
+#  pledge_amount             :decimal(10, 2)   default(0.0), not null
+#  pledge_method             :string
+#  prepayment_amount         :decimal(10, 2)   default(0.0), not null
+#  prepayment_method         :string
+#  self_drop_off             :boolean          default(FALSE)
+#  self_pickup               :boolean          default(FALSE)
+#  services                  :jsonb
+#  starts_at                 :datetime         not null
+#  status                    :string           default("initial"), not null
+#  with_pledge_amount        :boolean          default(FALSE), not null
+#  without_prepayment_amount :boolean
+#  created_at                :datetime         not null
+#  updated_at                :datetime         not null
+#  car_id                    :bigint           not null
+#  client_id                 :bigint           not null
+#  offer_id                  :bigint           not null
 #
 # Indexes
 #
@@ -63,7 +70,8 @@ class Booking < ApplicationRecord
     end
   end
 
-  PAYMENT_METHODS = %w[cash cashless]
+  PAYMENT_METHODS = %w[kaspi halyk cash mixed]
+  PLEDGE_METHODS = %w[halyk cash]
   STATUSES = %w[
     initial
     confirmed
