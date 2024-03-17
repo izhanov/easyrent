@@ -1,24 +1,58 @@
-# README
+# Easyrent
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The project addresses business management issues in the car rental industry.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+Before you begin, ensure you have met the following requirements:
 
-* System dependencies
+- Ruby 3.2.2
+- Rails 7.1.2
+- PostgreSQL 14
+- Redis 7.2.3
+- Sidekiq
+- Typesense 0.25.2 (the search engine)
+- VIPS & imagemagick (for image processing)
 
-* Configuration
+## Installation
 
-* Database creation
+### To install this project, follow these steps:
 
-* Database initialization
+1. Clone the repository: `git clone https://github.com/rentacarsxeasyrent/easyrent.git`
+2. Navigate into the project directory: `cd easyrent`
+3. Install dependencies: `bundle install`
 
-* How to run the test suite
+### To install Typesense via docker, follow these steps:
 
-* Services (job queues, cache servers, search engines, etc.)
+1. `docker pull typesense/typesense:0.25.2`
+2. `docker run -p 8108:8108 \`
+    `-v$(pwd)/typesense-data:/data typesense/typesense:0.25.2 \`
+            `--data-dir /data \`
+            `--api-key=$TYPESENSE_API_KEY \`
+    `--enable-cors`
 
-* Deployment instructions
+**If you develop on macOS X just use Docker Desktop for running**
 
-* ...
+**NOTE! If you want run Typesense self-hosted try this:**
+
+`curl -O https://dl.typesense.org/releases/0.25.2/typesense-server-0.25.2-amd64.deb`
+
+### To install imagemagick and VIPS
+
+1. `sudo apt install imagemagick libvips`
+
+## Usage
+
+### Before start the project be sure that these services are run:
+
+1. PostgreSQL 14
+2. Redis 7.2.3
+3. Typesense 0.25.2 (via docker or self-hosted)
+
+
+### Then just run
+
+```bash
+ # ~/home/easyrent
+ bin/dev
+```
