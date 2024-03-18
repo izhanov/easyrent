@@ -22,6 +22,8 @@ namespace :office do
     patch :change_status, on: :member
   end
 
+  resources :comments, only: [:new, :create]
+
   resources :clients do
     collection do
       get :search

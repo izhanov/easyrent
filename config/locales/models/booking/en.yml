@@ -22,6 +22,7 @@ en:
         kaspi_method_amount: "Kaspi method amount"
         halyk_method_amount: "Halyk method amount"
         cash_method_amount: "Cash method amount"
+        comments: "Comments"
         payment_methods:
           cash: "Cash"
           cashless: "Cashless"

@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    models:
+      comment: "Комментарий"
+    attributes:
+      comment:
+        content: "Содержание"

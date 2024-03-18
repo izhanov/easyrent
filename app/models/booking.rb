@@ -51,6 +51,10 @@ class Booking < ApplicationRecord
   belongs_to :client, inverse_of: :bookings
   belongs_to :offer, inverse_of: :booking
 
+  has_many :comments, as: :commentable, dependent: :destroy
+
+  accepts_nested_attributes_for :comments
+
   audited
 
   include RTypesense
@@ -71,6 +75,7 @@ class Booking < ApplicationRecord
   end
 
   PAYMENT_METHODS = %w[kaspi halyk cash mixed]
+  PREPAYMENT_METHODS = %w[kaspi halyk cash]
   PLEDGE_METHODS = %w[halyk cash]
   STATUSES = %w[
     initial

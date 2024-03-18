@@ -26,7 +26,8 @@ RSpec.describe Operations::Office::Bookings::Create do
             {
               car_id: ["is missing"],
               offer_id: ["is missing"],
-              client_id: ["is missing"]
+              client_id: ["is missing"],
+              payment_method: ["is missing"]
             }
           ]
         )
@@ -58,7 +59,8 @@ RSpec.describe Operations::Office::Bookings::Create do
           starts_at: booking.starts_at + 1.day,
           ends_at: booking.ends_at + 4.days,
           pickup_location: "office",
-          drop_off_location: "office"
+          drop_off_location: "office",
+          payment_method: "cash"
         }
 
         result = described_class.new.call(params, user)
@@ -89,7 +91,8 @@ RSpec.describe Operations::Office::Bookings::Create do
           starts_at: Time.current + 1.day,
           ends_at: Time.current + 3.days,
           pickup_location: "office",
-          drop_off_location: "office"
+          drop_off_location: "office",
+          payment_method: "cash"
         }
 
         result = described_class.new.call(params, user)
@@ -112,7 +115,8 @@ RSpec.describe Operations::Office::Bookings::Create do
           starts_at: Time.current + 1.day,
           ends_at: Time.current + 3.days,
           pickup_location: "office",
-          drop_off_location: "office"
+          drop_off_location: "office",
+          payment_method: "cash"
         }
 
         result = subject.call(params, user)

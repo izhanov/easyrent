@@ -28,7 +28,7 @@ RSpec.describe Booking, type: :model do
 
   describe "Booking::PAYMENT_METHODS" do
     it "returns array of payment methods" do
-      expect(Booking::PAYMENT_METHODS).to eq(%w[cash cashless])
+      expect(Booking::PAYMENT_METHODS).to eq(%w[kaspi halyk cash mixed])
     end
   end
 

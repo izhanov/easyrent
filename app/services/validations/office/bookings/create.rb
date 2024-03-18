@@ -22,6 +22,7 @@ module Validations
           optional(:halyk_method_amount).value(:decimal)
           optional(:cash_method_amount).value(:decimal)
           optional(:services).value(:hash)
+          optional(:comments_attributes).value(:hash)
         end
 
         rule(:starts_at) do

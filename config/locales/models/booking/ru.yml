@@ -22,6 +22,7 @@ ru:
         kaspi_method_amount: "Сумма через Kaspi"
         halyk_method_amount: "Сумма через Halyk"
         cash_method_amount: "Сумма наличными"
+        comments: "Комментарии"
         payment_methods:
           cash: "Наличный"
           cashless: "Безналичный"

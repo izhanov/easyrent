@@ -1,0 +1,10 @@
+<%= form_with model: [:office, comment] do |f| %>
+  <%= f.hidden_field :commentable_id, value: params[:commentable_id] %>
+  <%= f.hidden_field :commentable_type, value: params[:commentable_type] %>
+
+  <div class="mb-3">
+    <%= f.label :content, class: "form-label" %>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+  <%= f.submit "Добавить комментарий", class: "btn btn-primary" %>
+<% end %>

@@ -165,6 +165,23 @@
           <%= @booking.prepayment_method %>
         </li>
       </ul>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex justify-content-between mb-3">
+            <strong>Комментарии:</strong>
+            <div>
+              <%= link_to "Добавить комментарий", new_office_comment_path(commentable_id: @booking.id, commentable_type: @booking.class.name), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(Comment.new) } %>
+            </div>
+          </div>
+
+          <%= turbo_frame_tag Comment.new %>
+
+          <%= turbo_frame_tag "comments" do %>
+            <%= render @booking.comments.order(created_at: :desc) %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
