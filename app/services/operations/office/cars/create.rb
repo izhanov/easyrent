@@ -14,22 +14,29 @@ module Operations
         private
 
         def validate(params)
-          validation = Validations::Office::Cars::Create.new.call(params)
-          validation.to_monad
-            .or { |result| Failure[:validation_error, result.errors.to_h] }
+          car_validation = Validations::Office::Cars::Create.new.call(params).to_monad
+          insurance_validation = Validations::Office::CarInsurances::Create.new.call(params[:insurances_attributes]).to_monad
+
+          case [car_validation, insurance_validation]
+          in [Success => car_result, Success => insurance_result]
+            Success(params.merge(insurances_attributes: [insurance_result.value!.to_h]))
+          in [Failure => car_result, Failure => insurance_result]
+            Failure[
+              :validation_error,
+              car_result.failure.errors.to_h.merge(insurances_attributes: insurance_result.failure.errors.to_h)
+            ]
+          in [Failure => car_result, Success]
+            Failure[:validation_error, car_result.failure.errors.to_h]
+          in [Success, Failure => insurance_result]
+            Failure[:validation_error, {insurance_attributes: insurance_result.failure.errors.to_h}]
+          end
         end
 
         def commit(params)
-          photos_attributes =
-            params[:photos_attributes].each_with_object({}).with_index do |(photo, attributes), index|
-              attributes[index] = {image: photo}
-            end
-
-          params[:photos_attributes] = photos_attributes
           car = Car.create!(params)
           Success(car)
-        rescue ActiveRecord::RecordNotUnique => e
-          errors = {title: [I18n.t("dry_validation.errors.rules.car.title.uniqueness_violation")]}
+        rescue ActiveRecord::RecordNotUnique
+          errors = {plate_number_or_vin_code: [I18n.t("dry_validation.errors.rules.car.plate_number_or_vin_code.uniqueness_violation")]}
           Failure[:uniqueness_violation, errors]
         end
 

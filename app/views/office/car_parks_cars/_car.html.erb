@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to car.id, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
+  <td><%= link_to car.mark_title, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
+  <td><%= link_to car.plate_number, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
+  <td><%= link_to car.status, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
+  <td><%= link_to car.owner.title, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
+</tr>

@@ -1,5 +1,5 @@
 namespace :office do
-  root to: "welcome#index"
+  root to: "car_parks#index"
 
   devise_for(
     :users,
@@ -21,6 +21,8 @@ namespace :office do
   resources :bookings do
     patch :change_status, on: :member
   end
+
+  resources :car_parks_cars, only: %i[index]
 
   resources :comments, only: [:new, :create]
 

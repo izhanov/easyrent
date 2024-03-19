@@ -1,0 +1,13 @@
+en:
+  office:
+    car_parks_cars:
+      index:
+        title: "Car parks cars"
+        back: "Back"
+        table:
+          header:
+            id: "ID"
+            mark: "Mark"
+            plate_number: "Plate number"
+            status: "Status"
+            car_park: "Car park"

@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      car_insurance: "Car insurance"
+    attributes:
+      car_insurance:
+        kind: "Kind"
+        start_at: "Start at"
+        end_at: "End at"

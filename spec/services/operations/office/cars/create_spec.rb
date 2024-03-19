@@ -42,7 +42,12 @@ RSpec.describe Operations::Office::Cars::Create do
           mileage: 100_000,
           number_of_seats: 4,
           tank_volume: 50,
-          photos_attributes: []
+          photos_attributes: {},
+          insurances_attributes: {
+            kind: "ogpo",
+            start_at: Date.current,
+            end_at: Date.current + 1.year
+          }
         }
 
         result = subject.call(params)

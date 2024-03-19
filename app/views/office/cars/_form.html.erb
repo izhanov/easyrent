@@ -22,7 +22,9 @@
 
   <div class="col-6 mb-3 mb-lg-4">
     <div class="input-group">
-      <%= f.file_field :photos_attributes, multiple: true, include_hidden: false, class: "form-control" %>
+      <%= f.fields_for :photos, Photo.new do |photo_form| %>
+        <%= photo_form.file_field :image, multiple: true, include_hidden: false, class: "form-control" %>
+      <% end %>
       <%= error_field(@errors, :photos_attributes) %>
     </div>
   </div>
@@ -159,6 +161,26 @@
       <%= f.text_field :mileage, class: "form-control #{@errors && @errors.dig(:mileage).present? ? 'is-invalid' : ''}", data: {mask: "mileage"} %>
       <%= error_field(@errors, :mileage) %>
     </div>
+  </div>
+
+  <div class="col-6 mb-3 mb-lg-4">
+    <%= f.label :insurances, "Страховка", class: "form-label" %>
+    <%= f.fields_for :insurances, CarInsurance.new do |insurance_form| %>
+      <div class="input-group">
+        <%= insurance_form.label :kind, class: "input-group-text" %>
+        <%= insurance_form.select :kind, options_for_select([["ОГПО ВТС", "ogpo"]]), {include_blank: false}, readonly: true, class: "form-control" %>
+      </div>
+      <div class="input-group mt-4">
+        <%= insurance_form.label :start_at, class: "input-group-text" %>
+        <%= insurance_form.date_field :start_at, class: "form-control #{@errors && @errors.dig(:insurances_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
+        <%= error_field(@errors, :insurances_attributes, :start_at) %>
+      </div>
+      <div class="input-group mt-4">
+        <%= insurance_form.label :end_at, class: "input-group-text" %>
+        <%= insurance_form.date_field :end_at, class: "form-control #{@errors && @errors.dig(:insurances_attributes, :end_at).present? ? 'is-invalid' : ''}" %>
+        <%= error_field(@errors, :insurances_attributes, :end_at) %>
+      </div>
+    <% end %>
   </div>
 
   <div class="col-12 mb-3">

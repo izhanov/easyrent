@@ -21,7 +21,7 @@ module Validations
           required(:color).filled(:string)
           required(:number_of_seats).filled(:integer, gt?: 0)
           required(:tank_volume).filled(:integer, gt?: 0)
-          optional(:photos_attributes).value(:array)
+          optional(:photos_attributes).value(:hash)
         end
       end
     end

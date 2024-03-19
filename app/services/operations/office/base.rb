@@ -3,7 +3,7 @@
 module Operations
   module Office
     class Base
-      include Dry::Monads[:result, :do]
+      include Dry::Monads[:result, :do, :validated, :list]
 
       private
 

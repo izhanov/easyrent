@@ -17,7 +17,12 @@ module Office
 
     def create
       operation = Operations::Office::Cars::Create.new
-      result = operation.call(car_params.to_h)
+      result = operation.call(
+        car_params.to_h.merge(
+          photos_attributes: photos_attributes_params,
+          insurances_attributes: insurances_attributes_params
+        )
+      )
 
       case result
       in Success[car]
@@ -25,7 +30,8 @@ module Office
         redirect_to office_car_park_car_path(@car_park, car), flash: success_message
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
-        @car = Car.new(car_params)
+        # TODO: Move photo uploading to a separate page
+        @car = Car.new(car_params.merge(photos_attributes: {}))
         @errors = errors
         render :new
       end
@@ -99,8 +105,36 @@ module Office
         :transmission,
         :technical_condition,
         :appearance,
-        photos_attributes: []
+        photos_attributes: [
+          image: []
+        ],
+        insurances_attributes: [:start_at, :end_at, :kind]
       )
+    end
+
+    # TODO: Should be moved to separate operation
+    # TODO: with the separate validation
+    # TODO: and the different page for the photos upload
+    # This method is used to convert the params to the format that the operation expects
+    # The operation expects the photos_attributes to be in the format of:
+    # {
+    #   0: {image_data: "base64"},
+    #   1: {image_data: "base64"},
+    # }
+    def photos_attributes_params
+      car_params[:photos_attributes].to_h.each_with_object({}) do |(_, images_attributes), attributes|
+        images_attributes.each_with_index do |(_, images), index|
+          images.each do |image|
+            attributes[index] = {image: image}
+          end
+        end
+      end
+    end
+
+    def insurances_attributes_params
+      car_params[:insurances_attributes].to_h.each_with_object({}) do |(_, insurance_attributes), attributes|
+        attributes.merge!(insurance_attributes)
+      end
     end
   end
 end

@@ -6,11 +6,11 @@ ru:
           success: "Автомобиль успешно создан."
           errors:
             validation_error: "Ошибка валидации при создании."
-            uniqueness_violation: "Автомобиль уже существует."
+            uniqueness_violation: "Автомобиль с таким гос. номером или VIN уже существует."
         update:
           success: "Автомобиль успешно обновлен."
           errors:
             validation_error: "Ошибка валидации при обновлении."
-            uniqueness_violation: "Автомобиль уже существует."
+            uniqueness_violation: "Автомобиль с таким гос. номером или VIN уже существует."
         destroy:
           success: "Автомобиль успешно удален."

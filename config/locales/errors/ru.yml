@@ -131,6 +131,12 @@ ru:
             invalid: "неверный статус"
         pledge_amount:
           less_than_zero: "не может быть меньше нуля"
+        car:
+          plate_number_or_vin_code:
+            uniqueness_violation: "должен быть уникальным"
+        insurances_attributes:
+          start_at:
+            greater_than_end_at: "начало не может быть больше чем дата окончания"
       size?:
         arg:
           default: "размер должен быть %{size}"

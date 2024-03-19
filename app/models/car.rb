@@ -43,8 +43,11 @@ class Car < ApplicationRecord
   has_many :offers, dependent: :destroy
   has_many :bookings, dependent: :destroy, inverse_of: :car
   has_many :photos, dependent: :destroy
+  has_many :insurances, class_name: "CarInsurance", dependent: :destroy
+  has_one :active_insurance, -> { where("end_at > ?", Date.current) }, class_name: "CarInsurance"
 
   accepts_nested_attributes_for :photos, allow_destroy: true
+  accepts_nested_attributes_for :insurances, allow_destroy: true
 
   after_commit :update_typesense_index, on: %i[create update]
 

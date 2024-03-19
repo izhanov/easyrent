@@ -137,6 +137,12 @@ en:
             invalid: "Invalid status"
         pledge_amount:
           less_than_zero: "must be greater than or equal to 0"
+        car:
+          plate_number_or_vin_code:
+            uniqueness_violation: "must be unique"
+        insurances_attributes:
+          start_at:
+            greater_than_end_at: "Start at cannot be greater than end at"
       size?:
         arg:
           default: "size must be %{size}"

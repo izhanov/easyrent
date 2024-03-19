@@ -1,0 +1,13 @@
+ru:
+  office:
+    car_parks_cars:
+      index:
+        title: "Автомобили"
+        back: "Back"
+        table:
+          header:
+            id: "ID"
+            mark: "Марка"
+            plate_number: "Гос. номер"
+            status: "Статус"
+            car_park: "Автопарк"
