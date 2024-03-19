@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    Страховые полисы
+    <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
+    <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
+  </h1>
+  <div>
+    <%= link_to office_car_park_car_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary" do %>
+      <i class="bi bi-box-arrow-left"></i>
+    <% end %>
+    <%= link_to new_office_car_park_car_car_insurance_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(CarInsurance.new)} do %>
+      <i class="bi bi-journal-plus"></i>
+      Добавить страховку
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+  <%= turbo_frame_tag CarInsurance.new %>
+
+  <div class="list-group">
+    <%= turbo_frame_tag "car_insurances" do %>
+        <%= render @car_insurances %>
+    <% end %>
+  </div>
+</div>
+
+

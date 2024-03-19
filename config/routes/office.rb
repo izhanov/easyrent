@@ -54,6 +54,8 @@ namespace :office do
       resources :offers do
         get :select, on: :collection
       end
+
+      resources :car_insurances
       get :search, on: :collection
     end
   end

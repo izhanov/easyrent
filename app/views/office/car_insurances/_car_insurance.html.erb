@@ -1,0 +1,3 @@
+<%= turbo_frame_tag car_insurance do %>
+  <%= link_to "#{car_insurance.start_at..car_insurance.end_at}", edit_office_car_park_car_car_insurance_path(@car_park, @car, car_insurance), class: "list-group-item list-group-item-action", data: {turbo_frame: dom_id(car_insurance)} %>
+<% end %>
