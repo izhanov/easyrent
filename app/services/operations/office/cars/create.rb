@@ -47,13 +47,21 @@ module Operations
             Failure[
               :validation_error,
               {
-                insurance_attributes: insurance_result.failure.errors.to_h
+                insurances_attributes: insurance_result.failure.errors.to_h
               }
             ]
           in [Success, Success, Failure => car_inspetion_result]
             Failure[
               :validation_error,
               {
+                car_inspections_attributes: car_inspetion_result.failure.errors.to_h
+              }
+            ]
+          in [Success, Failure => insurance_result, Failure => car_inspetion_result]
+            Failure[
+              :validation_error,
+              {
+                insurances_attributes: insurance_result.failure.errors.to_h,
                 car_inspections_attributes: car_inspetion_result.failure.errors.to_h
               }
             ]
