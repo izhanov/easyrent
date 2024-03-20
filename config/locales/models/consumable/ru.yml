@@ -1,0 +1,31 @@
+ru:
+  activerecord:
+    models:
+      consumable: "Расходник"
+    attributes:
+      consumable:
+        car_id: "Автомобиль"
+        title: "Название"
+        lifetime: "Срок службы, км"
+        description: "Описание"
+        titles:
+          engine_oil: "Моторное масло"
+          brake_fluid: "Тормозная жидкость"
+          transmission_oil: "Трансмиссионное масло"
+          antifreeze: "Антифриз"
+          power_steering_fluid: "Жидкость гидроусилителя"
+          air_filter: "Воздушный фильтр"
+          fuel_filter: "Топливный фильтр"
+          cabin_filter: "Салонный фильтр"
+          spark_plug: "Свеча зажигания"
+          timing_belt: "Ремень ГРМ"
+          timing_chain: "Цепь ГРМ"
+          brake_pads: "Тормозные колодки"
+          brake_discs: "Тормозные диски"
+          clutch_kit: "Комплект сцепления"
+          shock_absorber: "Амортизатор"
+          stabilizer_link: "Стабилизатор"
+          tie_rod_end: "Тяга рулевая"
+          ball_joint: "Шаровая опора"
+          wheel_hub: "Подшипник ступицы"
+

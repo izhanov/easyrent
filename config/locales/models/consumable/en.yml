@@ -1,0 +1,30 @@
+en:
+  activerecord:
+    models:
+      consumable: "Consumable"
+    attributes:
+      consumable:
+        car_id: "Car"
+        title: "Title"
+        lifetime: "Lifetime"
+        description: "Description"
+        titles:
+          engine_oil: "Engine oil"
+          brake_fluid: "Brake fluid"
+          transmission_oil: "Transmission oil"
+          antifreeze: "Antifreeze"
+          power_steering_fluid: "Power steering fluid"
+          air_filter: "Air filter"
+          fuel_filter: "Fuel filter"
+          cabin_filter: "Cabin filter"
+          spark_plug: "Spark plug"
+          timing_belt: "Timing belt"
+          timing_chain: "Timing chain"
+          brake_pads: "Brake pads"
+          brake_discs: "Brake discs"
+          clutch_kit: "Clutch kit"
+          shock_absorber: "Shock absorber"
+          stabilizer_link: "Stabilizer link"
+          tie_rod_end: "Tie rod end"
+          ball_joint: "Ball joint"
+          wheel_hub: "Wheel hub"

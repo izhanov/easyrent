@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_19_183355) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_20_141055) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -230,6 +230,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_183355) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
 
+  create_table "consumable_logs", force: :cascade do |t|
+    t.bigint "consumable_id", null: false
+    t.date "date"
+    t.integer "mileage_when_replacing"
+    t.integer "mileage_at_next_replacing"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consumable_id"], name: "index_consumable_logs_on_consumable_id"
+  end
+
+  create_table "consumables", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.string "title"
+    t.string "description"
+    t.integer "lifetime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_consumables_on_car_id"
+  end
+
   create_table "marks", force: :cascade do |t|
     t.bigint "brand_id", null: false
     t.string "title", null: false
@@ -351,6 +372,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_183355) do
   add_foreign_key "cars", "marks"
   add_foreign_key "clients_in_users_companies", "clients"
   add_foreign_key "clients_in_users_companies", "users"
+  add_foreign_key "consumable_logs", "consumables"
+  add_foreign_key "consumables", "cars"
   add_foreign_key "marks", "brands"
   add_foreign_key "offers", "cars"
   add_foreign_key "photos", "cars"

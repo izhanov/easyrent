@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Новый расходный материал</h1>
+</div>
+
+
+<div class="container">
+  <%= turbo_frame_tag @consumable do %>
+    <%= render "form", consumable: @consumable, car: @car, owner: @car.owner %>
+  <% end %>
+</div>

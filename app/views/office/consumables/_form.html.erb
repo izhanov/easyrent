@@ -1,0 +1,24 @@
+<%= form_with model: [:office, owner, car, consumable] do |f| %>
+  <%= f.hidden_field :car_id, value: car.id %>
+
+  <div class="input-group">
+    <%= f.label :title, class: "input-group-text" %>
+    <%= f.select :title, options_for_select(Consumable::TITLES.map { |title| [localize_title(title), title]}), {include_blank: false}, class: "form-select" %>
+    <%= error_field(@errors, :title) %>
+  </div>
+
+  <div class="input-group mt-3">
+    <%= f.label :lifetime, class: "input-group-text" %>
+    <%= f.number_field :lifetime, class: "form-control" %>
+    <%= error_field(@errors, :lifetime) %>
+  </div>
+
+  <div class="input-group mt-3">
+    <%= f.label :description, class: "input-group-text" %>
+    <%= f.text_area :description, class: "form-control" %>
+    <%= error_field(@errors, :description) %>
+  </div>
+
+  <%= f.submit "Сохранить", class: "btn btn-sm btn-success mt-3" %>
+  <%= link_to "Отмена", office_car_park_car_consumables_path(owner, car), class: "btn btn-sm btn-secondary mt-3" %>
+<% end %>

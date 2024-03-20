@@ -46,6 +46,7 @@ class Car < ApplicationRecord
   has_many :insurances, class_name: "CarInsurance", dependent: :destroy
   has_one :active_insurance, -> { where("end_at > ?", Date.current) }, class_name: "CarInsurance"
   has_many :car_inspections, dependent: :destroy
+  has_many :consumables, dependent: :destroy
 
   accepts_nested_attributes_for :photos, allow_destroy: true
   accepts_nested_attributes_for :insurances, allow_destroy: true

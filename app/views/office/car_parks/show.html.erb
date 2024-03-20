@@ -27,7 +27,7 @@
     </div>
     <div class="col-6">
       <% if @car_park.cars.any?%>
-        <%= render "table", cars: @car_park.cars %>
+        <%= render "table", cars: @car_park.cars.order(:id) %>
       <% else %>
         <div class="alert alert-info mt-3" role="alert">
           <%= t(".no_cars") %>
