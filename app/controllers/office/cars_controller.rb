@@ -123,8 +123,8 @@ module Office
     # }
     def photos_attributes_params
       car_params[:photos_attributes].to_h.each_with_object({}) do |(_, images_attributes), attributes|
-        images_attributes.each_with_index do |(_, images), index|
-          images.each do |image|
+        images_attributes.each do |_, images|
+          images.each_with_index do |image, index|
             attributes[index] = {image: image}
           end
         end
