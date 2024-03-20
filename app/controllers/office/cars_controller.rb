@@ -13,14 +13,19 @@ module Office
 
     def new
       @car = Car.new
+      @car_inspection = @car.car_inspections.build
+      @car_insurance = @car.insurances.build
+      @photo = @car.photos.build
     end
 
+    # TODO: MEEH! Must be refactored
     def create
       operation = Operations::Office::Cars::Create.new
       result = operation.call(
         car_params.to_h.merge(
           photos_attributes: photos_attributes_params,
-          insurances_attributes: insurances_attributes_params
+          insurances_attributes: insurances_attributes_params,
+          car_inspections_attributes: car_inspections_attributes_params
         )
       )
 
@@ -32,6 +37,8 @@ module Office
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
         # TODO: Move photo uploading to a separate page
         @car = Car.new(car_params.merge(photos_attributes: {}))
+        @car_inspection = CarInspection.new(car_inspections_attributes_params)
+        @car_insurance = CarInsurance.new(insurances_attributes_params)
         @errors = errors
         render :new
       end
@@ -108,7 +115,8 @@ module Office
         photos_attributes: [
           image: []
         ],
-        insurances_attributes: [:start_at, :end_at, :kind]
+        insurances_attributes: [:start_at, :end_at, :kind],
+        car_inspections_attributes: [:start_at, :end_at]
       )
     end
 
@@ -134,6 +142,12 @@ module Office
     def insurances_attributes_params
       car_params[:insurances_attributes].to_h.each_with_object({}) do |(_, insurance_attributes), attributes|
         attributes.merge!(insurance_attributes)
+      end
+    end
+
+    def car_inspections_attributes_params
+      car_params[:car_inspections_attributes].to_h.each_with_object({}) do |(_, car_inspection_attributes), attributes|
+        attributes.merge!(car_inspection_attributes)
       end
     end
   end

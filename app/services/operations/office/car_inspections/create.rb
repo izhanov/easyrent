@@ -4,9 +4,9 @@ module Operations
   module Office
     module CarInspections
       class Create < Base
-        def call(params, responsible)
+        def call(car, params, responsible)
           validated_params = yield validate(params)
-          car_inspection = yield commit(validated_params.to_h, responsible)
+          car_inspection = yield commit(car, validated_params.to_h, responsible)
           Success(car_inspection)
         end
 
@@ -18,9 +18,9 @@ module Operations
             .or { |failure| Failure[:validation_error, failure.errors.to_h] }
         end
 
-        def commit(params, responsible)
+        def commit(car, params, responsible)
           audit_as_user(responsible) do
-            car_inspection = CarInspection.create!(params)
+            car_inspection = car.car_inspections.create!(params)
             Success(car_inspection)
           end
         end

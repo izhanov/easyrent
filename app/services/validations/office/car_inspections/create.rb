@@ -5,7 +5,6 @@ module Validations
     module CarInspections
       class Create < Base
         params do
-          required(:car_id).filled(:integer)
           required(:start_at).filled(:date)
           required(:end_at).filled(:date)
         end

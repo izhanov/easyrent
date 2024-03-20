@@ -47,6 +47,10 @@ RSpec.describe Operations::Office::Cars::Create do
             kind: "ogpo",
             start_at: Date.current,
             end_at: Date.current + 1.year
+          },
+          car_inspections_attributes: {
+            start_at: Date.current,
+            end_at: Date.current + 1.day
           }
         }
 

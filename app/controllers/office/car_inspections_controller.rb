@@ -15,7 +15,7 @@ module Office
 
     def create
       operation = Operations::Office::CarInspections::Create.new
-      result = operation.call(car_inspection_params.to_h, current_office_user)
+      result = operation.call(@car, car_inspection_params.to_h, current_office_user)
 
       case result
       in Success[car_inspection]

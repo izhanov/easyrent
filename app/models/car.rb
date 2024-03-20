@@ -49,6 +49,7 @@ class Car < ApplicationRecord
 
   accepts_nested_attributes_for :photos, allow_destroy: true
   accepts_nested_attributes_for :insurances, allow_destroy: true
+  accepts_nested_attributes_for :car_inspections, allow_destroy: true
 
   after_commit :update_typesense_index, on: %i[create update]
 

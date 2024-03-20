@@ -15,7 +15,7 @@ RSpec.describe Operations::Office::CarInspections::Create do
           end_at: Date.current + 1.day
         }
 
-        result = subject.call(params, responsible)
+        result = subject.call(car, params, responsible)
 
         expect(result).to be_success
         expect(result.value!).to be_a(CarInspection)
@@ -33,7 +33,7 @@ RSpec.describe Operations::Office::CarInspections::Create do
           end_at: nil
         }
 
-        result = subject.call(params, responsible)
+        result = subject.call(car, params, responsible)
 
         expect(result).to be_failure
         expect(result.failure).to match_array([:validation_error, {start_at: ["is missing"], end_at: ["is missing"]}])

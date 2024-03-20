@@ -163,24 +163,44 @@
     </div>
   </div>
 
-  <div class="col-6 mb-3 mb-lg-4">
-    <%= f.label :insurances, "Страховка", class: "form-label" %>
-    <%= f.fields_for :insurances, CarInsurance.new do |insurance_form| %>
-      <div class="input-group">
-        <%= insurance_form.label :kind, class: "input-group-text" %>
-        <%= insurance_form.select :kind, options_for_select([["ОГПО ВТС", "ogpo"]]), {include_blank: false}, readonly: true, class: "form-control" %>
-      </div>
-      <div class="input-group mt-4">
-        <%= insurance_form.label :start_at, class: "input-group-text" %>
-        <%= insurance_form.date_field :start_at, class: "form-control #{@errors && @errors.dig(:insurances_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
-        <%= error_field(@errors, :insurances_attributes, :start_at) %>
-      </div>
-      <div class="input-group mt-4">
-        <%= insurance_form.label :end_at, class: "input-group-text" %>
-        <%= insurance_form.date_field :end_at, class: "form-control #{@errors && @errors.dig(:insurances_attributes, :end_at).present? ? 'is-invalid' : ''}" %>
-        <%= error_field(@errors, :insurances_attributes, :end_at) %>
-      </div>
-    <% end %>
+  <div class="row">
+    <div class="col-6 mb-3 mb-lg-4">
+      <%= f.label :insurances, "Страховка", class: "form-label" %>
+      <%= f.fields_for :insurances, @car_insurance do |insurance_form| %>
+        <div class="input-group">
+          <%= insurance_form.label :kind, class: "input-group-text" %>
+          <%= insurance_form.select :kind, options_for_select([["ОГПО ВТС", "ogpo"]]), {include_blank: false}, readonly: true, class: "form-control" %>
+        </div>
+        <div class="input-group mt-4">
+          <%= insurance_form.label :start_at, class: "input-group-text" %>
+          <%= insurance_form.date_field :start_at, class: "form-control #{@errors && @errors.dig(:insurances_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :insurances_attributes, :start_at) %>
+        </div>
+        <div class="input-group mt-4">
+          <%= insurance_form.label :end_at, class: "input-group-text" %>
+          <%= insurance_form.date_field :end_at, class: "form-control #{@errors && @errors.dig(:insurances_attributes, :end_at).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :insurances_attributes, :end_at) %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-6 mb-3 mb-lg-3">
+      <%= f.label :car_inspections, "Технический осмотр", class: "form-label" %>
+
+      <%= f.fields_for :car_inspections, @car_inspection do |car_inspection_form| %>
+        <div class="input-group mb-4">
+          <%= car_inspection_form.label :start_at, class: "input-group-text" %>
+          <%= car_inspection_form.date_field :start_at, class: "form-control #{@errors && @errors.dig(:car_inspections_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :car_inspections_attributes, :start_at) %>
+        </div>
+
+        <div class="input-group">
+          <%= car_inspection_form.label :end_at, class: "input-group-text" %>
+          <%= car_inspection_form.date_field :end_at, class: "form-control #{@errors && @errors.dig(:car_inspections_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :car_inspections_attributes, :end_at) %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="col-12 mb-3">

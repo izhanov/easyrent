@@ -5,5 +5,5 @@ ru:
     attributes:
       car_inspection:
         car_id: "Автомобиль"
-        start_at: "Дата начала"
-        end_at: "Дата окончания"
+        start_at: "Дата проведения осмотра"
+        end_at: "Дата следующего осмотра"
