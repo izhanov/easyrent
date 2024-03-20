@@ -1,0 +1,10 @@
+ru:
+  operations:
+    office:
+      car_insurances:
+        create:
+          success: "Запись о страховом полисе успешна создана"
+        update:
+          success: "Запись о страховом полисе успешна обновлена"
+        destroy:
+          success: "Запись о страховом полисе успешно удалена"

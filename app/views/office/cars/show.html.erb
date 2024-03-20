@@ -42,13 +42,26 @@
 
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">Страховые полисы</h5>
+          <h5 class="card-title">Журнал страховые полисов</h5>
           <p class="card-text">
-            Добавьте автострахование.
+            Сделайте запись в журнал страховых полисов, чтобы быть в курсе когда нужно продлить страховку.
           </p>
 
           <%= link_to office_car_park_car_car_insurances_path(@car_park, @car), class: "btn btn-sm btn-warning"  do %>
-            Перейти к страховкам
+            Перейти к журналу
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Журнал технического осмотра</h5>
+          <p class="card-text">
+            Сделайте запись в журнал технического осмотра, чтобы быть в курсе когда нужно провести технический осмотр в следующий раз.
+          </p>
+
+          <%= link_to office_car_park_car_car_inspections_path(@car_park, @car), class: "btn btn-sm btn-warning"  do %>
+            Перейти к журналу
           <% end %>
         </div>
       </div>

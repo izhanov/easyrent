@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Редактирование записи технического осмотра</h1>
+</div>
+
+
+<div class="container">
+  <%= turbo_frame_tag @car_inspection do %>
+    <%= render "form", car_inspection: @car_inspection, car: @car, owner: @car.owner %>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+en:
+  operations:
+    office:
+      car_insurances:
+        create:
+          success: "Car insurance created successfully"
+        update:
+          success: "Car insurance updated successfully"
+        destroy:
+          success: "Car insurance destroy successfully"

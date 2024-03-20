@@ -1,0 +1,10 @@
+ru:
+  operations:
+    office:
+      car_inspections:
+        create:
+          success: "Запись о техническом осмотре успешна создана"
+        update:
+          success: "Запись о техническом осмотре успешна обновлена"
+        destroy:
+          success: "Запись о техническом осмотре успешно удалена"
