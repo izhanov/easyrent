@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :car_inspection do
-    date { "2024-03-19" }
-    mileage { 1 }
+    start_at { "2024-03-19" }
+    end_at { "2025-03-19" }
     car { nil }
   end
 end
