@@ -56,6 +56,9 @@ namespace :office do
       end
 
       resources :car_insurances
+      resources :car_inspections
+      resources :consumables
+
       get :search, on: :collection
     end
   end

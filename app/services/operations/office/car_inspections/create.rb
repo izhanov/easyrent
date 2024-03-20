@@ -2,26 +2,26 @@
 
 module Operations
   module Office
-    module CarInsurances
+    module CarInspections
       class Create < Base
-        def call(car, params, responsible)
+        def call(params, responsible)
           validated_params = yield validate(params)
-          car_insurances = yield commit(car, validated_params.to_h, responsible)
-          Success(car_insurances)
+          car_inspection = yield commit(validated_params.to_h, responsible)
+          Success(car_inspection)
         end
 
         private
 
         def validate(params)
-          validation = Validations::Office::CarInsurances::Create.new.call(params)
+          validation = Validations::Office::CarInspections::Create.new.call(params)
           validation.to_monad
             .or { |failure| Failure[:validation_error, failure.errors.to_h] }
         end
 
-        def commit(car, params, responsible)
+        def commit(params, responsible)
           audit_as_user(responsible) do
-            car_insurance = car.insurances.create!(params)
-            Success(car_insurance)
+            car_inspection = CarInspection.create!(params)
+            Success(car_inspection)
           end
         end
       end

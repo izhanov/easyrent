@@ -1,0 +1,10 @@
+en:
+  operations:
+    office:
+      car_inspections:
+        create:
+          success: "Car inspection created successfully"
+        update:
+          success: "Car inspection updated successfully"
+        destroy:
+          success: "Car inspection destroy successfully"

@@ -2,11 +2,10 @@
 
 # == Schema Information
 #
-# Table name: car_insurances
+# Table name: car_inspections
 #
 #  id         :bigint           not null, primary key
 #  end_at     :date
-#  kind       :string
 #  start_at   :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -14,16 +13,14 @@
 #
 # Indexes
 #
-#  index_car_insurances_on_car_id  (car_id)
+#  index_car_inspections_on_car_id  (car_id)
 #
 # Foreign Keys
 #
-#  fk_rails_ae90286056  (car_id => cars.id)
+#  fk_rails_46ec05e4d0  (car_id => cars.id)
 #
-class CarInsurance < ApplicationRecord
+class CarInspection < ApplicationRecord
   belongs_to :car
 
   audited
-
-  KINDS = %w[ogpo kasko].freeze
 end

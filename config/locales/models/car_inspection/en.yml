@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      car_inspection: "Car inspection"
+    attributes:
+      car_inspection:
+        car_id: "Car"
+        start_at: "Start at"
+        end_at: "End at"

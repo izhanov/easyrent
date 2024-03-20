@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    models:
+      car_inspection: "Технический осмотр"
+    attributes:
+      car_inspection:
+        car_id: "Автомобиль"
+        start_at: "Дата начала"
+        end_at: "Дата окончания"
