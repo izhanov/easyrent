@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      consumable_log: "Consumable Log"
+    attributes:
+      consumable_log:
+        consumable_id: "Consumable"
+        date: "Date"
+        description: "Description"
+        mileage_when_replacing: "Mileage when replacing"
+        mileage_at_next_replacing: "Mileage at next replacing"

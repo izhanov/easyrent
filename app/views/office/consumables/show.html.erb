@@ -1,31 +1,48 @@
-<h1>
-  <%= @consumable.title %>
-</h1>
-
-<%# Table of replacement logs for this consumable %>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Дата</th>
-      <th>Пробег при замене</th>
-      <th>Пробег до следующей замены</th>
-      <th>Комментарий</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @consumable.consumable_logs.each do |consumable_log| %>
-      <tr>
-        <td><%= consumable_log.date %></td>
-        <td><%= consumable_log.mileage_when_replacing %></td>
-        <td><%= consumable_log.mileage_at_next_replacing %></td>
-        <td><%= consumable_log.description %></td>
-        <td><%= link_to 'Show', "#" %></td>
-        <td><%= link_to 'Edit', "#" %></td>
-        <td><%= link_to 'Destroy', "#", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    <%= localize_consumable_title(@consumable.title) %>
+    <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
+    <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
+  </h1>
+  <div>
+    <%= link_to office_car_park_car_consumables_path(@car_park, @car), class: "btn btn-sm btn-outline-primary" do %>
+      <i class="bi bi-box-arrow-left"></i>
     <% end %>
-  </tbody>
-</table>
+    <%= link_to edit_office_car_park_car_consumable_path(@car_park, @car, @consumable), class: "btn btn-sm btn-warning", data: {frame_target: "_top"} do %>
+      <i class="bi bi-pencil-square"></i>
+    <% end %>
+    <%= link_to office_car_park_car_consumable_path(@car_park, @car, @consumable), class: "btn btn-sm btn-danger", data: {turbo_confirm: t(".sure?"), turbo_method: :delete} do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <%= turbo_frame_tag ConsumableLog.new do %>
+    <%= link_to new_office_car_park_car_consumable_consumable_log_path(@car.owner, @car, @consumable), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(ConsumableLog.new)} do %>
+      <i class="bi bi-journal-plus"></i>
+      Добавить запись в журнал
+    <% end %>
+  <% end %>
+
+  <div class="row">
+    <div class="row">
+      <div class="col border-bottom border-end">
+        <strong>Дата</strong>
+      </div>
+      <div class="col border-bottom border-end">
+        <strong>Пробег при замене</strong>
+      </div>
+      <div class="col border-bottom border-end">
+        <strong>Пробег при следующей замене</strong>
+      </div>
+      <div class="col border-bottom border-end">
+        <strong>Комментарий</strong>
+      </div>
+      <div class="col border-bottom">
+        <strong>Действия</strong>
+      </div>
+    </div>
+    <%= render @consumable.consumable_logs %>
+  </div>
+</div>

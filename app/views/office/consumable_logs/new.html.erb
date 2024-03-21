@@ -1,0 +1,5 @@
+<div class="container">
+  <%= turbo_frame_tag @consumable_log do %>
+    <%= render "form", consumable_log: @consumable_log, consumable: @consumable, car: @car, owner: @car.owner %>
+  <% end %>
+</div>

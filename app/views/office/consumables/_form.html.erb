@@ -3,7 +3,7 @@
 
   <div class="input-group">
     <%= f.label :title, class: "input-group-text" %>
-    <%= f.select :title, options_for_select(Consumable::TITLES.map { |title| [localize_title(title), title]}), {include_blank: false}, class: "form-select" %>
+    <%= f.select :title, options_for_select(Consumable::TITLES.map { |title| [localize_consumable_title(title), title]}), {include_blank: false}, class: "form-select" %>
     <%= error_field(@errors, :title) %>
   </div>
 
@@ -20,5 +20,9 @@
   </div>
 
   <%= f.submit "Сохранить", class: "btn btn-sm btn-success mt-3" %>
-  <%= link_to "Отмена", office_car_park_car_consumables_path(owner, car), class: "btn btn-sm btn-secondary mt-3" %>
+  <% if consumable.persisted? %>
+    <%= link_to "Отмена", office_car_park_car_consumable_path(owner, car, consumable), class: "btn btn-sm btn-secondary mt-3" %>
+  <% else %>
+    <%= link_to "Отмена", office_car_park_car_consumables_path(owner, car), class: "btn btn-sm btn-secondary mt-3" %>
+  <% end %>
 <% end %>

@@ -1,14 +1,3 @@
-<%= turbo_frame_tag consumable do %>
-  <div class="additional_service">
-    <%= link_to consumable.title_ru, office_car_park_car_consumable_path(@car_park,  @car, consumable), class: "list-group-item list-group-item-action", data: {turbo_frame: "_top"} %>
-
-    <div class="additional_service__actions">
-      <%= button_to office_car_park_car_consumable_path(@car_park, @car, consumable), method: :delete, class: "btn btn-sm btn-danger" do %>
-        <i class="bi bi-trash"></i>
-      <% end %>
-      <%= link_to edit_office_car_park_car_consumable_path(@car_park,  @car, consumable), class: "btn btn-sm btn-warning" do %>
-        <i class="bi bi-pencil"></i>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<div class="additional_service">
+  <%= link_to consumable.title_ru, office_car_park_car_consumable_path(@car_park,  @car, consumable), class: "list-group-item list-group-item-action", data: {turbo_frame: "_top"} %>
+</div>
