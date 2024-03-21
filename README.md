@@ -56,3 +56,25 @@ Before you begin, ensure you have met the following requirements:
  # ~/home/easyrent
  bin/dev
 ```
+
+### Troubleshooting
+
+##### Ruby
+
+Issues with openssl
+
+```
+brew install openssl@3
+
+rvm install 3.2.2 --with-openssl-dir=$(brew --prefix openssl@3)
+```
+
+##### Puma
+
+Issues with openssl
+
+```bash
+bundle config build.puma --with-cflags="-Wno-error=implicit-function-declaration"
+
+gem install puma:6.4.0 -- --with-cppflags=-I/usr/local/opt/openssl@3/include
+```
