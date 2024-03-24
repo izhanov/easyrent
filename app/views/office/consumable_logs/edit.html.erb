@@ -1,2 +1,3 @@
-<%= render "form", consumable_log: @consumable_log, consumable: @consumable, owner: @car_park, car: @car %>
-
+<%= turbo_frame_tag @consumable_log do %>
+  <%= render "form", consumable_log: @consumable_log, consumable: @consumable, owner: @car_park, car: @car %>
+<% end %>

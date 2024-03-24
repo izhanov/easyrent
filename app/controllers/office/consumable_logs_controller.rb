@@ -33,7 +33,7 @@ module Office
     end
 
     def update
-      operation = Operations::Office::ConsumablesLogs::Update.new
+      operation = Operations::Office::ConsumableLogs::Update.new
       result = operation.call(@consumable_log, consumable_log_params.to_h, current_office_user)
 
       case result
@@ -46,7 +46,7 @@ module Office
     end
 
     def destroy
-      operation = Operations::Office::ConsumablesLogs::Destroy.new
+      operation = Operations::Office::ConsumableLogs::Destroy.new
       result = operation.call(@consumable_log, current_office_user)
 
       case result

@@ -25,24 +25,7 @@
     <% end %>
   <% end %>
 
-  <div class="row">
-    <div class="row">
-      <div class="col border-bottom border-end">
-        <strong>Дата</strong>
-      </div>
-      <div class="col border-bottom border-end">
-        <strong>Пробег при замене</strong>
-      </div>
-      <div class="col border-bottom border-end">
-        <strong>Пробег при следующей замене</strong>
-      </div>
-      <div class="col border-bottom border-end">
-        <strong>Комментарий</strong>
-      </div>
-      <div class="col border-bottom">
-        <strong>Действия</strong>
-      </div>
-    </div>
-    <%= render @consumable.consumable_logs %>
-  </div>
+  <%= turbo_frame_tag "consumable_logs" do %>
+    <%= render @consumable.consumable_logs.order(id: :desc) %>
+  <% end %>
 </div>

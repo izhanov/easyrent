@@ -1,2 +1,7 @@
 <%= turbo_stream.prepend "consumable_logs", @consumable_log %>
-<%= turbo_stream.update ConsumableLog.new, "" %>
+<%= turbo_stream.update ConsumableLog.new do %>
+  <%= link_to new_office_car_park_car_consumable_consumable_log_path(@car.owner, @car, @consumable), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(ConsumableLog.new)} do %>
+    <i class="bi bi-journal-plus"></i>
+    Добавить запись в журнал
+  <% end %>
+<% end %>
