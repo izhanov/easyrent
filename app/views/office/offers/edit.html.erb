@@ -16,6 +16,6 @@
 
 <div class="container">
   <%= turbo_frame_tag @offer do %>
-    <%= render "form", offer: @offer, car: @car, owner: @car.owner %>
+    <%= render "form", offer: @offer, car: @car, owner: @car.owner, turbo: false %>
   <% end %>
 </div>

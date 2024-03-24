@@ -1,4 +1,4 @@
-<%= form_with model: [:office, owner, car, offer], html: {class: "row mb-4", data: {}} do |f| %>
+<%= form_with model: [:office, owner, car, offer], html: {class: "row mb-4", data: {turbo: turbo}} do |f| %>
   <%= f.hidden_field :car_id, value: car.id %>
 
   <div class="row-lg row mb-3">
@@ -40,8 +40,8 @@
 
   <div class="row-lg row mb-3">
     <div class="col-12">
-      <%= f.submit t(".submit"), class: "btn btn-success" %>
-      <%= link_to t(".cancel"), office_car_park_car_path(@car_park, @car), class: "btn btn-outline-secondary", data: {turbo_frame: "_top"} %>
+      <%= f.submit t(".submit"), class: "btn btn-sm btn-success" %>
+      <%= link_to t(".cancel"), office_car_park_car_path(@car_park, @car), class: "btn btn-sm btn-outline-secondary", data: {turbo_frame: "_top"} %>
     </div>
   </div>
 <% end %>

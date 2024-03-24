@@ -27,7 +27,7 @@ module Office
       in Success[offer]
         @offer = offer
         respond_to do |format|
-          format.html
+          format.html { redirect_to office_car_park_car_offer_path(@car_park, @car, @offer) }
           format.turbo_stream
         end
       in Failure[error_code, errors]
@@ -46,7 +46,7 @@ module Office
       in Success[offer]
         @offer = offer
         respond_to do |format|
-          format.html
+          format.html { redirect_to office_car_park_car_offer_path(@car_park, @car, @offer) }
           format.turbo_stream
         end
       in Failure[error_code, errors]
