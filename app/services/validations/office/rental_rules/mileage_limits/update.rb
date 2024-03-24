@@ -8,7 +8,6 @@ module Validations
           params do
             required(:title).filled(:string)
             required(:value).filled(:integer, gt?: 0)
-            optional(:over_mileage_price).filled(:decimal, gt?: 0)
             optional(:markup).value(:integer, gt?: 0)
             optional(:discount).value(:integer, gt?: 0)
           end

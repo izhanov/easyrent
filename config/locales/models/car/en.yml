@@ -21,6 +21,7 @@ en:
         engine_capacity_unit: "l/cm3"
         technical_condition: "Technical condition"
         appearance: "Appearance"
+        over_mileage_price: "Over mileage price"
         fuel_types:
           petrol: "Бензин"
           diesel: "Дизель"

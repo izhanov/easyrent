@@ -18,6 +18,7 @@ module Validations
           required(:color).filled(:string)
           required(:number_of_seats).filled(:integer, gt?: 0)
           required(:tank_volume).filled(:integer, gt?: 0)
+          required(:over_mileage_price).filled(:decimal, gt?: 0)
         end
       end
     end

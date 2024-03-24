@@ -11,6 +11,7 @@
 #  klass                        :string           not null
 #  mileage                      :integer
 #  number_of_seats              :integer
+#  over_mileage_price           :decimal(10, 2)
 #  owner_type                   :string           not null
 #  plate_number                 :string           not null
 #  status                       :string           default("vacant"), not null

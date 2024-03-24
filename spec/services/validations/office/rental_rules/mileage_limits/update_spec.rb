@@ -43,36 +43,6 @@ RSpec.describe Validations::Office::RentalRules::MileageLimits::Update do
     )
   end
 
-  it "optional over_mileage_price" do
-    result = subject.call({})
-    expect(result).to be_failure
-    expect(result.errors.to_h).to_not include(
-      {
-        over_mileage_price: ["is missing"]
-      }
-    )
-  end
-
-  it "requires over_mileage_price to be decimal" do
-    result = subject.call({over_mileage_price: "string"})
-    expect(result).to be_failure
-    expect(result.errors.to_h).to include(
-      {
-        over_mileage_price: ["must be a decimal"]
-      }
-    )
-  end
-
-  it "requires over_mileage_price to be greater than 0" do
-    result = subject.call({over_mileage_price: -1})
-    expect(result).to be_failure
-    expect(result.errors.to_h).to include(
-      {
-        over_mileage_price: ["must be greater than 0"]
-      }
-    )
-  end
-
   it "optional markup" do
     result = subject.call({})
     expect(result).to be_failure

@@ -8,7 +8,6 @@ RSpec.describe RentalRule::MileageLimit, type: :model do
     is_expected.to have_db_column(:title).of_type(:string).with_options(null: false)
     is_expected.to have_db_column(:markup).of_type(:integer).with_options(default: 0, null: false)
     is_expected.to have_db_column(:discount).of_type(:integer).with_options(default: 0, null: false)
-    is_expected.to have_db_column(:over_mileage_price).of_type(:decimal).with_options(default: 0.0, null: false, precision: 7, scale: 2)
   end
 
   describe "Associations" do

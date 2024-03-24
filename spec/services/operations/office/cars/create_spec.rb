@@ -42,6 +42,7 @@ RSpec.describe Operations::Office::Cars::Create do
           mileage: 100_000,
           number_of_seats: 4,
           tank_volume: 50,
+          over_mileage_price: 0.5e2,
           photos_attributes: {},
           insurances_attributes: {
             kind: "ogpo",

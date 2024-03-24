@@ -24,7 +24,6 @@ RSpec.describe Operations::Office::RentalRules::MileageLimits::Create do
             {
               title: ["is missing"],
               value: ["is missing"],
-              over_mileage_price: ["is missing"],
               markup: ["must be an integer"],
               discount: ["must be an integer"]
             }
@@ -41,7 +40,6 @@ RSpec.describe Operations::Office::RentalRules::MileageLimits::Create do
           owner_type: "CarPark",
           title: "Basic",
           value: 100,
-          over_mileage_price: 70.0,
           markup: 0,
           discount: 0
         }

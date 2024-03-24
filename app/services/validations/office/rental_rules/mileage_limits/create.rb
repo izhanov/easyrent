@@ -10,7 +10,6 @@ module Validations
             required(:owner_type).filled(:string)
             required(:title).filled(:string)
             required(:value).filled(:integer, gt?: 0)
-            required(:over_mileage_price).filled(:decimal)
             optional(:markup).value(:integer)
             optional(:discount).value(:integer)
           end

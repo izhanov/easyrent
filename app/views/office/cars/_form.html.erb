@@ -163,6 +163,14 @@
     </div>
   </div>
 
+  <div class="col-6 mb-3 mb-lg-4">
+    <div class="input-group">
+      <%= f.label :over_mileage_price, class: "input-group-text" %>
+      <%= f.number_field :over_mileage_price, class: "form-control #{@errors && @errors.dig(:over_mileage_price).present? ? 'is-invalid' : ''}" %>
+      <%= error_field(@errors, :over_mileage_price) %>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-6 mb-3 mb-lg-4">
       <%= f.label :insurances, "Страховка", class: "form-label" %>

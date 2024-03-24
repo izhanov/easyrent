@@ -21,6 +21,7 @@ ru:
         engine_capacity_unit: "л/см3"
         technical_condition: "Техническое состояние"
         appearance: "Внешний вид"
+        over_mileage_price: "Цена за превышение пробега"
         fuel_types:
           petrol: "Бензин"
           diesel: "Дизель"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_20_141055) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_24_073310) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -175,6 +175,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_141055) do
     t.datetime "updated_at", null: false
     t.string "technical_condition", default: "good", null: false
     t.string "appearance", default: "clean", null: false
+    t.decimal "over_mileage_price", precision: 10, scale: 2
     t.index ["mark_id"], name: "index_cars_on_mark_id"
     t.index ["owner_id", "owner_type", "plate_number"], name: "index_cars_on_owner_id_and_owner_type_and_plate_number", unique: true
     t.index ["owner_id", "owner_type", "vin_code"], name: "index_cars_on_owner_id_and_owner_type_and_vin_code", unique: true
@@ -325,7 +326,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_141055) do
     t.integer "value", null: false
     t.integer "markup", default: 0, null: false
     t.integer "discount", default: 0, null: false
-    t.decimal "over_mileage_price", precision: 7, scale: 2, default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_type", "owner_id"], name: "index_rental_rule_mileage_limits_on_owner"

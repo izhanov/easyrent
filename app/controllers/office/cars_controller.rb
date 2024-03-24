@@ -112,6 +112,7 @@ module Office
         :transmission,
         :technical_condition,
         :appearance,
+        :over_mileage_price,
         photos_attributes: [
           image: []
         ],

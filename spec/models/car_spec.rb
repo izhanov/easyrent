@@ -23,6 +23,9 @@ RSpec.describe Car, type: :model do
     is_expected.to have_db_column(:status).of_type(:string)
     is_expected.to have_db_column(:number_of_seats).of_type(:integer)
     is_expected.to have_db_column(:tank_volume).of_type(:integer).with_options(limit: 2)
+    is_expected.to have_db_column(:engine_capacity).of_type(:decimal).with_options(precision: 7, scale: 2)
+    is_expected.to have_db_column(:engine_capacity_unit).of_type(:string)
+    is_expected.to have_db_column(:over_mileage_price).of_type(:decimal).with_options(precision: 10, scale: 2)
   end
 
   describe "Associations" do
