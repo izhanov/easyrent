@@ -1,0 +1,12 @@
+ru:
+  office:
+    offers:
+      show:
+        back: "Назад"
+        edit: "Редактировать тариф"
+        destroy: "Удалить тариф"
+        sure?: "Вы уверены?"
+        title: "Название:"
+        prices: "Цены:"
+        rental_days_range: "Диапазон дней проката: %{range}, цена: %{price}"
+        mileage_limit: "Лимит пробега: %{limit} км."

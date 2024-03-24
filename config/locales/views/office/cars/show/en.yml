@@ -3,3 +3,12 @@ en:
     cars:
       show:
         sure?: "Are you sure?"
+        back: "Back"
+        edit: "Edit"
+        destroy: "Destroy"
+        offers: "Offers"
+        new_offer: "New offer"
+        photos: "Photos"
+        car_insurances: "Car insurances"
+        car_inspections: "Car inspections"
+        consumables: "Consumables"

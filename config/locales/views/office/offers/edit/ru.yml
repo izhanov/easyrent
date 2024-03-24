@@ -3,3 +3,4 @@ ru:
     offers:
       edit:
         title: "Редактирование тарифа"
+        back: "Назад"

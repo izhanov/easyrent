@@ -3,3 +3,13 @@ ru:
     cars:
       show:
         sure?: "Вы уверены?"
+        back: "Назад"
+        edit: "Редактировать автомобиль"
+        destroy: "Удалить автомобиль"
+        offers: "Тарифы"
+        new_offer: "Новый тариф"
+        photos: "Фотографии"
+        car_insurances: "Страховые полисы"
+        car_inspections: "Техосмотры"
+        consumables: "Расходные материалы"
+

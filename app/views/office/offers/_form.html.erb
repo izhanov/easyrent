@@ -38,17 +38,10 @@
     </div>
   </div>
 
-  <div class="btn-group">
-    <%= link_to office_car_park_car_offers_path(owner, car), class: "btn btn-sm btn-secondary" do %>
-      <i class="bi bi-x-lg"></i>
-    <% end %>
-    <% if offer.persisted? %>
-      <%= link_to office_car_park_car_offer_path(owner, car, offer), data: {turbo_method: :delete}, class: "btn btn-sm btn-danger" do %>
-        <i class="bi bi-trash"></i>
-      <% end %>
-    <% end %>
-    <%= f.button nil, class: "btn btn-sm btn-success" do %>
-      <i class="bi bi-check-lg"></i>
-    <% end %>
+  <div class="row-lg row mb-3">
+    <div class="col-12">
+      <%= f.submit t(".submit"), class: "btn btn-success" %>
+      <%= link_to t(".cancel"), office_car_park_car_path(@car_park, @car), class: "btn btn-outline-secondary", data: {turbo_frame: "_top"} %>
+    </div>
   </div>
 <% end %>
