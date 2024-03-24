@@ -16,5 +16,6 @@
 <div class="col-12 d-flex justify-content-center">
   <%= link_to new_office_car_park_price_range_price_range_cell_path(owner, price_range), class: "btn btn-outline-primary mt-3", data: {turbo: true, turbo_frame: dom_id(PriceRangeCell.new)} do %>
     <i class="bi bi-plus"></i>
+    <%= t(".new_price_range_cell") %>
   <% end %>
 </div>

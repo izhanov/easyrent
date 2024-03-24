@@ -1,0 +1,5 @@
+en:
+  office:
+    price_ranges:
+      form:
+        new_price_range_cell: "New price range cell"

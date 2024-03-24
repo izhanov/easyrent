@@ -4,6 +4,7 @@ en:
       index:
         title: "Additional services"
         new_additional_service: "New additional service"
+        back: "Back"
         table:
           header:
             id: "ID"

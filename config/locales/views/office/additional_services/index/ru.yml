@@ -4,6 +4,7 @@ ru:
       index:
         title: "Дополнительные услуги"
         new_additional_service: "Новая дополнительная услуга"
+        back: "Назад"
         table:
           header:
             id: "ID"

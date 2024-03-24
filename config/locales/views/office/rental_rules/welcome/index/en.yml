@@ -4,7 +4,9 @@ en:
       welcome:
         index:
           title: "Rental Rules"
+          back: "Back"
           add_age_restriction: "Add age restriction"
           add_mileage_limits: "Add mileage limits"
           add_driving_experience: "Add driving experience"
           add_minimal_period: "Add minimal rental period"
+

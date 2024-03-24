@@ -4,6 +4,7 @@ ru:
       welcome:
         index:
           title: "Правила аренды"
+          back: "Назад"
           add_age_restriction: "Добавить ограничение по возрасту"
           add_mileage_limits: "Добавить ограничения по пробегу"
           add_driving_experience: "Добавить ограничение по стажу вождения"

@@ -35,6 +35,8 @@ namespace :office do
   end
 
   resources :car_parks do
+    get :settings, on: :member
+
     resources :price_ranges do
       resources :price_range_cells
     end

@@ -1,90 +1,48 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1>
-    Автопарк
     <%= @car_park.title %>
+    <span class="text-secondary small fs-5"><%= t(".title") %></span>
   </h1>
   <div>
     <%= link_to office_car_parks_path, class: "btn btn-sm btn-outline-primary" do %>
       <i class="bi bi-box-arrow-left"></i>
+      <%= t(".back") %>
     <% end %>
     <%= link_to edit_office_car_park_path(@car_park), class: "btn btn-sm btn-warning" do %>
       <i class="bi bi-pencil-square"></i>
+      <%= t(".edit") %>
     <% end %>
     <%= link_to office_car_park_path(@car_park), class: "btn btn-sm btn-danger", data: {turbo_confirm: t(".sure?"), turbo_method: :delete} do %>
       <i class="bi bi-trash"></i>
+      <%= t(".destroy") %>
     <% end %>
   </div>
 </div>
 
 
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <%= link_to new_office_car_park_car_path(@car_park), class: "btn btn-sm btn-primary"  do %>
-        <i class="bi bi-file-earmark-plus"></i>
-        <%= t(".add_car") %>
-      <% end %>
-    </div>
-    <div class="col-6">
-      <% if @car_park.cars.any?%>
-        <%= render "table", cars: @car_park.cars.order(:id) %>
-      <% else %>
-        <div class="alert alert-info mt-3" role="alert">
-          <%= t(".no_cars") %>
-          <%= link_to t(".add_car"), new_office_car_park_car_path(@car_park), class: "alert-link" %>
-        </div>
-      <% end %>
-    </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= active_link_to t(".cars"), office_car_park_path(@car_park), class: "nav-link link-dark", active: %r{(office/car_parks/#{@car_park.id}|office/car_parks/#{@car_park.id}?page=)} %>
+    </li>
+    <li class="nav-item">
+      <%= active_link_to t(".settings"), settings_office_car_park_path(@car_park), class: "nav-link link-dark", active: :exact %>
+    </li>
+  </ul>
 
-    <div class="col-6">
-      <div class="d-lg-flex flex-column">
-        <div class="col-12 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Диапазоны дней проката</h5>
-              <p class="card-text">
-                Настройка позволяющая установить диапазоны дней проката для автомобилей.
-              </p>
-              <%= link_to office_car_park_price_range_path(@car_park, @car_park.price_range), class: "btn btn-sm btn-warning"  do %>
-                <i class="bi bi-bar-chart-steps"></i>
-                Настроить
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Правила проката в автопарке</h5>
-              <p class="card-text">
-                Настройка позволяющая установить правила проката для автомобилей – минимальный срок проката, минимальный возраст водителя, минимальный стаж водителя и лимиты пробега.
-              </p>
-              <%= link_to office_car_park_rental_rule_root_path(@car_park), class: "btn btn-sm btn-warning"  do %>
-                <i class="bi bi-bar-chart-steps"></i>
-                Настроить
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Дополнительные услуги</h5>
-              <p class="card-text">
-                Настройка позволяющая установить дополнительные услуги для автомобилей.
-              </p>
-
-              <%= link_to office_car_park_additional_services_path(@car_park), class: "btn btn-sm btn-warning"  do %>
-                <i class="bi bi-bar-chart-steps"></i>
-                Настроить
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="d-flex justify-content-end my-2">
+    <%= link_to new_office_car_park_car_path(@car_park), class: "btn btn-primary btn-sm", data: {turbo: true, turbo_frame: dom_id(CarPark.new)} do %>
+      <i class="bi bi-building-add"></i>
+      <%= t(".add_car") %>
+    <% end %>
   </div>
+
+  <% if @car_park.cars.any? %>
+    <%= render "table", cars: @cars %>
+  <% else %>
+    <div class="alert alert-warning">
+      <%= t(".no_cars") %>
+    </div>
+  <% end %>
 </div>
 

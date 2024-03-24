@@ -6,3 +6,4 @@ ru :
         price_ranges: "Диапазоны цен"
         rental_rules: "Правила аренды"
         services: "Дополнительные услуги"
+        back: "Назад"

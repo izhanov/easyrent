@@ -1,0 +1,17 @@
+en:
+  office:
+    car_parks:
+      settings:
+        title: "Settings"
+        back: "Back"
+        edit: "Edit"
+        destroy: "Destroy"
+        sure?: "Are you sure?"
+        cars: "Cars"
+        rental_days_range: "Rental days range"
+        rental_days_range_description: "Set the range of rental days for the car park"
+        rental_rules: "Rental rules"
+        rental_rules_description: "Set the rental rules for cars"
+        additional_services: "Additional services"
+        additional_services_description: "Set additional services for cars"
+        configure: "Configure"

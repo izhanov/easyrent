@@ -2,11 +2,15 @@
 
 module Office
   class BaseController < ApplicationController
+    rescue_from Pagy::OverflowError, with: :redirect_to_last_page
+
     layout "office"
 
     include Dry::Monads[:result]
+    include Pagy::Backend
 
     helper FormHelper
+    helper PagyHelper
 
     before_action :authenticate_office_user!
     before_action :reset_temp_password?
@@ -36,6 +40,10 @@ module Office
 
     def set_time_zone(&block)
       Time.use_zone(cookies[:timezone], &block)
+    end
+
+    def redirect_to_last_page(exception)
+      redirect_to url_for(page: exception.pagy.last)
     end
   end
 end

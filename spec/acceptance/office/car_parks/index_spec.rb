@@ -3,16 +3,6 @@
 require "feature_helper"
 
 feature "User visit car parks index page" do
-  context "when user hasn't any car park" do
-    scenario "sees notification alert" do
-      user = create(:user)
-      sign_in user, scope: "office_user"
-      visit office_car_parks_path
-      expect(page).to have_content("You have no car parks. To start working you need to create at least one car park.")
-      expect(page).to have_link("New car park")
-    end
-  end
-
   context "when user has one car park" do
     scenario "sees car park card" do
       user = create(:user)

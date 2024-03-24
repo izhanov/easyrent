@@ -8,3 +8,5 @@ en:
           mark: 'Mark'
           plate_number: 'Plate number'
           status: 'Status'
+          technical_condition: 'Technical condition'
+          appearance: 'Appearance'

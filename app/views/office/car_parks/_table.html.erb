@@ -1,14 +1,19 @@
 <table class="table table-striped table-hover mt-4">
-  <thead class="table-dark">
+  <thead>
     <tr>
       <th><%= t(".header.id")%></th>
       <th><%= t(".header.city")%></th>
       <th><%= t(".header.mark")%></th>
       <th><%= t(".header.plate_number")%></th>
       <th><%= t(".header.status")%></th>
+      <th><%= t(".header.technical_condition")%></th>
+      <th><%= t(".header.appearance")%></th>
     </tr>
   </thead>
   <tbody>
     <%= render cars %>
   </tbody>
 </table>
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
+</div>

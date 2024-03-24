@@ -2,6 +2,7 @@ ru:
   office:
     car_parks:
       show:
+        title: "Автопарк"
         back: "Назад"
         edit: "Редактировать автопарк"
         destroy: "Удалить автопарк"
@@ -11,6 +12,8 @@ ru:
         price_ranges: "Ценовые диапазоны"
         rental_rules: "Правила аренды"
         services: "Услуги"
+        cars: "Автомобили"
+        settings: "Настройки"
         table:
           header:
             id: "ID"

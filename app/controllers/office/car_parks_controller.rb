@@ -2,7 +2,7 @@
 
 module Office
   class CarParksController < BaseController
-    before_action :find_car_park, only: %i[show edit update destroy]
+    before_action :find_car_park, only: %i[show edit update destroy settings]
 
     def index
       @car_parks = current_office_user.car_parks
@@ -32,9 +32,13 @@ module Office
     end
 
     def show
+      @pagy, @cars = pagy(@car_park.cars.order(:id), items: 10)
     end
 
     def edit
+    end
+
+    def settings
     end
 
     def update

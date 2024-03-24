@@ -64,6 +64,7 @@ gem "rails-i18n", "~> 7.0"
 
 gem "typesense"
 gem "annotate", "~> 3.2.0"
+gem "pagy", "~> 7.0.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
