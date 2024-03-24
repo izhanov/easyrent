@@ -1,0 +1,11 @@
+en:
+  office:
+    shared:
+      tabs:
+        cars:
+          nav_tabs:
+            offers: "Offers"
+            photos: "Photos"
+            car_insurances: "Car insurances"
+            car_inspections: "Car inspections"
+            consumables: "Consumables"

@@ -1,0 +1,10 @@
+en:
+  office:
+    shared:
+      actions:
+        cars:
+          buttons:
+            back: "Back"
+            edit: "Edit"
+            destroy: "Destroy"
+            sure?: "Are you sure?"

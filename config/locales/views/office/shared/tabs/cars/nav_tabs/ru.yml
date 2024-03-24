@@ -1,0 +1,11 @@
+ru:
+  office:
+    shared:
+      tabs:
+        cars:
+          nav_tabs:
+            offers: "Тарифы"
+            photos: "Фотографии"
+            car_insurances: "Страховые полисы"
+            car_inspections: "Техосмотры"
+            consumables: "Расходные материалы"

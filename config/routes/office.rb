@@ -65,6 +65,8 @@ namespace :office do
         resources :consumable_logs
       end
 
+      resources :photos
+
       get :search, on: :collection
     end
   end

@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= active_link_to t(".offers"), office_car_park_car_path(@car_park, @car), class: "nav-link link-dark", active: %r{(office/car_parks/#{@car_park.id}/cars/#{@car.id}|office/car_parks/#{@car_park.id}/cars/#{@car.id}?page=[0-9]{1,})$} %>
+  </li>
+  <li class="nav-item">
+    <%= active_link_to t(".photos"), office_car_park_car_photos_path(@car_park, @car), class: "nav-link link-dark", active: :exact %>
+  </li>
+  <li class="nav-item">
+    <%= active_link_to t(".car_insurances"), settings_office_car_park_path(@car_park), class: "nav-link link-dark", active: :exact %>
+  </li>
+  <li class="nav-item">
+    <%= active_link_to t(".car_inspections"), settings_office_car_park_path(@car_park), class: "nav-link link-dark", active: :exact %>
+  </li>
+  <li class="nav-item">
+    <%= active_link_to t(".consumables"), settings_office_car_park_path(@car_park), class: "nav-link link-dark", active: :exact %>
+  </li>
+</ul>

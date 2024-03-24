@@ -1,0 +1,10 @@
+ru:
+  office:
+    shared:
+      actions:
+        cars:
+          buttons:
+            back: "Назад"
+            edit: "Редактировать автомобиль"
+            destroy: "Удалить автомобиль"
+            sure?: "Вы уверены?"
