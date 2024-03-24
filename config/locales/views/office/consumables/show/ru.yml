@@ -2,4 +2,8 @@ ru:
   office:
     consumables:
       show:
+        back: "Назад"
+        edit: "Редактировать"
+        destroy: "Удалить"
+        new_consumable_log: "Новая запись о расходнике"
         sure?: "Вы уверены?"

@@ -1,0 +1,6 @@
+ru:
+  office:
+    consumable_logs:
+      consumable_log:
+        edit: "Редактировать"
+        destroy: "Удалить"

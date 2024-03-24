@@ -1,0 +1,6 @@
+en:
+  office:
+    car_inspections:
+      index:
+        title: "Car inspections"
+        new_car_inspection: "New car inspection"

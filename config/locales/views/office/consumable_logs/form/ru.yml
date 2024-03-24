@@ -1,0 +1,6 @@
+ru:
+  office:
+    consumable_logs:
+      form:
+        submit: "Сохранить"
+        cancel: "Отмена"

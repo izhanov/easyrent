@@ -48,6 +48,8 @@ module Office
     end
 
     def edit
+      @car_inspection = @car.car_inspections.active.last || @car.car_inspections.build
+      @car_insurance = @car.insurances.active.last || @car.insurances.build
     end
 
     def update

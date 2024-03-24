@@ -4,7 +4,11 @@ en:
       car_inspections:
         create:
           success: "Car inspection created successfully"
+          errors:
+            validation_error: "Car inspection was not created due to validation errors"
         update:
           success: "Car inspection updated successfully"
+          errors:
+            validation_error: "Car inspection was not updated due to validation errors"
         destroy:
           success: "Car inspection destroy successfully"

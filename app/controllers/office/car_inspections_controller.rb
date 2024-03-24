@@ -2,7 +2,7 @@
 
 module Office
   class CarInspectionsController < BaseController
-    before_action :find_car
+    before_action :find_car, :find_car_park
     before_action :find_car_inspection, only: %i[show edit update destroy]
 
     def index
@@ -75,6 +75,10 @@ module Office
 
     def find_car
       @car = current_office_user.cars.find(params[:car_id])
+    end
+
+    def find_car_park
+      @car_park = current_office_user.car_parks.find(params[:car_park_id])
     end
 
     def find_car_inspection

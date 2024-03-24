@@ -1,9 +1,9 @@
-<%= form_with model: [:office, owner, car, consumable] do |f| %>
+<%= form_with model: [:office, owner, car, consumable], html: {class: "my-2"} do |f| %>
   <%= f.hidden_field :car_id, value: car.id %>
 
   <div class="input-group">
     <%= f.label :title, class: "input-group-text" %>
-    <%= f.select :title, options_for_select(Consumable::TITLES.map { |title| [localize_consumable_title(title), title]}), {include_blank: false}, class: "form-select" %>
+    <%= f.select :title, options_for_select(Consumable::TITLES.map { |title| [localize_consumable_title(title), title]}, selected: f.object.title), {include_blank: false}, class: "form-select" %>
     <%= error_field(@errors, :title) %>
   </div>
 

@@ -1,3 +1,3 @@
-<%= turbo_frame_tag car_inspection do %>
-  <%= link_to "#{car_inspection.start_at..car_inspection.end_at}", edit_office_car_park_car_car_inspection_path(@car.owner, @car, car_inspection), class: "list-group-item list-group-item-action", data: {turbo_frame: dom_id(car_inspection)} %>
+<%= turbo_frame_tag car_inspection, class: "list-group-item" do %>
+  <%= link_to t(".duration_of_inspection", start_at: car_inspection.start_at.strftime("%d/%m/%Y"), end_at: car_inspection.end_at.strftime("%d/%m/%Y")), edit_office_car_park_car_car_inspection_path(@car.owner, @car, car_inspection), class: "link-dark", data: {turbo_frame: dom_id(car_inspection)} %>
 <% end %>

@@ -2,7 +2,7 @@ ru:
   admins:
     marks:
       show:
-        edit: "Редактировать модель"
-        destroy: "Удалить модель"
+        edit: "Редактировать"
+        destroy: "Удалить"
         back: "Назад"
         sure?: "Вы уверены?"

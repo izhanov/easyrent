@@ -22,5 +22,7 @@
 class CarInspection < ApplicationRecord
   belongs_to :car
 
+  scope :active, -> { where('end_at >= ?', Date.today) }
+
   audited
 end

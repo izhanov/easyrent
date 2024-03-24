@@ -1,26 +1,32 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1>
-    Журнал техничских осмотров
+    <%= t(".title") %>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
-  <div>
-    <%= link_to office_car_park_car_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary" do %>
-      <i class="bi bi-box-arrow-left"></i>
-    <% end %>
-    <%= link_to new_office_car_park_car_car_inspection_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(CarInspection.new)} do %>
-      <i class="bi bi-journal-plus"></i>
-      Добавить заспись
-    <% end %>
-  </div>
+  <%= render(
+    partial: "office/shared/actions/cars/buttons",
+    locals: {
+      back_button_url: office_car_park_path(@car_park)
+    }
+  )%>
 </div>
 
 
 <div class="container">
+  <%= render "office/shared/tabs/cars/nav_tabs" %>
+
+  <div class="d-flex justify-content-end my-2">
+    <%= link_to new_office_car_park_car_car_inspection_path(@car_park, @car), class: "btn btn-primary btn-sm", data: {turbo: true, turbo_frame: dom_id(CarInspection.new)} do %>
+      <i class="bi bi-plus"></i>
+      <%= t(".new_car_inspection") %>
+    <% end %>
+  </div>
+
   <%= turbo_frame_tag CarInspection.new %>
 
   <div class="list-group">
-    <%= turbo_frame_tag "car_inspections" do %>
+    <%= turbo_frame_tag "car_inspections", class: "list-group list-group-numbered" do %>
         <%= render @car_inspections %>
     <% end %>
   </div>

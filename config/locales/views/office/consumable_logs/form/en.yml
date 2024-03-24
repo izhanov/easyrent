@@ -1,0 +1,6 @@
+en:
+  office:
+    consumable_logs:
+      form:
+        submit: "Submit"
+        cancel: "Cancel"

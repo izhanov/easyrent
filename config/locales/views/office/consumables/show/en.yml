@@ -2,4 +2,8 @@ en:
   office:
     consumables:
       show:
+        back: "Back"
+        edit: "Edit"
+        destroy: "Delete"
+        new_consumable_log: "New consumable log"
         sure?: "Are you sure?"

@@ -1,0 +1,6 @@
+en:
+  office:
+    consumable_logs:
+      consumable_log:
+        edit: "Edit"
+        destroy: "Delete"

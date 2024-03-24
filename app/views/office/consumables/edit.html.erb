@@ -1,12 +1,13 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1>
-    <span>Редактирование</span>
-    <span class="text-secondary small fs-5 font-monospace"><%= localize_consumable_title(@consumable.title) %></span>
+    <%= t(".title") %>
+    <span class="text-secondary small fs-5 font-monospace"><%= @consumable.title_ru %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
   <%= link_to office_car_park_car_consumable_path(@car_park, @car, @consumable), class: "btn btn-sm btn-outline-primary" do %>
     <i class="bi bi-box-arrow-left"></i>
+    <%= t(".back") %>
   <% end %>
 </div>
 

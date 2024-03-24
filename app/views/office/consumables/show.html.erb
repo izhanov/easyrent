@@ -1,29 +1,34 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1>
-    <%= localize_consumable_title(@consumable.title) %>
+    <%= @consumable.title_ru %>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
   <div>
     <%= link_to office_car_park_car_consumables_path(@car_park, @car), class: "btn btn-sm btn-outline-primary" do %>
       <i class="bi bi-box-arrow-left"></i>
+      <%= t(".back") %>
     <% end %>
     <%= link_to edit_office_car_park_car_consumable_path(@car_park, @car, @consumable), class: "btn btn-sm btn-warning", data: {frame_target: "_top"} do %>
       <i class="bi bi-pencil-square"></i>
+      <%= t(".edit") %>
     <% end %>
     <%= link_to office_car_park_car_consumable_path(@car_park, @car, @consumable), class: "btn btn-sm btn-danger", data: {turbo_confirm: t(".sure?"), turbo_method: :delete} do %>
       <i class="bi bi-trash"></i>
+      <%= t(".destroy") %>
     <% end %>
   </div>
 </div>
 
 <div class="container">
-  <%= turbo_frame_tag ConsumableLog.new do %>
+  <div class="d-flex justify-content-end my-2">
     <%= link_to new_office_car_park_car_consumable_consumable_log_path(@car.owner, @car, @consumable), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(ConsumableLog.new)} do %>
       <i class="bi bi-journal-plus"></i>
-      Добавить запись в журнал
+      <%= t(".new_consumable_log") %>
     <% end %>
-  <% end %>
+  </div>
+
+  <%= turbo_frame_tag ConsumableLog.new %>
 
   <%= turbo_frame_tag "consumable_logs" do %>
     <%= render @consumable.consumable_logs.order(id: :desc) %>

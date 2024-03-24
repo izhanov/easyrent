@@ -1,25 +1,26 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1>
-    Расходные материалы
+    <%= t(".title") %>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
-  <div>
-    <%= link_to office_car_park_car_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary" do %>
-      <i class="bi bi-box-arrow-left"></i>
-    <% end %>
-    <%= link_to new_office_car_park_car_consumable_path(@car.owner, @car), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(Consumable.new)} do %>
-      <i class="bi bi-journal-plus"></i>
-      Добавить расходный материал
-    <% end %>
-  </div>
+  <%= render partial: "office/shared/actions/cars/buttons", locals: { back_button_url: office_car_park_path(@car_park) }%>
 </div>
 
 
 <div class="container">
+  <%= render "office/shared/tabs/cars/nav_tabs" %>
+
+  <div class="d-flex justify-content-end my-2">
+    <%= link_to new_office_car_park_car_consumable_path(@car_park, @car), class: "btn btn-sm btn-primary", data: {turbo_frame: dom_id(Consumable.new)} do %>
+      <i class="bi bi-plus-lg"></i>
+      <%= t(".new_consumable") %>
+    <% end %>
+  </div>
+
   <%= turbo_frame_tag Consumable.new %>
 
-  <%= turbo_frame_tag "consumables" do %>
+  <%= turbo_frame_tag "consumables", class: "list-group list-group-numbered" do %>
       <%= render @consumables %>
   <% end %>
 </div>

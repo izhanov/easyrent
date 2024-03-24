@@ -1,0 +1,5 @@
+en:
+  office:
+    car_inspections:
+      car_inspection:
+        duration_of_inspection: "Duration of technical inspection: from %{start_at} to %{end_at}"

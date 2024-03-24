@@ -25,6 +25,6 @@
     <%= error_field(@errors, :description) %>
   </div>
 
-  <%= f.submit "Сохранить", class: "btn btn-sm btn-success mt-3" %>
-  <%= link_to "Отмена", office_car_park_car_consumable_path(owner, car, consumable), class: "btn btn-sm btn-secondary mt-3" %>
+  <%= f.submit t(".submit"), class: "btn btn-sm btn-success mt-3" %>
+  <%= link_to t(".cancel"), office_car_park_car_consumable_path(owner, car, consumable), class: "btn btn-sm btn-secondary mt-3" %>
 <% end %>

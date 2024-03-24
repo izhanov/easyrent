@@ -1,0 +1,7 @@
+en:
+  office:
+    car_inspections:
+      form:
+        cancel: "Cancel"
+        destroy: "Delete"
+        submit: "Submit"
