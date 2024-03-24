@@ -1,0 +1,7 @@
+ru:
+  office:
+    car_insurances:
+      form:
+        cancel: "Отмена"
+        destroy: "Удалить"
+        submit: "Сохранить"

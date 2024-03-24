@@ -4,6 +4,6 @@ ru:
       car_insurance: "Автостраховка"
     attributes:
       car_insurance:
-        kind: "Вид страховки"
+        kind: "Вид"
         start_at: "Дата начала"
         end_at: "Дата окончания"

@@ -6,7 +6,7 @@ module Office
     before_action :find_car_park
 
     def index
-      @car_insurances = @car.insurances
+      @car_insurances = @car.insurances.order(id: :desc)
     end
 
     def new

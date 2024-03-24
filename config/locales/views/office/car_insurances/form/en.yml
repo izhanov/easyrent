@@ -1,0 +1,7 @@
+en:
+  office:
+    car_insurances:
+      form:
+        cancel: "Cancel"
+        destroy: "Delete"
+        submit: "Submit"

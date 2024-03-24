@@ -1,0 +1,6 @@
+ru:
+  office:
+    car_insurances:
+      index:
+        title: "Страховые полисы"
+        new_car_insurance: "Новый страховой полис"
