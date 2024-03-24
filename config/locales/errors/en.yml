@@ -131,7 +131,8 @@ en:
         password_confirmation:
           not_equal: "must be equal to password"
         car_park:
-          uniqueness_violation: "identificaiton number and bookings prefix must be unique"
+          business_id_number:
+            uniqueness_violation: "identificaiton number and bookings prefix must be unique"
         booking:
           status:
             invalid: "Invalid status"

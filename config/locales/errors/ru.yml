@@ -125,7 +125,8 @@ ru:
         password_confirmation:
           not_equal_to_password: "пароль подтверждения должен совпадать с паролем"
         car_park:
-          uniqueness_violation: "БИН/ИИН и префикс заявки должны быть уникальными"
+          business_id_number:
+            uniqueness_violation: "БИН/ИИН и префикс заявки должны быть уникальными"
         booking:
           status:
             invalid: "неверный статус"

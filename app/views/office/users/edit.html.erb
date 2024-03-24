@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>
+    <%= t(".title") %>
+    <span class="text-secondary small fs-5"><%= current_office_user.full_name %></span>
+  </h1>
+  <div>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= active_link_to t(".car_parks"), office_car_parks_path, class: "nav-link link-dark", active: %r{(/office|/office/car_parks)$} %>
+    </li>
+    <li class="nav-item">
+      <%= active_link_to t(".edit"), edit_office_user_path(current_office_user), class: "nav-link link-dark", active: :exact %>
+    </li>
+  </ul>
+
+  <div class="container">
+    <div class="d-flex my-2">
+      <%= form_with model: [:office, current_office_user] do |f| %>
+        <div class="row my-2">
+          <div class="col-3">
+            <div class="input-group">
+              <%= f.label :first_name, class: "input-group-text" %>
+              <%= f.text_field :first_name, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="input-group">
+              <%= f.label :last_name, class: "input-group-text" %>
+              <%= f.text_field :last_name, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="input-group">
+              <%= f.label :phone, class: "input-group-text" %>
+              <%= f.text_field :phone, class: "form-control", data: {mask: "phone"} %>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <%= f.submit t(".save"), class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

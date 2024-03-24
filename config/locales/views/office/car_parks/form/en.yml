@@ -3,3 +3,4 @@ en:
     car_parks:
       form:
         save: "Save"
+        cancel: "Cancel"

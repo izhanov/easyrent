@@ -12,6 +12,8 @@ namespace :office do
 
   resource :temp_password, only: [:edit, :update], path: "user/temp_password"
 
+  resources :users, only: %i[edit update]
+
   resources :marks do
     collection do
       get :search

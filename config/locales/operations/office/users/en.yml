@@ -2,6 +2,10 @@ en:
   operations:
     office:
       users:
+        create:
+          success: "User was successfully created."
+        update:
+          success: "User was successfully updated."
         change_password:
           success: "Password was successfully changed."
           user_not_found: "User not found."

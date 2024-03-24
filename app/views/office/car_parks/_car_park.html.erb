@@ -1,13 +1,3 @@
-<div class="card my-3">
-  <h5 class="card-header">
-    <%= link_to car_park.title, office_car_park_path(car_park), class: "text-decoration-none" %>
-  </h5>
-  <div class="card-body">
-    <h5 class="card-title"><%= car_park.business_id_number %></h5>
-    <p class="card-text">
-      <%= car_park.legal_address %>
-    </p>
-    <p class="card-text">
-      <%= car_park.contact_phone %>
-  </div>
-</div>
+<%= turbo_frame_tag car_park, class: "list-group-item" do %>
+  <%= link_to car_park.title, office_car_park_path(car_park), class: "link-dark", data: {turbo_frame: "_top"} %>
+<% end %>

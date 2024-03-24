@@ -3,3 +3,4 @@ ru:
     car_parks:
       form:
         save: "Сохранить"
+        cancel: "Отмена"

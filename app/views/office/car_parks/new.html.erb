@@ -2,9 +2,12 @@
   <h1><%= t(".title") %></h1>
   <%= link_to office_car_parks_path, class: "btn btn-sm btn-outline-primary" do %>
     <i class="bi bi-box-arrow-left"></i>
+    <%= t(".back") %>
   <% end %>
 </div>
 
 <div class="container">
-  <%= render "form", car_park: @car_park %>
+  <%= turbo_frame_tag @car_park do %>
+    <%= render "form", car_park: @car_park %>
+  <% end %>
 </div>

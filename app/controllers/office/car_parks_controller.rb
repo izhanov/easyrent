@@ -18,7 +18,11 @@ module Office
 
       case result
       in Success[car_park]
-        redirect_to office_car_park_path(car_park), flash: {success: success_resolver(operation)}
+        @car_park = car_park
+        respond_to do |format|
+          format.html { redirect_to office_car_park_path(car_park), flash: {success: success_resolver(operation)} }
+          format.turbo_stream
+        end
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
         @car_park = CarPark.new(car_park_params)

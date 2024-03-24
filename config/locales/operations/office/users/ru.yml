@@ -2,6 +2,10 @@ ru:
   operations:
     office:
       users:
+        create:
+          success: "Пользователь успешно создан."
+        update:
+          success: "Пользователь успешно обновлен."
         change_password:
           success: "Пароль успешно изменен."
           user_not_found: "Пользователь не найден."

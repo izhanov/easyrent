@@ -4,20 +4,36 @@
     <span class="text-secondary small fs-5"><%= current_office_user.full_name %></span>
   </h1>
   <div>
-    <%= link_to new_office_car_park_path, class: "btn btn-primary btn-sm" do %>
-      <i class="bi bi-building-add"></i>
-      <%= t(".new_car_park") %>
-    <% end %>
-    <%= link_to office_root_path, class: "btn btn-outline-primary btn-sm" do %>
-      <i class="bi bi-box-arrow-left"></i>
-    <% end %>
   </div>
 </div>
 
 <div class="container">
-  <% if @car_parks.any?%>
-    <%= render @car_parks %>
-  <% else %>
-    <p><%= t(".no_car_parks") %></p>
-  <% end %>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= active_link_to t(".car_parks"), office_car_parks_path, class: "nav-link link-dark", active: %r{(/office|/office/car_parks)$} %>
+    </li>
+    <li class="nav-item">
+      <%= active_link_to t(".edit"), edit_office_user_path(current_office_user), class: "nav-link link-dark", active: :exact %>
+    </li>
+  </ul>
+
+  <div class="container">
+    <div class="d-flex justify-content-end my-2">
+      <%= link_to new_office_car_park_path, class: "btn btn-primary btn-sm", data: {turbo: true, turbo_frame: dom_id(CarPark.new)} do %>
+        <i class="bi bi-building-add"></i>
+        <%= t(".new_car_park") %>
+      <% end %>
+    </div>
+
+
+    <%= turbo_frame_tag CarPark.new %>
+
+    <div class="d-flex my-2">
+      <div class="col-12">
+        <%= turbo_frame_tag "car_parks", class: "list-group list-group-flush" do %>
+          <%= render @car_parks %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
