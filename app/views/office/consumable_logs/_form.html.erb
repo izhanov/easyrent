@@ -1,0 +1,30 @@
+<%= form_with model: [:office, owner, car, consumable, consumable_log] do |f| %>
+  <%= f.hidden_field :consumable_id, value: consumable.id %>
+
+  <div class="input-group">
+    <%= f.label :date, class: "input-group-text" %>
+    <%= f.date_field :date, class: "form-control" %>
+    <%= error_field(@errors, :date) %>
+  </div>
+
+  <div class="input-group mt-3">
+    <%= f.label :mileage_when_replacing, class: "input-group-text" %>
+    <%= f.number_field :mileage_when_replacing, class: "form-control" %>
+    <%= error_field(@errors, :mileage_when_replacing) %>
+  </div>
+
+  <div class="input-group mt-3">
+    <%= f.label :mileage_at_next_replacing, class: "input-group-text" %>
+    <%= f.text_area :mileage_at_next_replacing, class: "form-control" %>
+    <%= error_field(@errors, :mileage_at_next_replacing) %>
+  </div>
+
+  <div class="input-group mt-3">
+    <%= f.label :description, class: "input-group-text" %>
+    <%= f.text_area :description, class: "form-control" %>
+    <%= error_field(@errors, :description) %>
+  </div>
+
+  <%= f.submit "Сохранить", class: "btn btn-sm btn-success mt-3" %>
+  <%= link_to "Отмена", office_car_park_car_consumable_path(owner, car, consumable), class: "btn btn-sm btn-secondary mt-3" %>
+<% end %>

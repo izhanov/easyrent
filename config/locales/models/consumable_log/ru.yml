@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    models:
+      consumable_log: "Журнал замены расходников"
+    attributes:
+      consumable_log:
+        consumable_id: "Расходник"
+        date: "Дата"
+        description: "Описание"
+        mileage_when_replacing: "Пробег при замене"
+        mileage_at_next_replacing: "Пробег при следующей замене"

@@ -1,0 +1,32 @@
+<%= turbo_frame_tag consumable_log do %>
+  <div class="my-2">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <strong>Дата:</strong>
+          <%= consumable_log.date %>
+        </li>
+        <li class="list-group-item">
+          <strong>Пробег при замене, км:</strong>
+          <%= consumable_log.mileage_when_replacing %>
+        </li>
+        <li class="list-group-item">
+          <strong>Пробег при следующей замене, км:</strong>
+          <%= consumable_log.mileage_at_next_replacing %>
+        </li>
+      </ul>
+      <div class="card-body">
+        <div class="card-title">
+          <strong>Комментарий:</strong>
+        </div>
+        <div class="card-text">
+          <%= consumable_log.description %>
+        </div>
+      </div>
+      <div class="card-body">
+        <%= link_to 'Редактировать', edit_office_car_park_car_consumable_consumable_log_path(@car_park, @car, @consumable, consumable_log), class: 'card-link btn btn-sm btn-warning' %>
+        <%= link_to 'Удалить', office_car_park_car_consumable_consumable_log_path(@car_park, @car, @consumable, consumable_log), data: { turbo_method: :delete, turbo_confirm: 'Вы уверены, что хотите удалить запись?' }, class: 'card-link btn btn-sm btn-danger' %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -2,18 +2,18 @@
 
 module Operations
   module Office
-    module Consumables
+    module ConsumableLogs
       class Update < Base
-        def call(consumable, params, responsible)
+        def call(consumable_log, params, responsible)
           validated_params = yield validate(params)
-          updated_consumable = yield commit(consumable, validated_params.to_h, responsible)
+          updated_consumable = yield commit(consumable_log, validated_params.to_h, responsible)
           Success(updated_consumable)
         end
 
         private
 
         def validate(params)
-          validation = Validations::Office::Consumables::Update.new.call(params)
+          validation = Validations::Office::ConsumableLogs::Update.new.call(params)
           validation.to_monad
             .or { |failure| Failure[:validation_error, failure.errors.to_h] }
         end

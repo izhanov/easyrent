@@ -2,7 +2,7 @@
 
 module Office
   module ConsumablesHelper
-    def localize_title(title)
+    def localize_consumable_title(title)
       I18n.t("activerecord.attributes.consumable.titles.#{title}")
     end
   end
