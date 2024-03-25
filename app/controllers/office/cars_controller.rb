@@ -54,7 +54,14 @@ module Office
 
     def update
       operation = Operations::Office::Cars::Update.new
-      result = operation.call(@car, car_params.to_h)
+      result = operation.call(
+        @car,
+        car_params.to_h.merge(
+          photos_attributes: photos_attributes_params,
+          insurances_attributes: insurances_attributes_params.merge(car_id: @car.id),
+          car_inspections_attributes: car_inspections_attributes_params.merge(car_id: @car.id)
+        )
+      )
 
       case result
       in Success[car]
@@ -63,6 +70,9 @@ module Office
       in Failure[error_code, errors]
         flash.now[:error] = failure_resolver(operation, error_code: error_code)
         @errors = errors
+        @car_inspection = CarInspection.new(car_inspections_attributes_params)
+        @car_insurance = CarInsurance.new(insurances_attributes_params)
+        @car.assign_attributes(car_params)
         render :edit
       end
     end
