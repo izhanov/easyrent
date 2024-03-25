@@ -1,6 +1,7 @@
 <div class="d-flex justify-content-between align-items-center">
   <h1>
-    <%= @offer.title %>
+    <%= t(".title") %>
+    <span class="fs-5 font-monospace text-danger text-opacity-75"><%= @offer.title %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>

@@ -3,7 +3,7 @@ ru:
     car_parks_cars:
       index:
         title: "Автомобили"
-        back: "Back"
+        back: "Назад"
         table:
           header:
             id: "ID"

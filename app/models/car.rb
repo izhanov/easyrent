@@ -95,6 +95,11 @@ class Car < ApplicationRecord
   ENGINE_CAPACITY_UNITS = %w[cm3 l].freeze
   APPEARANCE_TYPES = %w[clean dirty].freeze
   TECHNICAL_CONDITION_TYPES = %w[good need_repair under_repair].freeze
+  STATUSES = %w[
+    vacant
+    booked
+    occupied
+  ]
 
   def mark_title
     "#{mark.brand.title} #{mark.title}"

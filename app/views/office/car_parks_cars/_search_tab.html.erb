@@ -1,0 +1,29 @@
+<%= form_with url: office_car_parks_cars_path, html: {class: "row g-3 align-items-center"}, method: :get do |f| %>
+  <div class="col-6">
+    <div class="input-group">
+      <%= f.text_field "q[query]", value: params.dig(:q, :query), class: "form-control", placeholder: t(".search_input_placeholder") %>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="input-group">
+      <%= f.label t(".car_status"), class: "input-group-text" %>
+      <%= f.select "q[status]", options_for_select([["Свободная", "vacant"], ["В аренде", "occupied"]], selected: params.dig(:q, :status)), {include_blank: true}, class: "form-select" %>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="input-group">
+      <%= f.label t(".car_park"), class: "input-group-text" %>
+      <%= f.select "q[car_park_id]", options_for_select(
+        current_office_user.car_parks.map { |car_park| [car_park.title, car_park.id] },
+        selected: params.dig(:q, :car_park_id)
+      ), {include_blank: true}, class: "form-select" %>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <%= f.submit t(".submit"), class: "btn btn-sm btn-primary" %>
+    <%= link_to t(".reset"), office_car_parks_cars_path, class: "btn btn-sm btn-secondary" %>
+  </div>
+<% end %>

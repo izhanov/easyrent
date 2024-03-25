@@ -1,0 +1,9 @@
+ru:
+  office:
+    car_parks_cars:
+      search_tab:
+        submit: "Найти"
+        reset: "Сбросить"
+        car_status: "Статус"
+        car_park: "Автопарк"
+        search_input_placeholder: "Введите гос.номер или марку автомобиля..."

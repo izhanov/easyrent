@@ -6,7 +6,7 @@ ru:
         edit: "Редактировать"
         destroy: "Удалить"
         sure?: "Вы уверены?"
-        title: "Название:"
+        title: "Тариф"
         prices: "Цены:"
         rental_days_range: "Диапазон дней проката: %{range}, цена: %{price}"
         mileage_limit: "Лимит пробега: %{limit} км."

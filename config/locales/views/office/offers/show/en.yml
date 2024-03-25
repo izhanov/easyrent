@@ -6,7 +6,7 @@ en:
         edit: "Edit"
         destroy: "Destroy"
         sure?: "Are you sure?"
-        title: "Title:"
+        title: "Offer"
         prices: "Prices:"
         rental_days_range: "Rental days range: %{range}, price: %{price}"
         mileage_limit: "Mileage limit: %{limit}"

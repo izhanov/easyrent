@@ -1,0 +1,9 @@
+en:
+  office:
+    car_parks_cars:
+      search_tab:
+        submit: "Search"
+        reset: "Reset"
+        car_status: "Car status"
+        car_park: "Car park"
+        search_input_placeholder: "Type plate number or mark title"
