@@ -3,26 +3,17 @@
 module Office
   class CarParksCarsController < BaseController
     def index
-      @q = Car.typesense(
-        q: query_builder(query_params),
-        query_by: "plate_number, owner.id, mark.title, status",
-        infix: "always, always, always, always",
-      )
+      query = Utils::Typesense::Cars::QueryBuilder.new(**query_params).call
 
-      ids = @q.pluck(:id)
-      relation = current_office_user.cars.where(id: ids).order(:id)
+      @q = Car.typesense(query)
+      relation = current_office_user.cars.where(id: @q.pluck(:id)).order(:id)
       @pagy, @cars = pagy(relation, items: 10)
     end
 
     private
 
-    def query_builder(q)
-      "#{q[:query]} #{q[:car_park_id]} #{q[:status]}"
-    end
-
     def query_params
-      return  params.require(:q).permit(:query, :car_park_id, :status) if params[:q]
-
+      return  params.require(:q).permit(:query, :car_park_id, :status).to_h.deep_symbolize_keys if params[:q]
       {}
     end
   end
