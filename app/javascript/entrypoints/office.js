@@ -3,6 +3,7 @@
 import "@hotwired/turbo-rails"
 Turbo.setFormMode("optin");
 
+
 // Import Bootstrap CSS
 import * as bootstrap from 'bootstrap';
 import './../src/office/scss/main.scss';
