@@ -21,12 +21,33 @@ RSpec.describe Operations::Office::Cars::Update do
           mileage: car.mileage,
           number_of_seats: 4,
           tank_volume: car.tank_volume,
-          over_mileage_price: 0.5e2
+          over_mileage_price: 0.5e2,
         }
 
         result = subject.call(car, params)
         expect(result).to be_failure
-        expect(result.failure).to match_array([:validation_error, {plate_number: ["is missing"]}])
+
+        expect(result.failure).to(
+          match_array(
+            [
+              :validation_error,
+              {
+                plate_number: ["is missing"],
+                car_inspections_attributes: {
+                  car_id: ["is missing"],
+                  end_at: ["is missing"],
+                  start_at: ["is missing"]
+                },
+                insurances_attributes: {
+                  car_id: ["is missing"],
+                  kind: ["is missing"],
+                  start_at: ["is missing"],
+                  end_at: ["is missing"]
+                }
+              }
+            ]
+          )
+        )
       end
     end
 
@@ -47,7 +68,18 @@ RSpec.describe Operations::Office::Cars::Update do
           mileage: car.mileage,
           number_of_seats: 4,
           tank_volume: car.tank_volume,
-          over_mileage_price: 0.6e2
+          over_mileage_price: 0.6e2,
+          insurances_attributes: {
+            car_id: car.id,
+            kind: "ogpo",
+            start_at: Date.new(2024, 3, 26),
+            end_at: Date.new(2025, 3, 25)
+          },
+          car_inspections_attributes: {
+            car_id: car.id,
+            start_at: Date.new(2024, 3, 26),
+            end_at: Date.new(2025, 3, 25)
+          }
         }
 
         result = subject.call(car, params)
