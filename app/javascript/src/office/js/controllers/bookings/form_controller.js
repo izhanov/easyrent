@@ -10,9 +10,21 @@ export default class extends Controller {
     "totalAmount",
     "paymentMethods",
     "paymentMethodAmount",
+    "paymentMethodSelect"
   ]
 
   connect() {
+    if (this.paymentMethodSelectTarget.value === "mixed") {
+      this.paymentMethodsTarget.classList.remove("d-none");
+      this.paymentMethodAmountTargets.forEach((el) => {
+        el.removeAttribute('disabled');
+      });
+    } else {
+      this.paymentMethodAmountTargets.forEach((el) => {
+        el.setAttribute('disabled', 'disabled');
+      });
+      this.paymentMethodsTarget.classList.add("d-none");
+    }
   }
 
   async submit (e) {
