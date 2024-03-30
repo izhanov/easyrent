@@ -1,0 +1,9 @@
+ru:
+  office:
+    document_templates:
+      form:
+        submit: "Сохранить"
+        cancel: "Отмена"
+        tooltip:
+          current:
+            title: "Этот шаблон будет использоваться по умолчанию для контекста."

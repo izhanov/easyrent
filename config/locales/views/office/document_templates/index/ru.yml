@@ -1,0 +1,7 @@
+ru:
+  office:
+    document_templates:
+      index:
+        title: "Шаблоны документов"
+        back: "Назад"
+        new_document_template: "Новый шаблон документа"

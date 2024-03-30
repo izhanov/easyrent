@@ -1,0 +1,37 @@
+<%= form_with model: [:office, document_template], html: {class: "row g-3"} do |f| %>
+  <div class="col-12">
+    <div class="form-check">
+      <%= f.check_box :current, class: "form-check-input" %>
+      <%= f.label :current, class: "form-check-label" %>
+      <i class="bi bi-question-circle"  data-bs-toggle="tooltip" data-bs-title="<%= t(".tooltip.current.title") %>" ></i>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <%= f.label :owner_id, class: "input-group-text" %>
+    <%= f.select :owner_id, options_for_select(@owners.map { |owner| [owner.title, owner.id]}, selected: f.object.owner_id), {include_blank: false}, class: "form-select" %>
+    <%= f.hidden_field :owner_type, value: @owners.first.class %>
+  </div>
+
+  <div class="input-group">
+    <%= f.label :title, class: "input-group-text" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="input-group">
+    <%= f.label :context, class: "input-group-text" %>
+    <%- contexts = DocumentTemplate::CONTEXTS.map { |context| [localize_document_template_context(context), context] }%>
+    <%= f.select :context, options_for_select(contexts), {include_blank: false}, class: "form-select" %>
+  </div>
+
+  <div class="col-12">
+    <div id="toolbar-container"></div>
+    <%= f.text_area :content, class: "form-control", id: "ckeditor" %>
+  </div>
+
+  <div class="col-12">
+    <%= f.submit t(".submit"), class: "btn btn-success btn-sm" %>
+    <%= link_to t(".cancel"), office_document_templates_path, class: "btn btn-secondary btn-sm" %>
+  </div>
+
+<% end %>

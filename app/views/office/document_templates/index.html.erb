@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between">
+  <h1>
+    <%= t(".title") %>
+  </h1>
+</div>
+
+<div class="container">
+  <div class="d-flex justify-content-end my-2">
+    <%= link_to new_office_document_template_path, class: "btn btn-primary btn-sm", data: {turbo: true, turbo_frame: dom_id(DocumentTemplate.new) } do %>
+      <i class="bi bi-plus"></i>
+      <%= t(".new_document_template") %>
+    <% end %>
+  </div>
+
+  <div class="container bg-light rounded my-4">
+    <%= turbo_frame_tag DocumentTemplate.new %>
+  </div>
+
+  <div class="container">
+    <div class="d-flex my-2">
+      <div class="col-12">
+        <%= turbo_frame_tag "document_templates", class: "list-group list-group-numbered" do %>
+          <%= render @document_templates %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

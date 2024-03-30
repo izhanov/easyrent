@@ -1,0 +1,3 @@
+<%= turbo_frame_tag document_template, class: "list-group-item" do %>
+  <%= link_to document_template.title, edit_office_document_template_path(document_template), class: "link-dark", data: {turbo_frame: "_top"} %>
+<% end %>

@@ -46,6 +46,7 @@ class CarPark < ApplicationRecord
   has_many :cars, as: :owner, dependent: :destroy, class_name: "Car"
   has_many :bookings, through: :cars, dependent: :destroy
   has_many :clients, through: :user, source: :clients
+  has_many :document_templates, as: :owner, dependent: :destroy
 
   # Rental rules associations
   has_one :age_restriction, as: :owner, dependent: :destroy, class_name: "RentalRule::AgeRestriction"

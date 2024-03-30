@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'office', "data-turbo-track": "reload", defer: true %>
+    <%= yield :style %>
   </head>
 
   <body>
@@ -21,16 +21,19 @@
           <div class="collapse navbar-collapse d-lg-flex align-item-center justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <%= link_to t(".car_parks"), office_car_parks_path, class: "nav-link" %>
+                <%= active_link_to t(".car_parks"), office_car_parks_path, class: "nav-link", active: :exact %>
               </li>
               <li class="nav-item">
-                <%= link_to t(".cars"), office_car_parks_cars_path, class: "nav-link" %>
+                <%= active_link_to t(".cars"), office_car_parks_cars_path, class: "nav-link", active: :exact %>
               </li>
               <li class="nav-item">
-                <%= link_to t(".bookings"), office_bookings_path, class: "nav-link" %>
+                <%= active_link_to t(".bookings"), office_bookings_path, class: "nav-link", active: :exact %>
+              </li>
+              <li class="nav-item">
+                <%= active_link_to t(".document_templates"), office_document_templates_path, class: "nav-link", active: :exact%>
               </li>
             </ul>
-            <%= button_to t(".sign_out"), destroy_office_user_session_path, method: :delete, class: "btn btn-dark mr-4" %>
+            <%= button_to t(".sign_out"), destroy_office_user_session_path, method: :delete, class: "btn btn-dark mr-4", active: :exact %>
           </div>
         <% end %>
       </div>

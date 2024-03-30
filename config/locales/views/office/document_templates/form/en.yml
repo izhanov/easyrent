@@ -1,0 +1,9 @@
+en:
+  office:
+    document_templates:
+      form:
+        submit: "Save"
+        cancel: "Cancel"
+        tooltip:
+          current:
+            title: "This template would be used by default"

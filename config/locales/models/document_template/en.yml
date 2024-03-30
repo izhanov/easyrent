@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      document_template: "Document template"
+    attributes:
+      document_template:
+        owner_id: "Owner"
+        title: "Title"
+        context: "Context"
+        current: "Current"
+        contexts:
+          contract: "Contract"
+          application: "Application"
+
+

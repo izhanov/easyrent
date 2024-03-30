@@ -1,0 +1,7 @@
+ru:
+  office:
+    document_templates:
+      edit:
+        title: "Редактирование шаблона документа"
+        back: "Назад"
+        download: "Скачать шаблон"

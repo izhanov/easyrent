@@ -1,0 +1,15 @@
+ru:
+  activerecord:
+    models:
+      document_template: "Шаблон документа"
+    attributes:
+      document_template:
+        owner_id: "Владелец"
+        title: "Заголовок"
+        context: "Контекст"
+        current: "Текущий шаблон"
+        contexts:
+          contract: "Договор"
+          application: "Приложение"
+
+

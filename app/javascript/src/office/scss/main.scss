@@ -2,8 +2,11 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
 @import './utils/toastify';
+
 @import './components/error_field';
 @import './components/additional_service';
 @import './components/rental_rule';
 
-@import './actiontext.css';
+@import 'trix/dist/trix.css';
+@import './actiontext.scss';
+
