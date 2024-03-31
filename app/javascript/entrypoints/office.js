@@ -40,11 +40,13 @@ import './../src/office/js/bookings/new/calculator.js';
       new bootstrap.Popover(popoverTriggerEl)
     });
 
-    ClassicEditor
-    .create(document.querySelector('#ckeditor'))
-    .catch(error => {
-      console.error(error);
-    });
+    if (document.querySelector('#ckeditor')) {
+      ClassicEditor
+      .create(document.querySelector('#ckeditor'))
+      .catch(error => {
+        console.error(error);
+      });
+    }
   });
 });
 

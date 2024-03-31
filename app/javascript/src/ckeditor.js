@@ -13,10 +13,21 @@ import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { Table, TableCellProperties, TableProperties, TableToolbar } from '@ckeditor/ckeditor5-table';
 import { Style } from '@ckeditor/ckeditor5-style';
 import { GeneralHtmlSupport } from '@ckeditor/ckeditor5-html-support';
+import { Image, ImageCaption, ImageResize, ImageStyle, ImageToolbar, ImageInsert } from '@ckeditor/ckeditor5-image';
+import { LinkImage } from '@ckeditor/ckeditor5-link';
+import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
 ClassicEditor.builtinPlugins = [
+    Image,
+    ImageToolbar,
+    ImageInsert,
+    ImageCaption,
+    ImageStyle,
+    ImageResize,
+    LinkImage,
+    Base64UploadAdapter,
     GeneralHtmlSupport,
     Essentials,
     Autoformat,
@@ -49,6 +60,7 @@ ClassicEditor.defaultConfig = {
       'undo',
       'redo',
       'insertTable',
+      'insertImage',
       'alignment',
       'style'
     ]
@@ -89,6 +101,9 @@ ClassicEditor.defaultConfig = {
   },
   table: {
     contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableCellProperties', 'tableProperties']
+  },
+  image: {
+    toolbar: ['imageStyle:block', 'imageStyle:side', '|', 'imageTextAlternative'],
   },
   language: 'en',
 };
