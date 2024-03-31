@@ -46,6 +46,7 @@ class User < ApplicationRecord
   has_many :bookings, through: :cars, dependent: :destroy
   has_many :clients_in_users_companies, dependent: :destroy
   has_many :clients, through: :clients_in_users_companies, dependent: :destroy
+  has_many :document_templates, through: :car_parks, dependent: :destroy
 
   def full_name
     "#{first_name} #{last_name}"

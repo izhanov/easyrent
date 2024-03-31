@@ -28,6 +28,10 @@ namespace :office do
 
   resources :comments, only: [:new, :create]
 
+  resources :document_templates do
+    get :download, on: :member
+  end
+
   resources :clients do
     collection do
       get :search

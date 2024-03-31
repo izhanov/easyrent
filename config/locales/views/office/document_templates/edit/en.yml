@@ -1,0 +1,7 @@
+en:
+  office:
+    document_templates:
+      edit:
+        title: "Edit document template"
+        back: "Back"
+        download: "Download"

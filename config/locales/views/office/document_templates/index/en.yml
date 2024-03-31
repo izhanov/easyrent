@@ -1,0 +1,7 @@
+en:
+  office:
+    document_templates:
+      index:
+        title: "Document templates"
+        back: "Back"
+        new_document_template: "New document template"

@@ -1,0 +1,5 @@
+en:
+  office:
+    document_templates:
+      new:
+        title: "New document template"
