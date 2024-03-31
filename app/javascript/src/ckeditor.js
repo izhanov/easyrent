@@ -59,6 +59,31 @@ ClassicEditor.defaultConfig = {
         name: 'TD border none',
         element: 'td',
         classes: ['ck-table-border-none']
+      },
+      {
+        name: 'TD border all',
+        element: 'td',
+        classes: ['ck-table-border-all']
+      },
+      {
+        name: 'TD border top',
+        element: 'td',
+        classes: ['ck-table-border-top']
+      },
+      {
+        name: 'TD border right',
+        element: 'td',
+        classes: ['ck-table-border-right']
+      },
+      {
+        name: 'TD border bottpm',
+        element: 'td',
+        classes: ['ck-table-border-bottom']
+      },
+      {
+        name: 'TD border left',
+        element: 'td',
+        classes: ['ck-table-border-left']
       }
     ]
   },

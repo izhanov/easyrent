@@ -1,0 +1,14 @@
+en:
+  operations:
+    office:
+      document_templates:
+        create:
+          success: "Document template was successfully created."
+          errors:
+            validation_error: "Document template could not be created due to validation errors."
+        update:
+          success: "Document template was successfully updated."
+          errors:
+            validation_error: "Document template could not be updated due to validation errors."
+        destroy:
+          success: "Document template was successfully deleted."

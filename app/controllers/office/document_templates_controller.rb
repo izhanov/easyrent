@@ -14,9 +14,20 @@ module Office
     end
 
     def create
-      DocumentTemplate.create!(
-        document_template_params
-      )
+      operation = Operations::Office::DocumentTemplates::Create.new
+      result = operation.call(document_template_params.to_h, current_office_user)
+
+      case result
+      in Success[document_template]
+        success_message = success_resolver(operation)
+        redirect_to edit_office_document_template_path(document_template), notice: success_message
+      in Failure[error_code, errors]
+        failure_message = failure_resolver(operation, error_code: error_code)
+        flash.now[:alert] = failure_message
+        @document_template = current_office_user.document_templates.build(document_template_params)
+        @owners = current_office_user.car_parks
+        render :new
+      end
     end
 
     def show
@@ -29,12 +40,12 @@ module Office
 
     def update
       operation = Operations::Office::DocumentTemplates::Update.new
-      result = operation.call(@document_template, document_template_params, current_office_user)
+      result = operation.call(@document_template, document_template_params.to_h, current_office_user)
 
       case result
       in Success[document_template]
         success_message = success_resolver(operation)
-        redirect_to office_document_template_path(document_template), notice: success_message
+        redirect_to edit_office_document_template_path(document_template), notice: success_message
       in Failure[error_code, errors]
         failure_message = failure_resolver(operation, error_code: error_code)
         flash.now[:alert] = failure_message
