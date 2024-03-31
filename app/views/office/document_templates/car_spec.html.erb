@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<style type="text/css">
+.doc {
+  font-family: sans-serif;
+  padding: 1% 0 1% 1%;
+  font-size: 12.0pt;
+}
+
+.wrapper {
+  padding: 0 1%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td.ck-table-border-none {
+  border-style: none;
+}
+
+td.ck-table-border-left {
+  border-left: 1px solid black;
+}
+
+td.ck-table-border-right {
+  border-right: 1px solid black;
+}
+
+td.ck-table-border-top {
+  border-top: 1px solid black;
+}
+
+td.ck-table-border-bottom {
+  border-bottom: 1px solid black;
+}
+
+td.ck-table-border-all {
+  border: 1px solid black;
+}
+
+.to-right {
+  text-align: right;
+}
+
+.to-center {
+  text-align: center;
+}
+
+th {
+  border: 1px solid black;
+}
+
+.upcase {
+  text-transform: uppercase;
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div class="doc">
+<div class="contract" style="page-break-after: always;">
+  <div class="wrapper">
+    <div class="to-center">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Карточка автомобиля</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <table>
+      <tbody>
+        <tr height="55px">
+          <td class="ck-table-border-all to-center" width="50%">
+            Автомобиль (марка, модель и модельный год)
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{car.brand}} {{car.mark}} {{car.year}}
+          </td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all to-center">
+            Гос. номер
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{car.plate_number}}
+          </td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all to-center">
+            VIN
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{car.vin_code}}
+          </td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all to-center">
+            Номер техпаспорта
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{car.technical_certificate_number}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="to-center">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Карточка Водителя №1</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <table>
+      <tbody>
+        <tr>
+          <td width="50%" class="ck-table-border-all">Ф.И.О</td>
+          <td width="50%" class="ck-table-border-all to-center">{{ client.full_name }}</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">№ Водительских Прав</td>
+          <td width="50%" class="ck-table-border-all to-center">{{ client.driving_license }}</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">Дата выдачи Водительских прав</td>
+          <td width="50%" class="ck-table-border-all to-center">{{ client.driving_license_issued_date }}</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">ИИН / № Паспорта</td>
+          <td width="50%" class="ck-table-border-all to-center">{{client.identification_number}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="to-center">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Карточка Водителя №2</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <table>
+      <tbody>
+        <tr>
+          <td width="50%" class="ck-table-border-all">Ф.И.О</td>
+          <td width="50%" class="ck-table-border-all to-center">Ткаченко Александр Александрович</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">№ Водительских Прав</td>
+          <td width="50%" class="ck-table-border-all to-center">AN 033412</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">Дата выдачи Водительских прав</td>
+          <td width="50%" class="ck-table-border-all to-center">15.12.2015</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">ИИН / № Паспорта</td>
+          <td width="50%" class="ck-table-border-all to-center">820503300799</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    <table>
+      <tbody>
+        <tr>
+          <td>*TOO «ABD Trans Group». В лице Директора Радува К.В. действующего на основе устава, имея в аренде с правом субаренды автотранспортное средство. Настоящая путевой лист уполномочивает всех лиц, указанных в Карточках Водителя настоящего Приложения к Договору на передвижение на транспортном средстве указанном в Спецификации оказываемых Услуг к настоящему Приложению к Договору на период аренды указаны в Спецификации оказываемых Услуг к настоящему Приложению к Договору.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Арендодатель: _______________________</strong></td>
+          <td><strong>Арендатор: _______________________</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</body>
+</html>
