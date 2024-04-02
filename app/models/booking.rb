@@ -54,6 +54,8 @@ class Booking < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_one :contract, dependent: :destroy
 
+  has_many :documents, through: :contract
+
   accepts_nested_attributes_for :comments
 
   audited

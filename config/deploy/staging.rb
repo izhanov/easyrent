@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "77.243.80.67", user: "deployer", roles: %w{app db web}, primary: true
+server "77.243.80.67", user: "deployer", roles: %w{app db web worker}, primary: true
 set :rails_env, :production
 
 set :ssh_options, {
@@ -12,6 +12,8 @@ set :ssh_options, {
   auth_methods: %w(publickey password),
   port: 8998
 }
+
+set :sidekiq_roles, :worker
 # role-based syntax
 # ==================
 

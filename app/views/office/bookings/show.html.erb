@@ -173,6 +173,17 @@
       <div class="row">
         <div class="col-12">
           <div class="d-flex justify-content-between mb-3">
+            <strong>Документы:</strong>
+          </div>
+
+          <%= turbo_frame_tag "documents" do %>
+            <%= render @booking.documents.order(created_at: :desc) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex justify-content-between mb-3">
             <strong>Комментарии:</strong>
             <div>
               <%= link_to "Добавить комментарий", new_office_comment_path(commentable_id: @booking.id, commentable_type: @booking.class.name), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(Comment.new) } %>

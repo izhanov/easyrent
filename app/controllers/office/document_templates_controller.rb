@@ -75,6 +75,7 @@ module Office
           "content" => @document_template.content
         )
       )
+
       send_data(pdf, filename: "#{@document_template.title}.pdf", type: "application/pdf")
     end
 

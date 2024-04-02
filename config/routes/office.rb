@@ -24,6 +24,10 @@ namespace :office do
     patch :change_status, on: :member
   end
 
+  resources :documents do
+    get :download, on: :member
+  end
+
   resources :car_parks_cars, only: %i[index]
 
   resources :comments, only: [:new, :create]
