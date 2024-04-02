@@ -81,7 +81,8 @@ RSpec.describe Operations::Office::Bookings::Create do
         user = create(:user)
         car_park = create(:car_park, user: user)
         car = create(:car, owner: car_park)
-        offer = create(:offer, car: car)
+        mileage_limit = create(:rental_rule_mileage_limit, owner: car_park)
+        offer = create(:offer, car: car, mileage_limit_id: mileage_limit.id)
         client = create(:client)
 
         params = {
@@ -104,8 +105,9 @@ RSpec.describe Operations::Office::Bookings::Create do
       it "change car status to `booked`" do
         user = create(:user)
         car_park = create(:car_park, user: user)
+        mileage_limit = create(:rental_rule_mileage_limit, owner: car_park)
         car = create(:car, owner: car_park)
-        offer = create(:offer, car: car)
+        offer = create(:offer, car: car, mileage_limit_id: mileage_limit.id)
         client = create(:client)
 
         params = {

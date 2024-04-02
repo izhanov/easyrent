@@ -4,4 +4,5 @@ en:
       edit:
         title: "Edit document template"
         back: "Back"
+        destroy: "Destroy"
         download: "Download"

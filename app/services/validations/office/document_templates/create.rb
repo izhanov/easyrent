@@ -9,8 +9,7 @@ module Validations
           required(:owner_id).filled(:integer)
           required(:owner_type).filled(:string)
           required(:title).filled(:string)
-          required(:context).filled(:string)
-          required(:content).filled(:string)
+          required(:kind).filled(included_in?: DocumentTemplate::KINDS)
         end
       end
     end

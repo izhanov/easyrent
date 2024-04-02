@@ -59,7 +59,8 @@ module Operations
                 "pickup_location" => booking.pickup_location,
                 "drop_off_location" => booking.drop_off_location,
                 "vip_service" => {
-                  "title" => booking_vip_service(booking)
+                  "title" => booking_vip_service(booking)[:title],
+                  "price" => booking_vip_service(booking)[:price]
                 },
                 "prepayment_method" => booking.prepayment_method,
                 "prepayment_amount" => booking.prepayment_amount,
@@ -120,11 +121,12 @@ module Operations
           end
 
           def booking_vip_service(booking)
-            booking.services.map do |(service_id, _)|
-              if AdditionalService.find_by(id: service_id)&.vip_service?
-                return AdditionalService.find_by(id: service_id).title_ru
+            booking.services.each_with_object({}) do |(service_id, price), service|
+              if AdditionalService.find_by(id: service_id)&.vip_service? && BigDecimal(price).positive?
+                service[:title] = AdditionalService.find_by(id: service_id).title_ru
+                service[:price] = BigDecimal(price)
               end
-            end.compact
+            end
           end
 
           def prepare_pdf_tempfile(pdf, contract)

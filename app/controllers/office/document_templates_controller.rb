@@ -19,8 +19,12 @@ module Office
 
       case result
       in Success[document_template]
+        @document_template = document_template
         success_message = success_resolver(operation)
-        redirect_to edit_office_document_template_path(document_template), notice: success_message
+        respond_to do |format|
+          format.html { redirect_to office_document_template_path(document_template), notice: success_message }
+          format.turbo_stream
+        end
       in Failure[error_code, errors]
         failure_message = failure_resolver(operation, error_code: error_code)
         flash.now[:alert] = failure_message
@@ -54,17 +58,8 @@ module Office
     end
 
     def destroy
-      operation = Operations::Office::DocumentTemplates::Destroy.new
-      result = operation.call(@document_template, current_office_user)
-
-      case result
-      in Success[document_template]
-        success_message = success_resolver(operation)
-        redirect_to office_document_templates_path, notice: success_message
-      in Failure[error_code, errors]
-        failure_message = failure_resolver(operation, error_code: error_code)
-        redirect_to office_document_template_path(document_template), alert: failure_message
-      end
+      @document_template.destroy!
+      redirect_to office_document_templates_path
     end
 
     def download

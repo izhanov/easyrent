@@ -9,6 +9,11 @@
       <%= t(".back") %>
     <% end %>
 
+    <%= link_to office_document_template_path(@document_template), class: "btn btn-danger btn-sm", data: {turbo_method: :delete} do %>
+      <i class="bi bi-trash"></i>
+      <%= t(".destroy") %>
+    <% end %>
+
     <%= link_to download_office_document_template_path(@document_template), class: "btn btn-outline-primary btn-sm" do %>
       <i class="bi bi-download"></i>
       <%= t(".download") %>
