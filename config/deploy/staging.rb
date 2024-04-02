@@ -13,7 +13,9 @@ set :ssh_options, {
   port: 8998
 }
 
-set :sidekiq_roles, :worker
+set :systemctl_user, :system
+set :sidekiq_roles, :app
+set :sidekiq_env, :production
 # role-based syntax
 # ==================
 
