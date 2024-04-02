@@ -122,12 +122,14 @@
           <% @services ||= current_office_user.car_parks.first&.additional_services %>
           <% if @services.present? && @services.any? %>
             <% @services.each do |service| %>
-              <div class="col">
-                <div class="form-check">
-                  <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
-                  <%= service_form.label service.title_ru.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+              <% if AdditionalService::ANTE_FACTUM_SERVICES.include?(service.title) %>
+                <div class="col">
+                  <div class="form-check">
+                    <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
+                    <%= service_form.label service.title_ru.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           <%end %>
         <% end %>

@@ -49,6 +49,7 @@ module Operations
             booking_number = Utils::Bookings::NextNumber.new(params[:car_id]).get
             audit_as_user(responsible) do
               booking = Booking.create!(params.merge(number: booking_number))
+              Operations::Office::Contracts::Create.new.call(booking, responsible)
               Operations::Office::Cars::Book.new.call(booking.car, responsible)
               Success(booking)
             end

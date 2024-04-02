@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<style type="text/css">
+.doc {
+  font-family: sans-serif;
+  padding: 1% 0 1% 1%;
+  font-size: 8.0pt;
+}
+
+.wrapper {
+  padding: 0 1%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 2480px
+}
+
+td.ck-table-border-none {
+  border-style: none;
+}
+
+td.ck-table-border-left {
+  border-left: 1px solid black;
+}
+
+td.ck-table-border-right {
+  border-right: 1px solid black;
+}
+
+td.ck-table-border-top {
+  border-top: 1px solid black;
+}
+
+td.ck-table-border-bottom {
+  border-bottom: 1px solid black;
+}
+
+td.ck-table-border-all {
+  border: 1px solid black;
+}
+
+.to-right {
+  text-align: right;
+}
+
+.to-center {
+  text-align: center;
+}
+
+th {
+  border: 1px solid black;
+}
+
+.upcase {
+  text-transform: uppercase;
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div class="doc">
+<div class="contract" style="page-break-after: always;">
+  <div class="wrapper">
+    <div class="to-right">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Приложение № 1 от {{contract.date}}</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>к договору № {{contract.number}} от {{contract.date}}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div class="to-center">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Спецификация оказываемых услуг</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <table>
+      <thead>
+        <th width="15px">№</th>
+        <th colspan="2">Наименование услуги</th>
+        <th>Стоимость</th>
+        <th width="50px">Сроки</th>
+        <th>Сумма</th>
+      </thead>
+      <tbody>
+        <tr height="75px">
+          <td width="15px" class="ck-table-border-all">1</td>
+          <td class="ck-table-border-bottom">Тариф {{offer.title}}</td>
+          <td class="ck-table-border-bottom"></td>
+          <td class="ck-table-border-all to-center">{{contract.cost_per_day}}</td>
+          <td width="50px" class="ck-table-border-all to-center">{{contract.rental_days}}</td>
+          <td class="ck-table-border-all to-center">{{contract.rental_amount}}</td>
+        </tr>
+        <tr height="75px">
+          <td width="15px" class="ck-table-border-all">2</td>
+          <td class="ck-table-border-bottom">Доставка Автомобиля</td>
+          <td class="ck-table-border-all to-center" width="30%">{{booking.pickup_location}}</td>
+          <td class="ck-table-border-all to-center"></td>
+          <td width="50px" class="ck-table-border-all to-center">{{booking.starts_at}}</td>
+          <td class="ck-table-border-all to-center"></td>
+        </tr>
+        <tr height="75px">
+          <td width="15px" class="ck-table-border-all">3</td>
+          <td class="ck-table-border-bottom">Прием автомобиля</td>
+          <td class="ck-table-border-all to-center" width="30%">{{booking.drop_off_location}}</td>
+          <td class="ck-table-border-all to-center"></td>
+          <td width="50px" class="ck-table-border-all to-center">{{booking.ends_at}}</td>
+          <td class="ck-table-border-all to-center"></td>
+        </tr>
+        <tr height="75px">
+          <td width="15px" class="ck-table-border-all">4</td>
+          <td class="ck-table-border-bottom">{{ booking.vip_service.title }}</td>
+          <td class="ck-table-border-all" width="30%" style="text-align: center;">-</td>
+          <td class="ck-table-border-all to-center">-</td>
+          <td class="ck-table-border-all to-center">{{contract.rental_days}}</td>
+          <td class="ck-table-border-all to-center">-</td>
+        </tr>
+        <tr height="75px">
+          <td width="15px" class="ck-table-border-all">5</td>
+          <td class="ck-table-border-bottom">Стоимость предоплаты</td>
+          <td class="ck-table-border-all to-center" width="30%"> {{booking.prepayment_method}} </td>
+          <td class="ck-table-border-all to-center">{{booking.prepayment_amount}}</td>
+          <td class="ck-table-border-all to-center">{{booking.starts_at}}</td>
+          <td class="ck-table-border-all to-center">{{booking.prepayment_amount}}</td>
+        </tr>
+        <tr height="75px">
+          <td width="15px" class="ck-table-border-all">6</td>
+          <td class="ck-table-border-bottom">Стоимость постоплаты</td>
+          <td class="ck-table-border-all to-center" width="30%"> {{booking.payment_method}} </td>
+          <td class="ck-table-border-all to-center">{{booking.remain_payment_amount}}</td>
+          <td class="ck-table-border-all to-center">{{booking.ends_at}}</td>
+          <td class="ck-table-border-all to-center">{{booking.remain_payment_amount}}</td>
+        </tr>
+        <tr height="75px">
+          <td width="15px" class="ck-table-border-all">7</td>
+          <td class="ck-table-border-bottom">Допустимый лимит по пробегу</td>
+          <td class="ck-table-border-bottom"></td>
+          <td class="ck-table-border-left ck-table-border-bottom"></td>
+          <td class="ck-table-border-top ck-table-border-bottom">{{contract.permissible_mileage_limit}}</td>
+          <td class="ck-table-border-right ck-table-border-bottom"></td>
+        </tr>
+        <tr height="75px">
+          <td width="15px" class="ck-table-border-all">8</td>
+          <td class="ck-table-border-bottom">Стоимость 1 км перепробега</td>
+          <td class="ck-table-border-bottom"></td>
+          <td class="ck-table-border-left ck-table-border-bottom"></td>
+          <td class="ck-table-border-top ck-table-border-bottom">{{car.over_mileage_price}}</td>
+          <td class="ck-table-border-right ck-table-border-bottom"></td>
+        </tr>
+
+        {% assign number = 8 %}
+        {% for items in contract.services %}
+          {% assign number = number | plus: 1 %}
+          <tr height="75px">
+            <td class="ck-table-border-all">{{number}}</td>
+            <td class="ck-table-border-all to-center">{{items[1]}}</td>
+            <td class="ck-table-border-all to-center"></td>
+            <td class="ck-table-border-all to-center">{{items[2]}}</td>
+            <td class="ck-table-border-all to-center">{{items[3]}}</td>
+            <td class="ck-table-border-all to-center">{{items[4]}}</td>
+          </tr>
+        {% endfor %}
+
+        <tr height="75px">
+          <td class="ck-table-border-all"></td>
+          <td class="upcase ck-table-border-bottom"><strong>Итоговая сумма</strong></td>
+          <td class="ck-table-border-bottom"></td>
+          <td class="ck-table-border-left ck-table-border-bottom"></td>
+          <td class="ck-table-border-top ck-table-border-bottom to-center">{{contract.total_amount}}</td>
+          <td class="ck-table-border-right ck-table-border-bottom"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table>
+      <tbody>
+        <tr height="55px">
+          <td class="ck-table-border-all to-center">
+            <strong>Ваш менеджер</strong>
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{contract.manager}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="to-center">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Спецификация Возврата Залога</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td class="ck-table-border-all" width="10%">№</td>
+          <td class="ck-table-border-all" width="45%">Сумма залога</td>
+          <td class="ck-table-border-all to-center" width="45%">{{ contract.pledge_amount }}</td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all" width="10%">1</td>
+          <td class="ck-table-border-all" width="45%">Дата возврата залога</td>
+          <td class="ck-table-border-all to-center" width="45%">{{ contract.pledge_return_date }}</td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all" width="10%">2</td>
+          <td class="ck-table-border-all" width="45%">Способ возврата залога</td>
+          <td class="ck-table-border-all to-center" width="45%">{{ contract.pledge_return_method }}</td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all" width="10%">3</td>
+          <td class="ck-table-border-all" width="45%">Реквизиты возврата залога</td>
+          <td class="ck-table-border-all to-center" width="45%">{{ contract.pledage_return_requisites }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="page-break-after: always;">
+    </div>
+    <div class="to-center">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Карточка автомобиля</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <table>
+      <tbody>
+        <tr height="55px">
+          <td class="ck-table-border-all to-center" width="50%">
+            Автомобиль (марка, модель и модельный год)
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{car.title}} {{car.year}}
+          </td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all to-center">
+            Гос. номер
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{car.plate_number}}
+          </td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all to-center">
+            VIN
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{car.vin_code}}
+          </td>
+        </tr>
+        <tr>
+          <td class="ck-table-border-all to-center">
+            Номер техпаспорта
+          </td>
+          <td class="ck-table-border-all to-center">
+            {{car.technical_certificate_number}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="to-center">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Карточка Водителя №1</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <table>
+      <tbody>
+        <tr>
+          <td width="50%" class="ck-table-border-all">Ф.И.О</td>
+          <td width="50%" class="ck-table-border-all to-center">{{ client.full_name }}</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">№ Водительских Прав</td>
+          <td width="50%" class="ck-table-border-all to-center">{{ client.driving_license }}</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">Дата выдачи Водительских прав</td>
+          <td width="50%" class="ck-table-border-all to-center">{{ client.driving_license_issued_date }}</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">ИИН / № Паспорта</td>
+          <td width="50%" class="ck-table-border-all to-center">{{client.identification_number}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="to-center">
+      <table class="ck-table-border-none">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Карточка Водителя №2</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <table>
+      <tbody>
+        <tr>
+          <td width="50%" class="ck-table-border-all">Ф.И.О</td>
+          <td width="50%" class="ck-table-border-all to-center">Ткаченко Александр Александрович</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">№ Водительских Прав</td>
+          <td width="50%" class="ck-table-border-all to-center">AN 033412</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">Дата выдачи Водительских прав</td>
+          <td width="50%" class="ck-table-border-all to-center">15.12.2015</td>
+        </tr>
+        <tr>
+          <td width="50%" class="ck-table-border-all">ИИН / № Паспорта</td>
+          <td width="50%" class="ck-table-border-all to-center">820503300799</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>TOO «{{car_park.title}}»</strong>. В лице Директора Радува К.В. действующего на основе устава, имея в аренде с правом субаренды автотранспортное средство. Настоящая путевой лист уполномочивает всех лиц, указанных в Карточках Водителя настоящего Приложения к Договору на передвижение на транспортном средстве указанном в Спецификации оказываемых Услуг к настоящему Приложению к Договору на период аренды указаны в Спецификации оказываемых Услуг к настоящему Приложению к Договору.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Арендодатель: _______________________</strong></td>
+          <td><strong>Арендатор: _______________________</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</body>
+</html>

@@ -10,7 +10,7 @@ module Utils
       end
 
       def run
-        (booking.booked_dates_count * price_for_rent_period) + services_total_price + booking_pledge_amount
+        (booking.booked_dates_count * price_for_rent_period) + services_total_amount + booking_pledge_amount
       end
 
       def get(name)
@@ -32,24 +32,37 @@ module Utils
         @services_prices ||= booking.services
       end
 
+      def services_total_amount
+        @services_total_amount ||= services_prices.map do |service_id, price|
+          service = AdditionalService.find_by(id: service_id)
+          next unless service.present?
+
+          if service.one_time?
+            price_string_to_decimal(price)
+          else
+            price_string_to_decimal(price) * booking.booked_dates_count
+          end
+        end.sum
+      end
+
       def booking_pledge_amount
-        booking.pledge_amount
+        @booking_pledge_amount ||= booking.pledge_amount
       end
 
       def booking_prepayment_amount
-        booking.prepayment_amount
+        @booking_prepayment_amount ||= booking.prepayment_amount
       end
 
       def booking_kaspi_method_amount
-        booking.kaspi_method_amount
+        @booking_kaspi_method_amount ||= booking.kaspi_method_amount
       end
 
       def booking_halyk_method_amount
-        booking.halyk_method_amount
+        @booking_halyk_method_amount ||= booking.halyk_method_amount
       end
 
       def booking_chash_method_amount
-        booking.cash_method_amount
+        @booking_cash_method_amount ||= booking.cash_method_amount
       end
 
       def price_for_rent_period
@@ -61,10 +74,6 @@ module Utils
           nearest_range = prices.keys.min_by { |range| (range.max - booking.booked_dates_count).abs }
           price_string_to_decimal(prices[nearest_range])
         end
-      end
-
-      def services_total_price
-        services_prices.values.map { |price| price_string_to_decimal(price) }.sum
       end
 
       def string_range_to_range(string_range)

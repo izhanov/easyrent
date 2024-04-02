@@ -7,6 +7,7 @@ module Validations
         params do
           required(:title).filled(:string)
           required(:price).filled(:decimal, gt?: 0)
+          optional(:kind).value(included_in?: AdditionalService::KINDS)
         end
       end
     end

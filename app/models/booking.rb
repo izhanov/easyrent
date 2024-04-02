@@ -52,6 +52,7 @@ class Booking < ApplicationRecord
   belongs_to :offer, inverse_of: :booking
 
   has_many :comments, as: :commentable, dependent: :destroy
+  has_one :contract, dependent: :destroy
 
   accepts_nested_attributes_for :comments
 

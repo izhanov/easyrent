@@ -6,6 +6,10 @@ ru:
       additional_service:
         title: "Название"
         price: "Цена"
+        kind: "Тип"
+        kinds:
+          one_time: "Одноразовая"
+          recurring: "Повторяющаяся"
         services:
           gps_navigator: "GPS Навигатор"
           child_seat: "Детское Кресло"
@@ -18,3 +22,7 @@ ru:
           phone_holder: "Держатель для телефона"
           usb_for_phone: "USB для телефона"
           additional_driver: "Дополнительный водитель"
+          car_wash: "Автомойка"
+          vip_one: "VIP 1 с покрытием ущерба"
+          vip_two: "VIP 2 с покрытием ущерба"
+          vip_three: "VIP 3 с покрытием ущерба"

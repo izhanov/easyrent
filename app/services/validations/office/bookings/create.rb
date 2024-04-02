@@ -18,6 +18,7 @@ module Validations
           optional(:prepayment_method).value(:string)
           optional(:with_pledge_amount).value(:bool)
           optional(:pledge_amount).value(:decimal)
+          optional(:pledge_method).value(:string)
           optional(:kaspi_method_amount).value(:decimal)
           optional(:halyk_method_amount).value(:decimal)
           optional(:cash_method_amount).value(:decimal)

@@ -81,7 +81,7 @@ module Office
     end
 
     def additional_service_params
-      params.require(:additional_service).permit(:title, :price, :slug, :owner_id, :owner_type)
+      params.require(:additional_service).permit(:title, :price, :slug, :owner_id, :owner_type, :kind)
     end
   end
 end

@@ -58,4 +58,12 @@ class CarPark < ApplicationRecord
   # llp - Limited Liability Partnership (ТОО)
   # ie - Individual Entrepreneur (ИП)
   KINDS = %w[llp ie]
+
+  def llp?
+    kind == "llp"
+  end
+
+  def ie?
+    kind == "ie"
+  end
 end

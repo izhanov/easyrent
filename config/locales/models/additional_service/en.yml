@@ -6,6 +6,10 @@ en:
       additional_service:
         title: "Title"
         price: "price"
+        kind: "Kind"
+        kinds:
+          one_time: "One Time"
+          recurring: "Recurring"
         services:
           gps_navigator: "GPS Navigator"
           child_seat: "Child Seat"
@@ -18,3 +22,7 @@ en:
           phone_holder: "Phone Holder"
           usb_for_phone: "USB for Phone"
           additional_driver: "Additional Driver"
+          car_wash: "Car Wash"
+          vip_one: "VIP One"
+          vip_two: "VIP Two"
+          vip_three: "VIP Three"

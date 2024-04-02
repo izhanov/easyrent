@@ -7,7 +7,13 @@
     <div class="col-lg-6 col-12">
       <div class="input-group">
         <%= f.label :title, class: "input-group-text" %>
-        <%= f.select :title, options_for_select(AdditionalService::SERVICES.map { |service| [I18n.t("activerecord.attributes.additional_service.services.#{service}"), service] }), {include_blank: false}, class: "form-select" %>
+        <%= f.select :title, options_for_select(AdditionalService::SERVICES.map { |service| [I18n.t("activerecord.attributes.additional_service.services.#{service}"), service] }, selected: f.object.title), {include_blank: false}, class: "form-select" %>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="input-group">
+        <%= f.label :kind, class: "input-group-text" %>
+        <%= f.select :kind,options_for_select(AdditionalService::KINDS.map { |kind| [I18n.t("activerecord.attributes.additional_service.kinds.#{kind}"), kind] }, f.object.kind), {include_blank: false}, class: "form-select" %>
       </div>
     </div>
     <div class="col-lg-4 col-12">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_26_055258) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_02_084916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_055258) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "kind"
     t.index ["owner_type", "owner_id"], name: "index_additional_services_on_owner"
   end
 
@@ -290,6 +291,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_055258) do
     t.index ["car_id"], name: "index_consumables_on_car_id"
   end
 
+  create_table "contracts", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.date "date"
+    t.string "number"
+    t.decimal "total_amount"
+    t.decimal "pledge_amount"
+    t.decimal "prepayment_amount"
+    t.decimal "services_total_amount"
+    t.integer "rental_days"
+    t.integer "permissible_mileage_limit"
+    t.string "pledge_return_method"
+    t.date "pledge_return_date"
+    t.string "pledge_return_requisites"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "cost_per_day", precision: 10, scale: 2, default: "0.0"
+    t.index ["booking_id", "number"], name: "index_contracts_on_booking_id_and_number", unique: true
+    t.index ["booking_id"], name: "index_contracts_on_booking_id"
+  end
+
   create_table "document_templates", force: :cascade do |t|
     t.string "owner_type"
     t.bigint "owner_id"
@@ -309,7 +330,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_055258) do
     t.bigint "document_template_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "file_data"
     t.index ["document_template_id"], name: "index_documents_on_document_template_id"
+    t.index ["file_data"], name: "index_documents_on_file_data", using: :gin
     t.index ["owner_type", "owner_id"], name: "index_documents_on_owner"
   end
 
@@ -437,6 +460,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_055258) do
   add_foreign_key "clients_in_users_companies", "users"
   add_foreign_key "consumable_logs", "consumables"
   add_foreign_key "consumables", "cars"
+  add_foreign_key "contracts", "bookings"
   add_foreign_key "marks", "brands"
   add_foreign_key "offers", "cars"
   add_foreign_key "photos", "cars"

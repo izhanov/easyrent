@@ -8,8 +8,13 @@ ru:
         title: "Заголовок"
         context: "Контекст"
         current: "Текущий шаблон"
-        contexts:
+        kind: "Тип"
+        kinds:
           contract: "Договор"
           application: "Приложение"
+        contexts:
+          booking: "Бронирование"
+          contract: "Контракт"
+          car: "Автомобиль"
 
 

@@ -9,6 +9,7 @@ module Validations
           required(:price).filled(:decimal, gt?: 0)
           required(:owner_type).filled(:string)
           required(:owner_id).filled(:integer)
+          required(:kind).filled(included_in?: AdditionalService::KINDS)
         end
       end
     end

@@ -8,8 +8,13 @@ en:
         title: "Title"
         context: "Context"
         current: "Current"
-        contexts:
+        kind: "Kind"
+        kinds:
           contract: "Contract"
           application: "Application"
+        contexts:
+          booking: "Booking"
+          contract: "Contract"
+          car: "Car"
 
 

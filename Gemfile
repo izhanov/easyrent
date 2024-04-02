@@ -54,6 +54,7 @@ gem "active_link_to"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 gem "shrine", ">= 3.0.0"
+gem "marcel", "~> 1.0.0"
 
 gem "devise", ">= 4.8.0"
 

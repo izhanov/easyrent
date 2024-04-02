@@ -20,8 +20,17 @@
 #  index_document_templates_on_owner  (owner_type,owner_id)
 #
 class DocumentTemplate < ApplicationRecord
-  CONTEXTS = %w[
+  KINDS = %w[
     contract
     application
   ]
+
+  CONTEXTS = %w[
+    contract
+    booking
+    car
+  ]
+
+  scope :current, -> { where(current: true) }
+  scope :current_for, ->(context) { current.where(context: context) }
 end

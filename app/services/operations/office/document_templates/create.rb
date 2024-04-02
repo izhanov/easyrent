@@ -19,9 +19,15 @@ module Operations
         end
 
         def commit(params, responsible)
-          audit_as_user(responsible) do
-            document_template = DocumentTemplate.create!(params)
-            Success(document_template)
+          ActiveRecord::Base.transaction do
+            audit_as_user(responsible) do
+              if params[:current] && params[:context] == "contract"
+                existing_document_template = responsible.document_templates.current_for(params[:context])
+                existing_document_template&.update!(current: false)
+              end
+              document_template = DocumentTemplate.create!(params)
+              Success(document_template)
+            end
           end
         end
       end

@@ -19,9 +19,9 @@
   </div>
 
   <div class="input-group">
-    <%= f.label :context, class: "input-group-text" %>
-    <%- contexts = DocumentTemplate::CONTEXTS.map { |context| [localize_document_template_context(context), context] }%>
-    <%= f.select :context, options_for_select(contexts), {include_blank: false}, class: "form-select" %>
+    <%= f.label :kind, class: "input-group-text" %>
+    <%- kinds = DocumentTemplate::KINDS.map { |kind| [localize_document_template_kind(kind), kind] }%>
+    <%= f.select :kind, options_for_select(kinds), {include_blank: false}, class: "form-select" %>
   </div>
 
   <div class="col-12">
