@@ -60,3 +60,4 @@ node_modules
 
 /public/.DS_Store
 .DS_Store
+/public/store/.DS_Store
