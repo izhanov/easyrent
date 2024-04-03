@@ -33,7 +33,7 @@ module Utils
       end
 
       def services_total_amount
-        @services_total_amount ||= services_prices.map do |service_id, price|
+        @services_total_amount ||= booking.services.map do |service_id, price|
           service = AdditionalService.find_by(id: service_id)
           next unless service.present?
 
@@ -42,7 +42,7 @@ module Utils
           else
             price_string_to_decimal(price) * booking.booked_dates_count
           end
-        end.sum
+        end.compact.sum
       end
 
       def booking_pledge_amount
