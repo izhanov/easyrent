@@ -12,7 +12,7 @@ import ClassicEditor from "../src/ckeditor.js";
 // Import Bootstrap CSS
 import * as bootstrap from 'bootstrap';
 import './../src/office/scss/main.scss';
-import './../src/office/images';
+import '../images/office/index.js';
 
 
 import './../src/office/js/imask.js';
