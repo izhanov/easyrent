@@ -1,0 +1,35 @@
+.base-input {
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(233, 233, 236, 1);
+  &__helper {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(13, 16, 25, 0.56);
+    margin-top: 8px;
+  }
+  label {
+    font-size: 13px;
+    color: rgba(101, 109, 119, 1);
+    font-weight: 400;
+  }
+  input {
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 17px;
+    color: rgba(19, 23, 27, 1);
+
+    &::placeholder {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(158, 162, 173, 1);
+    }
+  }
+}

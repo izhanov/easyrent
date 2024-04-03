@@ -1,0 +1,8 @@
+ru:
+  office:
+    users:
+      passwords:
+        edit:
+          password: "Пароль"
+          password_confirmation: "Подтверждение пароля"
+          submit: "Продолжить"

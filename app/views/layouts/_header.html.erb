@@ -1,0 +1,104 @@
+<header class="header">
+  <div class="header__inner container">
+    <div class="header__left">
+      <%= link_to office_root_path, class: "navbar-brand" do %>
+        <%= vite_image_tag("src/office/images/logo.png") %>
+      <% end %>
+
+      <% if office_user_signed_in? %>
+        <nav class="header__navbar">
+          <div class="header__navbar-item">
+            <%= active_link_to office_car_parks_path, class: "header__navbar-item-title", class_active: "header__navbar-item--active", active: :exact do %>
+              <%= t(".car_parks") %>
+            <% end %>
+          </div>
+          <div class="dropdown header__navbar-item">
+            <%= active_link_to office_car_parks_cars_path, class: "header__navbar-item-title", class_active: "header__navbar-item--active" do %>
+              <%= t(".cars") %>
+            <% end %>
+          </div>
+
+          <div class="dropdown header__navbar-item">
+            <span
+              class="header__navbar-item-title"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <%= t(".bookings") %>
+              <svg
+                width="12"
+                height="8"
+                viewBox="0 0 12 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.33398 1.33325L5.62436 6.23654C5.82357 6.4642 6.17773 6.46421 6.37694 6.23654L10.6673 1.33325"
+                  stroke="#B3B4BC"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to office_bookings_path, class: "dropdown-item" do %>
+                <%= t(".all_bookings") %>
+              <% end %>
+              <%= link_to "#", class: "dropdown-item" do %>
+                <%= t(".to_give_out_bookings") %>
+              <% end %>
+              <%= link_to "#", class: "dropdown-item" do %>
+                <%= t(".to_accept_bookings") %>
+              <% end %>
+            </div>
+          </div>
+        </nav>
+      <% end %>
+    </div>
+    <% if office_user_signed_in? %>
+      <div class="header__right user-menu">
+        <div class="user-menu__avatar">
+          <%= vite_image_tag("src/office/images/avatar.jpg") %>
+        </div>
+
+        <div class="dropdown">
+          <div
+            class="user-menu__info"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            role="button"
+          >
+            <div class="user-menu__text">
+              <p class="user-menu__name"><%= current_office_user.full_name %></p>
+              <span class="user-menu__prof">Супервизор</span>
+            </div>
+            <svg
+              width="14"
+              height="9"
+              viewBox="0 0 14 9"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.16602 1.66675L6.62306 7.90337C6.82227 8.13104 7.17643 8.13104 7.37564 7.90337L12.8327 1.66675"
+                stroke="#13171B"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= active_link_to edit_office_user_path(current_office_user), class: "dropdown-item", class_active: "active" do %>
+              <%= t(".edit_user") %>
+            <% end %>
+            <%= button_to t(".sign_out"), destroy_office_user_session_path, method: :delete, class: "dropdown-item", active: :exact %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</header>

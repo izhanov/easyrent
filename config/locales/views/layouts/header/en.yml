@@ -1,0 +1,15 @@
+ут:
+  layouts:
+    header:
+      car_parks: "Car parks"
+      cars: "Cars"
+      bookings: "Bookings"
+      document_templates: "Document templates"
+      edit_user: "Edit user"
+      all_bookings: "All bookings"
+      to_give_out_bookings: "To give out bookings"
+      to_accept_bookings: "Accept bookings"
+      sign_out: "Sign out"
+
+
+

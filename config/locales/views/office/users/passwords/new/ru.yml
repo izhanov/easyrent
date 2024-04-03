@@ -1,0 +1,7 @@
+ru:
+  office:
+    users:
+      passwords:
+        new:
+          email: "Почта"
+          submit: "Продолжить"

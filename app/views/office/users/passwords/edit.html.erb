@@ -1,25 +1,25 @@
-<h2>Change your password</h2>
+<div class="offset-3">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "auth-form", method: :put }) do |f| %>
+    <%= render "office/users/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "office/users/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+    <h1>Задайте новый пароль</h1>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+    <div class="auth-form__input-group">
+      <div class="auth-form__password base-input">
+        <%= f.label :password, t(".password") %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+      </div>
+      <% if @minimum_password_length %>
+        <span class="base-input__helper">Не менее 6 символов и 1 заглавной буквы</span>
+      <% end %>
+      <div class="auth-form__password base-input">
+        <%= f.label :password_confirmation, t(".password_confirmation") %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <%= f.submit "Change my password", class: "auth-form__button" %>
+  <% end %>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "office/users/shared/links" %>

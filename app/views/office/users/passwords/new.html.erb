@@ -1,16 +1,19 @@
-<h2>Forgot your password?</h2>
+<div class="container">
+  <div class="auth-layout">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "auth-form", method: :post }) do |f| %>
+      <h1>Забыли пароль?</h1>
+      <p class="auth-layout__subtitle">
+        Введите свою почту, на нее мы отправим 6-значный код для сброса пароля
+      </p>
+      <%= render "office/users/shared/error_messages", resource: resource %>
+      <div class="auth-form__input-group">
+        <div class="auth-form__email base-input">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Введите email" %>
+        </div>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "office/users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.submit t(".submit"), class: "auth-form__button" %>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "office/users/shared/links" %>
+</div>

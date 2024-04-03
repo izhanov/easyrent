@@ -6,4 +6,5 @@ ru:
           sign_in: "Войти"
           email: "Почта"
           password: "Пароль"
-          submit: "Ок"
+          submit: "Продолжить"
+          forgot_password: "Забыли пароль?"

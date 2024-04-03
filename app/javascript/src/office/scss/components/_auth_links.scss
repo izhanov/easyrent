@@ -1,0 +1,11 @@
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  a {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(158, 162, 173, 1);
+  }
+}

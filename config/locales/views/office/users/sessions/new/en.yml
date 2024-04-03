@@ -7,3 +7,4 @@ en:
           email: 'Email'
           password: 'Password'
           submit: 'Submit'
+          forgot_password: "Forgot password?"

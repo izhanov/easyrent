@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+* {
+  font-family: "Onest", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
@@ -6,6 +14,13 @@
 @import './components/error_field';
 @import './components/additional_service';
 @import './components/rental_rule';
+@import './components/base_input';
+@import './components/auth_form';
+@import './components/auth_layout';
+@import './components/auth_links';
+@import './components/code_input';
+@import './components/header';
+@import './components/user_menu';
 
 @import 'trix/dist/trix.css';
 @import './actiontext.scss';

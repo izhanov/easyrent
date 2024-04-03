@@ -1,0 +1,7 @@
+en:
+  office:
+    users:
+      passwords:
+        new:
+          email: "Email"
+          submit: "Submit"

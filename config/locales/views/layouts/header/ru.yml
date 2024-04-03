@@ -1,0 +1,13 @@
+ru:
+  layouts:
+    header:
+      car_parks: "Автопарки"
+      cars: "Автомобили"
+      bookings: "Заявки"
+      document_templates: "Шаблоны документов"
+      edit_user: "Редактировать пользователя"
+      all_bookings: "Бронирования"
+      to_give_out_bookings: "Выдача"
+      to_accept_bookings: "Приёмка"
+      sign_out: "Выйти"
+
