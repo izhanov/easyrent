@@ -55,6 +55,12 @@
               <% end %>
             </div>
           </div>
+
+          <div class="dropdown header__navbar-item">
+            <%= active_link_to office_document_templates_path, class: "header__navbar-item-title", class_active: "header__navbar-item--active" do %>
+              <%= t(".document_templates") %>
+            <% end %>
+          </div>
         </nav>
       <% end %>
     </div>
