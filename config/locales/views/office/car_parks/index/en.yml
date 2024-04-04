@@ -2,9 +2,7 @@ en:
   office:
     car_parks:
       index:
-        title: "Owner"
+        title: "My car parks"
         back: "Back"
         new_car_park: "New car park"
-        no_car_parks: "You have no car parks. To start working you need to create at least one car park."
-        car_parks: "Car parks"
-        edit: "Edit account"
+        destroy: "Destroy"

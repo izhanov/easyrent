@@ -1,0 +1,32 @@
+.options-dropdown {
+  .show {
+    background: white;
+  }
+  &__button {
+    padding: 6px;
+    border-radius: 7px;
+    background: none;
+    &:hover,
+    &:focus-visible {
+      background: white;
+    }
+  }
+  .dropdown-menu {
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
+  .dropdown-item {
+    border-radius: 16px;
+    color: rgba(37, 33, 41, 12);
+    padding: 10px 12px;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    &:hover,
+    &:focus-visible,
+    &:active {
+      background: rgba(247, 247, 248, 1);
+      color: rgba(41, 129, 246, 1);
+    }
+  }
+}

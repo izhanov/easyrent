@@ -1,0 +1,16 @@
+en:
+  office:
+    car_parks:
+      car_park:
+        destroy: "Destroy"
+        edit: "Edit"
+        settings: "Settings"
+        sure?: "Are you sure?"
+        cars_count: "Cars count: "
+        cars_in_repair: "In repair: "
+        cars_in_rent: "In rent: "
+        cars_need_repair: "Need repair: "
+        car_count: "%{count} cars"
+        go: "Go"
+
+

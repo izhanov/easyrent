@@ -1,94 +1,84 @@
-<%= form_with model: [:office, car_park], html: {class: "row mt-12", data: {controller: "car-park-form"}} do |f| %>
-  <%= f.hidden_field :user_id, value: current_office_user.id %>
+<div class="autopark-change__block mt-4">
+  <%= form_with model: [:office, car_park], html: {class: "autopark-change-form", data: {controller: "car-park-form", turbo: false}} do |f| %>
+    <%= f.hidden_field :user_id, value: current_office_user.id %>
 
-  <div class="col-12 mb-3">
-    <p class="form-block-name mb-3">Форма ведения бизнеса</p>
-    <div class="form-check form-check-inline">
-      <%= f.label :kind_ie, "ИП", class: "form-check-label"%>
-      <%= f.radio_button :kind, :ie, class: "form-check-input", checked: true, data: {action: "change->car-park-form#changeKind"}%>
+    <div class="autopark-change__toggler">
+      <%= f.label :kind_ie, class: "autopark-change__toggler-item" do%>
+        <%= f.radio_button :kind, :ie, class: "form-check-input", checked: true, data: {action: "change->car-park-form#changeKind"}%>
+        <%= t(".ie") %>
+      <% end %>
+
+      <%= f.label :kind_llp, class: "autopark-change__toggler-item" do%>
+        <%= f.radio_button :kind, :llp, class: "form-check-input", data: {action: "change->car-park-form#changeKind"}%>
+        <%= t(".llp") %>
+      <% end %>
     </div>
 
-    <div class="form-check form-check-inline">
-      <%= f.label :kind_llp, "ТОО", class: "form-check-label"%>
-      <%= f.radio_button :kind, :llp, class: "form-check-input", data: {action: "change->car-park-form#changeKind"}%>
+    <div class="autopark-change-form__block">
+      <p class="autopark-change-form__block-title"><%= t(".general_information") %></p>
+      <div class="autopark-change-form__input-group">
+        <div class="autopark-change-form__input-block">
+          <div class="base-input">
+            <%= f.label :title%>
+            <%= f.text_field :title, placeholder: t(".placeholders.title") %>
+            <%= error_field(@errors, :title) %>
+          </div>
+          <div class="base-input">
+            <%= f.label :booking_prefix %>
+            <%= f.text_field :booking_prefix, value: nil, placeholder: t(".placeholders.booking_prefix")%>
+            <%= error_field(@errors, :booking_prefix) %>
+          </div>
+        </div>
+
+        <div class="autopark-change-form__input-block">
+          <div class="base-input">
+            <%= f.label :business_id_number %>
+            <%= f.text_field :business_id_number, placeholder: t(".placeholders.business_id_number") %>
+            <%= error_field(@errors, :business_id_number) %>
+          </div>
+
+          <div class="base-input">
+            <%= f.label :city_id %>
+            <%= f.select :city_id, City.all.pluck(:title, :id), {include_blank: false} %>
+          </div>
+
+          <div class="base-input">
+            <%= f.label :contact_phone %>
+            <%= f.text_field :contact_phone, placeholder: t(".placeholders.contact_phone"), data: {mask: "phone"} %>
+            <%= error_field(@errors, :contact_phone) %>
+          </div>
+
+          <div class="base-input">
+            <%= f.label :email %>
+            <%= f.email_field :email, placeholder: t(".placeholders.email") %>
+            <%= error_field(@errors, :email) %>
+          </div>
+        </div>
+
+        <div data-car-park-form-target="ieForm">
+          <%= render "office/car_parks/ie_form", f: f %>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="col-12 mb-3 mb-lg-4">
-    <p class="mb-3 form-block-name">Общие данные</p>
-    <div class="input-group">
-      <%= f.label :title, class: "input-group-text" %>
-      <%= f.text_field :title, class: "form-control #{@errors && @errors.dig(:title).present? ? 'is-invalid' : ''}"%>
-      <%= error_field(@errors, :title) %>
+    <div class="autopark-change-form__input-block">
+      <div class="base-input">
+        <%= f.label :bank_name %>
+        <%= f.select :bank_name, Utils::Banks::CODES.to_a, {include_blank: true}, data: {action: "change->car-park-form#changeBankName"} %>
+        <%= error_field(@errors, :bank_name) %>
+      </div>
+
+      <div class="base-input">
+        <%= f.label :bank_account_number %>
+        <%= f.text_field :bank_account_number %>
+        <%= error_field(@errors, :bank_account_number) %>
+      </div>
     </div>
-  </div>
 
-  <div class="col-3 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :booking_prefix, class: "input-group-text" %>
-      <%= f.text_field :booking_prefix, class: "form-control #{@errors && @errors.dig(:booking_prefix).present? ? 'is-invalid' : ''}"%>
-      <%= error_field(@errors, :booking_prefix) %>
+    <div class="m-0 d-none" data-car-park-form-target="llpForm">
+      <%= render "office/car_parks/llp_form", f: f %>
     </div>
-  </div>
 
-  <div class="col-12 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :city_id, class: "input-group-text" %>
-      <%= f.select :city_id, City.all.pluck(:title, :id), {include_blank: false}, class: "form-select #{@errors && @errors.dig(:city_id).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :city_id) %>
-    </div>
-  </div>
-
-  <div class="col-12 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :business_id_number, class: "input-group-text" %>
-      <%= f.text_field :business_id_number, class: "form-control #{@errors && @errors.dig(:business_id_number).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :business_id_number) %>
-    </div>
-  </div>
-
-  <div class="col-12 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :contact_phone, class: "input-group-text" %>
-      <%= f.text_field :contact_phone, class: "form-control  #{@errors && @errors.dig(:contact_phone).present? ? 'is-invalid' : ''}", data: {mask: "phone"} %>
-      <%= error_field(@errors, :contact_phone) %>
-    </div>
-  </div>
-
-  <div class="col-12 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :email, class: "input-group-text" %>
-      <%= f.email_field :email, class: "form-control  #{@errors && @errors.dig(:email).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :email) %>
-    </div>
-  </div>
-
-  <div class="m-0" data-car-park-form-target="ieForm">
-    <%= render "office/car_parks/ie_form", f: f %>
-  </div>
-
-  <div class="col-12 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :bank_name, class: "input-group-text" %>
-      <%= f.select :bank_name, Utils::Banks::CODES.to_a, {include_blank: true}, class: "form-select  #{@errors && @errors.dig(:bank_name).present? ? 'is-invalid' : ''}", data: {action: "change->car-park-form#changeBankName"} %>
-      <%= error_field(@errors, :bank_name) %>
-    </div>
-  </div>
-
-  <div class="col-12 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :bank_account_number, class: "input-group-text" %>
-      <%= f.text_field :bank_account_number, class: "form-control #{@errors && @errors.dig(:bank_account_number).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :bank_account_number) %>
-    </div>
-  </div>
-
-  <div class="m-0 d-none" data-car-park-form-target="llpForm">
-    <%= render "office/car_parks/llp_form", f: f %>
-  </div>
-
-  <div class="col-12 mb-3">
-    <%= f.submit t(".save"), class: "btn btn-sm btn-success" %>
-    <%= link_to t(".cancel"), office_car_parks_path, class: "btn btn-sm btn-outline-secondary" %>
-  </div>
-<% end %>
+    <%= f.submit t(".save"), class: "autopark-change-form__button"%>
+  <% end %>
+</div>

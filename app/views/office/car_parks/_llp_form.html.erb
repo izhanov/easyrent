@@ -1,31 +1,27 @@
-<div class="col-lg-12 mb-3">
-  <div class="input-group">
-    <%= f.label :legal_address, class: "input-group-text" %>
-    <%= f.text_field :legal_address, class: "form-control #{@errors && @errors.dig(:legal_address).present? ? 'is-invalid' : ''}" %>
+<div class="autopark-change-form__input-block">
+  <div class="base-input">
+    <%= f.label :legal_address %>
+    <%= f.text_field :legal_address %>
     <%= error_field(@errors, :legal_address) %>
   </div>
-</div>
 
-<div class="col-lg-12 mb-3">
-  <div class="input-group">
-    <%= f.label :service_phone, class: "input-group-text" %>
-    <%= f.text_field :service_phone, class: "form-control #{@errors && @errors.dig(:service_phone).present? ? 'is-invalid' : ''}", data: {mask: "phone"} %>
+  <div class="base-input">
+    <%= f.label :service_phone %>
+    <%= f.text_field :service_phone, data: {mask: "phone"} %>
     <%= error_field(@errors, :service_phone) %>
   </div>
 </div>
 
-<div class="col-lg-12 mb-3">
-  <div class="input-group">
-    <%= f.label :bank_code, class: "input-group-text" %>
-    <%= f.text_field :bank_code, class: "form-control #{@errors && @errors.dig(:bank_code).present? ? 'is-invalid' : ''}" %>
+<div class="autopark-change-form__input-block mt-3">
+  <div class="base-input">
+    <%= f.label :bank_code %>
+    <%= f.text_field :bank_code %>
     <%= error_field(@errors, :bank_code) %>
   </div>
-</div>
 
-<div class="col-lg-12 mb-3">
-  <div class="input-group">
-    <%= f.label :benificiary_code, class: "input-group-text" %>
-    <%= f.text_field :benificiary_code, class: "form-control #{@errors && @errors.dig(:benificiary_code).present? ? 'is-invalid' : ''}", value: 17 %>
+  <div class="base-input">
+    <%= f.label :benificiary_code %>
+    <%= f.text_field :benificiary_code, value: 17 %>
     <%= error_field(@errors, :benificiary_code) %>
   </div>
 </div>

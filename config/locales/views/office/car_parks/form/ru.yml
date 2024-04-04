@@ -3,4 +3,14 @@ ru:
     car_parks:
       form:
         save: "Сохранить"
+        ie: "ИП"
+        llp: "ТОО"
         cancel: "Отмена"
+        general_information: "Общая информация"
+        placeholders:
+          title: "Введите название"
+          booking_prefix: "Введите префикс бронирования"
+          business_id_number: "Введите ИИН/БИН"
+          contact_phone: "Введите контактный телефон"
+          email: "Введите email"
+          card_id_number: "Введите номер удостоверения"

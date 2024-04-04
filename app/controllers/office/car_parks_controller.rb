@@ -5,7 +5,7 @@ module Office
     before_action :find_car_park, only: %i[show edit update destroy settings]
 
     def index
-      @car_parks = current_office_user.car_parks
+      @car_parks = current_office_user.car_parks.includes(:cars)
     end
 
     def new

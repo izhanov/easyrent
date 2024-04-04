@@ -1,0 +1,132 @@
+.car-park-card {
+  border: 1px solid rgba(13, 16, 25, 0.12);
+  border-radius: 12px;
+  // .car-park-card__top
+
+  &__top {
+    background: rgba(247, 247, 248, 1);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 20px 24px;
+    position: relative;
+  }
+
+  // .car-park-card__actions
+
+  &__actions {
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+    button {
+      border: none;
+    }
+    svg {
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      cursor: pointer;
+    }
+  }
+
+  // .car-park-card__logo
+
+  &__logo {
+    width: 64px;
+    height: 64px;
+    padding: 14px 16px;
+    background: white;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  // .car-park-card__main
+
+  &__main {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  // .car-park-card__name
+
+  &__name {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgba(13, 16, 25, 1);
+  }
+
+  // .car-park-card__car-count
+
+  &__car-count {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      color: rgba(158, 162, 173, 1);
+      font-size: 15px;
+      font-weight: 400;
+    }
+    p {
+      color: rgba(19, 23, 27, 1);
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+  }
+
+  // .car-park-card__bottom
+
+  &__bottom {
+    padding: 12px 24px;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      li {
+        display: grid;
+        grid-template-columns: 3fr 4fr 3fr;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+          font-weight: 400;
+          font-size: 15px;
+          color: rgba(158, 162, 173, 1);
+          width: max-content;
+        }
+        p {
+          font-size: 15px;
+          color: rgba(19, 23, 27, 1);
+          justify-self: flex-end;
+          margin: 0;
+        }
+        hr {
+          width: 100%;
+        }
+      }
+    }
+    a {
+      border: none;
+      background: rgba(41, 129, 246, 1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      gap: 6px;
+      font-size: 14px;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 18px;
+    }
+  }
+}

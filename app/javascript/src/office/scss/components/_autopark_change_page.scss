@@ -1,0 +1,162 @@
+.autopark-change {
+  padding-bottom: 160px;
+  // .autopark-change__actions
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  // .autopark-change__actions-left
+
+  &__actions-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(19, 23, 27, 1);
+      font-size: 13px;
+      background: rgba(236, 236, 238, 1);
+      border: 1px solid rgba(216, 222, 228, 1);
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+  }
+
+  // .autopark-change__actions-button
+
+  &__actions-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  // .autopark-change__actions-save
+
+  &__actions-save {
+    border: none;
+    border-radius: 12px;
+    font-size: 13px;
+    padding: 8px 12px;
+    color: white;
+    background: rgba(41, 129, 246, 1);
+  }
+
+  // .autopark-change__actions-cancle
+
+  &__actions-cancle {
+    border: none;
+    border-radius: 12px;
+    font-size: 13px;
+    padding: 8px 12px;
+    color: rgba(19, 23, 27, 1);
+    background: rgba(236, 236, 238, 1);
+    font-weight: 500;
+  }
+
+  // .autopark-change__form
+
+  &__block {
+    border-radius: 32px;
+    border: 1px solid rgba(216, 222, 228, 1);
+    padding: 28px;
+  }
+
+  // .autopark-change__toggler
+
+  &__toggler {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    border-radius: 12px;
+  }
+
+  // .autopark-change__toggler-item
+
+  &__toggler-item {
+    input[type='radio'] {
+      display: none;
+    }
+
+    text-align: center;
+
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: oklch(96.47% 0.002 9.53 / 98.74%);
+
+    &:first-child {
+      border-radius: 12px 0 0 12px;
+    }
+    &:last-child {
+      border-radius: 0 12px 12px 0;
+    }
+  }
+
+  &__individual {
+    display: none;
+  }
+  &__company {
+    display: none;
+  }
+  &--active {
+    text-align: center;
+    background-color: oklch(21.32% 0.002 9.53 / 98.74%);
+    color: white;
+  }
+}
+
+.autopark-change-form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  // .autopark-change-form__block
+
+  &__block {
+  }
+
+  // .autopark-change-form__block-title
+
+  &__block-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: rgba(19, 23, 27, 1);
+  }
+
+  // .autopark-change-form__input-group
+
+  &__input-group {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  // .autopark-change-form__input-block
+
+  &__input-block {
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    gap: 12px;
+  }
+  &__button {
+    border: none;
+    background: rgba(41, 129, 246, 1);
+    border-radius: 16px;
+    color: white;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 600;
+  }
+}

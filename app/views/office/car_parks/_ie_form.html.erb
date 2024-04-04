@@ -1,31 +1,29 @@
-<div class="col mb-3 mb-lg-4">
-  <div class="input-group">
-    <%= f.label :card_id_number, class: "input-group-text" %>
-    <%= f.text_field :card_id_number, class: "form-control #{@errors && @errors.dig(:card_id_number).present? ? 'is-invalid' : ''}" %>
+<div class="autopark-change-form__input-block">
+  <div class="base-input">
+    <%= f.label :card_id_number %>
+    <%= f.text_field :card_id_number %>
     <%= error_field(@errors, :card_id_number) %>
   </div>
-</div>
-<div class="col mb-3 mb-lg-4">
-  <div class="input-group">
-    <%= f.label :privateer_number, class: "input-group-text" %>
-    <%= f.text_field :privateer_number, class: "form-control #{@errors && @errors.dig(:privateer_number).present? ? 'is-invalid' : ''}" %>
+
+  <div class="base-input">
+    <%= f.label :privateer_number %>
+    <%= f.text_field :privateer_number %>
     <%= error_field(@errors, :privateer_number) %>
   </div>
 </div>
 
-<div class="col mb-3 mb-lg-4">
-  <div class="input-group">
-    <%= f.label :privateer_date, class: "input-group-text" %>
-    <%= f.date_field :privateer_date, class: "form-control #{@errors && @errors.dig(:privateer_date).present? ? 'is-invalid' : ''}" %>
+<div class="autopark-change-form__input-block mt-3">
+  <div class="base-input">
+    <%= f.label :residence_address %>
+    <%= f.text_field :residence_address %>
+    <%= error_field(@errors, :residence_address) %>
+  </div>
+
+  <div class="base-input">
+    <%= f.label :privateer_date %>
+    <%= f.date_field :privateer_date %>
     <%= error_field(@errors, :privateer_date) %>
   </div>
 </div>
 
-<div class="col mb-3 mb-lg-4">
-  <div class="input-group mb-lg-4">
-    <%= f.label :residence_address, class: "input-group-text" %>
-    <%= f.text_field :residence_address, class: "form-control #{@errors && @errors.dig(:residence_address).present? ? 'is-invalid' : ''}" %>
-    <%= error_field(@errors, :residence_address) %>
-  </div>
-</div>
 

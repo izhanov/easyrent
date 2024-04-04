@@ -33,6 +33,10 @@ export default class extends Controller {
   }
 
   enableIeForm() {
+    const ieLabel = document.querySelector("[for='car_park_kind_ie']");
+    ieLabel.classList.add("autopark-change--active");
+    const llpLabel = document.querySelector("[for='car_park_kind_llp']");
+    llpLabel.classList.remove("autopark-change--active");
     this.enableInputs(this.ieFormTarget);
     this.ieFormTarget.classList.remove("d-none");
   }
@@ -44,6 +48,10 @@ export default class extends Controller {
 
   enableLlpForm() {
     this.enableInputs(this.llpFormTarget);
+    const llpLabel = document.querySelector("[for='car_park_kind_llp']");
+    llpLabel.classList.add("autopark-change--active");
+    const ieLabel = document.querySelector("[for='car_park_kind_ie']");
+    ieLabel.classList.remove("autopark-change--active");
     this.llpFormTarget.classList.remove("d-none");
   }
 

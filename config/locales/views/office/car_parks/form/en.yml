@@ -3,4 +3,15 @@ en:
     car_parks:
       form:
         save: "Save"
+        ie: "Individial entrepreneur"
+        llp: "Limited liability partnership"
         cancel: "Cancel"
+        general_information: "General information"
+        placeholders:
+          title: "Enter title"
+          booking_prefix: "Enter booking prefix"
+          business_id_number: "Enter BIN"
+          contact_phone: "Enter contact phone"
+          email: "Enter email"
+          card_id_number: "Enter identification number"
+

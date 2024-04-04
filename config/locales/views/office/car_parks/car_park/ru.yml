@@ -1,0 +1,16 @@
+ru:
+  office:
+    car_parks:
+      car_park:
+        destroy: "Удалить"
+        edit: "Редактировать"
+        settings: "Настройки"
+        sure?: "Вы уверены?"
+        cars_count: "Количество машин: "
+        cars_in_repair: "В ремонте: "
+        cars_in_rent: "В аренде: "
+        cars_need_repair: "Требуют ремонта: "
+        car_count: "%{count} авто"
+        go: "Перейти"
+
+
