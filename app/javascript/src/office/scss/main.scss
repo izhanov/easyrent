@@ -12,6 +12,7 @@
 @import './utils/toastify';
 @import './utils/options_dropdown';
 
+@import './components/base_table';
 @import './components/error_field';
 @import './components/additional_service';
 @import './components/rental_rule';
@@ -25,6 +26,8 @@
 @import './components/car_parks';
 @import './components/car_parks_card';
 @import './components/autopark_change_page';
+@import './components/parks_auto_actions';
+
 
 @import 'trix/dist/trix.css';
 @import './actiontext.scss';

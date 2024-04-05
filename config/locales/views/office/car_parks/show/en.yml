@@ -11,6 +11,8 @@ en:
         add_car: "Add car"
         cars: "Cars"
         settings: "Settings"
+        search: "Search"
+        go: "Go"
         table:
           header:
             id: "ID"
@@ -18,3 +20,5 @@ en:
             mark: "Mark"
             plate_number: "Plate number"
             status: "Status"
+        placeholders:
+          plate_number_or_mark: "Enter plate number or mark"

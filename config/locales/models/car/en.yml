@@ -45,3 +45,7 @@ en:
         appearance_types:
           clean: "Clean"
           dirty: "Dirty"
+        status_types:
+          vacant: "Vacant"
+          booked: "Booked"
+          occupied: "Occupied"

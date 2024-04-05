@@ -1,0 +1,98 @@
+.parks-auto-actions {
+  margin-top: 24px;
+
+  // .parks-auto-actions__info
+
+  &__info {
+    gap: 14px;
+    h1 {
+      color: rgba(17, 17, 20, 1);
+      font-size: 32px;
+      font-weight: 600;
+    }
+    span {
+      color: rgba(158, 162, 173, 1);
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  // .parks-auto-actions__buttons
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  // .parks-auto-actions__add-button
+
+  &__add-button {
+    a {
+      border: none;
+      background: rgba(41, 129, 246, 1);
+      padding: 8px 14px;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 12px;
+      font-size: 15px;
+      text-decoration: none;
+    }
+  }
+
+  // .parks-auto-actions__settings-button
+
+  &__settings-button {
+    a {
+      border: 1px solid rgba(233, 233, 236, 1);
+      background: rgba(247, 247, 248, 1);
+      padding: 8px 14px;
+      color: rgba(19, 23, 27, 1);
+      display: flex;
+      font-weight: 500;
+      align-items: center;
+      gap: 8px;
+      border-radius: 12px;
+      font-size: 15px;
+      text-decoration: none;
+    }
+  }
+  &__search-input {
+    display: flex;
+    width: 500px;
+    margin-right: 6px;
+    gap: 10px;
+
+    form {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 15px;
+      align-items: center;
+
+      input[type='submit'] {
+        border: none;
+        background: rgba(41, 129, 246, 1);
+        padding: 8px 14px;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 12px;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.search-input {
+  border: 1px solid rgba(233, 233, 236, 1);
+  padding: 12px 14px;
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  border-radius: 12px;
+  align-items: center;
+}

@@ -14,6 +14,8 @@ ru:
         services: "Услуги"
         cars: "Автомобили"
         settings: "Настройки"
+        search: "Поиск"
+        go: "Перейти"
         table:
           header:
             id: "ID"
@@ -21,3 +23,5 @@ ru:
             mark: "Марка"
             plate_number: "Гос. номер"
             status: "Статус"
+        placeholders:
+          plate_number_or_mark: "Введите гос. номер или марку"

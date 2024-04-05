@@ -1,0 +1,84 @@
+.base-table {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  &__col {
+    display: flex;
+    gap: 8px;
+  }
+  &__settings-col {
+    text-align: end;
+    padding-right: 6px;
+    button {
+      border: none;
+      background: none;
+    }
+  }
+  tbody {
+    th,
+    td {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(19, 23, 27, 1);
+    }
+    td {
+      padding-left: 16px;
+    }
+  }
+  thead {
+    background: rgba(247, 247, 248, 1);
+    border-top: none;
+    tr {
+      th {
+        border-top: none;
+        border-left: 1px solid rgba(216, 222, 228, 1);
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(19, 23, 27, 1);
+
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        &:first-child {
+          border-left: none;
+          border-top-right-radius: 12px;
+        }
+        &:last-child {
+          border-left: none;
+        }
+      }
+    }
+  }
+  // .base-table__auto-col
+
+  &__auto-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    p {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(19, 23, 27, 1);
+    }
+    span {
+      color: rgba(126, 134, 145, 1);
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+
+  // .base-table__licence-col
+
+  &__licence-col {
+  }
+}
+.table-dropdown {
+  button {
+    font-size: 13px;
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-weight: 500;
+  }
+  .dropdown-menu {
+    font-size: 13px;
+  }
+}

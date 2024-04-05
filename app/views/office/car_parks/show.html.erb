@@ -1,48 +1,141 @@
-<div class="d-flex justify-content-between align-items-center">
-  <h1>
-    <%= @car_park.title %>
-    <span class="text-secondary small fs-5"><%= t(".title") %></span>
-  </h1>
-  <div>
-    <%= link_to office_car_parks_path, class: "btn btn-sm btn-outline-primary" do %>
-      <i class="bi bi-box-arrow-left"></i>
-      <%= t(".back") %>
-    <% end %>
-    <%= link_to edit_office_car_park_path(@car_park), class: "btn btn-sm btn-warning" do %>
-      <i class="bi bi-pencil-square"></i>
-      <%= t(".edit") %>
-    <% end %>
-    <%= link_to office_car_park_path(@car_park), class: "btn btn-sm btn-danger", data: {turbo_confirm: t(".sure?"), turbo_method: :delete} do %>
-      <i class="bi bi-trash"></i>
-      <%= t(".destroy") %>
-    <% end %>
+<div class="parks-auto-actions d-flex justify-content-between align-items-center">
+  <div class="parks-auto-actions__info d-flex align-items-center">
+    <h1><%= t(".cars") %></h1>
+    <span><%= @car_park.cars.size %></span>
+  </div>
+  <div class="parks-auto-actions__buttons">
+    <div class="parks-auto-actions__search-input">
+      <%= form_with url: office_car_park_path(@car_park), method: :get do |f| %>
+        <%= f.hidden_field "q[car_park_id]", value: @car_park.id %>
+
+        <div class="input-group">
+          <%= f.label "q[query]", t(".search"), class: "input-group-text" do %>
+            <i class="bi bi-search"></i>
+          <% end %>
+          <%= f.text_field "q[query]", value: params.dig(:q, :query), class: "form-control", placeholder: t(".placeholders.plate_number_or_mark") %>
+        </div>
+
+        <%= f.submit t(".search") %>
+      <% end %>
+    </div>
+
+    <!-- Добавления авто -->
+    <div class="parks-auto-actions__add-button">
+      <%= link_to new_office_car_park_car_path(@car_park) do %>
+        <i class="bi bi-plus"></i>
+        <%= t(".add_car") %>
+      <% end %>
+    </div>
+
+
+    <div class="parks-auto-actions__settings-button">
+      <%= link_to settings_office_car_park_path(@car_park) do %>
+        <i class="bi bi-gear"></i>
+        <%= t(".settings") %>
+      <% end %>
+    </div>
+
+    <div class="parks-auto-actions__add-button">
+      <%= link_to office_car_parks_path do %>
+        <%= t(".back") %>
+      <% end %>
+    </div>
   </div>
 </div>
 
-
 <div class="container">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <%= active_link_to t(".cars"), office_car_park_path(@car_park), class: "nav-link link-dark", active: %r{(office/car_parks/#{@car_park.id}|office/car_parks/#{@car_park.id}?page=)} %>
-    </li>
-    <li class="nav-item">
-      <%= active_link_to t(".settings"), settings_office_car_park_path(@car_park), class: "nav-link link-dark", active: :exact %>
-    </li>
-  </ul>
+  <div class="m-3">
+    <table class="table table-hover base-table">
+      <!-- Шапка таблицы -->
+      <thead class="table-light table-bordered">
+        <tr>
+          <th scope="col" class="text-center col-1">ID</th>
+          <th scope="col" class="col-2">Авто</th>
+          <th scope="col" class="col-2">Гос Номер</th>
+          <th scope="col" class="col-2">
+            <div class="base-table__col">
+              Статус
+            </div>
+          </th>
+          <th scope="col" class="col-2">
+            <div class="base-table__col">
+              Техническое состояние
+            </div>
+          </th>
+          <th scope="col" class="col-2">
+            <div class="base-table__col">
+              Внешний вид
+            </div>
+          </th>
+          <th scope="col" class="col-auto" style="width: 40px"></th>
+        </tr>
+      </thead>
+      <!-- Тело таблицы -->
+      <tbody>
+        <% @cars.each do |car| %>
+          <tr class="align-middle">
+            <th class="text-center" scope="row"><%= car.id %></th>
+            <td class="base-table__auto-col">
+              <%= link_to office_car_park_car_path(@car_park, car), class: "link link-dark" do %>
+                <p><%= car.mark_title %></p>
+              <% end %>
+              <span><%= car.engine_capacity%>L <%= car.year %></span>
+            </td>
+            <td class="base-table__licence-col">
+              <%= car.plate_number %>
+            </td>
 
-  <div class="d-flex justify-content-end my-2">
-    <%= link_to new_office_car_park_car_path(@car_park), class: "btn btn-primary btn-sm", data: {turbo: true, turbo_frame: dom_id(CarPark.new)} do %>
-      <i class="bi bi-building-add"></i>
-      <%= t(".add_car") %>
-    <% end %>
+            <td>
+              <%= localize_status_type(car.status) %>
+            </td>
+
+            <td>
+              <%= localize_technical_condition_type(car.technical_condition) %>
+            </td>
+
+            <td>
+              <%= localize_appearance_type(car.appearance) %>
+            </td>
+            <td class="base-table__settings-col">
+              <div class="dropdown options-dropdown">
+                <button
+                  class="options-dropdown__button"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <%= vite_image_tag("images/office/menu-dots.svg") %>
+                </button>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <li class="dropdown-item">
+                    <%= link_to office_car_park_car_path(@car_park, car), class: "link link-dark" do %>
+                      <%= t(".go") %>
+                    <% end %>
+                  </li>
+                  <li class="dropdown-item dropdown-item--active">
+                    <%= link_to edit_office_car_park_car_path(@car_park, car), class: "link link-dark" do %>
+                      <%= t(".edit") %>
+                    <% end %>
+                  </li>
+                  <li class="dropdown-item dropdown-item--active">
+                    <%= link_to office_car_park_car_path(@car_park, car), method: :delete, data: { turbo_method: :delete, turbo_confirm: t(".sure?") }, class: "link link-dark" do %>
+                      <%= t(".destroy") %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-
-  <% if @car_park.cars.any? %>
-    <%= render "table", cars: @cars %>
-  <% else %>
-    <div class="alert alert-warning">
-      <%= t(".no_cars") %>
-    </div>
-  <% end %>
+  <div class="d-flex justify-content-center">
+    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
+  </div>
 </div>
 

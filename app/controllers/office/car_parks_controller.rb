@@ -4,6 +4,8 @@ module Office
   class CarParksController < BaseController
     before_action :find_car_park, only: %i[show edit update destroy settings]
 
+    helper CarsHelper
+
     def index
       @car_parks = current_office_user.car_parks.includes(:cars)
     end
@@ -32,7 +34,11 @@ module Office
     end
 
     def show
-      @pagy, @cars = pagy(@car_park.cars.order(:id), items: 10)
+      query = Utils::Typesense::Cars::QueryBuilder.new(**query_params).call
+      @q = Car.typesense(query)
+      relation = @car_park.cars.where(id: @q.pluck(:id)).order(:id)
+
+      @pagy, @cars = pagy(relation, items: 10)
     end
 
     def edit
@@ -87,6 +93,12 @@ module Office
         :service_phone,
         :booking_prefix
       )
+    end
+
+    def query_params
+      return params.require(:q).permit(:query, :car_park_id, :status).to_h.deep_symbolize_keys if params[:q]
+
+      {}
     end
   end
 end

@@ -45,3 +45,7 @@ ru:
         appearance_types:
           clean: "Чистый"
           dirty: "Грязный"
+        status_types:
+          vacant: "Свободен"
+          booked: "Забронирован"
+          occupied: "Занят"

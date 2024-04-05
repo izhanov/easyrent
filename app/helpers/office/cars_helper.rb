@@ -21,5 +21,9 @@ module Office
     def localize_appearance_type(appearance)
       I18n.t("activerecord.attributes.car.appearance_types.#{appearance}")
     end
+
+    def localize_status_type(status)
+      I18n.t("activerecord.attributes.car.status_types.#{status}")
+    end
   end
 end
