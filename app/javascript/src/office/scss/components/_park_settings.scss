@@ -1,0 +1,31 @@
+.parks-settings {
+  &__actions {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      color: rgba(17, 17, 20, 1);
+    }
+    button {
+      background: rgba(41, 129, 246, 1);
+      color: white;
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      font-size: 15px;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+}

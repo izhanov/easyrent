@@ -1,0 +1,54 @@
+.parks-settings-card {
+  border: 1px solid rgba(13, 16, 25, 0.12);
+  border-radius: 16px;
+  background: rgba(247, 247, 248, 1);
+  padding: 28px 24px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  // .parks-settings-card__title
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(13, 16, 25, 1);
+  }
+
+  // .parks-settings-card__options
+
+  &__options {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+
+    button {
+      border: none;
+      background: none;
+    }
+  }
+
+  // .parks-settings-card__text
+
+  &__text {
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  // .parks-settings-card__button
+
+  &__button {
+    margin-top: 54px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(59, 107, 234, 1);
+    padding: 12px;
+    color: white;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+  }
+}
