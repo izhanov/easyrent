@@ -3,6 +3,11 @@ en:
     cars:
       form:
         save: "Save"
+        car: "Car"
+        search: "Search"
+        cancel: "Cancel"
+        placeholders:
+          plcate_number_or_mark: "Enter car number or mark"
         units:
           liters: "l"
           cubic_meters: "cm3"

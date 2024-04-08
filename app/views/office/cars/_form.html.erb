@@ -1,49 +1,109 @@
-<%= form_with model: [:office, owner, car], multipart: true, html: {class: "row mt-12", data: {controller: "car-form"}} do |f| %>
-  <%= f.hidden_field :owner_id, value: owner.id %>
-  <%= f.hidden_field :owner_type, value: owner.class.name %>
+<div class="car-redact__car">
+  <p class="car-redact__car-title"><%= t(".car") %></p>
+  <%= form_with model: [:office, owner, car], multipart: true, html: { data: {controller: "car-form"} } do |f| %>
+    <%= f.hidden_field :owner_id, value: owner.id %>
+    <%= f.hidden_field :owner_type, value: owner.class.name %>
 
-  <div
-    class="col-6 mb-3"
-    data-controller="autocomplete"
-    data-autocomplete-url-value=<%= search_office_marks_path %>
-  >
-    <div class="input-group">
-      <%= f.label :mark, class: "input-group-text"%>
-      <% if car.new_record? %>
-        <input type="search" data-autocomplete-target="input" class="form-control"/>
-        <%= f.hidden_field :mark_id, data: { "autocomplete-target": "hidden" }%>
-        <%= error_field(@errors, :mark_id) %>
-      <% else %>
-        <%= f.text_field :mark, class: "form-control", disabled: true, value: car.mark_title %>
-      <% end %>
+    <div class="car-redact__input-group">
+      <div
+        data-controller="autocomplete"
+        data-autocomplete-url-value=<%= search_office_marks_path %>
+      >
+        <div class="input-group">
+          <%= f.label :mark, class: "input-group-text" do %>
+            <i class="bi bi-search"></i>
+          <% end %>
+          <% if car.new_record? %>
+            <input type="search" value="<%= params[:mark] %>" data-autocomplete-target="input" class="form-control" placeholder="<%= t(".placeholders.plate_number_or_mark")%>"/>
+            <%= f.hidden_field :mark_id, data: { "autocomplete-target": "hidden" }%>
+            <%= error_field(@errors, :mark_id) %>
+          <% else %>
+            <%= f.text_field :mark, class: "form-control", disabled: true, value: car.mark_title %>
+          <% end %>
+          <%= error_field(@errors, :mark_id) %>
+        </div>
+        <ul class="list-group" data-autocomplete-target="results"></ul>
+      </div>
+
+      <div class="car-redact__car-input-block m-2">
+        <div class="base-input">
+          <%= f.label :klass %>
+          <%= f.select(
+            :klass,
+            options_for_select(
+              Car::KLASS_TYPES.map { |type| [localize_klass_type(type), type] },
+              selected: f.object.klass
+            ),
+            {include_blank: true},
+            class: "#{@errors && @errors.dig(:klass).present? ? 'is-invalid' : ''}"
+          )
+          %>
+          <%= error_field(@errors, :klass) %>
+        </div>
+        <div class="base-input">
+          <%= f.label :year %>
+          <%= f.number_field :year, class: "#{@errors && @errors.dig(:year).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :year) %>
+        </div>
+      </div>
+
+      <div class="car-redact__car-input-block m-2">
+        <div class="base-input">
+          <%= f.label :plate_number %>
+          <%= f.text_field :plate_number, class: "#{@errors && @errors.dig(:plate_number).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :plate_number) %>
+        </div>
+        <div class="base-input">
+          <%= f.label :vin_code %>
+          <%= f.text_field :vin_code, class: "#{@errors && @errors.dig(:vin_code).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :vin_code) %>
+        </div>
+
+      </div>
+
+      <div class="car-redact__car-input-block m-2">
+        <div class="base-input">
+          <%= f.label :technical_certificate_number %>
+          <%= f.text_field :technical_certificate_number, class: "#{@errors && @errors.dig(:technical_certificate_number).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :technical_certificate_number) %>
+        </div>
+        <div class="base-input">
+          <%= f.label :color %>
+          <%= f.text_field :color, class: "#{@errors && @errors.dig(:color).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :color) %>
+        </div>
+      </div>
     </div>
-    <ul class="list-group" data-autocomplete-target="results"></ul>
-  </div>
 
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.fields_for :photos, Photo.new do |photo_form| %>
-        <%= photo_form.file_field :image, multiple: true, include_hidden: false, class: "form-control" %>
-      <% end %>
-      <%= error_field(@errors, :photos_attributes) %>
-    </div>
-  </div>
+    <p class="car-redact__car-title">Характеристики:</p>
+    <div class="car-redact__input-group">
+      <div class="car-redact__car-input-block m-2">
+        <div class="base-input">
+          <%= f.label :mileage %>
+          <%= f.text_field :mileage, class: "#{@errors && @errors.dig(:mileage).present? ? 'is-invalid' : ''}", data: {mask: "mileage"} %>
+          <%= error_field(@errors, :mileage) %>
+        </div>
 
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :year, class: "input-group-text" %>
-      <%= f.number_field :year, class: "form-control #{@errors && @errors.dig(:year).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :year) %>
-    </div>
-  </div>
-
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :engine_capacity, class: "input-group-text" %>
-      <%= f.number_field :engine_capacity, min: 0.5, step: 0.1, class: "form-control #{@errors && @errors.dig(:engine_capacity).present? ? 'is-invalid' : ''}" %>
-
-      <%= f.label :engine_capacity_unit, class: "input-group-text" %>
-      <%= f.select(
+        <div class="base-input">
+          <%= f.label :transmission %>
+          <%= f.select(
+            :transmission,
+            options_for_select(
+              Car::TRANSMISSION_TYPES.map { |type| [localize_transmission_type(type), type] },
+            )
+          ) %>
+          <%= error_field(@errors, :transmission) %>
+        </div>
+      </div>
+      <div class="car-redact__car-input-block m-2">
+        <div class="base-input">
+          <%= f.label :engine_capacity %>
+          <%= f.number_field :engine_capacity, min: 0.5, step: 0.1, class: "#{@errors && @errors.dig(:engine_capacity).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :engine_capacity) %>
+        </div>
+        <div class="base-input">
+          <%= f.label :engine_capacity_unit %>
+          <%= f.select(
             :engine_capacity_unit,
             [
               [t(".units.liters"), "l"],
@@ -52,32 +112,14 @@
             {include_blank: false},
             class: "form-select"
           )
-      %>
-      <%= error_field(@errors, :engine_capacity) %>
-    </div>
-  </div>
+          %>
+        </div>
+      </div>
 
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :klass, class: "input-group-text" %>
-      <%= f.select(
-            :klass,
-            options_for_select(
-              Car::KLASS_TYPES.map { |type| [localize_klass_type(type), type] },
-              selected: f.object.klass
-            ),
-            {include_blank: true},
-            class: "form-select #{@errors && @errors.dig(:klass).present? ? 'is-invalid' : ''}"
-          )
-      %>
-      <%= error_field(@errors, :klass) %>
-    </div>
-  </div>
-
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :fuel, class: "input-group-text" %>
-      <%= f.select(
+      <div class="car-redact__car-input-block m-2">
+        <div class="base-input">
+          <%= f.label :fuel %>
+          <%= f.select(
             :fuel,
             options_for_select(
               Car::FUEL_TYPES.map { |type| [localize_fuel_type(type), type] },
@@ -86,132 +128,76 @@
             {include_blank: true},
             class: "form-select #{@errors && @errors.dig(:fuel).present? ? 'is-invalid' : ''}"
           )
-      %>
-      <%= error_field(@errors, :fuel) %>
-    </div>
-  </div>
+          %>
+          <%= error_field(@errors, :fuel) %>
+        </div>
+        <div class="base-input">
+          <%= f.label :tank_volume %>
+          <%= f.number_field :tank_volume, max: 200, class: "#{@errors && @errors.dig(:tank_volume).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :tank_volume) %>
+        </div>
+      </div>
 
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :plate_number, class: "input-group-text" %>
-      <%= f.text_field :plate_number, class: "form-control #{@errors && @errors.dig(:plate_number).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :plate_number) %>
-    </div>
-  </div>
+      <div class="car-redact__car-input-block m-2">
+        <div class="base-input">
+          <%= f.label :number_of_seats %>
+          <%= f.number_field :number_of_seats, min: 2, max: 14, class: "#{@errors && @errors.dig(:number_of_seats).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :number_of_seats) %>
+        </div>
 
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :vin_code, class: "input-group-text" %>
-      <%= f.text_field :vin_code, class: "form-control #{@errors && @errors.dig(:vin_code).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :vin_code) %>
+        <div class="base-input">
+          <%= f.label :over_mileage_price %>
+          <%= f.text_field :over_mileage_price, class: "#{@errors && @errors.dig(:over_mileage_price).present? ? 'is-invalid' : ''}" %>
+          <%= error_field(@errors, :over_mileage_price) %>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :technical_certificate_number, class: "input-group-text" %>
-      <%= f.text_field :technical_certificate_number, class: "form-control #{@errors && @errors.dig(:technical_certificate_number).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :technical_certificate_number) %>
-    </div>
-  </div>
-
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :transmission, class: "input-group-text" %>
-      <%= f.select(
-            :transmission,
-            options_for_select(
-              Car::TRANSMISSION_TYPES.map { |type| [localize_transmission_type(type), type] },
-              selected: f.object.transmission
-            ),
-            {include_blank: true},
-            class: "form-select #{@errors && @errors.dig(:transmission).present? ? 'is-invalid' : ''}"
-          )
-      %>
-      <%= error_field(@errors, :transmission) %>
-    </div>
-  </div>
-
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :color, class: "input-group-text" %>
-      <%= f.text_field :color, class: "form-control #{@errors && @errors.dig(:color).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :color) %>
-    </div>
-  </div>
-
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :number_of_seats, class: "input-group-text" %>
-      <%= f.number_field :number_of_seats, min: 2, max: 14, class: "form-control #{@errors && @errors.dig(:number_of_seats).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :number_of_seats) %>
-    </div>
-  </div>
-
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :tank_volume, class: "input-group-text" %>
-      <%= f.number_field :tank_volume, max: 200, class: "form-control #{@errors && @errors.dig(:tank_volume).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :tank_volume) %>
-    </div>
-  </div>
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :mileage, class: "input-group-text" %>
-      <%= f.text_field :mileage, class: "form-control #{@errors && @errors.dig(:mileage).present? ? 'is-invalid' : ''}", data: {mask: "mileage"} %>
-      <%= error_field(@errors, :mileage) %>
-    </div>
-  </div>
-
-  <div class="col-6 mb-3 mb-lg-4">
-    <div class="input-group">
-      <%= f.label :over_mileage_price, class: "input-group-text" %>
-      <%= f.number_field :over_mileage_price, class: "form-control #{@errors && @errors.dig(:over_mileage_price).present? ? 'is-invalid' : ''}" %>
-      <%= error_field(@errors, :over_mileage_price) %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-6 mb-3 mb-lg-4">
-      <%= f.label :insurances, "Страховка", class: "form-label" %>
+    <%= f.label :insurances, "Страховка", class: "car-redact__car-title"%>
+    <div class="car-redact__input-group">
       <%= f.fields_for :insurances, @car_insurance do |insurance_form| %>
-        <div class="input-group">
-          <%= insurance_form.label :kind, class: "input-group-text" %>
-          <%= insurance_form.select :kind, options_for_select([["ОГПО ВТС", "ogpo"]]), {include_blank: false}, readonly: true, class: "form-control" %>
+        <div class="car-redact__car-input-block m-2">
+          <div class="base-input">
+            <%= insurance_form.label :kind%>
+            <%= insurance_form.select :kind, options_for_select([["ОГПО ВТС", "ogpo"]]), {include_blank: false}, readonly: true, class: "form-control" %>
+          </div>
         </div>
-        <div class="input-group mt-4">
-          <%= insurance_form.label :start_at, class: "input-group-text" %>
-          <%= insurance_form.date_field :start_at, class: "form-control #{@errors && @errors.dig(:insurances_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
-          <%= error_field(@errors, :insurances_attributes, :start_at) %>
+        <div class="car-redact__car-input-block m-2">
+          <div class="base-input">
+            <%= insurance_form.label :start_at%>
+            <%= insurance_form.date_field :start_at, class: "#{@errors && @errors.dig(:insurances_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
+            <%= error_field(@errors, :insurances_attributes, :start_at) %>
+          </div>
+          <div class="base-input">
+            <%= insurance_form.label :end_at %>
+            <%= insurance_form.date_field :end_at, class: "#{@errors && @errors.dig(:insurances_attributes, :end_at).present? ? 'is-invalid' : ''}" %>
+            <%= error_field(@errors, :insurances_attributes, :end_at) %>
+          </div>
         </div>
-        <div class="input-group mt-4">
-          <%= insurance_form.label :end_at, class: "input-group-text" %>
-          <%= insurance_form.date_field :end_at, class: "form-control #{@errors && @errors.dig(:insurances_attributes, :end_at).present? ? 'is-invalid' : ''}" %>
-          <%= error_field(@errors, :insurances_attributes, :end_at) %>
-        </div>
-      <% end %>
+        <% end %>
     </div>
 
-    <div class="col-6 mb-3 mb-lg-3">
-      <%= f.label :car_inspections, "Технический осмотр", class: "form-label" %>
 
+    <%= f.label :car_inspections, "Технический осмотр", class: "car-redact__car-title" %>
+    <div class="car-redact__input-group">
       <%= f.fields_for :car_inspections, @car_inspection do |car_inspection_form| %>
-        <div class="input-group mb-4">
-          <%= car_inspection_form.label :start_at, class: "input-group-text" %>
-          <%= car_inspection_form.date_field :start_at, class: "form-control #{@errors && @errors.dig(:car_inspections_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
-          <%= error_field(@errors, :car_inspections_attributes, :start_at) %>
-        </div>
+       <div class="car-redact__car-input-block m-2">
+          <div class="base-input">
+            <%= car_inspection_form.label :start_at %>
+            <%= car_inspection_form.date_field :start_at, class: "#{@errors && @errors.dig(:car_inspections_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
+            <%= error_field(@errors, :car_inspections_attributes, :start_at) %>
+          </div>
 
-        <div class="input-group">
-          <%= car_inspection_form.label :end_at, class: "input-group-text" %>
-          <%= car_inspection_form.date_field :end_at, class: "form-control #{@errors && @errors.dig(:car_inspections_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
-          <%= error_field(@errors, :car_inspections_attributes, :end_at) %>
+          <div class="base-input">
+            <%= car_inspection_form.label :end_at %>
+            <%= car_inspection_form.date_field :end_at, class: "#{@errors && @errors.dig(:car_inspections_attributes, :start_at).present? ? 'is-invalid' : ''}" %>
+            <%= error_field(@errors, :car_inspections_attributes, :end_at) %>
+          </div>
         </div>
       <% end %>
     </div>
-  </div>
+    <%= f.submit t(".save"), class:"sticky-bottom base-button base-button--green" %>
+    <%= link_to t(".cancel"), office_car_park_path(owner), class: "sticky-bottom base-button base-button--grey base-button--sm" %>
+  <% end %>
+</div>
 
-  <div class="col-12 mb-3">
-    <%= f.submit t(".save"), class: "btn btn-sm btn-success" %>
-  </div>
-<% end %>

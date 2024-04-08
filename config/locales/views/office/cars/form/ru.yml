@@ -3,6 +3,11 @@ ru:
     cars:
       form:
         save: "Сохранить"
+        car: "Автомобиль:"
+        search: "Поиск"
+        cancel: "Отмена"
+        placeholders:
+          plate_number_or_mark: "Введите номер автомобиля или марку"
         units:
           liters: "л"
           cubic_meters: "см3"
