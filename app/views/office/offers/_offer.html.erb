@@ -1,28 +1,33 @@
 <%- mileage_limit = @car_park.mileage_limits.find(offer.mileage_limit_id) %>
 
-<div class="car-tarrifs-card">
-  <div class="car-tarrifs-card__header">
-    <p class="car-tarrifs-card__name"><%= offer.title %></p>
-    <div class="car-tarrifs-card__limit">
-      <span><%= t(".mileage_limit") %></span>
-      <p><%= t(".mileage_limit_value", value: mileage_limit.value) %></p>
+<%= turbo_frame_tag offer do %>
+  <div class="car-tarrifs-card">
+    <div class="car-tarrifs-card__header">
+      <p class="car-tarrifs-card__name"><%= offer.title %></p>
+      <div class="car-tarrifs-card__limit">
+        <span><%= t(".mileage_limit") %></span>
+        <p><%= t(".mileage_limit_value", value: mileage_limit.value) %></p>
+      </div>
+    </div>
+    <div class="car-tarrifs-card__body">
+      <ul class="car-tarrifs-card__list">
+        <% offer.prices.each do |(range, price)| %>
+          <li class="car-tarrifs-card__list-item">
+            <span><%= t(".days_range", days: range.gsub("..", "–")) %></span>
+            <div class="car-tarrifs-card__list-item-line">
+              <hr />
+            </div>
+            <p><%= price %></p>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to edit_office_car_park_car_offer_path(@car_park, @car, offer), class: "base-button base-button--grey base-button--sm" do %>
+        <i class="bi bi-pencil"></i>
+        <%= t(".edit") %>
+      <% end %>
+      <%= link_to office_car_park_car_offer_path(@car_park, @car, offer), class: "base-button base-button--red base-button--sm", data: {turbo_method: :delete, turbo_confirm: t(".sure?")} do %>
+        <%= t(".destroy") %>
+      <% end %>
     </div>
   </div>
-  <div class="car-tarrifs-card__body">
-    <ul class="car-tarrifs-card__list">
-      <% offer.prices.each do |(range, price)| %>
-        <li class="car-tarrifs-card__list-item">
-          <span><%= t(".days_range", days: range.gsub("..", "–")) %></span>
-          <div class="car-tarrifs-card__list-item-line">
-            <hr />
-          </div>
-          <p><%= price %></p>
-        </li>
-      <% end %>
-    </ul>
-    <%= link_to edit_office_car_park_car_offer_path(@car_park, @car, offer), class: "base-button base-button--grey base-button--sm" do %>
-      <i class="bi bi-pencil"></i>
-      <%= t(".edit") %>
-    <% end %>
-  </div>
-</div>
+<% end %>

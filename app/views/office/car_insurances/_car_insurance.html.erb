@@ -1,5 +1,5 @@
-<%= turbo_frame_tag car_insurance, class: "car-status-card mt-2" do %>
-  <p class="car-status-card__title"><%= car_insurance.kind %></p>
+<%= turbo_frame_tag car_insurance, class: "car-status-card" do %>
+  <p class="car-status-card__title"><%= localize_car_insurance_kind(car_insurance.kind) %></p>
   <div class="dropdown options-dropdown car-status-card__options">
     <button
       class="options-dropdown__button"
@@ -15,10 +15,11 @@
       aria-labelledby="dropdownMenuButton1"
     >
       <li class="dropdown-item">
-         <%= link_to t(".edit"), edit_office_car_park_car_car_insurance_path(@car_park, @car, car_insurance) %>
+        <%= link_to t(".edit"), edit_office_car_park_car_car_insurance_path(@car_park, @car, car_insurance), class: "link link-dark text-decoration-none" %>
       </li>
-      <li class="dropdown-item">Архивировать</li>
-      <li class="dropdown-item">Удалить</li>
+      <li class="dropdown-item">
+        <%= link_to t(".destroy"), office_car_park_car_car_insurance_path(@car_park, @car, car_insurance), class: "link link-dark text-decoration-none", data: {turbo_method: :delete, turbo_confirm: t(".sure?")} %>
+      </li>
     </ul>
   </div>
   <div class="car-status-card__dates">
@@ -29,10 +30,9 @@
     <span><%= car_insurance.end_at.strftime("%d.%m.%Y") %></span>
   </div>
   <p class="car-status-card__expiration">
-    Осталось: <span>2 месяца, 11 дней</span>
+    Осталось: <span><%= distance_of_time_in_words(Date.current, car_insurance.end_at, include_seconds: true) %></span>
   </p>
-  <span
-    class="car-status-card__status car-status-card__status--active"
-    >Активный</span
-  >
+  <span class="car-status-card__status car-status-card__status--active">
+    <%= car_insurance.active? ? t(".active") : t(".inactive") %>
+  </span>
 <% end %>

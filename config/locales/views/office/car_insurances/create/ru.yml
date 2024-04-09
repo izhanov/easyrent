@@ -1,0 +1,5 @@
+ru:
+  office:
+    car_insurances:
+      create:
+        new_car_insurance: "Новый страховой полис"

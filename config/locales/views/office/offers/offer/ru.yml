@@ -6,3 +6,5 @@ ru:
         mileage_limit_value: "%{value}, км"
         days_range: "%{days} дней"
         edit: "Редактировать"
+        destroy: "Удалить"
+        sure?: "Вы уверены?"

@@ -6,3 +6,5 @@ en:
         mileage_limit_value: "%{value}, km"
         days_range: "%{days} days"
         edit: "Edit"
+        destroy: "Destroy"
+        sure?: "Are you sure?"

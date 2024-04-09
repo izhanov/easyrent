@@ -28,4 +28,12 @@ class CarInsurance < ApplicationRecord
   audited
 
   KINDS = %w[ogpo kasko].freeze
+
+  def remaining_days
+    (end_at - Date.today).to_i
+  end
+
+  def active?
+    end_at >= Date.today
+  end
 end

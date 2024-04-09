@@ -60,6 +60,7 @@ module Office
       @offer.destroy!
       respond_to do |format|
         format.html { redirect_to office_car_park_car_path(@car_park, @car), notice: "Offer was successfully destroyed." }
+        format.turbo_stream
       end
     end
 

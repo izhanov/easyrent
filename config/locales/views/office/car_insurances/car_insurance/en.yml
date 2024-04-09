@@ -4,3 +4,7 @@ en:
       car_insurance:
         duration_of_insurance: "Duration of insurance: from %{start_at} to %{end_at}"
         edit: "Edit"
+        destroy: "Destroy"
+        sure?: "Are you sure?"
+        active: "Active"
+        inactive: "Inactive"

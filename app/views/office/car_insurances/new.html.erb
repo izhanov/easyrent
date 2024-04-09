@@ -4,7 +4,7 @@
 
 
 <div class="container">
-  <%= turbo_frame_tag @car_insurance do %>
+  <%= turbo_frame_tag @car_insurance, class: "car-status-card" do %>
     <%= render "form", car_insurance: @car_insurance, car: @car, owner: @car.owner %>
   <% end %>
 </div>
