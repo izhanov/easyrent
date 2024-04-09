@@ -1,0 +1,91 @@
+.car-tarrifs-card {
+  max-width: 434px;
+  border: 1px solid rgba(13, 16, 25, 0.12);
+  background: white;
+  border-radius: 16px;
+
+  // .car-tarrifs-card__header
+
+  &__header {
+    padding: 20px 24px;
+    background: rgba(247, 247, 248, 1);
+    border-radius: 16px 16px 0 0;
+  }
+
+  // .car-tarrifs-card__name
+
+  &__name {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgba(13, 16, 25, 1);
+  }
+
+  // .car-tarrifs-card__limit
+
+  &__limit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-top: 10px;
+
+    span {
+      font-weight: 400;
+      color: rgba(158, 162, 173, 1);
+    }
+    p {
+      font-weight: 600;
+      color: rgba(19, 23, 27, 1);
+      margin: 0;
+    }
+  }
+
+  // .car-tarrifs-card__body
+
+  &__body {
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  // .car-tarrifs-card__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+  }
+
+  // .car-tarrifs-card__list-item
+
+  &__list-item {
+    display: grid;
+    grid-template-columns: 4fr 6fr 4fr;
+    align-items: center;
+    span {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(158, 162, 173, 1);
+    }
+    p {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(19, 23, 27, 1);
+      text-align: end;
+      margin: 0;
+    }
+    &-line {
+      display: flex;
+      justify-content: center;
+      hr {
+        max-width: 178px;
+        width: 100%;
+      }
+    }
+  }
+  button {
+    width: 121px;
+  }
+}

@@ -1,0 +1,8 @@
+en:
+  office:
+    offers:
+      offer:
+        mileage_limit: "Mileage limit"
+        mileage_limit_value: "%{value}, km"
+        days_range: "%{days} days"
+        edit: "Edit"

@@ -1,0 +1,8 @@
+ru:
+  office:
+    offers:
+      offer:
+        mileage_limit: "Лимит пробега"
+        mileage_limit_value: "%{value}, км"
+        days_range: "%{days} дней"
+        edit: "Редактировать"

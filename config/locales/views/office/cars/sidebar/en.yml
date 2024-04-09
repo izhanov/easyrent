@@ -1,0 +1,12 @@
+en:
+  office:
+    cars:
+      sidebar:
+        offers: "Offers"
+        photos: "Photos"
+        car_insurances: "Car insurances"
+        car_inspections: "Car inspections"
+        consumables: "Consumables"
+        edit: "Edit"
+        destroy: "Destroy"
+        sure?: "Are you sure?"

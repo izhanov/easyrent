@@ -6,8 +6,7 @@
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
   <div>
-    <%= link_to office_car_park_car_offer_path(@car_park, @car, @offer), class: "btn btn-sm btn-outline-primary" do %>
-      <i class="bi bi-box-arrow-left"></i>
+    <%= link_to office_car_park_car_path(@car_park, @car), class: "base-button base-button--info base-button--sm" do %>
       <%= t(".back") %>
     <% end %>
   </div>

@@ -1,0 +1,86 @@
+.base-modal {
+  .modal-dialog-scrollable {
+    overflow: visible;
+  }
+  .modal-footer {
+    padding-top: 0;
+    border-top: none;
+  }
+  .modal-body {
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      border-radius: 4px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: rgba(219, 219, 217, 1);
+      border-radius: 4px;
+      max-height: 80px;
+    }
+  }
+
+  .modal-content {
+    border-radius: 28px;
+    padding: 24px 22px 30px 22px;
+  }
+  .modal-header {
+    position: relative;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__menu {
+      position: absolute;
+      right: -8px;
+      top: -8px;
+      button {
+        border: none;
+      }
+    }
+
+    &__text {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(158, 162, 173, 1);
+    }
+  }
+
+  .modal-dialog {
+    min-width: 619px;
+  }
+  &__close {
+    border: none;
+    background: none;
+    z-index: 999;
+    cursor: pointer;
+    position: absolute;
+    right: -32px;
+    top: 0;
+
+    img {
+      width: 23px;
+      height: 23px;
+    }
+  }
+  .modal-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(17, 17, 20, 1);
+  }
+  &__button {
+    border: none;
+    width: 100%;
+    border-radius: 16px;
+    padding: 16px 18px;
+    background: rgba(26, 72, 235, 1);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}

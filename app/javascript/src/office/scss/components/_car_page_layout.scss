@@ -1,0 +1,44 @@
+.car-page-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: space-between;
+}
+.car-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__name {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    .licence-plate {
+      margin-top: -14px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      color: rgba(17, 17, 20, 1);
+    }
+  }
+  &__chars {
+    display: flex;
+    gap: 20px;
+
+    p {
+      font-weight: 400;
+      font-size: 19px;
+      color: rgba(126, 134, 145, 1);
+    }
+    span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: rgba(0, 0, 0, 1);
+      font-size: 19px;
+      font-weight: 400;
+    }
+  }
+}

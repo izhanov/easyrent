@@ -1,15 +1,12 @@
 ru:
   office:
     cars:
-      show:
-        sure?: "Вы уверены?"
-        back: "Назад"
-        edit: "Редактировать"
-        destroy: "Удалить"
+      sidebar:
         offers: "Тарифы"
-        new_offer: "Добавить тариф"
         photos: "Фотографии"
         car_insurances: "Страховые полисы"
         car_inspections: "Техосмотры"
         consumables: "Расходные материалы"
-
+        edit: "Редактировать"
+        destroy: "Удалить"
+        sure?: "Вы уверены?"

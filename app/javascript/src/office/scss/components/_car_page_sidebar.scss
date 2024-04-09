@@ -1,0 +1,50 @@
+.car-page-sidebar {
+  background: rgba(247, 247, 248, 1);
+  border-radius: 18px;
+  padding: 14px 12px;
+  width: 284px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  // .car-page-sidebar__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  // .car-page-sidebar__item
+
+  &__item {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    color: rgba(19, 23, 27, 1);
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    align-items: center;
+
+    svg {
+      path {
+        stroke: rgba(19, 23, 27, 1);
+      }
+    }
+
+    &:hover,
+    &--active {
+      background: rgba(41, 129, 246, 1);
+      color: white;
+
+      svg {
+        path {
+          stroke: white;
+        }
+      }
+    }
+  }
+}

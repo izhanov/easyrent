@@ -9,6 +9,8 @@ import "@rails/actiontext"
 
 import ClassicEditor from "../src/ckeditor.js";
 
+import "../src/swiper.js";
+
 // Import Bootstrap CSS
 import * as bootstrap from 'bootstrap';
 import './../src/office/scss/main.scss';

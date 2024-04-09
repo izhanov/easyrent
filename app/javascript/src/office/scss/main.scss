@@ -12,6 +12,7 @@
 @import './utils/toastify';
 @import './utils/options_dropdown';
 
+@import './components/base_modal';
 @import './components/base_table';
 @import './components/base_button';
 @import './components/error_field';
@@ -31,6 +32,12 @@
 @import './components/park_settings';
 @import './components/park_settings-card';
 @import './components/car_redact_page';
+@import './components/car_page_layout';
+@import './components/car_page_sidebar';
+@import './components/car_tariffs_page';
+@import './components/car_tarrifs_card';
+@import './components/car_photo_page';
+@import './components/car_photo_slider';
 
 
 @import 'trix/dist/trix.css';

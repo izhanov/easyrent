@@ -1,0 +1,48 @@
+.car-tarrifs {
+  &-main {
+    width: 888px;
+  }
+
+  // .car-tarrifs__list
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  &__add-placeholder {
+    width: 434px;
+    height: 344px;
+    background: none;
+    border: 2px dashed rgba(216, 222, 228, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    &:hover {
+      border-color: rgba(41, 129, 246, 1);
+      svg {
+        path {
+          fill: rgba(41, 129, 246, 1);
+        }
+      }
+      span {
+        color: rgba(41, 129, 246, 1);
+      }
+    }
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      padding: 135px;
+
+      span {
+        font-weight: 500;
+        font-size: 15px;
+        color: rgba(216, 222, 228, 1);
+      }
+    }
+  }
+}

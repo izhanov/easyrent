@@ -3,3 +3,4 @@ ru:
     offers:
       new:
         title: "Новый тариф"
+        back: "Назад"

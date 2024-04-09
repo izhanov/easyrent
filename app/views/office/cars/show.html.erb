@@ -3,32 +3,45 @@
     <%= @car.mark_title %>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
-  <%= render(
-    partial: "office/shared/actions/cars/buttons",
-    locals: {back_button_url: office_car_park_path(@car_park)}
-  )%>
+  <div>
+    <%= link_to office_car_park_path(@car_park), class: "base-button base-button--info base-button--sm" do %>
+      <%= t(".back") %>
+    <% end %>
+   </div>
 </div>
 
-<div class="container">
-  <%= render "office/shared/tabs/cars/nav_tabs" %>
+<div class="container car-redact">
+  <div class="car-page-layout">
+    <div>
+      <div class="car-tarrifs-main">
+        <!-- основная часть страницы -->
+        <div class="mt-4 car-tarrifs__list">
+          <% if @car.offers.any? %>
+            <%= render @car.offers %>
+          <% end %>
 
-  <div class="container">
-    <div class="d-flex justify-content-end my-2">
-      <%= link_to new_office_car_park_car_offer_path(@car_park, @car), class: "btn btn-primary btn-sm", data: {turbo: true, turbo_frame: dom_id(Offer.new)} do %>
-        <i class="bi bi-plus"></i>
-        <%= t(".new_offer") %>
-      <% end %>
-    </div>
-
-
-    <%= turbo_frame_tag Offer.new %>
-
-    <div class="d-flex my-2">
-      <div class="col-12">
-        <%= turbo_frame_tag "offers", class: "list-group list-group-numbered" do %>
-          <%= render @car.offers %>
-        <% end %>
+          <div class="car-tarrifs__add-placeholder">
+            <%= link_to new_office_car_park_car_offer_path(@car_park, @car), class: "car-tarrifs__add-placeholder-content" do %>
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M17 0.875C8.09441 0.875 0.875 8.09441 0.875 17C0.875 25.9056 8.09441 33.125 17 33.125C25.9056 33.125 33.125 25.9056 33.125 17C33.125 8.09441 25.9056 0.875 17 0.875ZM18.125 11C18.125 10.3787 17.6213 9.875 17 9.875C16.3787 9.875 15.875 10.3787 15.875 11V15.875H11C10.3787 15.875 9.875 16.3787 9.875 17C9.875 17.6213 10.3787 18.125 11 18.125H15.875V23C15.875 23.6213 16.3787 24.125 17 24.125C17.6213 24.125 18.125 23.6213 18.125 23V18.125H23C23.6213 18.125 24.125 17.6213 24.125 17C24.125 16.3787 23.6213 15.875 23 15.875H18.125V11Z"
+                  fill="#9EA2AD"
+                />
+              </svg>
+              <span><%= t(".new_offer") %></span>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
+    <%= render "office/cars/sidebar", car_park: @car_park, car: @car %>
   </div>
 </div>

@@ -26,6 +26,12 @@
       </div>
 
       <div class="car-redact__car-input-block m-2">
+        <%= f.fields_for :photos, Photo.new do |photo_form| %>
+          <%= photo_form.file_field :image, multiple: true, include_hidden: false, class: "form-control" %>
+        <% end %>
+      </div>
+
+      <div class="car-redact__car-input-block m-2">
         <div class="base-input">
           <%= f.label :klass %>
           <%= f.select(
@@ -197,7 +203,7 @@
       <% end %>
     </div>
     <%= f.submit t(".save"), class:"sticky-bottom base-button base-button--green" %>
-    <%= link_to t(".cancel"), office_car_park_path(owner), class: "sticky-bottom base-button base-button--grey base-button--sm" %>
+    <%= link_to t(".cancel"), back_url, class: "sticky-bottom base-button base-button--grey base-button--sm" %>
   <% end %>
 </div>
 
