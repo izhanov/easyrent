@@ -1,0 +1,102 @@
+.car-status-card {
+  padding: 18px 24px;
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  min-width: 434px;
+  border: 1px solid rgba(216, 222, 228, 1);
+
+  &--archived {
+    opacity: 0.4;
+  }
+
+  &__options {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    button {
+      border: none;
+    }
+  }
+
+  // .car-status-card__title
+
+  &__title {
+    font-size: 24px;
+    color: rgba(13, 16, 25, 1);
+    font-weight: 600;
+  }
+
+  // .car-status-card__dates
+
+  &__dates {
+    margin-top: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(216, 222, 228, 1);
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      color: rgba(19, 23, 27, 1);
+      font-size: 17px;
+      font-weight: 500;
+    }
+  }
+
+  // .car-status-card__dates-line
+
+  &__dates-line {
+    width: 24px;
+    color: rgba(158, 162, 173, 1);
+    hr {
+      height: 2px;
+    }
+  }
+
+  // .car-status-card__expiration
+
+  &__expiration {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(19, 23, 27, 1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    span {
+      color: rgba(41, 129, 246, 1);
+    }
+    &--warning {
+      span {
+        color: rgba(244, 142, 47, 1);
+      }
+    }
+  }
+
+  // .car-status-card__status
+
+  &__status {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 10px;
+    display: inline-block;
+    border-radius: 10px;
+
+    &--active {
+      background: rgba(227, 252, 239, 1);
+      color: rgba(38, 189, 108, 1);
+    }
+    &--warning {
+      background: rgba(253, 234, 216, 1);
+      color: rgba(244, 142, 47, 1);
+    }
+    &--archived {
+      background: rgba(236, 236, 238, 1);
+      color: rgba(19, 23, 27, 1);
+    }
+  }
+}

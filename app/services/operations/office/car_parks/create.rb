@@ -27,7 +27,7 @@ module Operations
             Success(car_park)
           end
         rescue ActiveRecord::RecordNotUnique
-          Failure[:uniqueness_violation, I18n.t("dry_validation.errors.rules.car_park.name.uniqueness_violation")]
+          Failure[:uniqueness_violation, {booking_prefix: I18n.t("dry_validation.errors.rules.car_park.booking_prefix_or_business_id_number.uniqueness_violation")}]
         end
 
         def normalize_phones(params)

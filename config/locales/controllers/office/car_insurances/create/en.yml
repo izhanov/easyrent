@@ -1,7 +1,5 @@
 en:
   office:
     car_insurances:
-      index:
-        title: "Car insurances"
+      create:
         new_car_insurance: "New car insurance"
-        back: "Back"

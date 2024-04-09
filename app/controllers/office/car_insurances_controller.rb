@@ -5,6 +5,8 @@ module Office
     before_action :find_car
     before_action :find_car_park
 
+    helper Office::CarInsurancesHelper
+
     def index
       @car_insurances = @car.insurances.order(id: :desc)
     end

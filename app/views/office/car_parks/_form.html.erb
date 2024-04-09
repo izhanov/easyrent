@@ -25,7 +25,7 @@
           </div>
           <div class="base-input">
             <%= f.label :booking_prefix %>
-            <%= f.text_field :booking_prefix, value: nil, placeholder: t(".placeholders.booking_prefix")%>
+            <%= f.text_field :booking_prefix, value: f.object.booking_prefix, placeholder: t(".placeholders.booking_prefix")%>
             <%= error_field(@errors, :booking_prefix) %>
           </div>
         </div>

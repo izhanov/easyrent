@@ -1,7 +1,5 @@
 ru:
   office:
     car_insurances:
-      index:
-        title: "Страховые полисы"
+      create:
         new_car_insurance: "Новый страховой полис"
-        back: "Назад"

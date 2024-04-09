@@ -68,6 +68,7 @@ gem "annotate", "~> 3.2.0"
 gem "pagy", "~> 7.0.0"
 gem "liquid", "~> 5.5.0"
 gem "wicked_pdf", "~> 2.6.3"
+gem "gretel", github: "kzkn/gretel"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

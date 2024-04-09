@@ -3,3 +3,4 @@ ru:
     car_insurances:
       car_insurance:
         duration_of_insurance: "Срок действия страхового полиса: с %{start_at} по %{end_at} (включительно)"
+        edit: "Редактировать"

@@ -6,6 +6,7 @@ ru:
           success: "Автопарк успешно создан"
           errors:
             validation_error: "Ошибка валидации"
+            uniqueness_violation: "БИН/ИИН и префикс заявки должны быть уникальными"
         update:
           success: "Автопарк успешно обновлен"
           errors:

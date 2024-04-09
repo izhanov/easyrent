@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/kzkn/gretel.git
+  revision: b85444d3ae44962b17e29c0a4e0c72571965bb7b
+  specs:
+    gretel (5.0.0)
+      actionview (>= 5.1, < 7.2)
+      railties (>= 5.1, < 7.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -450,6 +458,7 @@ DEPENDENCIES
   dry-validation (~> 1.10)
   factory_bot_rails (~> 6.2.0)
   faker (~> 3.2.2)
+  gretel!
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails

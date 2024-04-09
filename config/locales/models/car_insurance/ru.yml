@@ -7,3 +7,6 @@ ru:
         kind: "Вид"
         start_at: "Дата начала"
         end_at: "Дата окончания"
+        kinds:
+          ogpo: "ОГПО"
+          kasko: "Каско"

@@ -7,3 +7,6 @@ en:
         kind: "Kind"
         start_at: "Start at"
         end_at: "End at"
+        kinds:
+          ogpo: "OGPO"
+          kasko: "Kasko"

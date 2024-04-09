@@ -3,3 +3,4 @@ en:
     car_insurances:
       car_insurance:
         duration_of_insurance: "Duration of insurance: from %{start_at} to %{end_at}"
+        edit: "Edit"

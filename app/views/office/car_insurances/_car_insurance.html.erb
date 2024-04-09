@@ -1,3 +1,38 @@
-<%= turbo_frame_tag car_insurance, class: "list-group-item" do %>
-  <%= link_to t(".duration_of_insurance", start_at: car_insurance.start_at.strftime("%d/%m/%Y"), end_at: car_insurance.end_at.strftime("%d/%m/%Y")), edit_office_car_park_car_car_insurance_path(@car_park, @car, car_insurance), class: "link-dark", data: {turbo_frame: dom_id(car_insurance)} %>
+<%= turbo_frame_tag car_insurance, class: "car-status-card mt-2" do %>
+  <p class="car-status-card__title"><%= car_insurance.kind %></p>
+  <div class="dropdown options-dropdown car-status-card__options">
+    <button
+      class="options-dropdown__button"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <%= vite_image_tag("images/office/menu-dots.svg") %>
+    </button>
+    <ul
+      class="dropdown-menu"
+      aria-labelledby="dropdownMenuButton1"
+    >
+      <li class="dropdown-item">
+         <%= link_to t(".edit"), edit_office_car_park_car_car_insurance_path(@car_park, @car, car_insurance) %>
+      </li>
+      <li class="dropdown-item">Архивировать</li>
+      <li class="dropdown-item">Удалить</li>
+    </ul>
+  </div>
+  <div class="car-status-card__dates">
+    <span><%= car_insurance.start_at.strftime("%d.%m.%Y") %></span>
+    <div class="car-status-card__dates-line">
+      <hr />
+    </div>
+    <span><%= car_insurance.end_at.strftime("%d.%m.%Y") %></span>
+  </div>
+  <p class="car-status-card__expiration">
+    Осталось: <span>2 месяца, 11 дней</span>
+  </p>
+  <span
+    class="car-status-card__status car-status-card__status--active"
+    >Активный</span
+  >
 <% end %>
