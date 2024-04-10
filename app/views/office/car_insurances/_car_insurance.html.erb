@@ -32,7 +32,7 @@
   <p class="car-status-card__expiration">
     Осталось: <span><%= distance_of_time_in_words(Date.current, car_insurance.end_at, include_seconds: true) %></span>
   </p>
-  <span class="car-status-card__status car-status-card__status--active">
+  <span class="car-status-card__status <%= car_insurance.active? ? 'car-status-card__status--active' : 'car-status-card__status--inactive' %>">
     <%= car_insurance.active? ? t(".active") : t(".inactive") %>
   </span>
 <% end %>

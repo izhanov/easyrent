@@ -3,3 +3,8 @@ ru:
     car_inspections:
       car_inspection:
         duration_of_inspection: "Срок действия техосмотра: с %{start_at} по %{end_at} (включительно)"
+        active: "Активен"
+        inactive: "Неактивен"
+        edit: "Редактировать"
+        destroy: "Удалить"
+        sure?: "Вы уверены?"

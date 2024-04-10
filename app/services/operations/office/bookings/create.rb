@@ -47,8 +47,14 @@ module Operations
         def commit(params, responsible)
           ActiveRecord::Base.transaction do
             booking_number = Utils::Bookings::NextNumber.new(params[:car_id]).get
+
             audit_as_user(responsible) do
-              booking = Booking.create!(params.merge(number: booking_number))
+              booking = Booking.create!(
+                params.merge(
+                  number: booking_number,
+                  comments_attributes: comments_attributes(params[:comments_attributes])
+                )
+              )
               Operations::Office::Contracts::Create.new.call(booking, responsible)
               Operations::Office::Cars::Book.new.call(booking.car, responsible)
               Success(booking)
@@ -58,6 +64,12 @@ module Operations
 
         def bookings_table
           Booking.arel_table
+        end
+
+        def comments_attributes(comments)
+          comments.all? do |(index, comment_hash)|
+            comment_hash["content"].present?
+          end ? comments : {}
         end
       end
     end

@@ -4,32 +4,40 @@
     <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
-  <%= render(
-    partial: "office/shared/actions/cars/buttons",
-    locals: {
-      back_button_url: office_car_park_path(@car_park)
-    }
-  )%>
 </div>
 
 
-<div class="container">
-  <%= render "office/shared/tabs/cars/nav_tabs" %>
+<div class="container car-page-layout">
+  <div class="inspection-page">
+    <%= turbo_frame_tag "car_inspections", class: "inspection-page__list" do %>
+      <%= render @car_inspections %>
 
-  <div class="d-flex justify-content-end my-2">
-    <%= link_to new_office_car_park_car_car_inspection_path(@car_park, @car), class: "btn btn-primary btn-sm", data: {turbo: true, turbo_frame: dom_id(CarInspection.new)} do %>
-      <i class="bi bi-plus"></i>
-      <%= t(".new_car_inspection") %>
+      <%= turbo_frame_tag CarInspection.new do %>
+        <%= link_to new_office_car_park_car_car_inspection_path(@car_park, @car), class: "status-card-placeholder" do %>
+          <div class="status-card-placeholder__inner">
+            <svg
+              width="34"
+              height="34"
+              viewBox="0 0 34 34"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M17 0.875C8.09441 0.875 0.875 8.09441 0.875 17C0.875 25.9056 8.09441 33.125 17 33.125C25.9056 33.125 33.125 25.9056 33.125 17C33.125 8.09441 25.9056 0.875 17 0.875ZM18.125 11C18.125 10.3787 17.6213 9.875 17 9.875C16.3787 9.875 15.875 10.3787 15.875 11V15.875H11C10.3787 15.875 9.875 16.3787 9.875 17C9.875 17.6213 10.3787 18.125 11 18.125H15.875V23C15.875 23.6213 16.3787 24.125 17 24.125C17.6213 24.125 18.125 23.6213 18.125 23V18.125H23C23.6213 18.125 24.125 17.6213 24.125 17C24.125 16.3787 23.6213 15.875 23 15.875H18.125V11Z"
+                fill="#9EA2AD"
+              />
+            </svg>
+            <span>
+              Добавить новый осмотр
+            </span>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
-
-  <%= turbo_frame_tag CarInspection.new %>
-
-  <div class="list-group">
-    <%= turbo_frame_tag "car_inspections", class: "list-group list-group-numbered" do %>
-        <%= render @car_inspections %>
-    <% end %>
-  </div>
+  <%= render "office/cars/sidebar", car_park: @car_park, car: @car %>
 </div>
 
 

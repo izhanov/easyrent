@@ -1,3 +1,38 @@
-<%= turbo_frame_tag car_inspection, class: "list-group-item" do %>
-  <%= link_to t(".duration_of_inspection", start_at: car_inspection.start_at.strftime("%d/%m/%Y"), end_at: car_inspection.end_at.strftime("%d/%m/%Y")), edit_office_car_park_car_car_inspection_path(@car.owner, @car, car_inspection), class: "link-dark", data: {turbo_frame: dom_id(car_inspection)} %>
+<%= turbo_frame_tag car_inspection, class: "car-status-card" do %>
+  <p class="car-status-card__title">Техосмотр</p>
+  <div class="dropdown options-dropdown car-status-card__options">
+    <button
+      class="options-dropdown__button"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <%= vite_image_tag("images/office/menu-dots.svg") %>
+    </button>
+    <ul
+      class="dropdown-menu"
+      aria-labelledby="dropdownMenuButton1"
+    >
+      <li class="dropdown-item">
+        <%= link_to t(".edit"), edit_office_car_park_car_car_inspection_path(@car_park, @car, car_inspection) %>
+      </li>
+      <li class="dropdown-item">
+        <%= link_to t(".destroy"), office_car_park_car_car_inspection_path(@car_park, @car,car_inspection), data: {turbo_method: :delete, turbo_confirm: t(".sure?")} %>
+      </li>
+    </ul>
+  </div>
+  <div class="car-status-card__dates">
+    <span><%= car_inspection.start_at.strftime("%d.%m.%Y") %></span>
+    <div class="car-status-card__dates-line">
+      <hr />
+    </div>
+    <span><%= car_inspection.end_at.strftime("%d.%m.%Y") %></span>
+  </div>
+  <p class="car-status-card__expiration">
+    Осталось: <span><%= distance_of_time_in_words(Date.current, car_inspection.end_at) %></span>
+  </p>
+  <span class="car-status-card__status car-status-card__status--active">
+    <%= car_inspection.active? ? t(".active") : t(".inactive") %>
+  </span>
 <% end %>

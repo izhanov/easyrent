@@ -3,3 +3,8 @@ en:
     car_inspections:
       car_inspection:
         duration_of_inspection: "Duration of technical inspection: from %{start_at} to %{end_at}"
+        active: "Active"
+        inactive: "Inactive"
+        edit: "Edit"
+        destroy: "Destroy"
+        sure?: "Are you sure?"

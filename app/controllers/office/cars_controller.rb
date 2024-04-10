@@ -21,7 +21,6 @@ module Office
     # TODO: MEEH! Must be refactored
     def create
       operation = Operations::Office::Cars::Create.new
-      byebug
       result = operation.call(
         car_params.to_h.merge(
           photos_attributes: photos_attributes_params,

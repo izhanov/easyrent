@@ -25,4 +25,8 @@ class CarInspection < ApplicationRecord
   scope :active, -> { where('end_at >= ?', Date.today) }
 
   audited
+
+  def active?
+    end_at >= Date.today
+  end
 end

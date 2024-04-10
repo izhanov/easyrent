@@ -18,7 +18,7 @@
       <%= render @car_insurances %>
 
       <%= turbo_frame_tag CarInsurance.new do %>
-        <%= link_to new_office_car_park_car_car_insurance_path(@car_park, @car), class: "stauts-card-placeholder", type: "button", data: {turbo_frame: dom_id(CarInsurance.new)} do %>
+        <%= link_to new_office_car_park_car_car_insurance_path(@car_park, @car), class: "status-card-placeholder", data: {turbo_frame: dom_id(CarInsurance.new)} do %>
           <div class="stauts-card-placeholder__inner">
             <svg
               width="34"

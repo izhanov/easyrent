@@ -16,7 +16,7 @@ module Operations
         def commit(booking, responsible)
           rental_days = booking.booked_dates_count
           calculator = Utils::Bookings::Calculator.new(booking)
-          contract_next_number = Utils::Contracts::NextNumber.new
+          contract_next_number = Utils::Contracts::NextNumber.new(booking)
           mileage_limit = RentalRule::MileageLimit.find(booking.offer.mileage_limit_id).value
 
           audit_as_user(responsible) do
