@@ -43,8 +43,8 @@
       data-controller="autocomplete"
       data-autocomplete-url-value="">
       <div class="col">
-        <%= text_field_tag :car, @car, type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
-        <%= f.hidden_field :car_id, data: { "autocomplete-target": "hidden", "bookings--form-target": "carId" }%>
+        <%= text_field_tag :car, "#{@car.plate_number} #{@car.mark_title}", type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
+        <%= f.hidden_field :car_id, value: @car.id, data: { "autocomplete-target": "hidden", "bookings--form-target": "carId" }%>
       </div>
       <ul class="list-group" data-autocomplete-target="results"></ul>
     </div>
@@ -88,13 +88,13 @@
     <div class="col">
       <div class="input-group">
         <%= f.label :starts_at, class: "input-group-text"%>
-        <%= f.datetime_field :starts_at, class: "form-control", data: {"bookings--error-handler-target": "startsAt"} %>
+        <%= f.datetime_field :starts_at, value: params[:date_from].to_datetime, class: "form-control", data: {"bookings--error-handler-target": "startsAt"} %>
       </div>
     </div>
     <div class="col">
       <div class="input-group">
         <%= f.label :ends_at, class: "input-group-text"%>
-        <%= f.datetime_field :ends_at, class: "form-control", data: {"bookings--error-handler-target": "endsAt"} %>
+        <%= f.datetime_field :ends_at, value: params[:date_to].to_datetime, class: "form-control", data: {"bookings--error-handler-target": "endsAt"} %>
       </div>
     </div>
   </div>
@@ -119,7 +119,7 @@
     <div class="col-lg-6 col-12">
       <%= turbo_frame_tag "additional_services_checkboxes" do %>
         <%= f.fields_for :services do |service_form| %>
-          <% @services ||= current_office_user.car_parks.first&.additional_services %>
+          <% @services ||= @car_park&.additional_services %>
           <% if @services.present? && @services.any? %>
             <% @services.each do |service| %>
               <% if AdditionalService::ANTE_FACTUM_SERVICES.include?(service.title) %>

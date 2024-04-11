@@ -1,0 +1,63 @@
+  <div class="car-bookings-search-result">
+    <table class="table car-bookings-results-table">
+      <thead>
+        <tr>
+          <th scope="col">Авто</th>
+          <th scope="col">Гос номер</th>
+          <th scope="col">Тариф Smart</th>
+          <th scope="col">Тариф Lite</th>
+          <th scope="col">Тариф Nomad</th>
+          <th scope="col" colspan=2>Переплата</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @cars.each do |car| %>
+          <tr>
+            <td scope="row">
+              <%= car.mark.title %>
+            </td>
+
+            <td>
+              <%= car.mark.brand.title %>
+            </td>
+
+            <td>
+              <%= car.plate_number %>
+            </td>
+
+            <td>
+              <%= car.offer_price("smart", days_count(@date_from, @date_to)) %>
+              <span>тенге</span>
+              <span>/</span>
+              <span>сутки</span>
+            </td>
+
+            <td>
+              <%= car.offer_price("lite", days_count(@date_from, @date_to)) %>
+              <span>тенге</span>
+              <span>/</span>
+              <span>сутки</span>
+            </td>
+
+            <td>
+              <%= car.offer_price("nomad", days_count(@date_from, @date_to)) %>
+              <span>тенге</span>
+              <span>/</span>
+              <span>сутки</span>
+            </td>
+
+            <td>
+              <%= car.over_mileage_price %>
+              <span>тенге</span>
+              <span>1 км</span>
+            </td>
+
+            <td>
+              <%= link_to "Order", new_office_booking_path(car_id: car.id, date_from: @date_from, date_to: @date_to) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

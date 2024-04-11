@@ -1,0 +1,37 @@
+<div class="car-bookings-container">  
+  <div class="breadcrumbs">
+    <span>
+      Заявки  
+    </span>
+    <span>
+      /
+    </span>
+    <span>
+      <%= link_to "Наличие авто", office_car_bookings_path %>
+    </span>
+  </div>
+
+  <div class="car-bookings-header">
+    <h1>Наличие авто</h1>
+  </div>
+
+  <%= form_with(url: office_car_bookings_path, method: "get", remote: true, class: "car-bookings-search-form") do %>
+  <div class="car-bookings-field-wrap">
+    <%= text_field_tag :car, params[:car], placeholder: "Марка авто или гос. номер", class: "car-bookings-search-field" %>
+  </div>
+
+  <div class="car-bookings-field-wrap">
+    <%= date_field_tag :date_from, @date_from, class: "car-bookings-search-field", value: @date_from %>
+  </div>
+
+  <div class="car-bookings-field-wrap">
+    <%= date_field_tag :date_to, @date_to, class: "car-bookings-search-field", value: @date_to %>
+  </div>
+
+  <%= submit_tag "Search", class: "car-bookings-search-submit" %>
+  <% end %>
+
+  <%= render 'cars_result' %>
+
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
+</div>
