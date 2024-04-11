@@ -1,0 +1,39 @@
+.car-delivery {
+  // .car-delivery__actions
+  &__toggle {
+    &-item {
+      padding: 12px;
+      border-bottom: 1px solid rgba(233, 235, 236, 1);
+      color: rgba(179, 180, 188, 1);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    &--active {
+      color: rgba(41, 129, 246, 1);
+      border-color: rgba(41, 129, 246, 1);
+    }
+  }
+  &__modal-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  &__modal-button {
+    margin-top: 22px;
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    &-search {
+      width: 343px;
+    }
+    &-start-date,
+    &-end-date,
+    &-sort {
+      height: 44px;
+      padding: 8px 14px;
+    }
+  }
+}

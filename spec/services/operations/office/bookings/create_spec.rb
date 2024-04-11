@@ -93,7 +93,12 @@ RSpec.describe Operations::Office::Bookings::Create do
           ends_at: Time.current + 3.days,
           pickup_location: "office",
           drop_off_location: "office",
-          payment_method: "cash"
+          payment_method: "cash",
+          comments_attributes: {
+            "0": {
+              content: "Some comment"
+            }
+          }
         }
 
         result = described_class.new.call(params, user)
@@ -118,7 +123,12 @@ RSpec.describe Operations::Office::Bookings::Create do
           ends_at: Time.current + 3.days,
           pickup_location: "office",
           drop_off_location: "office",
-          payment_method: "cash"
+          payment_method: "cash",
+          comments_attributes: {
+            "0": {
+              content: "Some comment"
+            }
+          }
         }
 
         result = subject.call(params, user)

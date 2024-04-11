@@ -7,6 +7,7 @@
   padding: 8px 16px;
   border-radius: 12px;
   border: 1px solid rgba(233, 233, 236, 1);
+
   &__helper {
     font-size: 13px;
     font-weight: 400;
@@ -35,5 +36,9 @@
 
   select {
     border: none;
+  }
+
+  &--sm {
+    padding: 5px
   }
 }

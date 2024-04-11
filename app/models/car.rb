@@ -56,11 +56,9 @@ class Car < ApplicationRecord
   scope :in_repair, -> { where(technical_condition: "under_repair") }
   scope :need_repair, -> { where(technical_condition: "need_repair") }
 
-
   accepts_nested_attributes_for :photos, allow_destroy: true
   accepts_nested_attributes_for :insurances, allow_destroy: true
   accepts_nested_attributes_for :car_inspections, allow_destroy: true
-
 
   after_commit :update_typesense_index, on: %i[create update]
 

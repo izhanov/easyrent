@@ -5,6 +5,7 @@
 # Table name: additional_services
 #
 #  id         :bigint           not null, primary key
+#  kind       :string
 #  owner_type :string           not null
 #  price      :decimal(10, 2)   not null
 #  slug       :string

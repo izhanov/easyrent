@@ -47,33 +47,64 @@
 #  fk_rails_9c126c1dd5  (offer_id => offers.id)
 #
 class Booking < ApplicationRecord
+  include ArelHelpers::Bookings
+
   belongs_to :car, inverse_of: :bookings
   belongs_to :client, inverse_of: :bookings
   belongs_to :offer, inverse_of: :booking
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_one :contract, dependent: :destroy
+  has_one :give_out_appendix, class_name: "BookingGiveOutAppendix", dependent: :destroy
 
   has_many :documents, through: :contract
 
+  after_commit :update_typesense_index, on: %i[create update]
+
   accepts_nested_attributes_for :comments
+
+  scope :by_status, ->(status) { where(status: status) }
+
+  scope :nearest_to_give_out, -> do
+    where(arel_table[:status].eq("give_out_the_car")).order(
+      by_nearest_to_now_order(arel_table[:starts_at]) # See app/models/concerns/arel_helpers/bookings.rb
+    )
+  end
+
+  scope :nearest_to_accept, -> do
+    where(arel_table[:status].eq("accept_the_car")).order(
+      by_nearest_to_now_order(arel_table[:ends_at]) # See app/models/concerns/arel_helpers/bookings.rb
+    )
+  end
 
   audited
 
   include RTypesense
 
+  def update_typesense_index
+    Booking.typesense_upsert(self) unless Rails.env.test?
+  end
+
   draw_schema do
-    int32 :start_datetime, optional: false
-    int32 :end_datetime, optional: false
-    int32 :actual_start_datetime, optional: true
-    int32 :actual_end_datetime, optional: true
+    string :id, optional: false
+    string :number, optional: false
+    int32 :starts_at, optional: false
+    int32 :ends_at, optional: false
+    int32 :actual_starts_at, optional: true
+    int32 :actual_ends_at, optional: true
     object :car, optional: false do |car|
       string [car, :id], optional: false
+      string [car, :plate_number], optional: false
+
+      object [car, :owner], optional: false do |owner|
+        string [owner, :id], optional: false
+        string [owner, :title], optional: false
+      end
     end
 
     object :offer do |offer|
       string [offer, :id], optional: false
-      object [offer, :title], optional: false
+      string [offer, :title], optional: false
     end
   end
 
@@ -102,5 +133,9 @@ class Booking < ApplicationRecord
 
   def editable?
     %w[initial confirmed].include?(status)
+  end
+
+  def manager_full_name
+    "Зейнешев Диас"
   end
 end

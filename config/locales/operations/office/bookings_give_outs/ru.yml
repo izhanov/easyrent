@@ -1,0 +1,9 @@
+ru:
+  operations:
+    office:
+      bookings_give_outs:
+        give_out_the_car:
+          success: "Автомобиль успешно выдан."
+          errors:
+            its_not_time_to_give_out_the_car: "Еще не наступило время выдачи автомобиля."
+            validation_error: "Ошибка валидации."

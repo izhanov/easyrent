@@ -1,0 +1,132 @@
+<div class="page-top mt-4">
+  <div class="page-top__name">
+    <!-- Название авто -->
+    <h1 class="page-top__title">Выдача</h1>
+    <span class="page-top__count"><%= @bookings.size %></span>
+  </div>
+</div>
+<div class="page-top mt-2">
+  <div class="car-delivery__toggle">
+    <%= active_link_to "Предстоящие", office_bookings_give_outs_upcomings_path, class: "car-delivery__toggle-item text-decoration-none", active: /(\/upcomings|\/upcomings\?q.+)/, class_active: "car-delivery__toggle--active" %>
+    <%= active_link_to "Завершенные", office_bookings_give_outs_completed_index_path, class: "car-delivery__toggle-item text-decoration-none", active: /(\/completed|\/completed\?q.+)/, class_active: "car-delivery__toggle--active" %>
+  </div>
+</div>
+
+<div class="m-3">
+  <%= form_with url: office_bookings_give_outs_upcomings_path, html: {class: "search-input car-delivery__actions-search"}, method: :get do |f| %>
+
+    <div class="input-group">
+      <%= f.label "q[query]", "Поиск", class: "input-group-text" do %>
+        <i class="bi bi-search"></i>
+      <% end %>
+      <%= f.text_field "q[query]", value: params.dig(:q, :query), class: "form-control" %>
+    </div>
+
+    <div class="input-group">
+      <%= f.label "q[car_park_id]", "Автопарк", class: "input-group-text" %>
+      <%= f.select "q[car_park_id]", options_for_select(current_office_user.car_parks.map { |cp| [cp.title, cp.id] }, params.dig(:q, :car_park_id)), {include_blank: true}, class: "form-select"%>
+    </div>
+
+    <div class="input-group">
+      <%= f.label "q[starts_at]", "Дата начала", class: "input-group-text" %>
+      <%= f.date_field "q[starts_at]", value: params.dig(:q, :starts_at), class: "form-control"%>
+    </div>
+
+    <%= f.submit "Поиск", class: "base-button base-button--info base-button--sm" %>
+    <%= link_to "Сбросить", office_bookings_give_outs_upcomings_path, class: "base-button base-button--grey base-button--sm" %>
+  <% end %>
+</div>
+
+<div class="car-delivery__content mt-4">
+  <table class="table table-hover base-table">
+    <!-- Шапка таблицы -->
+    <thead class="table-light table-bordered">
+      <tr class="base-table__row-select">
+        <th scope="col" class="text-center">ID</th>
+        <th scope="col" class="text-center">№ Заявки</th>
+        <th scope="col" class="text-center">Дата</th>
+        <th scope="col" class="">Авто</th>
+        <th scope="col" class="">Гос Номер</th>
+        <th scope="col" class="">Место выдачи</th>
+        <th scope="col" class="">Клиент</th>
+        <th scope="col" class="">Менеджер</th>
+        <th scope="col" class="">Коментарий</th>
+        <th scope="col" class="col-auto" style="width: 40px"></th>
+      </tr>
+    </thead>
+    <!-- Тело таблицы -->
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr class="align-middle base-table__row-select">
+          <th class="text-center" scope="row"><%= booking.id %></th>
+          <td class="text-center" scope="row">
+            <%= link_to booking.number, office_bookings_give_outs_upcoming_path(booking), class: "link link-dark" %>
+          </td>
+          <td class="base-table__licence-col">
+            <%= booking.starts_at.strftime("%d.%m.%Y %H:%M") %>
+          </td>
+          <td class="base-table__licence-col">
+            <div class="licence-plate">
+              <%= booking.car.mark_title %>
+            </div>
+          </td>
+
+          <td class="">
+            <div class="base-table__auto-col">
+              <%= booking.car.plate_number %>
+            </div>
+          </td>
+          <td class="">
+            <div class="base-table__auto-col">
+              <%= booking.pickup_location %>
+            </div>
+          </td>
+          <td class="">
+            <div class="base-table__auto-col">
+              <%= booking.client.surname_with_initials %>
+              <span><%= booking.client.phone %></span>
+            </div>
+          </td>
+          <td class="">
+            <div class="base-table__auto-col">
+              <%= booking.manager_full_name %>
+            </div>
+          </td>
+
+          <td class="col-2 base-table__comment">
+            <%= booking.comments.last&.content&.truncate(50) %>
+          </td>
+
+          <td class="base-table__settings-col">
+            <div class="dropdown options-dropdown">
+              <button
+                class="options-dropdown__button"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <%= vite_image_tag("images/office/menu-dots.svg") %>
+              </button>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li
+                  data-bs-target="#car_prolong_modal"
+                  data-bs-toggle="modal"
+                  class="dropdown-item"
+                >
+                  <%= link_to "Выдать", office_bookings_give_outs_upcoming_path(booking) %>
+                </li>
+                <li class="dropdown-item dropdown-item--active">
+                  <%= link_to "Изменить", edit_office_booking_path(booking) %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

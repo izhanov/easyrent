@@ -12,12 +12,14 @@
 @import './utils/toastify';
 @import './utils/options_dropdown';
 
+
 @import './components/base_modal';
 @import './components/base_table';
 @import './components/base_button';
 @import './components/error_field';
 @import './components/additional_service';
 @import './components/rental_rule';
+@import './components/page_top';
 @import './components/base_input';
 @import './components/auth_form';
 @import './components/auth_layout';
@@ -27,6 +29,7 @@
 @import './components/user_menu';
 @import './components/car_parks';
 @import './components/car_parks_card';
+@import './components/car_delivery';
 @import './components/autopark_change_page';
 @import './components/parks_auto_actions';
 @import './components/park_settings';

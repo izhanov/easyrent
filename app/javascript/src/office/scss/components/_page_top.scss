@@ -1,0 +1,34 @@
+.page-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  // .page-top__title
+
+  &__title {
+    font-size: 32px;
+    font-weight: 600;
+    color: rgba(17, 17, 20, 1);
+  }
+  &__count {
+    color: rgba(123, 133, 142, 1);
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  // .page-top__button
+
+  &__button {
+    background: rgba(41, 129, 246, 1);
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-size: 15px;
+    color: white;
+    border: none;
+  }
+}

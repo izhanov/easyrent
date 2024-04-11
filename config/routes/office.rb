@@ -24,6 +24,16 @@ namespace :office do
     patch :change_status, on: :member
   end
 
+  namespace :bookings_give_outs do
+    resources :upcomings
+    resources :completed
+  end
+
+  namespace :bookings_acceptance do
+    resources :upcomings
+    resources :completed
+  end
+
   resources :documents do
     get :download, on: :member
   end
