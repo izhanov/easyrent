@@ -15,7 +15,8 @@ module Utils
           query_params = {
             q: query,
             query_by: "plate_number, owner.id, mark.title, status",
-            query_by_weights: "5, 4, 3, 3"
+            query_by_weights: "5, 4, 3, 3",
+            per_page: 50
           }
 
           query_params.merge!(filter_by)

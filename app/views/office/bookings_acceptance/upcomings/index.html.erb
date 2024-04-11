@@ -1,19 +1,19 @@
 <div class="page-top mt-4">
   <div class="page-top__name">
     <!-- Название авто -->
-    <h1 class="page-top__title">Выдача</h1>
+    <h1 class="page-top__title">Приёмка</h1>
     <span class="page-top__count"><%= @bookings.size %></span>
   </div>
 </div>
 <div class="page-top mt-2">
   <div class="car-delivery__toggle">
-    <%= active_link_to "Предстоящие", office_bookings_give_outs_upcomings_path, class: "car-delivery__toggle-item text-decoration-none", active: /(\/upcomings|\/upcomings\?q.+)/, class_active: "car-delivery__toggle--active" %>
-    <%= active_link_to "Завершенные", office_bookings_give_outs_completed_index_path, class: "car-delivery__toggle-item text-decoration-none", active: /(\/completed|\/completed\?q.+)/, class_active: "car-delivery__toggle--active" %>
+    <%= active_link_to "Предстоящие", office_bookings_acceptance_upcomings_path, class: "car-delivery__toggle-item text-decoration-none", active: /(\/upcomings|\/upcomings\?q.+)/, class_active: "car-delivery__toggle--active" %>
+    <%= active_link_to "Завершенные", office_bookings_acceptance_completed_index_path, class: "car-delivery__toggle-item text-decoration-none", active: /(\/completed|\/completed\?q.+)/, class_active: "car-delivery__toggle--active" %>
   </div>
 </div>
 
 <div class="m-3">
-  <%= form_with url: office_bookings_give_outs_completed_index_path, html: {class: "search-input car-delivery__actions-search"}, method: :get do |f| %>
+  <%= form_with url: office_bookings_acceptance_upcomings_path, html: {class: "search-input car-delivery__actions-search"}, method: :get do |f| %>
 
     <div class="input-group">
       <%= f.label "q[query]", "Поиск", class: "input-group-text" do %>
@@ -60,7 +60,7 @@
         <tr class="align-middle base-table__row-select">
           <th class="text-center" scope="row"><%= booking.id %></th>
           <td class="text-center" scope="row">
-            <%= link_to booking.number, office_bookings_give_outs_completed_path(booking), class: "link link-dark" %>
+            <%= link_to booking.number, office_bookings_give_outs_upcoming_path(booking), class: "link link-dark" %>
           </td>
           <td class="base-table__licence-col">
             <%= booking.starts_at.strftime("%d.%m.%Y %H:%M") %>
@@ -129,5 +129,4 @@
       <% end %>
     </tbody>
   </table>
-  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
 </div>

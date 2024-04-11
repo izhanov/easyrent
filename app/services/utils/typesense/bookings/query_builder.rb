@@ -6,16 +6,17 @@ module Utils
       class QueryBuilder
         attr_reader :query, :filters
 
-        def initialize(query: nil, car_park_id: nil, starts_at: nil)
+        def initialize(query: nil, car_park_id: nil, starts_at: nil, ends_at: nil)
           @query = query
-          @filters = {"car.owner.id" => car_park_id, "starts_at" => starts_at}
+          @filters = {"car.owner.id" => car_park_id, "starts_at" => starts_at, "ends_at" => ends_at}
         end
 
         def call
           query_params = {
             q: query.presence || "*",
             query_by: "number, car.plate_number, offer.title, car.owner.title",
-            query_by_weights: "5, 4, 3, 3"
+            query_by_weights: "5, 4, 3, 3",
+            per_page: 50
           }
 
           query_params.merge!(filter_by)

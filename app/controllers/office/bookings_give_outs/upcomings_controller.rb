@@ -11,11 +11,10 @@ module Office
         query = Utils::Typesense::Bookings::QueryBuilder.new(**query_params).call
         @q = Booking.typesense(query)
         relation = @current_office_user.bookings.nearest_to_give_out.where(id: @q.pluck(:id))
-        @page, @bookings = pagy(relation, items: 10)
+        @pagy, @bookings = pagy(relation, items: 10)
       end
 
       def show
-        @booking = Booking.find(params[:id])
       end
 
       def update
@@ -27,7 +26,7 @@ module Office
           flash[:success] = success_resolver(operation)
           redirect_to office_bookings_give_outs_completed_path(@booking)
         in Failure[error_code, errors]
-          flash.now[:alert] = failure_resolver(operation, error_code:)
+          flash.now[:error] = failure_resolver(operation, error_code:)
           @errors = errors
           render :show
         end
