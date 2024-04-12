@@ -25,10 +25,17 @@ module Operations
 
         def vacant?(car_id, starts_at, ends_at)
           bookings = Booking.left_joins(:car).where(
-            bookings_table[:starts_at].between(starts_at..ends_at)
-              .or(bookings_table[:ends_at].between(starts_at..ends_at)).and(
-                bookings_table[:car_id].eq(car_id)
+            bookings_table.grouping(
+              bookings_table[:starts_at].between(starts_at..ends_at).or(
+                bookings_table[:ends_at].between(starts_at..ends_at)
+              ).or(
+                bookings_table[:starts_at].lt(starts_at).and(bookings_table[:ends_at].gt(ends_at))
               )
+            ).and(
+              bookings_table[:car_id].eq(car_id)
+            ).and(
+              bookings_table[:status].not_in(["completed", "cancelled"])
+            )
           )
 
           if bookings.any?
@@ -47,15 +54,8 @@ module Operations
         def commit(params, responsible)
           ActiveRecord::Base.transaction do
             booking_number = Utils::Bookings::NextNumber.new(params[:car_id]).get
-
             audit_as_user(responsible) do
-              booking = Booking.create!(
-                params.merge(
-                  number: booking_number,
-                  comments_attributes: comments_attributes(params[:comments_attributes])
-                )
-              )
-              Operations::Office::Contracts::Create.new.call(booking, responsible)
+              booking = Booking.create!(params.merge(number: booking_number))
               Operations::Office::Cars::Book.new.call(booking.car, responsible)
               Success(booking)
             end
@@ -64,12 +64,6 @@ module Operations
 
         def bookings_table
           Booking.arel_table
-        end
-
-        def comments_attributes(comments)
-          comments.all? do |(index, comment_hash)|
-            comment_hash["content"].present?
-          end ? comments : {}
         end
       end
     end

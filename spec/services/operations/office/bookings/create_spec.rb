@@ -74,6 +74,46 @@ RSpec.describe Operations::Office::Bookings::Create do
           ]
         )
       end
+
+      it "returns failure with car_is_not_vacant error" do
+        user = create(:user)
+        car_park = create(:car_park, user: user)
+        car = create(:car, owner: car_park)
+        offer = create(:offer, car: car)
+        client_1 = create(:client)
+        booking = create(
+          :booking,
+          car: car,
+          offer: offer,
+          client: client_1,
+          starts_at: Time.current + 1.day,
+          ends_at: Time.current + 20.days
+        )
+
+        client_2 = create(:client, identification_number: "901221300000", phone: "+77013670547")
+
+        params = {
+          car_id: car.id,
+          offer_id: offer.id,
+          client_id: client_2.id,
+          starts_at: booking.starts_at + 5.day,
+          ends_at: booking.ends_at - 4.days,
+          pickup_location: "office",
+          drop_off_location: "office",
+          payment_method: "cash"
+        }
+
+        result = described_class.new.call(params, user)
+        expect(result).to be_failure
+        expect(result.failure).to match_array(
+          [
+            :car_is_not_vacant,
+            {
+              booking: ["Car in not vacant. Booked: #{booking.starts_at.strftime("%d/%m/%Y")} - #{booking.ends_at.strftime("%d/%m/%Y")}"]
+            }
+          ]
+        )
+      end
     end
 
     context "when params are valid" do
