@@ -113,7 +113,8 @@ class Car < ApplicationRecord
   end
 
   def offer_price(plan, days_count)
-    prices = offers.where(published: true, title: plan).last.prices
+    prices = offers.where(title: plan, published: true).last&.prices
+    return if prices.blank?
 
     sales = prices.reduce({}) do |memo, (range, price)|
       from = range.split("..").first.to_i

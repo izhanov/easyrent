@@ -14,11 +14,7 @@
         <%- @cars.each do |car| %>
           <tr>
             <td scope="row">
-              <%= car.mark.title %>
-            </td>
-
-            <td>
-              <%= car.mark.brand.title %>
+              <%= car.mark_title %>
             </td>
 
             <td>
@@ -26,21 +22,21 @@
             </td>
 
             <td>
-              <%= car.offer_price("smart", days_count(@date_from, @date_to)) %>
+              <%= car.offer_price("Light", days_count(@date_from, @date_to)) %>
               <span>тенге</span>
               <span>/</span>
               <span>сутки</span>
             </td>
 
             <td>
-              <%= car.offer_price("lite", days_count(@date_from, @date_to)) %>
+              <%= car.offer_price("Basic", days_count(@date_from, @date_to)) %>
               <span>тенге</span>
               <span>/</span>
               <span>сутки</span>
             </td>
 
             <td>
-              <%= car.offer_price("nomad", days_count(@date_from, @date_to)) %>
+              <%= car.offer_price("Nomad", days_count(@date_from, @date_to)) %>
               <span>тенге</span>
               <span>/</span>
               <span>сутки</span>

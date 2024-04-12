@@ -43,7 +43,7 @@
       data-controller="autocomplete"
       data-autocomplete-url-value="">
       <div class="col">
-        <%= text_field_tag :car, "#{@car.plate_number} #{@car.mark_title}", type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
+        <%= text_field_tag :car, " #{@car.mark_title} #{@car.plate_number}", type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
         <%= f.hidden_field :car_id, value: @car.id, data: { "autocomplete-target": "hidden", "bookings--form-target": "carId" }%>
       </div>
       <ul class="list-group" data-autocomplete-target="results"></ul>

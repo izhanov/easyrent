@@ -3,6 +3,7 @@ en:
     header:
       car_parks: "Car parks"
       cars: "Cars"
+      available_cars: "Available cars"
       bookings: "Bookings"
       document_templates: "Document templates"
       edit_user: "Edit user"

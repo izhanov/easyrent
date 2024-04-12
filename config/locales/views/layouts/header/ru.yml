@@ -3,6 +3,7 @@ ru:
     header:
       car_parks: "Автопарки"
       cars: "Автомобили"
+      available_cars: "Наличие автомобилей"
       bookings: "Заявки"
       document_templates: "Шаблоны документов"
       edit_user: "Редактировать пользователя"

@@ -19,6 +19,12 @@
           </div>
 
           <div class="dropdown header__navbar-item">
+            <%= active_link_to office_car_bookings_path, class: "header__navbar-item-title", class_active: "header__navbar-item--active" do %>
+              <%= t(".available_cars") %>
+            <% end %>
+          </div>
+
+          <div class="dropdown header__navbar-item">
             <span
               class="header__navbar-item-title"
               type="button"
