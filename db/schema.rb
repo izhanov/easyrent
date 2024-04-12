@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_10_144851) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_12_090500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -102,6 +102,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_144851) do
     t.index ["created_at"], name: "index_audits_on_created_at"
     t.index ["request_uuid"], name: "index_audits_on_request_uuid"
     t.index ["user_id", "user_type"], name: "user_index"
+  end
+
+  create_table "booking_acceptance_appendixes", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.integer "mileage_after_rent"
+    t.integer "fuel_level_after_rent"
+    t.decimal "car_wash_amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "fine_amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "return_from_address_amount", precision: 10, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_booking_acceptance_appendixes_on_booking_id", unique: true
   end
 
   create_table "booking_give_out_appendixes", force: :cascade do |t|
@@ -459,6 +471,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_10_144851) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "booking_acceptance_appendixes", "bookings"
   add_foreign_key "booking_give_out_appendixes", "bookings"
   add_foreign_key "bookings", "cars"
   add_foreign_key "bookings", "clients"

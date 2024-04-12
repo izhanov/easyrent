@@ -56,6 +56,7 @@ class Booking < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_one :contract, dependent: :destroy
   has_one :give_out_appendix, class_name: "BookingGiveOutAppendix", dependent: :destroy
+  has_one :acceptance_appendix, class_name: "BookingAcceptanceAppendix", dependent: :destroy
 
   has_many :documents, through: :contract
 
@@ -72,9 +73,10 @@ class Booking < ApplicationRecord
   end
 
   scope :nearest_to_accept, -> do
-    where(arel_table[:status].eq("accept_the_car")).order(
-      by_nearest_to_now_order(arel_table[:ends_at]) # See app/models/concerns/arel_helpers/bookings.rb
-    )
+    where(arel_table[:status].eq("accept_the_car").or(arel_table[:status].eq("end_the_rent")))
+      .order(
+        by_nearest_to_now_order(arel_table[:ends_at]) # See app/models/concerns/arel_helpers/bookings.rb
+      )
   end
 
   audited

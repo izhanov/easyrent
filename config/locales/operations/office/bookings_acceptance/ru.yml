@@ -1,0 +1,9 @@
+ru:
+  operations:
+    office:
+      bookings_acceptance:
+        accept_the_car:
+          success: "Автомобиль успешно принят."
+          errors:
+            its_not_time_to_accept_the_car: "Еще не наступило время приёмки автомобиля."
+            validation_error: "Ошибка валидации."

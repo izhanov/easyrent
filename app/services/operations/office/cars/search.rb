@@ -2,16 +2,16 @@ module Operations
   module Office
     module Cars
       class Search < Base
-        attr_reader :car, :date_from, :date_to
+        attr_reader :car, :starts_at, :ends_at
 
         def initialize(
           car: nil,
-          date_from: nil,
-          date_to: nil
+          starts_at: nil,
+          ends_at: nil
         )
           @car = car
-          @date_from = date_from
-          @date_to = date_to
+          @starts_at = starts_at
+          @ends_at = ends_at
         end
 
         # @return [Car::ActiveRecord_Relation]
@@ -25,24 +25,16 @@ module Operations
         private
 
         def reserved_bookings
-          @reserved ||= Booking.where(
-            '(starts_at < ? AND ends_at >= ?) OR (starts_at <= ? AND ends_at > ?) OR (starts_at >= ? AND ends_at <= ?)',
-            date_to,
-            date_to,
-            date_from,
-            date_from,
-            date_from,
-            date_to
-          ).where(
-            status: %w[
-              initial
-              confirmed
-              give_out_the_car
-              start_the_rent
-              end_the_rent
-              accept_the_car
-              return_the_deposit
-            ]
+          @reserved ||= Booking.left_joins(:car).where(
+            bookings_table.grouping(
+              bookings_table[:starts_at].between(starts_at..ends_at).or(
+                bookings_table[:ends_at].between(starts_at..ends_at)
+              ).or(
+                bookings_table[:starts_at].lt(starts_at).and(bookings_table[:ends_at].gt(ends_at))
+              )
+            ).and(
+              bookings_table[:status].not_in(["completed", "cancelled"])
+            )
           )
         end
 
@@ -50,9 +42,7 @@ module Operations
         def filter_by_date
           reserved_car_ids = reserved_bookings.pluck(:car_id)
 
-          @cars = Car.where.not(
-            id: reserved_car_ids, technical_condition: "under_repair"
-          )
+          @cars = Car.where.not(id: reserved_car_ids).where.not(technical_condition: "under_repair")
 
           @cars
         end
@@ -65,6 +55,14 @@ module Operations
               'brands.title ILIKE :search OR marks.title ILIKE :search OR marks.body ILIKE :search OR cars.plate_number ILIKE :search',
               search: "%#{car}%"
             )
+        end
+
+        def bookings_table
+          Booking.arel_table
+        end
+
+        def cars_table
+          Car.arel_table
         end
       end
     end

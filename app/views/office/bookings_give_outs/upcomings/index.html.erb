@@ -112,16 +112,20 @@
                 class="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
-                <li
-                  data-bs-target="#car_prolong_modal"
-                  data-bs-toggle="modal"
-                  class="dropdown-item"
-                >
-                  <%= link_to "Выдать", office_bookings_give_outs_upcoming_path(booking) %>
-                </li>
-                <li class="dropdown-item dropdown-item--active">
-                  <%= link_to "Изменить", edit_office_booking_path(booking) %>
-                </li>
+                <%= link_to office_bookings_give_outs_upcoming_path(booking), class: "link link-dark text-decoration" do %>
+                  <li
+                    data-bs-target="#car_prolong_modal"
+                    data-bs-toggle="modal"
+                    class="dropdown-item"
+                  >
+                    Выдать
+                  </li>
+                <% end %>
+                <%= link_to edit_office_booking_path(booking), class: "link link-dark text-decoration" do %>
+                  <li class="dropdown-item dropdown-item--active">
+                    Изменить
+                  </li>
+                <% end %>
               </ul>
             </div>
           </td>

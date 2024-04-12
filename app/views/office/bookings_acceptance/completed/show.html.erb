@@ -8,13 +8,11 @@
     <%# status change select %>
   </div>
   <div>
-    <%= link_to office_bookings_give_outs_completed_index_path, class: "btn btn-sm btn-outline-primary" do %>
+    <%= link_to office_bookings_acceptance_completed_index_path, class: "btn btn-sm btn-outline-primary" do %>
       <i class="bi bi-box-arrow-left"></i>
     <% end %>
   </div>
 </div>
-
-<% calculator = Utils::Bookings::Calculator.new(@booking) %>
 
 <div class="container">
   <div class="row">
@@ -52,66 +50,59 @@
       </ul>
 
       <div>
-        <%= form_with model: [:office, :bookings_give_outs, @booking], url: office_bookings_give_outs_upcoming_path do |f| %>
-          <div class="mt-2">
-            <div class="input-group">
-              <%= f.label :actual_starts_at, class: "input-group-text" %>
-              <%= f.datetime_field :actual_starts_at, class: "form-control", readonly: true %>
-            </div>
-          </div>
-
-          <div class="mt-2">
+        <%= form_with model: [:office, :bookings_give_outs, @booking], url: office_bookings_acceptance_upcoming_path do |f| %>
+          <div class="mt-4">
             <div class="input-group">
               <%= f.label :actual_ends_at, class: "input-group-text" %>
-              <%= f.datetime_field :actual_ends_at, value: @booking.ends_at, class: "form-control", readonly: true %>
+              <%= f.datetime_field :actual_ends_at, class: "form-control", readonly: true %>
             </div>
           </div>
 
-          <div class="mt-2">
-            <div class="input-group">
-              <%= f.label :pickup_location, class: "input-group-text" %>
-              <%= f.text_field :pickup_location, class: "form-control", readonly: true %>
+          <%= fields_for :car, @booking.acceptance_appendix do |ff| %>
+            <div class="mt-4">
+              <div class="input-group">
+                  <%= ff.label :mileage_after_rent, "Пробег авто", class: "input-group-text" %>
+                  <%= ff.text_field :mileage_after_rent, class: "form-control", data: {mask: "mileage"} %>
+                  <%= error_field(@errors, :mileage_after_rent) %>
+              </div>
             </div>
-          </div>
 
-          <div class="mt-2">
-            <div class="input-group">
-              <%= fields_for :car, @booking.give_out_appendix do |ff| %>
-                <%= ff.label :mileage_before_rent, "Пробег авто", class: "input-group-text" %>
-                <%= ff.text_field :mileage_before_rent, class: "form-control",  readonly: true%>
-              <% end %>
+            <div class="mt-4">
+              <div class="input-group">
+                  <%= ff.label :fuel_level_after_rent, "Кол. топлива", class: "input-group-text" %>
+                  <%= ff.text_field :fuel_level_after_rent, class: "form-control", data: {mask: "mileage"} %>
+                  <%= error_field(@errors, :fuel_level_after_rent) %>
+              </div>
             </div>
-          </div>
 
-          <div class="mt-2">
-            <div class="input-group">
-              <%= fields_for :car, @booking.give_out_appendix do |ff| %>
-                <%= ff.label :fuel_level_before_rent, "Пробег авто", class: "input-group-text" %>
-                <%= ff.text_field :fuel_level_before_rent, class: "form-control",  readonly: true%>
-              <% end %>
+            <div class="mt-4">
+              <div class="input-group">
+                  <%= ff.label :car_wash_amount, "Сумма за мойку", class: "input-group-text" %>
+                  <%= ff.text_field :car_wash_amount, class: "form-control", data: {mask: "mileage"} %>
+                  <%= error_field(@errors, :car_wash_amount) %>
+              </div>
             </div>
-          </div>
 
-          <div class="mt-2">
-            <div class="input-group">
-              <%= fields_for :car, @booking.give_out_appendix do |ff| %>
-                <%= ff.label :appearance_before_rent, "Пробег авто", class: "input-group-text" %>
-                <%= ff.text_field :appearance_before_rent, class: "form-control",  readonly: true%>
-              <% end %>
+            <div class="mt-4">
+              <div class="input-group">
+                  <%= ff.label :fine_amount, "Штрафы", class: "input-group-text" %>
+                  <%= ff.text_field :fine_amount, class: "form-control", data: {mask: "mileage"} %>
+                  <%= error_field(@errors, :fine_amount) %>
+              </div>
             </div>
-          </div>
 
-          <div class="mt-2">
-            <div class="input-group">
-              <%= fields_for :car, @booking.give_out_appendix do |ff| %>
-                <%= ff.label :technical_condition_before_rent, "Пробег авто", class: "input-group-text" %>
-                <%= ff.text_field :technical_condition_before_rent, class: "form-control",  readonly: true%>
-              <% end %>
+            <div class="mt-4">
+              <div class="input-group">
+                  <%= ff.label :return_from_address_amount, "Возврат с адреса", class: "input-group-text" %>
+                  <%= ff.text_field :return_from_address_amount, class: "form-control", data: {mask: "mileage"} %>
+                  <%= error_field(@errors, :fine_amount) %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
+
     <div class="col-6">
       <div class="row">
         <div class="col-12">

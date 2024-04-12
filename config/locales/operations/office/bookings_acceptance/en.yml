@@ -1,0 +1,9 @@
+en:
+  operations:
+    office:
+      bookings_acceptance:
+        accept_the_car:
+          success: "The car was successfully accepted."
+          errors:
+            its_not_time_to_accept_the_car: "It's not time to give out the car."
+            validation_error: "Validation error."

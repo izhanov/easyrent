@@ -21,6 +21,23 @@ document.addEventListener("turbo:load", () => {
           ));
       });
     });
+
+    if (selectedCar.value) {
+      Turbo.visit(`/office/car_parks/${selectedCarPark.value}/cars/${selectedCar.value}/offers/select`, {action: "replace", frame: "offers_to_select"});
+
+      const offersForSelectFrame = document.querySelector('turbo-frame[id="offers_to_select"]');
+
+      offersForSelectFrame.addEventListener("turbo:frame-load", (event) => {
+        let offersSelect = offersForSelectFrame.querySelector('select');
+
+        document.dispatchEvent(
+          new CustomEvent("calculator:offer-selected",
+            {
+              detail: {offersSelect: offersSelect}
+            }
+          ));
+      });
+    }
   }
 
   if (selectedCarPark) {

@@ -33,7 +33,7 @@
     </div>
 
     <%= f.submit "Поиск", class: "base-button base-button--info base-button--sm" %>
-    <%= link_to "Сбросить", office_bookings_give_outs_upcomings_path, class: "base-button base-button--grey base-button--sm" %>
+    <%= link_to "Сбросить", office_bookings_give_outs_completed_index_path, class: "base-button base-button--grey base-button--sm" %>
   <% end %>
 </div>
 
@@ -60,7 +60,7 @@
         <tr class="align-middle base-table__row-select">
           <th class="text-center" scope="row"><%= booking.id %></th>
           <td class="text-center" scope="row">
-            <%= link_to booking.number, office_bookings_give_outs_completed_path(booking), class: "link link-dark" %>
+            <%= link_to booking.number, office_bookin_path(booking), class: "link link-dark" %>
           </td>
           <td class="base-table__licence-col">
             <%= booking.starts_at.strftime("%d.%m.%Y %H:%M") %>
@@ -112,16 +112,20 @@
                 class="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
-                <li
-                  data-bs-target="#car_prolong_modal"
-                  data-bs-toggle="modal"
-                  class="dropdown-item"
-                >
-                  <%= link_to "Выдать", office_bookings_give_outs_upcoming_path(booking) %>
-                </li>
-                <li class="dropdown-item dropdown-item--active">
-                  <%= link_to "Изменить", edit_office_booking_path(booking) %>
-                </li>
+                <%= link_to office_bookings_give_outs_upcoming_path(booking) do %>
+                  <li
+                    data-bs-target="#car_prolong_modal"
+                    data-bs-toggle="modal"
+                    class="dropdown-item"
+                  >
+                    Выдать
+                  </li>
+                <% end %>
+                <%= link_to edit_office_booking_path(booking) do %>
+                  <li class="dropdown-item dropdown-item--active">
+                    Изменить
+                  </li>
+                <% end %>
               </ul>
             </div>
           </td>

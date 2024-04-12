@@ -3,6 +3,8 @@
 module Office
   module BookingsAcceptance
     class UpcomingsController < BaseController
+      before_action :find_booking, only: %i[show update]
+
       def index
         query = Utils::Typesense::Bookings::QueryBuilder.new(**query_params).call
 
@@ -57,6 +59,16 @@ module Office
           :fuel_level_after_rent,
           :appearance_after_rent,
           :technical_condition_after_rent
+        )
+      end
+
+      def car_params
+        params.require(:car).permit(
+          :mileage_after_rent,
+          :fuel_level_after_rent,
+          :car_wash_amount,
+          :fine_amount,
+          :return_from_address_amount
         )
       end
     end

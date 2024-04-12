@@ -53,6 +53,7 @@ module Operations
 
         def commit(params, responsible)
           ActiveRecord::Base.transaction do
+            Booking.lock
             booking_number = Utils::Bookings::NextNumber.new(params[:car_id]).get
             audit_as_user(responsible) do
               booking = Booking.create!(params.merge(number: booking_number))

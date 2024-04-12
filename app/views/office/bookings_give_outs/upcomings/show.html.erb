@@ -60,13 +60,6 @@
 
           <div class="mt-4">
             <div class="input-group">
-              <%= f.label :actual_ends_at, class: "input-group-text" %>
-              <%= f.datetime_field :actual_ends_at, value: @booking.ends_at, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <div class="input-group">
               <%= f.label :pickup_location, class: "input-group-text" %>
               <%= f.text_field :pickup_location, class: "form-control" %>
             </div>
@@ -78,27 +71,6 @@
                   <%= ff.label :mileage_before_rent, "Пробег авто", class: "input-group-text" %>
                   <%= ff.text_field :mileage_before_rent, class: "form-control", data: {mask: "mileage"} %>
                   <%= error_field(@errors, :mileage_before_rent) %>
-              </div>
-            </div>
-
-            <div class="mt-4">
-              <div class="input-group">
-                  <%= ff.label :fuel_level_before_rent, "Кол. топлива", class: "input-group-text" %>
-                  <%= ff.text_field :fuel_level_before_rent, class: "form-control", data: {mask: "mileage"} %>
-                  <%= error_field(@errors, :fuel_level_before_rent) %>
-              </div>
-            </div>
-            <div class="mt-4">
-              <div class="input-group">
-                  <%= ff.label :technical_condition_before_rent, "Тех. состояние", class: "input-group-text" %>
-                  <%= ff.select :technical_condition_before_rent, options_for_select(Car::TECHNICAL_CONDITION_TYPES.map { |technical_condition| [localize_technical_condition_type(technical_condition), technical_condition]}), {include_blank: false}, class: "form-select" %>
-              </div>
-            </div>
-
-            <div class="mt-4">
-              <div class="input-group">
-                  <%= ff.label :appearance_before_rent, "Внешний вид", class: "input-group-text" %>
-                  <%= ff.select :appearance_before_rent, options_for_select(Car::APPEARANCE_TYPES.map { |appearance| [localize_appearance_type(appearance), appearance] }), {include_blank: false}, class: "form-select" %>
               </div>
             </div>
           <% end %>

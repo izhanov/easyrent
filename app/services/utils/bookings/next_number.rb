@@ -13,7 +13,7 @@ module Utils
         current_number = current_day_bookings.size
         next_number = current_number + 1
         owner_booking_prefix = car.owner.booking_prefix
-        "#{owner_booking_prefix}#{Date.current.strftime("%Y%m%d")}-#{next_number}"
+        "#{owner_booking_prefix}#{Time.current.strftime("%Y%m%d")}-#{next_number}"
       end
 
       private
@@ -21,7 +21,7 @@ module Utils
       def current_day_bookings
         Booking.left_joins(:car).where(
           cars_table[:owner_id].eq(car.owner_id).and(
-            date_function(bookings_table[:created_at]).eq(Date.current)
+            date_function(bookings_table[:created_at]).eq(Time.current.to_date)
           )
         )
       end

@@ -2,13 +2,12 @@ class Office::CarBookingsController < Office::BaseController
   def index
     @cars = Operations::Office::Cars::Search.new(
       car: params[:car],
-      date_from: date_from,
-      date_to: date_to
+      starts_at: date_from,
+      ends_at: date_to
     ).call
 
-    @date_from = params[:date_from] || Date.current
-    @date_to = params[:date_to] || Date.current + 1.day
-
+    @date_from = params[:date_from] || DateTime.current
+    @date_to = params[:date_to] || DateTime.current + 1.day
     @pagy, @cars = pagy(@cars, items: 10)
   end
 

@@ -59,12 +59,15 @@
       <% @bookings.each do |booking| %>
         <tr class="align-middle base-table__row-select">
           <th class="text-center" scope="row"><%= booking.id %></th>
+
           <td class="text-center" scope="row">
-            <%= link_to booking.number, office_bookings_give_outs_upcoming_path(booking), class: "link link-dark" %>
+            <%= link_to booking.number, office_booking_path(booking), class: "link link-dark" %>
           </td>
+
           <td class="base-table__licence-col">
             <%= booking.starts_at.strftime("%d.%m.%Y %H:%M") %>
           </td>
+
           <td class="base-table__licence-col">
             <div class="licence-plate">
               <%= booking.car.mark_title %>
@@ -112,16 +115,20 @@
                 class="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
-                <li
-                  data-bs-target="#car_prolong_modal"
-                  data-bs-toggle="modal"
-                  class="dropdown-item"
-                >
-                  <%= link_to "Выдать", office_bookings_give_outs_upcoming_path(booking) %>
-                </li>
-                <li class="dropdown-item dropdown-item--active">
-                  <%= link_to "Изменить", edit_office_booking_path(booking) %>
-                </li>
+                <%= link_to office_bookings_acceptance_upcoming_path(booking), class: "link link-dark text-decoration-none" do %>
+                  <li
+                    data-bs-target="#car_prolong_modal"
+                    data-bs-toggle="modal"
+                    class="dropdown-item"
+                  >
+                    Принять
+                  </li>
+                <% end %>
+                <%= link_to  edit_office_booking_path(booking), class: "link link-dark text-decoration-none" do %>
+                  <li class="dropdown-item dropdown-item--active">
+                    Изменить
+                  </li>
+                <% end %>
               </ul>
             </div>
           </td>
