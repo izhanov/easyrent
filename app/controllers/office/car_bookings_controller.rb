@@ -6,6 +6,8 @@ class Office::CarBookingsController < Office::BaseController
       ends_at: date_to
     ).call
 
+    @cars = current_office_user.cars.where(id: @cars.pluck(:id)).order(:id)
+
     @date_from = params[:date_from] || DateTime.current
     @date_to = params[:date_to] || DateTime.current + 1.day
     @pagy, @cars = pagy(@cars, items: 10)
