@@ -12,6 +12,9 @@ module Office
     end
 
     def new
+      @car = Car.find_by(id: params[:car_id]) || Car.new
+      @car_park = @car.owner || current_office_user.car_parks.first
+
       @booking = Booking.new
     end
 

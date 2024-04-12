@@ -1,0 +1,43 @@
+.car-bookings-container {
+  margin-top: 30px;
+}
+
+.car-bookings-header {
+  margin-top: 20px;
+}
+
+.car-bookings-search-form {
+  margin-top: 20px;
+  display: flex;
+}
+
+.car-bookings-search-field {
+  @extend .form-control;
+}
+
+.car-bookings-field-wrap {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.car-bookings-search-submit {
+  @extend .btn;
+  @extend .btn-primary;
+
+  height: 100%;
+}
+
+.car-bookings-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.car-bookings-title-block,
+.car-bookings-search {
+  display: flex;
+}
+
+.car-bookings-results-table {
+  width: 100%;
+}

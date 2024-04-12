@@ -111,4 +111,18 @@ class Car < ApplicationRecord
   def mark_title
     "#{mark.brand.title} #{mark.title}"
   end
+
+  def offer_price(plan, days_count)
+    prices = offers.where(published: true, title: plan).last.prices
+
+    sales = prices.reduce({}) do |memo, (range, price)|
+      from = range.split("..").first.to_i
+      memo[from] = price
+
+      memo
+    end
+
+    applicable_price = sales.keys.sort.reverse.find { |day| days_count >= day }
+    sales[applicable_price]
+  end
 end

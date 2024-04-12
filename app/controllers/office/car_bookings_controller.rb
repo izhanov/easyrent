@@ -1,0 +1,24 @@
+class Office::CarBookingsController < Office::BaseController
+  def index
+    @cars = Operations::Office::Cars::Search.new(
+      car: params[:car],
+      date_from: date_from,
+      date_to: date_to
+    ).call
+
+    @date_from = params[:date_from] || Date.current
+    @date_to = params[:date_to] || Date.current + 1.day
+
+    @pagy, @cars = pagy(@cars, items: 10)
+  end
+
+  private
+
+  def date_from
+    params[:date_from].presence || Time.zone.now.beginning_of_day
+  end
+
+  def date_to
+    params[:date_to].presence || Time.zone.now.end_of_day # or tommorow 00:00?
+  end
+end

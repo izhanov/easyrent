@@ -89,6 +89,8 @@ namespace :office do
     end
   end
 
+  resources :car_bookings, only: [:index, :new, :create]
+
   namespace :ajax do
     resources :offers, only: [:show]
     resources :bookings do
