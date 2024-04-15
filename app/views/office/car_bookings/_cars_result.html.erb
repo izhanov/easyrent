@@ -49,7 +49,7 @@
             </td>
 
             <td>
-              <%= link_to "Order", new_office_booking_path(car_id: car.id, date_from: @date_from, date_to: @date_to) %>
+              <%= link_to "Order", new_office_booking_path(car_park_id: car.owner.id, car_id: car.id, date_from: @date_from, date_to: @date_to) %>
             </td>
           </tr>
         <% end %>

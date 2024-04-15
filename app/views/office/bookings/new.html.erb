@@ -35,7 +35,7 @@
     <div class="col">
       <div class="input-group">
         <%= label_tag :car_park_id, "Aвтопарк", class: "input-group-text"%>
-        <%= select_tag :car_park_id, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices bookings--car-park-select#resetTotalPrice"} %>
+        <%= select_tag :car_park_id, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }, selected: f.object.car&.owner&.id || params[:car_park_id]), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices bookings--car-park-select#resetTotalPrice"} %>
       </div>
     </div>
     <div

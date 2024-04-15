@@ -8,6 +8,7 @@ class Office::CarBookingsController < Office::BaseController
     ).call
 
     @cars = current_office_user.cars.where(id: @cars.pluck(:id)).order(:id)
+    @cars = @cars.where(owner_id: params[:car_park_id]) if params[:car_park_id].present?
 
     @date_from = params[:date_from] || DateTime.current
     @date_to = params[:date_to] || DateTime.current + 1.day
