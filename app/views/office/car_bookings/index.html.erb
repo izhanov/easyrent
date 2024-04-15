@@ -13,10 +13,6 @@
     </div>
 
     <div class="car-bookings-field-wrap">
-      <%= f.select :car_park_id, options_for_select(current_office_user.car_parks.map { |cp| [cp.title, cp.id] }, params[:car_park_id]), {include_blank: true}, class: "form-select" %>
-    </div>
-
-    <div class="car-bookings-field-wrap">
       <%= f.datetime_field :date_from, value: @date_from, class: "car-bookings-search-field", value: @date_from %>
     </div>
 
