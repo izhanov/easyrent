@@ -42,8 +42,9 @@
       class="col"
       data-controller="autocomplete"
       data-autocomplete-url-value="">
+      <%- car_title = @car.new_record? ? nil : "#{@car.mark_title} #{@car.plate_number}" %>
       <div class="col">
-        <%= text_field_tag :car, " #{@car.mark_title} #{@car.plate_number}", type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
+        <%= text_field_tag :car, car_title, type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
         <%= f.hidden_field :car_id, value: @car.id, data: { "autocomplete-target": "hidden", "bookings--form-target": "carId" }%>
       </div>
       <ul class="list-group" data-autocomplete-target="results"></ul>
@@ -88,13 +89,13 @@
     <div class="col">
       <div class="input-group">
         <%= f.label :starts_at, class: "input-group-text"%>
-        <%= f.datetime_field :starts_at, value: params[:date_from].to_datetime, class: "form-control", data: {"bookings--error-handler-target": "startsAt"} %>
+        <%= f.datetime_field :starts_at, value: params[:date_from]&.to_datetime, class: "form-control", data: {"bookings--error-handler-target": "startsAt"} %>
       </div>
     </div>
     <div class="col">
       <div class="input-group">
         <%= f.label :ends_at, class: "input-group-text"%>
-        <%= f.datetime_field :ends_at, value: params[:date_to].to_datetime, class: "form-control", data: {"bookings--error-handler-target": "endsAt"} %>
+        <%= f.datetime_field :ends_at, value: params[:date_to]&.to_datetime, class: "form-control", data: {"bookings--error-handler-target": "endsAt"} %>
       </div>
     </div>
   </div>

@@ -2,14 +2,16 @@ module Operations
   module Office
     module Cars
       class Search < Base
-        attr_reader :car, :starts_at, :ends_at
+        attr_reader :car, :starts_at, :ends_at, :city_id
 
         def initialize(
           car: nil,
+          city_id: nil,
           starts_at: nil,
           ends_at: nil
         )
           @car = car
+          @city_id = city_id
           @starts_at = starts_at
           @ends_at = ends_at
         end
@@ -17,6 +19,7 @@ module Operations
         # @return [Car::ActiveRecord_Relation]
         def call
           filter_by_date
+          filter_by_city
           filter_by_car
 
           @cars
@@ -55,6 +58,17 @@ module Operations
               'brands.title ILIKE :search OR marks.title ILIKE :search OR marks.body ILIKE :search OR cars.plate_number ILIKE :search',
               search: "%#{car}%"
             )
+        end
+
+        def filter_by_city
+          return @cars if city_id.blank?
+
+          @cars = @cars.joins("LEFT JOIN car_parks ON car_parks.id = cars.owner_id")
+            .where(
+              'car_parks.city_id = :city_id',
+              city_id: city_id
+            )
+
         end
 
         def bookings_table

@@ -2,6 +2,7 @@ class Office::CarBookingsController < Office::BaseController
   def index
     @cars = Operations::Office::Cars::Search.new(
       car: params[:car],
+      city_id: params[:city_id],
       starts_at: date_from,
       ends_at: date_to
     ).call

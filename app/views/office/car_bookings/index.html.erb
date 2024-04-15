@@ -4,19 +4,23 @@
   </div>
 
   <%= form_with(url: office_car_bookings_path, method: "get", remote: true, class: "car-bookings-search-form") do |f| %>
-  <div class="car-bookings-field-wrap">
-    <%= f.text_field :car, value: params[:car], placeholder: "Марка авто или гос. номер", class: "car-bookings-search-field" %>
-  </div>
+    <div class="car-bookings-field-wrap">
+      <%= f.text_field :car, value: params[:car], placeholder: "Марка авто или гос. номер", class: "car-bookings-search-field" %>
+    </div>
 
-  <div class="car-bookings-field-wrap">
-    <%= f.datetime_field :date_from, value: @date_from, class: "car-bookings-search-field", value: @date_from %>
-  </div>
+    <div class="car-bookings-field-wrap">
+      <%= f.select :city_id, options_for_select(City.all.map { |cp| [cp.title, cp.id] }, params[:city_id]), {include_blank: true}, class: "form-select" %>
+    </div>
 
-  <div class="car-bookings-field-wrap">
-    <%= f.datetime_field :date_to, value: @date_to, class: "car-bookings-search-field", value: @date_to %>
-  </div>
+    <div class="car-bookings-field-wrap">
+      <%= f.datetime_field :date_from, value: @date_from, class: "car-bookings-search-field", value: @date_from %>
+    </div>
 
-  <%= f.submit "Search", class: "car-bookings-search-submit" %>
+    <div class="car-bookings-field-wrap">
+      <%= f.datetime_field :date_to, value: @date_to, class: "car-bookings-search-field", value: @date_to %>
+    </div>
+
+    <%= f.submit "Search", class: "car-bookings-search-submit" %>
   <% end %>
 
   <%= render 'cars_result' %>
