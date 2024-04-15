@@ -113,17 +113,28 @@ class Car < ApplicationRecord
   end
 
   def offer_price(plan, days_count)
-    prices = offers.where(title: plan, published: true).last&.prices
-    return if prices.blank?
+    offer = offers.find_by(title: plan, published: true)
+    return if offer.blank?
 
-    sales = prices.reduce({}) do |memo, (range, price)|
-      from = range.split("..").first.to_i
-      memo[from] = price
+    price_for_rent_period(offer, days_count).to_i
+  end
 
-      memo
+  def string_range_to_range(string_range)
+    Range.new(*string_range.split("..").map(&:to_i))
+  end
+
+  def price_string_to_decimal(price_string)
+    BigDecimal(price_string.to_s.gsub(/[^0-9,.]/, ""))
+  end
+
+  def price_for_rent_period(offer, days_count)
+    needed_range = offer.prices.keys.detect { |range| string_range_to_range(range).cover?(days_count) }
+
+    if needed_range
+      price_string_to_decimal(offer.prices[needed_range])
+    else
+      nearest_range = prices.keys.min_by { |range| (range.max - days_count).abs }
+      price_string_to_decimal(prices[nearest_range])
     end
-
-    applicable_price = sales.keys.sort.reverse.find { |day| days_count >= day }
-    sales[applicable_price]
   end
 end
