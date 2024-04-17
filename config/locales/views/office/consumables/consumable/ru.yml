@@ -1,0 +1,7 @@
+ru:
+  office:
+    consumables:
+      consumable:
+        go: "Перейти"
+        delete: "Удалить"
+        sure?: "Вы уверены?"

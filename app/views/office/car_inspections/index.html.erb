@@ -4,6 +4,11 @@
     <span class="text-secondary small fs-5 font-monospace"><%= @car.mark_title %></span>
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
+  <div>
+    <%= link_to office_car_park_path(@car_park), class: "base-button base-button--info base-button--sm" do %>
+      <%= t(".back") %>
+    <% end %>
+  </div>
 </div>
 
 

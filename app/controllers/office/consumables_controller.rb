@@ -28,6 +28,7 @@ module Office
         end
       in Failure[error_code, errors]
         @consumable = @car.consumables.new(consumable_params)
+        @errors = errors
         render :new
       end
     end

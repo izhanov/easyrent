@@ -3,4 +3,6 @@ en:
     consumable_logs:
       consumable_log:
         edit: "Edit"
-        destroy: "Delete"
+        delete: "Delete"
+        go: "Go"
+        sure?: "Are you sure?"

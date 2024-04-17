@@ -3,4 +3,6 @@ ru:
     consumable_logs:
       consumable_log:
         edit: "Редактировать"
-        destroy: "Удалить"
+        delete: "Удалить"
+        go: "Перейти"
+        sure?: "Вы уверены?"

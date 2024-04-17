@@ -4,3 +4,4 @@ en:
       index:
         title: "Car inspections"
         new_car_inspection: "New car inspection"
+        back: "Back"

@@ -1,57 +1,6 @@
 <nav class="car-page-sidebar">
   <ul class="car-page-sidebar__list">
-    <li>
-      <%= active_link_to office_car_park_car_path(car_park, car), class: "car-page-sidebar__item", active: :exact, class_active: "car-page-sidebar__item--active" do %>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clip-path="url(#clip0_149_117100)">
-              <path
-                d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z"
-                stroke="#13171B"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M11.625 12C11.8321 12 12 11.8321 12 11.625C12 11.4179 11.8321 11.25 11.625 11.25C11.4179 11.25 11.25 11.4179 11.25 11.625C11.25 11.8321 11.4179 12 11.625 12Z"
-                fill="#13171B"
-                stroke="#13171B"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M6.375 6.75C6.5821 6.75 6.75 6.5821 6.75 6.375C6.75 6.16789 6.5821 6 6.375 6C6.16789 6 6 6.16789 6 6.375C6 6.5821 6.16789 6.75 6.375 6.75Z"
-                fill="#13171B"
-                stroke="#13171B"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M12 6L6 12"
-                stroke="#13171B"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_149_117100">
-                <rect width="18" height="18" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-          <%= t(".offers") %>
-      <% end %>
-    </li>
-    <li>
-      <%= active_link_to office_car_park_car_photos_path(car_park, car), class: "car-page-sidebar__item", active: :exact, class_active: "car-page-sidebar__item--active" do %>
+    <%= active_link_to office_car_park_car_path(car_park, car), class: "car-page-sidebar__item", active: :exact, class_active: "car-page-sidebar__item--active" do %>
         <svg
           width="18"
           height="18"
@@ -59,172 +8,223 @@
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M15.75 2.7V15.3C15.75 15.5485 15.5485 15.75 15.3 15.75H2.7C2.45147 15.75 2.25 15.5485 2.25 15.3V2.7C2.25 2.45147 2.45147 2.25 2.7 2.25H15.3C15.5485 2.25 15.75 2.45147 15.75 2.7Z"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M2.25 12L7.5 9.75L15.75 13.5"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M12 7.5C11.1716 7.5 10.5 6.82843 10.5 6C10.5 5.17157 11.1716 4.5 12 4.5C12.8284 4.5 13.5 5.17157 13.5 6C13.5 6.82843 12.8284 7.5 12 7.5Z"
-            stroke="white"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
+          <g clip-path="url(#clip0_149_117100)">
+            <path
+              d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z"
+              stroke="#13171B"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M11.625 12C11.8321 12 12 11.8321 12 11.625C12 11.4179 11.8321 11.25 11.625 11.25C11.4179 11.25 11.25 11.4179 11.25 11.625C11.25 11.8321 11.4179 12 11.625 12Z"
+              fill="#13171B"
+              stroke="#13171B"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.375 6.75C6.5821 6.75 6.75 6.5821 6.75 6.375C6.75 6.16789 6.5821 6 6.375 6C6.16789 6 6 6.16789 6 6.375C6 6.5821 6.16789 6.75 6.375 6.75Z"
+              fill="#13171B"
+              stroke="#13171B"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 6L6 12"
+              stroke="#13171B"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_149_117100">
+              <rect width="18" height="18" fill="white" />
+            </clipPath>
+          </defs>
         </svg>
+      <li>
+        <%= t(".offers") %>
+      </li>
+    <% end %>
+    <%= active_link_to office_car_park_car_photos_path(car_park, car), class: "car-page-sidebar__item", active: :exact, class_active: "car-page-sidebar__item--active" do %>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.75 2.7V15.3C15.75 15.5485 15.5485 15.75 15.3 15.75H2.7C2.45147 15.75 2.25 15.5485 2.25 15.3V2.7C2.25 2.45147 2.45147 2.25 2.7 2.25H15.3C15.5485 2.25 15.75 2.45147 15.75 2.7Z"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M2.25 12L7.5 9.75L15.75 13.5"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M12 7.5C11.1716 7.5 10.5 6.82843 10.5 6C10.5 5.17157 11.1716 4.5 12 4.5C12.8284 4.5 13.5 5.17157 13.5 6C13.5 6.82843 12.8284 7.5 12 7.5Z"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <li>
         <%= t(".photos") %>
-      <% end %>
-    </li>
-    <li>
-      <%= active_link_to office_car_park_car_car_insurances_path(car_park, car), class: "car-page-sidebar__item", active: :exact, class_active: "car-page-sidebar__item--active" do %>
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12.375 3.75H15.3C15.5485 3.75 15.75 3.95147 15.75 4.2V15.3C15.75 15.5485 15.5485 15.75 15.3 15.75H2.7C2.45147 15.75 2.25 15.5485 2.25 15.3V4.2C2.25 3.95147 2.45147 3.75 2.7 3.75H5.625"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M12.2085 4.7466L12.3623 3.82398C12.3704 3.775 12.3704 3.725 12.3623 3.67602L12.2085 2.7534C12.088 2.03012 11.4622 1.5 10.7289 1.5H7.27034C6.53708 1.5 5.9113 2.03012 5.79075 2.7534L5.63698 3.67602C5.62882 3.725 5.62882 3.775 5.63698 3.82398L5.79075 4.7466C5.9113 5.46988 6.53708 6 7.27034 6H10.7289C11.4622 6 12.088 5.46988 12.2085 4.7466Z"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M9 6L8.25 4.125"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M5.25 12.75H12.75"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+      </li>
+    <% end %>
+    <%= active_link_to office_car_park_car_car_insurances_path(car_park, car), class: "car-page-sidebar__item", active: :exact, class_active: "car-page-sidebar__item--active" do %>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.375 3.75H15.3C15.5485 3.75 15.75 3.95147 15.75 4.2V15.3C15.75 15.5485 15.5485 15.75 15.3 15.75H2.7C2.45147 15.75 2.25 15.5485 2.25 15.3V4.2C2.25 3.95147 2.45147 3.75 2.7 3.75H5.625"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M12.2085 4.7466L12.3623 3.82398C12.3704 3.775 12.3704 3.725 12.3623 3.67602L12.2085 2.7534C12.088 2.03012 11.4622 1.5 10.7289 1.5H7.27034C6.53708 1.5 5.9113 2.03012 5.79075 2.7534L5.63698 3.67602C5.62882 3.725 5.62882 3.775 5.63698 3.82398L5.79075 4.7466C5.9113 5.46988 6.53708 6 7.27034 6H10.7289C11.4622 6 12.088 5.46988 12.2085 4.7466Z"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M9 6L8.25 4.125"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M5.25 12.75H12.75"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <li>
         <%= t(".car_insurances") %>
-      <% end %>
-    </li>
-    <li>
-      <%= active_link_to office_car_park_car_car_inspections_path(car_park, car), class: "car-page-sidebar__item", active: :exact, class_active: "car-page-sidebar__item--active" do %>
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15.75 9V7.5C15.75 5.42893 14.071 3.75 12 3.75H6C3.92893 3.75 2.25 5.42893 2.25 7.5C2.25 9.57105 3.92893 11.25 6 11.25H9"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M15.0931 14.3389C15.499 13.9318 15.75 13.3703 15.75 12.75C15.75 11.5073 14.7427 10.5 13.5 10.5C12.2573 10.5 11.25 11.5073 11.25 12.75C11.25 13.9927 12.2573 15 13.5 15C14.1224 15 14.6857 14.7472 15.0931 14.3389ZM15.0931 14.3389L16.5 15.75"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+      </li>
+    <% end %>
+    <%= active_link_to office_car_park_car_car_inspections_path(car_park, car), class: "car-page-sidebar__item", active: :exact, class_active: "car-page-sidebar__item--active" do %>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.75 9V7.5C15.75 5.42893 14.071 3.75 12 3.75H6C3.92893 3.75 2.25 5.42893 2.25 7.5C2.25 9.57105 3.92893 11.25 6 11.25H9"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M15.0931 14.3389C15.499 13.9318 15.75 13.3703 15.75 12.75C15.75 11.5073 14.7427 10.5 13.5 10.5C12.2573 10.5 11.25 11.5073 11.25 12.75C11.25 13.9927 12.2573 15 13.5 15C14.1224 15 14.6857 14.7472 15.0931 14.3389ZM15.0931 14.3389L16.5 15.75"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <li>
         <%= t(".car_inspections") %>
-      <% end %>
-    </li>
-    <li>
-      <%= active_link_to office_car_park_car_consumables_path(car_park, car), class: "car-page-sidebar__item" do %>
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M3.75 9V13.5C3.75 13.5 3.75 15.75 9 15.75C14.25 15.75 14.25 13.5 14.25 13.5V9"
-            stroke="black"
-            stroke-width="1.5"
-          />
-          <path
-            d="M3.75 4.5V9C3.75 9 3.75 11.25 9 11.25C14.25 11.25 14.25 9 14.25 9V4.5"
-            stroke="black"
-            stroke-width="1.5"
-          />
-          <path
-            d="M9 2.25C14.25 2.25 14.25 4.5 14.25 4.5C14.25 4.5 14.25 6.75 9 6.75C3.75 6.75 3.75 4.5 3.75 4.5C3.75 4.5 3.75 2.25 9 2.25Z"
-            stroke="black"
-            stroke-width="1.5"
-          />
-        </svg>
+      </li>
+    <% end %>
+    <%= active_link_to office_car_park_car_consumables_path(car_park, car), class: "car-page-sidebar__item", active: /(\/consumables|\/consumables\/[0-9])/, class_active: "car-page-sidebar__item--active" do %>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3.75 9V13.5C3.75 13.5 3.75 15.75 9 15.75C14.25 15.75 14.25 13.5 14.25 13.5V9"
+          stroke="black"
+          stroke-width="1.5"
+        />
+        <path
+          d="M3.75 4.5V9C3.75 9 3.75 11.25 9 11.25C14.25 11.25 14.25 9 14.25 9V4.5"
+          stroke="black"
+          stroke-width="1.5"
+        />
+        <path
+          d="M9 2.25C14.25 2.25 14.25 4.5 14.25 4.5C14.25 4.5 14.25 6.75 9 6.75C3.75 6.75 3.75 4.5 3.75 4.5C3.75 4.5 3.75 2.25 9 2.25Z"
+          stroke="black"
+          stroke-width="1.5"
+        />
+      </svg>
+      <li>
         <%= t(".consumables") %>
-      <% end %>
-    </li>
+      </li>
+    <% end %>
   </ul>
   <ul class="car-page-sidebar__list">
-    <li>
-      <%= active_link_to edit_office_car_park_car_path(car_park, car), class: "car-page-sidebar__item" do %>
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15.2558 2.74416C14.9394 2.42775 14.5102 2.25 14.0627 2.25C13.6152 2.25 13.186 2.42775 12.8695 2.74416L12.1258 3.48795L14.5121 5.87424L15.2558 5.13045C15.5722 4.81399 15.75 4.38481 15.75 3.9373C15.75 3.4898 15.5722 3.06062 15.2558 2.74416ZM13.83 6.55631L11.4437 4.17002L3.63295 11.9808C3.23621 12.3773 2.94457 12.8665 2.78438 13.404L2.27009 15.1301C2.24526 15.2134 2.24341 15.3019 2.26473 15.3861C2.28605 15.4704 2.32976 15.5473 2.39122 15.6088C2.45268 15.6702 2.52961 15.7139 2.61387 15.7353C2.69813 15.7566 2.78659 15.7547 2.86988 15.7299L4.59596 15.2156C5.13353 15.0554 5.6227 14.7638 6.01924 14.367L13.83 6.55631Z"
-            fill="#13171B"
-          />
-        </svg>
+    <%= active_link_to edit_office_car_park_car_path(car_park, car), class: "car-page-sidebar__item" do %>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.2558 2.74416C14.9394 2.42775 14.5102 2.25 14.0627 2.25C13.6152 2.25 13.186 2.42775 12.8695 2.74416L12.1258 3.48795L14.5121 5.87424L15.2558 5.13045C15.5722 4.81399 15.75 4.38481 15.75 3.9373C15.75 3.4898 15.5722 3.06062 15.2558 2.74416ZM13.83 6.55631L11.4437 4.17002L3.63295 11.9808C3.23621 12.3773 2.94457 12.8665 2.78438 13.404L2.27009 15.1301C2.24526 15.2134 2.24341 15.3019 2.26473 15.3861C2.28605 15.4704 2.32976 15.5473 2.39122 15.6088C2.45268 15.6702 2.52961 15.7139 2.61387 15.7353C2.69813 15.7566 2.78659 15.7547 2.86988 15.7299L4.59596 15.2156C5.13353 15.0554 5.6227 14.7638 6.01924 14.367L13.83 6.55631Z"
+          fill="#13171B"
+        />
+      </svg>
+      <li>
         <%= t(".edit") %>
-      <% end %>
-    </li>
-    <li>
-      <%= active_link_to office_car_park_car_path(car_park, car), class: "car-page-sidebar__item", data: {turbo_method: :delete, turbo_confirm: t(".sure?")} do %>
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M15 6.75L13.5037 15.2597C13.3777 15.977 12.7546 16.5 12.0265 16.5H5.97355C5.24534 16.5 4.62232 15.977 4.49622 15.2597L3 6.75"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M15.75 4.5H11.5312M11.5312 4.5V3C11.5312 2.17157 10.8597 1.5 10.0312 1.5H7.96875C7.14032 1.5 6.46875 2.17157 6.46875 3V4.5M11.5312 4.5H6.46875M2.25 4.5H6.46875"
-            stroke="black"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+      </li>
+    <% end %>
+    <%= active_link_to office_car_park_car_path(car_park, car), class: "car-page-sidebar__item", data: {turbo_method: :delete, turbo_confirm: t(".sure?")} do %>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15 6.75L13.5037 15.2597C13.3777 15.977 12.7546 16.5 12.0265 16.5H5.97355C5.24534 16.5 4.62232 15.977 4.49622 15.2597L3 6.75"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M15.75 4.5H11.5312M11.5312 4.5V3C11.5312 2.17157 10.8597 1.5 10.0312 1.5H7.96875C7.14032 1.5 6.46875 2.17157 6.46875 3V4.5M11.5312 4.5H6.46875M2.25 4.5H6.46875"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <li>
         <%= t(".destroy") %>
-      <% end %>
-    </li>
+      </li>
+    <% end %>
   </ul>
 </nav>

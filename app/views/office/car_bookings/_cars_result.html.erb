@@ -19,7 +19,7 @@
         </td>
 
         <td scope="row">
-          <%= car.mark_title %>
+          <%= link_to car.mark_title, office_car_park_car_path(car.owner, car), class: "link link-dark" %>
         </td>
 
         <td>

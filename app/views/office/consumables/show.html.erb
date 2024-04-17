@@ -5,32 +5,43 @@
     <span class="text-secondary small fs-5 font-monospace"><%= @car.plate_number %></span>
   </h1>
   <div>
-    <%= link_to office_car_park_car_consumables_path(@car_park, @car), class: "btn btn-sm btn-outline-primary" do %>
-      <i class="bi bi-box-arrow-left"></i>
+    <%= link_to office_car_park_car_consumables_path(@car_park, @car), class: "base-button base-button--info base-button--sm" do %>
       <%= t(".back") %>
-    <% end %>
-    <%= link_to edit_office_car_park_car_consumable_path(@car_park, @car, @consumable), class: "btn btn-sm btn-warning", data: {frame_target: "_top"} do %>
-      <i class="bi bi-pencil-square"></i>
-      <%= t(".edit") %>
-    <% end %>
-    <%= link_to office_car_park_car_consumable_path(@car_park, @car, @consumable), class: "btn btn-sm btn-danger", data: {turbo_confirm: t(".sure?"), turbo_method: :delete} do %>
-      <i class="bi bi-trash"></i>
-      <%= t(".destroy") %>
     <% end %>
   </div>
 </div>
 
 <div class="container">
-  <div class="d-flex justify-content-end my-2">
-    <%= link_to new_office_car_park_car_consumable_consumable_log_path(@car.owner, @car, @consumable), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(ConsumableLog.new)} do %>
-      <i class="bi bi-journal-plus"></i>
-      <%= t(".new_consumable_log") %>
-    <% end %>
+  <div class="car-page-layout">
+    <div class="consumables-page">
+      <%= turbo_frame_tag "consumable_logs", class: "consumables-page__list" do %>
+        <%= render @consumable.consumable_logs %>
+
+        <%= turbo_frame_tag ConsumableLog.new do %>
+          <%= link_to new_office_car_park_car_consumable_consumable_log_path(@car_park, @car, @consumable), class: "status-card-placeholder" do %>
+            <div class="status-card-placeholder__inner">
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M17 0.875C8.09441 0.875 0.875 8.09441 0.875 17C0.875 25.9056 8.09441 33.125 17 33.125C25.9056 33.125 33.125 25.9056 33.125 17C33.125 8.09441 25.9056 0.875 17 0.875ZM18.125 11C18.125 10.3787 17.6213 9.875 17 9.875C16.3787 9.875 15.875 10.3787 15.875 11V15.875H11C10.3787 15.875 9.875 16.3787 9.875 17C9.875 17.6213 10.3787 18.125 11 18.125H15.875V23C15.875 23.6213 16.3787 24.125 17 24.125C17.6213 24.125 18.125 23.6213 18.125 23V18.125H23C23.6213 18.125 24.125 17.6213 24.125 17C24.125 16.3787 23.6213 15.875 23 15.875H18.125V11Z"
+                  fill="#9EA2AD"
+                />
+              </svg>
+              <span>
+                Добавить запись
+              </span>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <%= render "office/cars/sidebar", car_park: @car_park, car: @car %>
   </div>
-
-  <%= turbo_frame_tag ConsumableLog.new %>
-
-  <%= turbo_frame_tag "consumable_logs" do %>
-    <%= render @consumable.consumable_logs.order(id: :desc) %>
-  <% end %>
 </div>

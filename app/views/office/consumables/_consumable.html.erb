@@ -1,3 +1,32 @@
-<%= turbo_frame_tag consumable, class: "list-group-item" do %>
-  <%= link_to consumable.title_ru, office_car_park_car_consumable_path(@car_park, @car, consumable), class: "link-dark", data: {turbo_frame: "_top"} %>
+<%= turbo_frame_tag consumable, class: "consumable-card" do %>
+  <div class="dropdown options-dropdown consumable-card__menu">
+    <button
+      class="options-dropdown__button"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <%= vite_image_tag("images/office/menu-dots.svg") %>
+    </button>
+    <ul
+      class="dropdown-menu"
+      aria-labelledby="dropdownMenuButton1"
+    >
+      <%= link_to office_car_park_car_consumable_path(@car_park, @car, consumable), data: {turbo_frame: "_top"}, class: "link link-dark text-decoration-none" do %>
+        <li class="dropdown-item">
+          <%= t(".go") %>
+        </li>
+      <% end %>
+      <%= link_to office_car_park_car_consumable_path(@car_park, @car, consumable), data: {turbo_method: :delete, turbo_confirm: t(".sure?")}, class: "link link-dark text-decoration-none" do %>
+        <li class="dropdown-item">
+          <%= t(".delete") %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="consumable-card__header">
+    <p class="consumable-card__title"><%= link_to consumable.title_ru, office_car_park_car_consumable_path(@car_park, @car, consumable), class: "link link-dark", data: {turbo_frame: "_top" }%></p>
+    <span class="consumable-card__subtitle"><%= consumable.description %></span>
+  </div>
 <% end %>

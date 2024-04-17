@@ -1,0 +1,7 @@
+en:
+  office:
+    consumables:
+      consumable:
+        go: "Go"
+        delete: "Delete"
+        sure?: "Are you sure?"

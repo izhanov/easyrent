@@ -1,28 +1,31 @@
 <%= form_with model: [:office, owner, car, consumable], html: {class: "my-2"} do |f| %>
   <%= f.hidden_field :car_id, value: car.id %>
 
-  <div class="input-group">
-    <%= f.label :title, class: "input-group-text" %>
-    <%= f.select :title, options_for_select(Consumable::TITLES.map { |title| [localize_consumable_title(title), title]}, selected: f.object.title), {include_blank: false}, class: "form-select" %>
+  <div class="base-input">
+    <%= f.label :title %>
+    <%= f.select :title, options_for_select(Consumable::TITLES.map { |title| [localize_consumable_title(title), title]}, selected: f.object.title), {include_blank: false} %>
     <%= error_field(@errors, :title) %>
   </div>
 
-  <div class="input-group mt-3">
-    <%= f.label :lifetime, class: "input-group-text" %>
-    <%= f.number_field :lifetime, class: "form-control" %>
+  <div class="base-input mt-3">
+    <%= f.label :lifetime %>
+    <%= f.number_field :lifetime %>
     <%= error_field(@errors, :lifetime) %>
   </div>
 
-  <div class="input-group mt-3">
-    <%= f.label :description, class: "input-group-text" %>
+  <div class="base-input mt-3">
+    <%= f.label :description %>
     <%= f.text_area :description, class: "form-control" %>
     <%= error_field(@errors, :description) %>
   </div>
 
-  <%= f.submit "Сохранить", class: "btn btn-sm btn-success mt-3" %>
-  <% if consumable.persisted? %>
-    <%= link_to "Отмена", office_car_park_car_consumable_path(owner, car, consumable), class: "btn btn-sm btn-secondary mt-3" %>
-  <% else %>
-    <%= link_to "Отмена", office_car_park_car_consumables_path(owner, car), class: "btn btn-sm btn-secondary mt-3" %>
-  <% end %>
+  <div class="mt-3">
+    <%= f.submit t(".save"), class: "base-button base-button--green base-button--sm" %>
+
+    <% if consumable.persisted? %>
+      <%= link_to t(".cancel"), office_car_park_car_consumable_path(owner, car, consumable), class: "base-button base-button--grey base-button--sm mt-3" %>
+    <% else %>
+      <%= link_to t(".cancel"), office_car_park_car_consumables_path(owner, car), class: "base-button base-button--grey base-button--sm mt-3" %>
+    <% end %>
+  </div>
 <% end %>

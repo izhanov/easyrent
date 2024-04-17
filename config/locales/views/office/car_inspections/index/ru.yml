@@ -4,3 +4,4 @@ ru:
       index:
         title: "Техосмотры"
         new_car_inspection: "Новый техосмотр"
+        back: "Назад"

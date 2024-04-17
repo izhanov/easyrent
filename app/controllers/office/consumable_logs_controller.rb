@@ -22,6 +22,7 @@ module Office
         end
       in Failure[error_code, errors]
         @consumable_log = @consumable.consumable_logs.new(consumable_log_params)
+        @errors = errors
         render :new
       end
     end

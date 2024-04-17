@@ -4,3 +4,4 @@ en:
       index:
         title: "Consumables"
         new_consumable: "New consumable"
+        back: "Back"
