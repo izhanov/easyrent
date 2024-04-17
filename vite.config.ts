@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [
     RubyPlugin(),
     StimulusHMR(),
-    FullReload(['app/views/**/*.erb']),
+    FullReload(['app/views/**/*.erb', 'app/javascript/**/*.scss']),
     ckeditor5({theme: require.resolve( '@ckeditor/ckeditor5-theme-lark' )})
   ]
 })

@@ -13,7 +13,7 @@ module Operations
         private
 
         def validate(params)
-          params = normalize_pledge_amount(params)
+          params = normalize_prices(params)
           validation = Validations::Office::Offers::Update.new.call(params)
           validation.to_monad
             .or { |result| Failure[:validation_error, result.errors.to_h] }
@@ -24,9 +24,11 @@ module Operations
           Success(offer.reload)
         end
 
-        def normalize_pledge_amount(params)
-          if params.key?(:pledge_amount)
-            params[:pledge_amount] = params[:pledge_amount].to_s.gsub(/[^0-9]/, "").to_f
+        def normalize_prices(params)
+          if params.key?(:prices)
+            params[:prices] = params[:prices].each_with_object({}) do |(range, price), prices|
+              prices[range] = BigDecimal(price.gsub(/[^0-9,.]/, "")).to_f
+            end
           end
           params
         end

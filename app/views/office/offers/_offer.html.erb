@@ -17,7 +17,7 @@
             <div class="car-tarrifs-card__list-item-line">
               <hr />
             </div>
-            <p><%= price %></p>
+            <p><%= price.to_fs(:currency, format: "%n", precision: 0) %></p>
           </li>
         <% end %>
       </ul>

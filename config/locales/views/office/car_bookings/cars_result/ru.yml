@@ -1,0 +1,16 @@
+ru:
+  office:
+    car_bookings:
+      cars_result:
+        book: "Забронировать"
+        table:
+          headers:
+            id: "ID"
+            car: "Автомобиль"
+            plate_number: "Гос. номер"
+            smart_offer: "Тариф Smart"
+            lite_offer: "Тариф Lite"
+            nomad_offer: "Тариф Nomad"
+            over_mileage_price: "Стоимость перепробега"
+
+

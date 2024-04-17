@@ -116,7 +116,7 @@ class Car < ApplicationRecord
     offer = offers.find_by(title: plan, published: true)
     return if offer.blank?
 
-    price_for_rent_period(offer, days_count).to_i
+    price_for_rent_period(offer, days_count).to_fs(:currency, format: "%n", precision: 0)
   end
 
   def string_range_to_range(string_range)

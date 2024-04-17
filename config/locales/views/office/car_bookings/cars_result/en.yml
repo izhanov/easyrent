@@ -1,0 +1,14 @@
+en:
+  office:
+    car_bookings:
+      cars_result:
+        book: "Book"
+        table:
+          headers:
+            id: "ID"
+            car: "Car"
+            plate_number: "Plate number"
+            smart_offer: "Smart offer"
+            lite_offer: "Lite offer"
+            nomad_offer: "Nomad offer"
+            over_mileage_price: "Over mileage price"

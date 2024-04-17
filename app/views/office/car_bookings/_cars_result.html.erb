@@ -1,59 +1,71 @@
-  <div class="car-bookings-search-result">
-    <table class="table car-bookings-results-table">
-      <thead>
-        <tr>
-          <th scope="col">Авто</th>
-          <th scope="col">Гос номер</th>
-          <th scope="col">Тариф Smart</th>
-          <th scope="col">Тариф Lite</th>
-          <th scope="col">Тариф Nomad</th>
-          <th scope="col" colspan=2>Переплата</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%- @cars.each do |car| %>
-          <tr>
-            <td scope="row">
-              <%= car.mark_title %>
-            </td>
+<table class="table table-hover base-table">
+  <thead class="table-light table-bordered">
+    <tr>
+      <th scope="col" class="text-center col-1"><%= t(".table.headers.id") %></th>
+      <th scope="col" class="col-2 text-center"><%= t(".table.headers.car") %></th>
+      <th scope="col" class="col-2 text-center"><%= t(".table.headers.plate_number") %></th>
+      <th scope="col" class="col-2 text-center"><%= t(".table.headers.smart_offer") %></th>
+      <th scope="col" class="col-2 text-center"><%= t(".table.headers.lite_offer") %></th>
+      <th scope="col" class="col-2 text-center"><%= t(".table.headers.nomad_offer") %></th>
+      <th scope="col"><%= t(".table.headers.over_mileage_price") %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @cars.each do |car| %>
+      <tr class="align-middle">
+        <td class="text-center" scope="row">
+          <%= car.id %>
+        </td>
 
-            <td>
-              <%= car.plate_number %>
-            </td>
+        <td scope="row">
+          <%= car.mark_title %>
+        </td>
 
-            <td>
-              <%= car.offer_price("Smart", days_count(@date_from, @date_to)) %>
-              <span>тенге</span>
-              <span>/</span>
-              <span>сутки</span>
-            </td>
+        <td>
+          <%= car.plate_number %>
+        </td>
 
-            <td>
-              <%= car.offer_price("Lite", days_count(@date_from, @date_to)) %>
-              <span>тенге</span>
-              <span>/</span>
-              <span>сутки</span>
-            </td>
+        <td class="text-center">
+          <%= car.offer_price("Smart", days_count(@date_from, @date_to)) %>
+        </td>
 
-            <td>
-              <%= car.offer_price("Nomad", days_count(@date_from, @date_to)) %>
-              <span>тенге</span>
-              <span>/</span>
-              <span>сутки</span>
-            </td>
+        <td class="text-center">
+          <%= car.offer_price("Lite", days_count(@date_from, @date_to)) %>
+        </td>
 
-            <td>
-              <%= car.over_mileage_price.to_i%>
-              <span>тенге</span>
-              <span>1 км</span>
-            </td>
+        <td class="text-center">
+          <%= car.offer_price("Nomad", days_count(@date_from, @date_to)) %>
+        </td>
 
-            <td>
-              <%= link_to "Order", new_office_booking_path(car_park_id: car.owner.id, car_id: car.id, date_from: @date_from, date_to: @date_to) %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+        <td class="text-center">
+          <%= car.over_mileage_price.to_fs(:currency, format: "%n", precision: 0)%>
+        </td>
+
+        <td class="base-table__settings-col">
+          <div class="dropdown options-dropdown">
+            <button
+              class="options-dropdown__button"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <%= vite_image_tag("images/office/menu-dots.svg") %>
+            </button>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuButton1"
+            >
+              <%= link_to new_office_booking_path(car_park_id: car.owner.id, car_id: car.id, date_from: @date_from, date_to: @date_to), class: "link link-dark text-decoration-none" do %>
+                <li class="dropdown-item px-1">
+                  <%= t(".book") %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
