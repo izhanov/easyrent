@@ -2,6 +2,8 @@
 
 module Office
   class CarParksCarsController < BaseController
+    helper CarsHelper
+
     def index
       query = Utils::Typesense::Cars::QueryBuilder.new(**query_params).call
 

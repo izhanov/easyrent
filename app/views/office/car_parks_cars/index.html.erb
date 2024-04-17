@@ -3,34 +3,32 @@
     <%= t(".title") %>
   </h1>
   <div>
-    <%= link_to office_root_path, class: "btn btn-outline-primary btn-sm" do %>
-      <i class="bi bi-box-arrow-left"></i>
+    <%= link_to office_root_path, class: "base-button base-button--info base-button--sm" do %>
       <%= t(".back") %>
     <% end %>
   </div>
 </div>
 
-<div class="container">
-  <div class="container p-3 rounded-3 bg-light my-3">
-    <%= render "search_tab" %>
-  </div>
+<%= render "search_tab" %>
 
-  <table class="table table-striped table-hover">
-    <thead>
+<div class="mt-4">
+  <table class="table table-hover base-table">
+    <thead class="table-light table-bordered">
       <tr>
-        <th><%= t(".table.header.id")%></th>
-        <th><%= t(".table.header.mark")%></th>
-        <th><%= t(".table.header.plate_number")%></th>
-        <th><%= t(".table.header.status")%></th>
-        <th><%= t(".table.header.car_park")%></th>
+        <th scope="col" class="text-center col-1"><%= t(".table.header.id")%></th>
+        <th scope="col" class="text-center col-2"><%= t(".table.header.mark")%></th>
+        <th scope="col" class="text-center col-2"><%= t(".table.header.plate_number")%></th>
+        <th scope="col" class="text-center col-2"><%= t(".table.header.status")%></th>
+        <th scope="col" class="text-center col-2"><%= t(".table.header.car_park")%></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <%= render partial: "office/car_parks_cars/car", collection: @cars %>
     </tbody>
   </table>
+</div>
 
-  <div class="d-flex justify-content-center">
-    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
-  </div>
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>
 </div>

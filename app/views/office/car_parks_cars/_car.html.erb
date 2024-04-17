@@ -1,7 +1,30 @@
-<tr>
-  <td><%= link_to car.id, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
-  <td><%= link_to car.mark_title, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
-  <td><%= link_to car.plate_number, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
-  <td><%= link_to car.status, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
-  <td><%= link_to car.owner.title, office_car_park_car_path(car.owner, car), class: "nav-link" %></td>
+<tr class="align-middle">
+  <td><%= car.id %></td>
+  <td><%= link_to car.mark_title, office_car_park_car_path(car.owner, car), class: "link link-dark" %></td>
+  <td><%= car.plate_number %></td>
+  <td><%= localize_status_type(car.status) %></td>
+  <td><%= car.owner.title %></td>
+  <td class="base-table__settings-col">
+    <div class="dropdown options-dropdown">
+      <button
+        class="options-dropdown__button"
+        type="button"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <%= vite_image_tag("images/office/menu-dots.svg") %>
+      </button>
+      <ul
+        class="dropdown-menu"
+        aria-labelledby="dropdownMenuButton1"
+      >
+        <%= link_to new_office_booking_path(car_park_id: car.owner.id, car_id: car.id, date_from: @date_from, date_to: @date_to), class: "link link-dark text-decoration-none" do %>
+          <li class="dropdown-item px-1">
+            <%= t(".go") %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </td>
 </tr>
