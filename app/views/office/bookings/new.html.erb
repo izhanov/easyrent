@@ -1,233 +1,241 @@
 <div class="d-lg-flex justify-content-between align-items-center">
   <h1>
-    Новая бронь
+    <%= t(".title") %>
   </h1>
-
-  <div class="fs-4">
-    <strong>Итого:</strong>
-    <span class="badge bg-primary" id='total-amount'><%= 0.to_fs(:currency, locale: :kk) %></span>
-  </div>
-
   <div>
-    <%= link_to office_bookings_path, class: "btn btn-sm btn-outline-primary" do %>
-      <i class="bi bi-box-arrow-left"></i>
+    <%= link_to office_bookings_path, class: "base-button base-button--info base-button--sm" do %>
+      <%= t(".back") %>
     <% end %>
   </div>
 </div>
 
+<main class="booking-create container">
+  <div class="mt-4 booking-top sticky-top">
+    <div class="fs-4">
+      <strong><%= t(".total_amount") %></strong>
+      <span id='total-amount' class="badge bg-primary"><%= 0.to_fs(:currency, locale: :kk) %></span>
+    </div>
+  </div>
 
-<%= form_with model: [:office, @booking], html: {data: {controller: "bookings--form bookings--error-handler", action: "bookings--form:error->bookings--error-handler#show"}} do |f| %>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="alert alert-danger alert-dismissible fade d-none" role="alert" data-bookings--error-handler-target="errorMessage">
-          <div data-bookings--error-handler-target="booking"></div>
-          <button type="button" class="btn-close" data-action="bookings--error-handler#closeErrorMessage" aria-label="Close"></button>
+  <%= form_with model: [:office, @booking], html: {class: "booking-create__layout mt-3", data: {controller: "bookings--form bookings--error-handler", action: "bookings--form:error->bookings--error-handler#show"}} do |f| %>
+    <div class="booking-create__main">
+      <div class="booking-create__block">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="alert alert-danger alert-dismissible fade d-none" role="alert" data-bookings--error-handler-target="errorMessage">
+                <div data-bookings--error-handler-target="booking"></div>
+                <button type="button" class="btn-close" data-action="bookings--error-handler#closeErrorMessage" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <div
-    class="row d-flex justify-content-between align-items-center mb-4"
-    data-controller="bookings--car-park-select"
-    data-bookings--car-park-select-urls-value=<%=current_office_user.car_parks.each_with_object({}) { |car_park, result| result[car_park.id] = search_office_car_park_cars_path(car_park.id) }.to_json %> >
-    <div class="col">
-      <div class="input-group">
-        <%= label_tag :car_park_id, "Aвтопарк", class: "input-group-text"%>
-        <%= select_tag :car_park_id, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }, selected: f.object.car&.owner&.id || params[:car_park_id]), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices bookings--car-park-select#resetTotalPrice"} %>
-      </div>
-    </div>
-    <div
-      class="col"
-      data-controller="autocomplete"
-      data-autocomplete-url-value="">
-      <%- car_title = @car.new_record? ? nil : "#{@car.mark_title} #{@car.plate_number}" %>
-      <div class="col">
-        <%= text_field_tag :car, car_title, type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
-        <%= f.hidden_field :car_id, value: @car.id, data: { "autocomplete-target": "hidden", "bookings--form-target": "carId" }%>
-      </div>
-      <ul class="list-group" data-autocomplete-target="results"></ul>
-    </div>
-
-    <% #Insert offers to select fires via JS after selecting a car %>
-    <% # see app/javascript/src/office/js/bookings/new/insert_offer.js %>
-    <%= turbo_frame_tag "offers_to_select" %>
-
-    <% # Insert new offer from offers select partial link via Turbo %>
-    <%= turbo_frame_tag Offer.new %>
-  </div>
-
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div
-      class="col"
-      data-controller="bookings--client-autocomplete bookings--upsert-client"
-      data-bookings--client-autocomplete-url-value=<%= search_office_clients_path %>
-    >
-      <div class="col input-group">
-        <%= label_tag :client, "Клиент", class: "input-group-text"%>
-        <%= text_field_tag :client, @client, type: "search", placeholder: "Введите фамилию или ИИН, номер паспорта клиента", class: "form-control", data: {"bookings--client-autocomplete-target":"input", "bookings--error-handler-target": "clientId"} %>
-        <%= f.hidden_field :client_id, data: { "bookings--client-autocomplete-target": "hidden" }%>
-      </div>
-      <ul class="list-group" data-bookings--client-autocomplete-target="results"></ul>
-    </div>
-    <div class="col">
-      <%= link_to new_office_client_path, class: "btn btn-sm btn-primary", data: {turbo: true, turbo_frame: dom_id(Client.new) } do %>
-        <i class="bi bi-person-plus"></i>
-      <% end %>
-    </div>
-
-    <% # Insert new client from client autocomplete partial link via Turbo %>
-    <%= turbo_frame_tag dom_id(Client.new) %>
-
-    <% # Insert created client credential via JS %>
-    <% # see app/javascript/src/office/js/bookings/new/insert_client.js %>
-    <%= turbo_frame_tag "created_client_credential" %>
-  </div>
-
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div class="col">
-      <div class="input-group">
-        <%= f.label :starts_at, class: "input-group-text"%>
-        <%= f.datetime_field :starts_at, value: params[:date_from]&.to_datetime, class: "form-control", data: {"bookings--error-handler-target": "startsAt"} %>
-      </div>
-    </div>
-    <div class="col">
-      <div class="input-group">
-        <%= f.label :ends_at, class: "input-group-text"%>
-        <%= f.datetime_field :ends_at, value: params[:date_to]&.to_datetime, class: "form-control", data: {"bookings--error-handler-target": "endsAt"} %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div class="col">
-      <div class="input-group">
-        <%= f.label :pickup_location, class: "input-group-text"%>
-        <%= f.text_field :pickup_location, class: "form-control", data: {"bookings--error-handler-target": "pickupLocation"} %>
-      </div>
-    </div>
-    <div class="col">
-      <div class="input-group">
-        <%= f.label :drop_off_location, class: "input-group-text"%>
-        <%= f.text_field :drop_off_location, class: "form-control", data: {"bookings--error-handler-target": "dropOffLocation"} %>
-      </div>
-    </div>
-  </div>
-
-  <% # checkboxes with car park additional services %>
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div class="col-lg-6 col-12">
-      <%= turbo_frame_tag "additional_services_checkboxes" do %>
-        <%= f.fields_for :services do |service_form| %>
-          <% @services ||= @car_park&.additional_services %>
-          <% if @services.present? && @services.any? %>
-            <% @services.each do |service| %>
-              <% if AdditionalService::ANTE_FACTUM_SERVICES.include?(service.title) %>
-                <div class="col">
-                  <div class="form-check">
-                    <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
-                    <%= service_form.label service.title_ru.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
-                  </div>
+        <div class="booking-create__group">
+          <p class="booking-create__group-title">Общее</p>
+          <div class="car-short booking-create__car">
+            <div
+              data-controller="bookings--car-park-select"
+              data-bookings--car-park-select-urls-value=<%=current_office_user.car_parks.each_with_object({}) { |car_park, result| result[car_park.id] = search_office_car_park_cars_path(car_park.id) }.to_json %> >
+              <div class="col">
+                <div class="base-input">
+                  <%= label_tag :car_park_id, "Aвтопарк" %>
+                  <%= select_tag :car_park_id, options_for_select(current_office_user.car_parks.all.map { |car| [car.title, car.id] }, selected: f.object.car&.owner&.id || params[:car_park_id]), class: "form-select", data: {"bookings--car-park-select-target": "select", action: "bookings--car-park-select#changeUrl bookings--car-park-select#changeServices bookings--car-park-select#resetTotalPrice"} %>
                 </div>
-              <% end %>
-            <% end %>
-          <%end %>
+              </div>
+
+              <div
+                class="col mt-3"
+                data-controller="autocomplete"
+                data-autocomplete-url-value="">
+                <%- car_title = @car.new_record? ? nil : "#{@car.mark_title} #{@car.plate_number}" %>
+                <div class="base-input">
+                  <%= text_field_tag :car, car_title, type: "search", placeholder: "Введите номер автомобиля", class: "form-control", data: {"autocomplete-target":"input", "bookings--form-target": "carTitle", "bookings--error-handler-target": "carId", action: "bookings--form:removeError->bookings--error-handler#remove"} %>
+                  <%= f.hidden_field :car_id, value: @car.id, data: { "autocomplete-target": "hidden", "bookings--form-target": "carId" }%>
+                </div>
+                <ul class="list-group" data-autocomplete-target="results"></ul>
+              </div>
+
+              <ul class="booking-create__input-group">
+                <%= turbo_frame_tag "offers_to_select" %>
+
+                <li class="booking-create__item">
+                  <span class="booking-create__item-name">Дата начала:</span>
+                  <%= f.label :starts_at, class: "base-datepicker" do %>
+                    <div class="base-datepicker__info">
+                      <%= f.datetime_field :starts_at, value: params[:date_from]&.to_datetime, class: "form-control", data: {"bookings--error-handler-target": "startsAt"} %>
+                    </div>
+                  <% end %>
+                </li>
+                <li class="booking-create__item">
+                  <span class="booking-create__item-name">Дата окончания:</span>
+                  <%= f.label :ends_at, class: "base-datepicker" do %>
+                    <div class="base-datepicker__info">
+                      <%= f.datetime_field :ends_at, value: params[:date_to]&.to_datetime, class: "form-control", data: {"bookings--error-handler-target": "endsAt"} %>
+                    </div>
+                  <% end %>
+                </li>
+
+                <li class="booking-create__item">
+                  <%= f.label :pickup_location, class: "booking-create__item-name"%>
+                  <div class="base-input base-input--sm">
+                    <%= f.text_field :pickup_location, placeholder: "введите адрес", data: {"bookings--error-handler-target": "pickupLocation"} %>
+                  </div>
+                </li>
+
+                <li class="booking-create__item">
+                  <%= f.label :drop_off_location, class: "booking-create__item-name"%>
+                  <div class="base-input base-input--sm">
+                      <%= f.text_field :drop_off_location, data: {"bookings--error-handler-target": "dropOffLocation"} %>
+                  </div>
+                </li>
+
+                <li class="booking-create__item">
+                  <span class="booking-create__item-name">Доп. услуги:</span>
+
+                  <%= turbo_frame_tag "additional_services_checkboxes" do %>
+                    <%= f.fields_for :services do |service_form| %>
+                      <% @services ||= @car_park&.additional_services %>
+                      <% if @services.present? && @services.any? %>
+                        <% @services.each do |service| %>
+                          <% if AdditionalService::ANTE_FACTUM_SERVICES.include?(service.title) %>
+                            <div class="col">
+                              <div class="form-check">
+                                <%= service_form.check_box service.id, {class: "form-check-input"}, service.price, 0 %>
+                                <%= service_form.label service.title_ru.capitalize, class: "form-check-label", for: "booking_services_#{service.id}" %>
+                              </div>
+                            </div>
+                          <% end %>
+                        <% end %>
+                      <%end %>
+                    <% end %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-create__group">
+          <p class="booking-create__group-title">Оплата:</p>
+          <ul class="booking-create__input-group">
+            <li class="booking-create__item">
+              <%= f.label :prepayment_amount, class: "booking-create__item-name" %>
+              <div class="booking-create__item-group">
+                <div class="base-input">
+                  <%= f.number_field :prepayment_amount, data: {"bookings--form-target": "prepaymentAmount" } %>
+                </div>
+                <div class="form-check">
+                  <%= f.label :without_prepayment_amount, class: "form-check-label"%>
+                  <%= f.check_box :without_prepayment_amount, class: "form-check-input", data: {action: "change->bookings--form#handlePrepaymentAmount"}%>
+                </div>
+                <div class="base-input">
+                  <%= f.label :prepayment_method %>
+                  <%= f.select :prepayment_method, options_for_select(Booking::PREPAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {include_blank: true}, class: "form-select" %>
+                </div>
+              </div>
+            </li>
+
+            <li class="booking-create__item">
+              <%= f.label :pledge_amount, class: "booking-create__item-name" %>
+              <div class="booking-create__item-group">
+                <div class="base-input">
+                  <%= f.number_field :pledge_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "pledgeAmount", "bookings--error-handler-target": "pledgeAmount"} %>
+                </div>
+
+                <div class="form-check">
+                  <%= f.label :with_pledge_amount, class: "form-check-label"%>
+                  <%= f.check_box :with_pledge_amount, class: "form-check-input", data: {action: "change->bookings--form#handlePledgeAmount"}%>
+                </div>
+
+                <div class="base-input">
+                  <%= f.label :pledge_method %>
+                  <%= f.select :pledge_method, options_for_select(Booking::PLEDGE_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {blank_included: false}, class: "form-select" %>
+                </div>
+              </div>
+            </li>
+
+            <li class="booking-create__item">
+              <%= f.label :payment_method, class: "booking-create__item-name" %>
+              <div class="booking-create__item-group">
+                <div class="base-input">
+                  <%= f.select(
+                    :payment_method,
+                    options_for_select(Booking::PAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }),
+                    {blank_included: false},
+                    class: "form-select",
+                    data: {
+                      action: "change->bookings--form#handlePaymentMethod",
+                      "bookings--form-target": "paymentMethodSelect"
+                    }
+                  )%>
+                </div>
+              </div>
+            </li>
+
+            <div class="row mt-3 d-none" data-bookings--form-target="paymentMethods">
+              <div class="col-4">
+                <div class="base-input">
+                  <%= f.label :kaspi_method_amount%>
+                  <%= f.number_field :kaspi_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "kaspiMethodAmount"} %>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="base-input">
+                  <%= f.label :halyk_method_amount %>
+                  <%= f.number_field :halyk_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "halykMethodAmount"} %>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="base-input">
+                  <%= f.label :cash_method_amount%>
+                  <%= f.number_field :cash_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "halykMethodAmount"} %>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <%= f.submit "Создать", data: {action: "bookings--form#submit"}, class: "base-button base-button--green base-button--sm sticky-bottom" %>
+    </div>
+
+    <div class="booking-create__info">
+      <div class="booking-create__users">
+        <div
+          class="user-info-card"
+          data-controller="bookings--client-autocomplete bookings--upsert-client"
+          data-bookings--client-autocomplete-url-value=<%= search_office_clients_path %>
+        >
+          <%= label_tag :client, "Клиент", class: "user-info-card__title"%>
+          <div class="base-input">
+            <%= text_field_tag :client, @client, type: "search", placeholder: "Введите фамилию или ИИН, номер паспорта клиента", class: "form-control", data: {"bookings--client-autocomplete-target":"input", "bookings--error-handler-target": "clientId"} %>
+            <%= f.hidden_field :client_id, data: { "bookings--client-autocomplete-target": "hidden" }%>
+          </div>
+          <ul class="list-group" data-bookings--client-autocomplete-target="results"></ul>
+
+        </div>
+        <div class="col">
+          <%= link_to new_office_client_path, class: "base-button base-button--info base-button--sm", data: {turbo: true, turbo_frame: dom_id(Client.new) } do %>
+            <i class="bi bi-person-plus"></i>
+            <%= t(".add_client") %>
+          <% end %>
+        </div>
+
+        <%= turbo_frame_tag dom_id(Client.new) %>
+      </div>
+
+      <div class="base-comment">
+        <%= f.label :comments, "Комментарий" %>
+        <%= f.fields_for :comments, Comment.new do |comment_form| %>
+          <div class="base-input">
+            <%= comment_form.label :content, "Содержание" %>
+            <%= comment_form.text_area :content,  class: "form-control", data: {"bookings--error-handler-target": "comment"} %>
+          </div>
         <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div class="col-12">
-      <div class="form-check">
-        <%= f.label :without_prepayment_amount, class: "form-check-label"%>
-        <%= f.check_box :without_prepayment_amount, class: "form-check-input", data: {action: "change->bookings--form#handlePrepaymentAmount"}%>
       </div>
+  <% end %>
+</main>
 
-      <div class="input-group">
-        <%= f.label :prepayment_amount, class: "input-group-text"%>
-        <%= f.number_field :prepayment_amount, class: "form-control", data: {"bookings--form-target": "prepaymentAmount" } %>
-      </div>
 
-      <div class="input-group mt-3">
-        <%= f.label :prepayment_method, class: "input-group-text"%>
-        <%= f.select :prepayment_method, options_for_select(Booking::PREPAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {include_blank: true}, class: "form-select" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div class="col-12">
-      <div class="form-check">
-        <%= f.label :with_pledge_amount, class: "form-check-label"%>
-        <%= f.check_box :with_pledge_amount, class: "form-check-input", data: {action: "change->bookings--form#handlePledgeAmount"}%>
-      </div>
-
-      <div class="input-group">
-        <%= f.label :pledge_amount, class: "input-group-text"%>
-        <%= f.number_field :pledge_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "pledgeAmount", "bookings--error-handler-target": "pledgeAmount"} %>
-      </div>
-
-      <div class="input-group mt-3">
-        <%= f.label :pledge_method, class: "input-group-text"%>
-        <%= f.select :pledge_method, options_for_select(Booking::PLEDGE_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }), {blank_included: false}, class: "form-select" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <div class="col-12">
-      <div class="input-group">
-        <%= f.label :payment_method, class: "input-group-text"%>
-        <%= f.select(
-          :payment_method,
-          options_for_select(Booking::PAYMENT_METHODS.map { |method| [t("activerecord.attributes.booking.payment_methods.#{method}"), method] }),
-          {blank_included: false},
-          class: "form-select",
-          data: {
-            action: "change->bookings--form#handlePaymentMethod",
-            "bookings--form-target": "paymentMethodSelect"
-          }
-        )%>
-      </div>
-    </div>
-
-    <div class="row mt-3 d-none" data-bookings--form-target="paymentMethods">
-      <div class="col-4">
-        <div class="input-group">
-          <%= f.label :kaspi_method_amount, class: "input-group-text"%>
-          <%= f.number_field :kaspi_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "kaspiMethodAmount"} %>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="input-group">
-          <%= f.label :halyk_method_amount, class: "input-group-text"%>
-          <%= f.number_field :halyk_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "halykMethodAmount"} %>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="input-group">
-          <%= f.label :cash_method_amount, class: "input-group-text"%>
-          <%= f.number_field :cash_method_amount, class: "form-control", disabled: true, data: {"bookings--form-target": "paymentMethodAmount", "bookings--error-handler-target": "halykMethodAmount"} %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row d-flex justify-content-between align-items-center mb-4">
-    <%= f.label :comments, "Комментарий" %>
-    <%= f.fields_for :comments, Comment.new do |comment_form| %>
-      <div class="col-12">
-        <div class="input-group">
-          <%= comment_form.label :content, "Содержание", class: "input-group-text"%>
-          <%= comment_form.text_area :content,  class: "form-control", data: {"bookings--error-handler-target": "comment"} %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <%= f.submit "Создать", data: {action: "bookings--form#submit"}, class: "btn btn-primary" %>
-<% end %>

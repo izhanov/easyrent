@@ -1,0 +1,12 @@
+en:
+  office:
+    bookings:
+      new:
+        title: "New Booking"
+        back: "Back"
+        add_client: "Add client"
+        total_amount: "Total amount"
+        placeholders:
+          pickup_location: "Enter the delivery address"
+          drop_off_location: "Enter the return address"
+

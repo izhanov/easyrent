@@ -1,0 +1,55 @@
+.booking {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 80.8px);
+
+  &-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    // .booking-top__name
+
+    &__name {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      h1 {
+        font-size: 32px;
+        font-weight: 600;
+        color: rgba(17, 17, 20, 1);
+      }
+      span {
+        color: rgba(158, 162, 173, 1);
+        font-size: 20px;
+        font-weight: 500;
+      }
+    }
+
+    // .booking-top__filter
+
+    &__filter {
+      display: flex;
+      align-items: center;
+      &-search {
+        width: 343px;
+      }
+    }
+
+    // .booking-top__actions
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    // .booking-top__actions-add
+
+    &__actions-add {
+      padding: 8px 14px;
+      height: 44px;
+      width: 177px;
+    }
+  }
+}

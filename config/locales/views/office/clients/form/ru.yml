@@ -1,0 +1,6 @@
+ru:
+  office:
+    clients:
+      form:
+        cancel: "Отмена"
+        submit: "Сохранить"

@@ -1,0 +1,12 @@
+ru:
+  office:
+    bookings:
+      new:
+        title: "Новое бронирование"
+        back: "Назад"
+        add_client: "Добавить клиента"
+        total_amount: "Итоговая сумма:"
+        placeholders:
+          pickup_location: "Введите адрес доставки"
+          drop_off_location: "Введите адрес приёмки"
+

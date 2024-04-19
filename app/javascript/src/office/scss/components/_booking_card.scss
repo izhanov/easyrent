@@ -1,0 +1,111 @@
+.booking-card {
+  border: 1px solid rgba(220, 220, 229, 1);
+  background: white;
+  border-radius: 14px;
+  max-width: 312px;
+  width: 312px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  position: relative;
+
+  // .booking-card__title
+
+  &__title {
+    font-size: 17px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1);
+  }
+
+  // .booking-card__chars
+
+  &__chars {
+    margin-top: 4px;
+    color: rgba(156, 158, 171, 1);
+    font-weight: 400;
+    font-size: 13px;
+  }
+  .licence-plate {
+    margin-top: 12px;
+  }
+  // .booking-card__status
+
+  &__status {
+    margin-top: 24px;
+    padding: 10px 12px;
+    border: 1px solid rgba(216, 222, 228, 1);
+    background: rgba(236, 236, 238, 1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .booking-card__dates
+
+  &__dates {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    p {
+      color: rgba(19, 23, 27, 1);
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  // .booking-card__left
+
+  &__left {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+
+    span {
+      margin-left: 8px;
+    }
+    img {
+      margin-left: 6px;
+    }
+    &--warning {
+      span {
+        color: rgba(244, 142, 47, 1);
+      }
+    }
+    &--info {
+      span {
+        color: rgba(41, 129, 246, 1);
+      }
+    }
+  }
+  &__menu {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+  // .booking-card__total
+
+  &__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    span {
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(156, 158, 171, 1);
+    }
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(19, 23, 27, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}

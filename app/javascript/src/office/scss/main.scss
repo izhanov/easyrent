@@ -28,6 +28,7 @@
 @import './components/code_input';
 @import './components/header';
 @import './components/user_menu';
+@import './components/user_info_card';
 @import './components/car_parks';
 @import './components/car_parks_card';
 @import './components/car_delivery';
@@ -48,6 +49,10 @@
 @import './components/car_inspections_page';
 @import './components/consumables_page';
 @import './components/consumable_card';
+@import './components/booking_page';
+@import './components/booking_create';
+@import './components/booking_table';
+@import './components/booking_card';
 
 
 @import 'trix/dist/trix.css';

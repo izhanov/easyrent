@@ -1,57 +1,51 @@
-<div class="row">
-  <div class="col-12 col-lg-4">
-    <%= f.label :name, t(".name") %>
-    <%= f.text_field :name, class: "form-control" %>
-    <%= error_field(@errors, :name) %>
-  </div>
-
-  <div class="col-12 col-lg-4">
-    <%= f.label :full_name_of_the_head %>
-    <%= f.text_field :full_name_of_the_head, class: "form-control" %>
-    <%= error_field(@errors, :full_name_of_the_head) %>
-  </div>
-
-  <div class="col-12 col-lg-4">
-    <%= f.label :signed_on_basis %>
-    <%= f.text_field :signed_on_basis, class: "form-control" %>
-    <%= error_field(@errors, :signed_on_basis) %>
-  </div>
+<div class="base-input m-3">
+  <%= f.label :name, t(".name") %>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= error_field(@errors, :name) %>
 </div>
 
-<div class="row">
-  <div class="col-12 col-lg-4" data-clients-form-target="identificationNumber">
-    <%= f.label :identification_number, t(".identification_number") %>
-    <%= f.text_field :identification_number, class: "form-control" %>
-    <%= error_field(@errors, :identification_number) %>
-  </div>
-
-  <div class="col-12 col-lg-4">
-    <%= f.label :phone %>
-    <%= f.text_field :phone, class: "form-control" %>
-    <%= error_field(@errors, :phone) %>
-  </div>
-
-  <div class="col-12 col-lg-4">
-    <%= f.label :email %>
-    <%= f.text_field :email, class: "form-control" %>
-    <%= error_field(@errors, :email) %>
-  </div>
+<div class="base-input m-3">
+  <%= f.label :full_name_of_the_head %>
+  <%= f.text_field :full_name_of_the_head, class: "form-control" %>
+  <%= error_field(@errors, :full_name_of_the_head) %>
 </div>
 
-<div class="row">
-  <div class="col-12 col-lg-4">
-    <%= f.label :legal_address %>
-    <%= f.text_field :legal_address, class: "form-control" %>
-    <%= error_field(@errors, :legal_address) %>
-  </div>
-  <div class="col-12 col-lg-4">
-    <%= f.label :bank_account_number %>
-    <%= f.text_field :bank_account_number, class: "form-control" %>
-    <%= error_field(@errors, :bank_account_number) %>
-  </div>
-  <div class="col-12 col-lg-4">
-    <%= f.label :bank_code %>
-    <%= f.text_field :bank_code, class: "form-control" %>
-    <%= error_field(@errors, :bank_code) %>
-  </div>
+<div class="base-input m-3">
+  <%= f.label :signed_on_basis %>
+  <%= f.text_field :signed_on_basis, class: "form-control" %>
+  <%= error_field(@errors, :signed_on_basis) %>
+</div>
+
+<div class="base-input m-3" data-clients-form-target="identificationNumber">
+  <%= f.label :identification_number, t(".identification_number") %>
+  <%= f.text_field :identification_number, class: "form-control" %>
+  <%= error_field(@errors, :identification_number) %>
+</div>
+
+<div class="base-input m-3">
+  <%= f.label :phone %>
+  <%= f.text_field :phone, class: "form-control" %>
+  <%= error_field(@errors, :phone) %>
+</div>
+
+<div class="base-input m-3">
+  <%= f.label :email %>
+  <%= f.text_field :email, class: "form-control" %>
+  <%= error_field(@errors, :email) %>
+</div>
+
+<div class="base-input m-3">
+  <%= f.label :legal_address %>
+  <%= f.text_field :legal_address, class: "form-control" %>
+  <%= error_field(@errors, :legal_address) %>
+</div>
+<div class="base-input m-3">
+  <%= f.label :bank_account_number %>
+  <%= f.text_field :bank_account_number, class: "form-control" %>
+  <%= error_field(@errors, :bank_account_number) %>
+</div>
+<div class="base-input m-3">
+  <%= f.label :bank_code %>
+  <%= f.text_field :bank_code, class: "form-control" %>
+  <%= error_field(@errors, :bank_code) %>
 </div>

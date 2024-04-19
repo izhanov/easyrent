@@ -1,0 +1,6 @@
+en:
+  office:
+    clients:
+      form:
+        cancel: "Cancel"
+        submit: "Save"

@@ -1,0 +1,59 @@
+.user-info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.user-info-card__title {
+  color: rgb(19, 23, 27);
+  font-size: 19px;
+  font-weight: 600;
+}
+.user-info-card__info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.user-info-card__avatar {
+  width: 44px;
+  height: 44px;
+  background: rgb(236, 236, 238);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.user-info-card__avatar img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.user-info-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.user-info-card__name {
+  color: rgb(19, 23, 27);
+  font-size: 17px;
+  font-weight: 500;
+}
+.user-info-card__phone {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.user-info-card__phone p {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(19, 23, 27);
+}
+.user-info-card__phone span {
+  color: rgb(123, 133, 142);
+  font-weight: 400;
+  font-size: 15px;
+}
+.user-info-card__phone-dot {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(19, 23, 27);
+}

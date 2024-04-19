@@ -1,0 +1,265 @@
+.booking-create {
+  &-top {
+    &__actions {
+      display: flex;
+      gap: 12px;
+
+      &-redact {
+        font-size: 13px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      &-status {
+        .dropdown-menu {
+          border-radius: 12px;
+          width: 240px;
+          padding: 4px;
+          border: none;
+          box-shadow: 0px 0px 12px rgba(37, 33, 41, 0.04);
+          .dropdown-item {
+            padding: 12px;
+            color: black;
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 12px;
+
+            &--active {
+              background: rgba(247, 247, 248, 1);
+            }
+
+            p {
+              display: flex;
+              align-items: center;
+              gap: 6px;
+              font-size: 13px;
+              font-weight: 500;
+              color: rgba(0, 0, 0, 1);
+              span {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+        button {
+          gap: 10px 12px;
+          border: 1px solid rgba(41, 129, 246, 0.8);
+          background: rgba(235, 244, 254, 1);
+          p {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 1);
+            span {
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid rgba(217, 220, 221, 1);
+    border-radius: 10px;
+  }
+  // .booking-create__block
+
+  &__block {
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(233, 235, 236, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .booking-create__group-title
+
+  &__group-title {
+    color: rgba(19, 23, 27, 1);
+    font-size: 19px;
+    font-weight: 600;
+  }
+  &__car {
+    margin-top: 16px;
+  }
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  &__calculation {
+    display: flex;
+    flex-direction: column;
+    &-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    &-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      padding: 14px 16px;
+      background: rgba(247, 247, 248, 1);
+      border-radius: 14px;
+      p {
+        color: rgba(19, 23, 27, 1);
+        font-size: 17px;
+        font-weight: 500;
+      }
+      span {
+        font-size: 17px;
+        font-weight: 500;
+        color: rgba(41, 129, 246, 1);
+      }
+    }
+
+    &-item {
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      border-bottom: 1px solid rgba(233, 233, 236, 1);
+
+      &-name {
+        color: rgba(19, 23, 27, 1);
+        font-weight: 500;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        span {
+          padding: 4px 8px;
+          font-size: 12px;
+          font-weight: 500;
+          color: rgba(19, 23, 27, 1);
+          background: rgba(236, 236, 238, 1);
+          border-radius: 7px;
+        }
+      }
+      &-info {
+        display: flex;
+
+        span {
+          text-align: right;
+          color: rgba(179, 180, 188, 1);
+          font-size: 15px;
+          font-weight: 500;
+        }
+        p {
+          color: rgba(19, 23, 27, 1);
+          font-weight: 500;
+          font-size: 15px;
+          text-align: right;
+          width: 128px;
+        }
+      }
+    }
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 8px;
+    align-items: center;
+
+    &-group {
+      display: grid;
+      grid-template-columns: 5fr 3fr;
+      gap: 8px;
+    }
+
+    &-name {
+      color: rgba(101, 109, 119, 1);
+      font-weight: 400;
+      font-size: 15px;
+    }
+    &-block {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid rgba(217, 220, 221, 1);
+      border-radius: 10px;
+
+      &-title {
+        font-size: 15px;
+        color: rgba(19, 23, 27, 1);
+      }
+    }
+  }
+  // .booking-create__layout
+
+  &__layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  // .booking-create__main
+
+  &__main {
+    width: 690px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  // .booking-create__info
+
+  &__info {
+    width: 540px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  // .booking-create__users
+
+  &__users {
+    padding: 20px 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(233, 235, 236, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  &__documents {
+    padding: 20px 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(233, 235, 236, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-title {
+      font-size: 19px;
+      color: rgba(19, 23, 27, 1);
+      font-weight: 600;
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}
