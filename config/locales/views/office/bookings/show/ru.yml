@@ -1,0 +1,7 @@
+ru:
+  office:
+    bookings:
+      show:
+        title: "Заявка №"
+        back: "Назад"
+        edit: "Редактировать"

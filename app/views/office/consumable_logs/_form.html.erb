@@ -9,7 +9,7 @@
 
   <div class="base-input mt-3">
     <%= f.label :mileage_when_replacing %>
-    <%= f.number_field :mileage_when_replacing, class: "form-control" %>
+    <%= f.number_field :mileage_when_replacing, class: "form-control", data: {mask: "mileage"} %>
     <%= error_field(@errors, :mileage_when_replacing) %>
   </div>
 

@@ -1,8 +1,4 @@
-<div class="d-flex justify-content-between align-items-center">
-  <h1>
-    Бронь №
-    <%= @booking.number %>
-  </h1>
+<div class="d-flex justify-content-end mt-3 align-items-center">
   <div>
     <div class="modal fade" data-controller="bookings--modal-form" id="car-inspect" tabindex="-1" aria-labelledby="car-inspect-label" aria-hidden="true">
       <div class="modal-dialog">
@@ -37,9 +33,17 @@
         </div>
       </div>
     </div>
+    <%= link_to office_bookings_path, class: "base-button base-button--info base-button--sm" do %>
+      <%= t(".back") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-around">
     <% status_manager = Utils::Bookings::StatusManager.new %>
-    <%# status change select %>
-    <%= form_with model: @booking, url: change_status_office_booking_path(@booking), html: { data: {controller: "bookings--change-status"}}, method: :patch do |f| %>
+
+    <% form_with model: @booking, url: change_status_office_booking_path(@booking), html: { data: {controller: "bookings--change-status"}}, method: :patch do |f| %>
       <div class="input-group">
         <%= f.label :status, class: "input-group-text" %>
         <%= f.select(
@@ -55,14 +59,10 @@
         <%= f.submit "Изменить", class: "btn btn-sm btn-primary" %>
       </div>
     <% end %>
-  </div>
-  <div>
-    <%= link_to office_bookings_path, class: "btn btn-sm btn-outline-primary" do %>
-      <i class="bi bi-box-arrow-left"></i>
-    <% end %>
     <% if @booking.editable? %>
-      <%= link_to edit_office_booking_path(@booking), class: "btn btn-sm btn-warning" do %>
+      <% link_to edit_office_booking_path(@booking), class: "btn btn-sm btn-warning" do %>
         <i class="bi bi-pencil-square"></i>
+        <%= t(".edit") %>
       <% end %>
     <% end %>
   </div>
@@ -70,133 +70,269 @@
 
 <% calculator = Utils::Bookings::Calculator.new(@booking) %>
 
-<div class="container">
-  <div class="row">
-    <h2>
-      Итого: <span class="badge bg-primary rounded-pill"><%= calculator.run.to_fs(:currency, locale: :kk) %></span>
-    </h2>
-
-    <div class="col-6">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <strong>Даты бронирования:</strong>
-          <%= @booking.booked_dates %>
-        </li>
-        <li class="list-group-item">
-          <strong>Автомобиль:</strong>
-          <%= @booking.car.mark_title %> <%= @booking.car.plate_number %>
-        </li>
-        <li class="list-group-item">
-          <strong>Водитель:</strong>
-          <ul>
-            <li>
-              <strong>Ф.И.О</strong>
-              <%= @booking.client.surname_with_initials %>
-            </li>
-            <li>
-              <strong>Телефон:</strong>
-              <%= @booking.client.phone %>
-            </li>
-            <li>
-              <strong>ИИН:</strong>
-              <%= @booking.client.identification_number %>
-            </li>
-          </ul>
-        </li>
-        <li class="list-group-item">
-          <strong>Тариф:</strong>
-          <%= @booking.offer.title %>
-        </li>
-        <li class="list-group-item">
-          <strong>Цена за сутки:</strong>
-          <span class="badge bg-primary rounded-pill">
-            <%= calculator.get(:price_for_rent_period).to_fs(:currency, locale: :kk) %>
-          </span>
-        </li>
-        <li class="list-group-item">
-          <strong>Сумма предоплаты:</strong>
-          <span class="badge bg-primary rounded-pill">
-            <%= calculator.get(:booking_prepayment_amount).to_fs(:currency, locale: :kk) %>
-          </span>
-        </li>
-        <li class="list-group-item">
-          <strong>Сумма залога:</strong>
-          <span class="badge bg-primary rounded-pill">
-            <%= calculator.get(:booking_pledge_amount).to_fs(:currency, locale: :kk) %>
-          </span>
-        </li>
-        <li class="list-group-item">
-          <strong>Доп. услуги:</strong>
-          <ul>
-            <% @booking.services.each do |service_id, price| %>
-              <% next if AdditionalService.find_by(id: service_id).nil? %>
-              <li>
-                <%= AdditionalService.find_by(id: service_id).title_ru %>
-                <span class="badge bg-primary rounded-pill">
-                  <%= BigDecimal(price).to_fs(:currency, locale: :kk) %>
-                </span>
-              </li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
+<main class="booking-create container">
+  <div class="mt-4 booking-top">
+    <div class="booking-top__name">
+      <!-- Название авто -->
+      <h1><%= t(".title") %> </h1>
+      <span><%= @booking.number %></span>
     </div>
-    <div class="col-6">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <strong>Количество суток:</strong>
-          <span class="badge bg-warning"><%= @booking.booked_dates_count %></span>
-        </li>
 
-        <li class="list-group-item">
-          <strong>Место приёмки:</strong>
-          <%= @booking.pickup_location %>
-        </li>
-        <li class="list-group-item">
-          <strong>Место возврата:</strong>
-          <%= @booking.drop_off_location %>
-        </li>
-        <li class="list-group-item">
-          <strong>Метод оплаты:</strong>
-          <%= @booking.payment_method %>
-        </li>
-        <li class="list-group-item">
-          <strong>Метод предоплаты:</strong>
-          <%= @booking.prepayment_method %>
-        </li>
-        <li class="list-group-item">
-          <strong>Метод оплаты залога:</strong>
-          <%= @booking.pledge_method %>
-        </li>
-      </ul>
+    <div class="booking-create-top__actions">
+      <% status_manager = Utils::Bookings::StatusManager.new %>
 
-      <div class="row">
-        <div class="col-12">
-          <div class="d-flex justify-content-between mb-3">
-            <strong>Документы:</strong>
-          </div>
-
-          <%= turbo_frame_tag "documents" do %>
-            <%= render @booking.documents.order(created_at: :desc) %>
-          <% end %>
+      <%= form_with model: @booking, url: change_status_office_booking_path(@booking), html: { data: {controller: "bookings--change-status"}, class: "d-flex gap-2 align-items-center"}, method: :patch do |f| %>
+        <div class="base-input">
+          <%= f.label :status %>
+          <%= f.select(
+                :status,
+                options_for_select(
+                  status_manager.available_statuses_from(@booking.status),
+                  selected: @booking.status
+                ),
+                {include_blank: false},
+                class: "form-select",
+                data: {action: "change->bookings--change-status#changeStatus"}
+              ) %>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="d-flex justify-content-between mb-3">
-            <strong>Комментарии:</strong>
-            <div>
-              <%= link_to "Добавить комментарий", new_office_comment_path(commentable_id: @booking.id, commentable_type: @booking.class.name), class: "btn btn-sm btn-outline-primary", data: {turbo: true, turbo_frame: dom_id(Comment.new) } %>
+        <%= f.submit "Изменить", class: "base-button base-button--green base-button--sm" %>
+      <% end %>
+
+      <% if @booking.editable? %>
+        <%= link_to edit_office_booking_path(@booking), class: "base-button base-button--grey base-button--sm" do %>
+          <i class="bi bi-pencil-square"></i>
+          <%= t(".edit") %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="booking-create__layout pb-4 mt-4">
+    <div class="booking-create__main">
+      <div class="booking-create__block">
+        <div class="booking-create__group">
+          <p class="booking-create__group-title">Общее</p>
+          <div class="car-short booking-create__car">
+            <div class="car-short__info">
+              <div class="car-short__text">
+                <p class="car-short__name"><%= @booking.car.mark.brand.title %></p>
+                <span class="car-short__chars"><%= @booking.car.mark.title %></span>
+              </div>
+              <div class="licence-plate licence-plate--sm">
+                <%= @booking.car.plate_number %>
+              </div>
             </div>
           </div>
-
-          <%= turbo_frame_tag Comment.new %>
-
-          <%= turbo_frame_tag "comments" do %>
-            <%= render @booking.comments.order(created_at: :desc) %>
-          <% end %>
+          <ul class="booking-create__input-group">
+            <li class="booking-create__item">
+              <span class="booking-create__item-name">Тариф:</span>
+              <%= @booking.offer.title %>
+            </li>
+            <li class="booking-create__item">
+              <span class="booking-create__item-name">Дата начала:</span>
+              <label class="base-datepicker">
+                <%= @booking.starts_at.strftime("%d.%m.%Y %H:%M") %>
+              </label>
+            </li>
+            <li class="booking-create__item">
+              <span class="booking-create__item-name">Дата окончания:</span>
+              <label class="base-datepicker">
+                <%= @booking.ends_at.strftime("%d.%m.%Y %H:%M") %>
+              </label>
+            </li>
+            <li class="booking-create__item">
+              <span class="booking-create__item-name"
+                >Дни бронирования:</span
+              >
+              <%= @booking.booked_dates_count %>
+            </li>
+            <li class="booking-create__item">
+              <span class="booking-create__item-name">Адрес доставки:</span>
+              <%= @booking.pickup_location %>
+            </li>
+            <li class="booking-create__item">
+              <span class="booking-create__item-name">Адрес приема:</span>
+              <%= @booking.drop_off_location %>
+            </li>
+            <li class="booking-create__item">
+              <span class="booking-create__item-name">Доп. услуги:</span>
+              <ul class="booking-create__services">
+                <% @booking.services.each do |service_id, price| %>
+                  <% next if AdditionalService.find_by(id: service_id).nil? %>
+                  <% next if price.to_i.zero? %>
+                  <li class="booking-create__service">
+                    <span><%= AdditionalService.find_by(id: service_id).title_ru %></span>
+                  </li>
+                <% end %>
+            </li>
+          </ul>
         </div>
+
+        <!-- Оплата -->
+        <div class="booking-create__group">
+          <p class="booking-create__group-title">Оплата:</p>
+          <ul class="booking-create__input-group">
+            <li class="booking-create__item">
+              <span class="booking-create__item-name">Предоплата:</span>
+              <div class="booking-create__item-group">
+                <%= @booking.prepayment_amount.to_fs(:currency, locale: :kk) %>
+                <div class="dropdown base-dropdown">
+                  <div class="base-dropdown__title">
+                    <p><%= @booking.prepayment_method %></p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="booking-create__item">
+              <span class="booking-create__item-name"
+                >Метод оплаты аренды:</span
+              >
+              <div class="booking-create__item-block">
+                <p class="booking-create__item-block-title">
+                  <%= t("activerecord.attributes.booking.payment_methods.#{@booking.payment_method}") %>
+                </p>
+                <% if @booking.payment_method == "mixed" %>
+                  <p class="booking-create__item-block-text">
+                    Kaspi: <%= @booking.kaspi_method_amount.to_fs(:currency, locale: :kk) %>
+                  </p>
+                  <p class="booking-create__item-block-text">
+                    Halyk: <%= @booking.halyk_method_amount.to_fs(:currency, locale: :kk) %>
+                  </p>
+                  <p class="booking-create__item-block-text">
+                    Наличные: <%= @booking.cash_method_amount.to_fs(:currency, locale: :kk) %>
+                  </p>
+                <% end %>
+              </div>
+            </li>
+            <li class="booking-create__item">
+              <span class="booking-create__item-name">Залог:</span>
+              <div class="booking-create__item-group">
+                <%= @booking.pledge_amount.to_fs(:currency, locale: :kk) %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="booking-create__block">
+        <div class="booking-create__group">
+          <p class="booking-create__group-title">Расчет цены:</p>
+          <div class="booking-create__calculation">
+            <ul class="booking-create__calculation-list">
+              <li class="booking-create__calculation-item">
+                <p class="booking-create__calculation-item-name">
+                  Сумма за аренду:
+                </p>
+                <div class="booking-create__calculation-item-info">
+                  <span>12 дней</span>
+                  <p>343.000 тг</p>
+                </div>
+              </li>
+              <li class="booking-create__calculation-item">
+                <p class="booking-create__calculation-item-name">
+                  Сумма за аренду:
+                </p>
+                <div class="booking-create__calculation-item-info">
+                  <span>12 дней</span>
+                  <p>343.000 тг</p>
+                </div>
+              </li>
+              <li class="booking-create__calculation-item">
+                <p class="booking-create__calculation-item-name">
+                  <span>Доп. услуги:</span>
+                  Сумма за аренду:
+                </p>
+                <div class="booking-create__calculation-item-info">
+                  <p>343.000 тг</p>
+                </div>
+              </li>
+            </ul>
+            <div class="booking-create__calculation-total">
+              <p>Общая сумма:</p>
+              <span>528.000 тг</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Правая часть -->
+    <div class="booking-create__info">
+      <div class="booking-create__users">
+        <div class="user-info-card">
+          <p class="user-info-card__title">Клиент:</p>
+          <div class="user-info-card__info">
+            <div class="user-info-card__text">
+              <p class="user-info-card__name">
+                <%= @booking.client.surname_with_initials %>
+              </p>
+              <div class="user-info-card__phone">
+                <p>
+                  <%= @booking.client.phone %>
+                </p>
+                <span>ИИН: <%= @booking.client.identification_number%></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user-info-card">
+          <p class="user-info-card__title">Менеджер::</p>
+          <div class="user-info-card__info">
+            <div class="user-info-card__text">
+              <p class="user-info-card__name">Зейнешев Диас</p>
+              <div class="user-info-card__phone">
+                <p>+7 707 777 77 77</p>
+                <div class="user-info-card__phone-dot">·</div>
+                <span>ИИН: 040317000082</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-create__documents">
+        <p class="booking-create__documents-title">Документы:</p>
+        <ul class="booking-create__documents-list">
+          <li class="car-redact-document">
+            <div class="car-redact-document__left">
+              <img src="./icons/pdf-file.svg" alt="" />
+              <div class="car-redact-document__info">
+                <p class="car-redact-document__name">
+                  Двусторонний договор аренды
+                </p>
+                <span class="car-redact-document__size">2.34 MB</span>
+              </div>
+            </div>
+            <button class="car-redact-document__remove">
+              <img src="./icons/remove-document.svg" alt="" />
+            </button>
+          </li>
+          <li class="car-redact-document">
+            <div class="car-redact-document__left">
+              <img src="./icons/pdf-file.svg" alt="" />
+              <div class="car-redact-document__info">
+                <p class="car-redact-document__name">
+                  Двусторонний договор аренды
+                </p>
+                <span class="car-redact-document__size">2.34 MB</span>
+              </div>
+            </div>
+            <button class="car-redact-document__remove">
+              <img src="./icons/remove-document.svg" alt="" />
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="base-comment">
+        <div class="base-comment__title">
+          <span>Коментарий</span>
+          <span>16:40</span>
+        </div>
+        <p class="base-comment__text">Нет записи</p>
+        <button
+          class="base-button base-button--info base-button--sm base-comment__button"
+        >
+          Добавить коментарий
+        </button>
       </div>
     </div>
   </div>
-</div>
+</main>

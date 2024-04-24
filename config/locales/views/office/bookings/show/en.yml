@@ -1,0 +1,7 @@
+en:
+  office:
+    bookings:
+      show:
+        title: "Booking"
+        back: "Back"
+        edit: "Edit"

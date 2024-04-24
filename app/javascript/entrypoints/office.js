@@ -13,7 +13,6 @@ import "../src/swiper.js";
 
 // Import Bootstrap CSS
 import * as bootstrap from 'bootstrap';
-import './../src/office/scss/main.scss';
 import '../images/office/index.js';
 
 

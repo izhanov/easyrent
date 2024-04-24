@@ -39,7 +39,7 @@
 
 <div class="base-input m-3">
   <%= f.label :phone %>
-  <%= f.text_field :phone, class: "form-control" %>
+  <%= f.text_field :phone, class: "form-control", data: {mask: "phone"} %>
   <%= error_field(@errors, :phone) %>
 </div>
 

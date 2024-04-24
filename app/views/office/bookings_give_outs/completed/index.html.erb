@@ -60,7 +60,7 @@
         <tr class="align-middle base-table__row-select">
           <th class="text-center" scope="row"><%= booking.id %></th>
           <td class="text-center" scope="row">
-            <%= link_to booking.number, office_bookin_path(booking), class: "link link-dark" %>
+            <%= link_to booking.number, office_booking_path(booking), class: "link link-dark" %>
           </td>
           <td class="base-table__licence-col">
             <%= booking.starts_at.strftime("%d.%m.%Y %H:%M") %>

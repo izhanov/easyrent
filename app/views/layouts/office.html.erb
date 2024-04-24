@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'office', "data-turbo-track": "reload", defer: true %>
-    <%= yield :style %>
+    <%= vite_stylesheet_tag 'office' %>
   </head>
 
   <body>
