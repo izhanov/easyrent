@@ -11,7 +11,7 @@ RSpec.describe Operations::Office::Offers::Update do
         params = {
           id: offer.id,
           title: "Offer title with mega super long description",
-          prices: nil
+          prices: {}
         }
         result = subject.call(offer, params)
         expect(result).to be_failure
