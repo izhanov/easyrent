@@ -31,8 +31,7 @@ module Operations
         def commit(params, booking, responsible)
           booking.transaction do
             actual_starts_at = params[:actual_starts_at]
-            actual_ends_at = params[:actual_ends_at]
-            Operations::Office::Bookings::StartTheRent.new.call(booking, responsible, actual_starts_at, actual_ends_at)
+            Operations::Office::Bookings::StartTheRent.new.call(booking, responsible, actual_starts_at)
             BookingGiveOutAppendix.create!(
               booking: booking,
               **params.except(:actual_starts_at, :actual_ends_at, :pickup_location)
