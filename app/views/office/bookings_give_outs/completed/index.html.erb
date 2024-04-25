@@ -112,15 +112,6 @@
                 class="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
               >
-                <%= link_to office_bookings_give_outs_upcoming_path(booking) do %>
-                  <li
-                    data-bs-target="#car_prolong_modal"
-                    data-bs-toggle="modal"
-                    class="dropdown-item"
-                  >
-                    Выдать
-                  </li>
-                <% end %>
                 <%= link_to edit_office_booking_path(booking) do %>
                   <li class="dropdown-item dropdown-item--active">
                     Изменить
