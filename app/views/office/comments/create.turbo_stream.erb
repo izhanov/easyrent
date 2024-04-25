@@ -1,3 +1,5 @@
 <%= turbo_stream.prepend "comments", @comment %>
 
-<%= turbo_stream.update Comment.new, ""%>
+<%= turbo_stream.update Comment.new do %>
+  <%= link_to "Добавить комментарий", new_office_comment_path(commentable_id: @comment.commentable_id, commentable_type: @comment.commentable_type), class: "base-button base-button--info base-button--sm base-comment__button", data: {turbo: true, turbo_frame: dom_id(Comment.new) } %>
+<% end %>

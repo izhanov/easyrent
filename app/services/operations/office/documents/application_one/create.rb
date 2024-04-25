@@ -24,7 +24,7 @@ module Operations
               document_template_id: document_template.id,
               file: ActionDispatch::Http::UploadedFile.new(
                 tempfile: pdf_tempfile,
-                filename: "application_one_#{contract.number}.pdf"
+                filename: "Приложение_№1_#{contract.number}.pdf"
               )
             )
           end

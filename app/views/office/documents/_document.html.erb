@@ -1,9 +1,11 @@
-<div class="m-1">
-  <div class="card">
-    <div class="card-body">
-      <p class="card-text">
-        <%= link_to document.file.original_filename, office_document_path(document), target: "_blank"%>
-        </p>
+<li class="car-redact-document">
+  <div class="car-redact-document__left">
+    <img src="./icons/pdf-file.svg" alt="" />
+    <div class="car-redact-document__info">
+      <p class="car-redact-document__name">
+        <%= link_to document.file.original_filename, office_document_path(document), target: "_blank", class: "link link-dark"%>
+      </p>
     </div>
   </div>
-</div>
+</li>
+

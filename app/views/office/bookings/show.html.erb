@@ -115,8 +115,9 @@
           <div class="car-short booking-create__car">
             <div class="car-short__info">
               <div class="car-short__text">
-                <p class="car-short__name"><%= @booking.car.mark.brand.title %></p>
-                <span class="car-short__chars"><%= @booking.car.mark.title %></span>
+                <p class="car-short__name">
+                  <%= @booking.car.mark.brand.title %> <%= @booking.car.mark.title %>
+                </p>
               </div>
               <div class="licence-plate licence-plate--sm">
                 <%= @booking.car.plate_number %>
@@ -223,32 +224,35 @@
                   Сумма за аренду:
                 </p>
                 <div class="booking-create__calculation-item-info">
-                  <span>12 дней</span>
-                  <p>343.000 тг</p>
+                  <span><%= @booking.booked_dates_count %> дней</span>
+                  <p><%= (@booking.booked_dates_count * calculator.get(:price_for_rent_period)).to_fs(:currency, locale: :kk, format: "%n") %></p>
                 </div>
               </li>
               <li class="booking-create__calculation-item">
                 <p class="booking-create__calculation-item-name">
-                  Сумма за аренду:
+                  Сумма к оплате:
                 </p>
                 <div class="booking-create__calculation-item-info">
-                  <span>12 дней</span>
-                  <p>343.000 тг</p>
+                  <p><%= (calculator.run - @booking.prepayment_amount).to_fs(:currency, locale: :kk, format: "%n") %></p>
                 </div>
               </li>
               <li class="booking-create__calculation-item">
                 <p class="booking-create__calculation-item-name">
                   <span>Доп. услуги:</span>
-                  Сумма за аренду:
+                  <% @booking.services.each do |service_id, price| %>
+                    <% next if AdditionalService.find_by(id: service_id).nil? %>
+                    <% next if price.to_i.zero? %>
+                      <%= AdditionalService.find_by(id: service_id).title_ru %>
+                  <% end %>
                 </p>
                 <div class="booking-create__calculation-item-info">
-                  <p>343.000 тг</p>
+                  <p><%= calculator.get(:services_total_amount).to_fs(:currency, locale: :kk, format: "%n") %></p>
                 </div>
               </li>
             </ul>
             <div class="booking-create__calculation-total">
               <p>Общая сумма:</p>
-              <span>528.000 тг</span>
+              <span><%= calculator.run.to_fs(:currency, locale: :kk) %></span>
             </div>
           </div>
         </div>
@@ -268,8 +272,8 @@
               <div class="user-info-card__phone">
                 <p>
                   <%= @booking.client.phone %>
+                  <span>ИИН: <%= @booking.client.identification_number%></span>
                 </p>
-                <span>ИИН: <%= @booking.client.identification_number%></span>
               </div>
             </div>
           </div>
@@ -280,9 +284,10 @@
             <div class="user-info-card__text">
               <p class="user-info-card__name">Зейнешев Диас</p>
               <div class="user-info-card__phone">
-                <p>+7 707 777 77 77</p>
-                <div class="user-info-card__phone-dot">·</div>
-                <span>ИИН: 040317000082</span>
+                <p>
+                  +7 707 777 77 77
+                  <span>ИИН: 040317000082</span>
+                </p>
               </div>
             </div>
           </div>
@@ -291,47 +296,17 @@
       <div class="booking-create__documents">
         <p class="booking-create__documents-title">Документы:</p>
         <ul class="booking-create__documents-list">
-          <li class="car-redact-document">
-            <div class="car-redact-document__left">
-              <img src="./icons/pdf-file.svg" alt="" />
-              <div class="car-redact-document__info">
-                <p class="car-redact-document__name">
-                  Двусторонний договор аренды
-                </p>
-                <span class="car-redact-document__size">2.34 MB</span>
-              </div>
-            </div>
-            <button class="car-redact-document__remove">
-              <img src="./icons/remove-document.svg" alt="" />
-            </button>
-          </li>
-          <li class="car-redact-document">
-            <div class="car-redact-document__left">
-              <img src="./icons/pdf-file.svg" alt="" />
-              <div class="car-redact-document__info">
-                <p class="car-redact-document__name">
-                  Двусторонний договор аренды
-                </p>
-                <span class="car-redact-document__size">2.34 MB</span>
-              </div>
-            </div>
-            <button class="car-redact-document__remove">
-              <img src="./icons/remove-document.svg" alt="" />
-            </button>
-          </li>
+          <%= render @booking.documents %>
         </ul>
       </div>
       <div class="base-comment">
-        <div class="base-comment__title">
-          <span>Коментарий</span>
-          <span>16:40</span>
-        </div>
-        <p class="base-comment__text">Нет записи</p>
-        <button
-          class="base-button base-button--info base-button--sm base-comment__button"
-        >
-          Добавить коментарий
-        </button>
+        <%= turbo_frame_tag "comments" do %>
+          <%= render @booking.comments.order(created_at: :desc) %>
+        <% end %>
+
+        <%= turbo_frame_tag Comment.new do %>
+          <%= link_to "Добавить комментарий", new_office_comment_path(commentable_id: @booking.id, commentable_type: @booking.class.name), class: "base-button base-button--info base-button--sm base-comment__button", data: {turbo: true, turbo_frame: dom_id(Comment.new) } %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -1,0 +1,50 @@
+.car-redact-document {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px 12px;
+  padding: 8px 12px 8px 8px;
+  background: rgba(247, 247, 248, 1);
+  // .car-redact-document__left
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  // .car-redact-document__info
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .car-redact-document__name
+
+  &__name {
+    font-size: 14px;
+    color: rgba(19, 23, 27, 1);
+    font-weight: 600;
+  }
+
+  // .car-redact-document__size
+
+  &__size {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(158, 162, 173, 1);
+  }
+
+  // .car-redact-document__remove
+
+  &__remove {
+    background: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

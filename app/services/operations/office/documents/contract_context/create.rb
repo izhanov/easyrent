@@ -75,7 +75,7 @@ module Operations
           end
 
           def prepare_pdf_tempfile(pdf, contract)
-            file = Tempfile.new(["contract", ".pdf"]).tap do |tempfile|
+            file = Tempfile.new(["Двусторонний договор аренды", ".pdf"]).tap do |tempfile|
               tempfile.binmode
               tempfile.write(pdf)
               tempfile.rewind

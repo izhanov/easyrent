@@ -4,7 +4,6 @@ module Office
   class DocumentsController < BaseController
     before_action :find_document
 
-
     def show
       send_data @document.file.read, filename: @document.file.original_filename, type: @document.file.mime_type
     end

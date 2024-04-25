@@ -1,0 +1,37 @@
+.base-comment {
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(233, 235, 236, 1);
+
+  gap: 8px;
+  // .base-comment__title
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      color: rgba(123, 133, 142, 1);
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+
+  // .base-comment__text
+
+  &__text {
+    margin-top: 12px;
+    width: 100%;
+    color: rgba(19, 23, 27, 1);
+    font-weight: 400;
+    font-size: 17px;
+  }
+
+  // .base-comment__button
+
+  &__button {
+    padding: 8px 12px;
+    margin-top: 24px;
+  }
+}

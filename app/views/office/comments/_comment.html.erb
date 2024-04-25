@@ -1,12 +1,6 @@
-<div class="m-1">
-  <div class="card">
-    <div class="card-body">
-      <p class="card-text"><%= comment.content %></p>
-      <p class="card-text">
-        <small class="text-muted">
-          <%= comment.created_at %>
-        </small>
-      </p>
-    </div>
-  </div>
+<div class="base-comment__title">
+  <span><%= comment.created_at %></span>
 </div>
+<p class="base-comment__text">
+  <%= comment.content %>
+</p>
