@@ -12,8 +12,7 @@ module Office
         relation = @current_office_user.bookings.by_status(
           [
             "return_the_deposit",
-            "completed",
-            "cancelled"
+            "completed"
           ]
         ).where(id: @q.pluck(:id))
 
