@@ -79,6 +79,10 @@ class Booking < ApplicationRecord
       )
   end
 
+  scope :rent_ends_today, -> do
+    where(date_function(arel_table[:ends_at]).eq(Time.current.to_date))
+  end
+
   audited
 
   include RTypesense

@@ -9,3 +9,5 @@ window.Turbo = Turbo;
 
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
+import * as bootstrap from 'bootstrap';
+import '../src/application/scss/main.scss';

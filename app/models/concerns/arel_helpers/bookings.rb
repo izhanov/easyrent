@@ -22,6 +22,10 @@ module ArelHelpers
         Arel::Nodes::NamedFunction.new("NOW", [])
       end
 
+      def date_function(column)
+        Arel::Nodes::NamedFunction.new("DATE", [column])
+      end
+
       # order by
       def by_nearest_to_now_order(column)
         abs_function(extract_epoch_from_function(subtraction_function(column, now_function)))

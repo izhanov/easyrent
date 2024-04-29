@@ -5,3 +5,9 @@ production:
   :concurrency: 10
 :queues:
   - default
+
+:scheduler:
+  :schedule:
+    bookings_rent_end:
+      cron: "0 18 * * *"
+      class:

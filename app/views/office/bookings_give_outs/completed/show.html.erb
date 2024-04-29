@@ -82,33 +82,6 @@
               <% end %>
             </div>
           </div>
-
-          <div class="mt-2">
-            <div class="input-group">
-              <%= fields_for :car, @booking.give_out_appendix do |ff| %>
-                <%= ff.label :fuel_level_before_rent, "Пробег авто", class: "input-group-text" %>
-                <%= ff.text_field :fuel_level_before_rent, class: "form-control",  readonly: true%>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="mt-2">
-            <div class="input-group">
-              <%= fields_for :car, @booking.give_out_appendix do |ff| %>
-                <%= ff.label :appearance_before_rent, "Пробег авто", class: "input-group-text" %>
-                <%= ff.text_field :appearance_before_rent, class: "form-control",  readonly: true%>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="mt-2">
-            <div class="input-group">
-              <%= fields_for :car, @booking.give_out_appendix do |ff| %>
-                <%= ff.label :technical_condition_before_rent, "Пробег авто", class: "input-group-text" %>
-                <%= ff.text_field :technical_condition_before_rent, class: "form-control",  readonly: true%>
-              <% end %>
-            </div>
-          </div>
         <% end %>
       </div>
     </div>

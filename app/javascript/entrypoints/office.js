@@ -15,6 +15,8 @@ import "../src/swiper.js";
 import * as bootstrap from 'bootstrap';
 import '../images/office/index.js';
 
+import '../src/office/scss/main.scss';
+
 
 import './../src/office/js/imask.js';
 import './../src/office/js/toastify.js';
