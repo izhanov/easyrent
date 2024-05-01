@@ -163,8 +163,24 @@ module RTypesense
         schema[key] = case key
         when :fields
           values.map do |field|
-            {name: field.name, type: field.type, **field.options}
-          end
+            if field.object?
+              if field.nested_fields.present?
+                field.nested_fields.map do |nested_field|
+                  if nested_field.object?
+                    nested_field.nested_fields.map do |deep_nested_field|
+                      {name: "#{field.name}.#{nested_field.name}.#{deep_nested_field.name}", type: deep_nested_field.type, **deep_nested_field.options}
+                    end
+                  else
+                    {name: "#{field.name}.#{nested_field.name}", type: nested_field.type, **nested_field.options}
+                  end
+                end
+              else
+                {name: field.name, type: field.type, **field.options}
+              end
+            else
+              {name: field.name, type: field.type, **field.options}
+            end
+          end.flatten
         else
           values
         end
