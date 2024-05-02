@@ -35,7 +35,7 @@ module Operations
               )
             ]
           in [Failure => car_result, Success, Success]
-            Failure[:validation_error, car_result.failure.errors.to_h, Success]
+            Failure[:validation_error, car_result.failure.errors.to_h]
           in [Failure => car_result, Success, Failure => car_inspetion_result]
             Failure[
               :validation_error,
@@ -65,6 +65,8 @@ module Operations
                 car_inspections_attributes: car_inspetion_result.failure.errors.to_h
               }
             ]
+          else
+            Failure[:validation_error, {}]
           end
         end
 
