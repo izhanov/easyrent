@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_12_090500) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_03_084137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
@@ -154,6 +154,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_12_090500) do
     t.decimal "halyk_method_amount", precision: 10, scale: 2, default: "0.0", null: false
     t.decimal "cash_method_amount", precision: 10, scale: 2, default: "0.0", null: false
     t.string "pledge_method"
+    t.index ["car_id", "status", "starts_at", "ends_at"], name: "index_bookings_on_car_id_and_status_and_starts_at_and_ends_at"
     t.index ["car_id"], name: "index_bookings_on_car_id"
     t.index ["client_id"], name: "index_bookings_on_client_id"
     t.index ["ends_at"], name: "index_bookings_on_ends_at", using: :brin

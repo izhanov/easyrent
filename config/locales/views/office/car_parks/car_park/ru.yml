@@ -7,6 +7,7 @@ ru:
         settings: "Настройки"
         sure?: "Вы уверены?"
         cars_count: "Количество машин: "
+        cars_vacant: "Свободны:"
         cars_in_repair: "В ремонте: "
         cars_in_rent: "В аренде: "
         cars_need_repair: "Требуют ремонта: "

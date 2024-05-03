@@ -40,9 +40,9 @@
   <div class="car-park-card__bottom">
     <ul>
       <li>
-        <span><%= t(".cars_in_repair") %></span>
+        <span><%= t(".cars_vacant") %></span>
         <hr />
-        <p><%= t(".car_count", count: car_park.cars.in_repair.size)%></p>
+        <p><%= t(".car_count", count: car_park.cars.vacant.size)%></p>
       </li>
       <li>
         <span><%= t(".cars_in_rent") %></span>
@@ -50,9 +50,9 @@
         <p><%= t(".car_count", count: car_park.cars.occupied.size)%></p>
       </li>
       <li>
-        <span><%= t(".cars_need_repair") %></span>
+        <span><%= t(".cars_in_repair") %></span>
         <hr />
-        <p><%= t(".car_count", count: car_park.cars.need_repair.size)%></p>
+        <p><%= t(".car_count", count: car_park.cars.in_repair.size)%></p>
       </li>
     </ul>
     <%= link_to office_car_park_path(car_park) do %>

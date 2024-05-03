@@ -41,6 +41,8 @@ class Car < ApplicationRecord
   belongs_to :mark
   belongs_to :owner, polymorphic: true
 
+  include ArelHelpers::Cars
+
   has_many :offers, dependent: :destroy
   has_many :bookings, dependent: :destroy, inverse_of: :car
   has_many :photos, dependent: :destroy
@@ -49,9 +51,107 @@ class Car < ApplicationRecord
   has_many :car_inspections, dependent: :destroy
   has_many :consumables, dependent: :destroy
 
-  scope :vacant, -> { where(status: "vacant") }
-  scope :booked, -> { where(status: "booked") }
-  scope :occupied, -> { where(status: "occupied") }
+  scope :vacant, -> do
+    left_joins(:bookings).where.not(
+      Booking.arel_table[:starts_at].gteq(Time.current).and(
+        Booking.arel_table[:ends_at].lt(Time.current)
+      ).and(
+        Booking.arel_table[:status].in(
+          %w[
+            initial
+            confirmed
+            give_out_the_car
+            start_the_rent
+            end_the_rent
+            accept_the_car
+          ]
+        )
+      )
+    ).distinct
+  end
+
+  scope :vacant_now_by_id, ->(id) do
+    joins(bookings_on_certain_car_id_left_join(id)).where.not(
+      Booking.arel_table[:starts_at].gteq(Time.current).and(
+        Booking.arel_table[:ends_at].lt(Time.current)
+      ).and(
+        Booking.arel_table[:status].in(
+          %w[
+            initial
+            confirmed
+            give_out_the_car
+            start_the_rent
+            end_the_rent
+            accept_the_car
+          ]
+        )
+      )
+    )
+  end
+
+  scope :booked_now_by_id, ->(id) do
+    joins(bookings_on_certain_car_id_left_join(id)).where(
+      Booking.arel_table[:starts_at].gteq(Time.current).and(
+        Booking.arel_table[:ends_at].lt(Time.current)
+      ).and(
+        Booking.arel_table[:status].in(
+          %w[
+            initial
+            confirmed
+          ]
+        )
+      )
+    )
+  end
+
+  scope :booked, -> do
+    left_joins(:bookings).where(
+      Booking.arel_table[:starts_at].gteq(Time.current).and(
+        Booking.arel_table[:ends_at].lt(Time.current)
+      ).and(
+        Booking.arel_table[:status].in(
+          %w[
+            initial
+            confirmed
+          ]
+        )
+      )
+    ).distinct
+  end
+
+  scope :occupied_now_by_id, ->(id) do
+    joins(bookings_on_certain_car_id_left_join(id)).where(
+      Booking.arel_table[:starts_at].lt(Time.current).and(
+        Booking.arel_table[:ends_at].gt(Time.current)
+      ).and(
+        Booking.arel_table[:status].in(
+          %w[
+            give_out_the_car
+            start_the_rent
+            end_the_rent
+            accept_the_car
+          ]
+        )
+      )
+    )
+  end
+
+  scope :occupied, -> do
+    left_joins(:bookings).where(
+      Booking.arel_table[:starts_at].lt(Time.current).and(
+        Booking.arel_table[:ends_at].gt(Time.current)
+      ).and(
+        Booking.arel_table[:status].in(
+          %w[
+            give_out_the_car
+            start_the_rent
+            end_the_rent
+            accept_the_car
+          ]
+        )
+      )
+    ).distinct
+  end
 
   scope :in_repair, -> { where(technical_condition: "under_repair") }
   scope :need_repair, -> { where(technical_condition: "need_repair") }
@@ -102,11 +202,28 @@ class Car < ApplicationRecord
   ENGINE_CAPACITY_UNITS = %w[cm3 l].freeze
   APPEARANCE_TYPES = %w[clean dirty].freeze
   TECHNICAL_CONDITION_TYPES = %w[good need_repair under_repair].freeze
-  STATUSES = %w[
-    vacant
-    booked
-    occupied
-  ]
+
+  def vacant?
+    Car.vacant_now_by_id(id).present?
+  end
+
+  def booked?
+    Car.booked_now_by_id(id).present?
+  end
+
+  def occupied?
+    Car.occupied_now_by_id(id).present?
+  end
+
+  def current_status
+    if vacant?
+      "vacant"
+    elsif booked?
+      "booked"
+    elsif occupied?
+      "occupied"
+    end
+  end
 
   def mark_title
     "#{mark.brand.title} #{mark.title}"

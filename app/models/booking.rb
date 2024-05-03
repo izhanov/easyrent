@@ -34,11 +34,12 @@
 #
 # Indexes
 #
-#  index_bookings_on_car_id     (car_id)
-#  index_bookings_on_client_id  (client_id)
-#  index_bookings_on_ends_at    (ends_at) USING brin
-#  index_bookings_on_offer_id   (offer_id)
-#  index_bookings_on_starts_at  (starts_at) USING brin
+#  index_bookings_on_car_id                                       (car_id)
+#  index_bookings_on_car_id_and_status_and_starts_at_and_ends_at  (car_id,status,starts_at,ends_at)
+#  index_bookings_on_client_id                                    (client_id)
+#  index_bookings_on_ends_at                                      (ends_at) USING brin
+#  index_bookings_on_offer_id                                     (offer_id)
+#  index_bookings_on_starts_at                                    (starts_at) USING brin
 #
 # Foreign Keys
 #
