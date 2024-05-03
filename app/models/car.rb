@@ -216,12 +216,12 @@ class Car < ApplicationRecord
   end
 
   def current_status
-    if vacant?
-      "vacant"
+    if occupied?
+      "occupied"
     elsif booked?
       "booked"
-    elsif occupied?
-      "occupied"
+    else
+      "vacant"
     end
   end
 
