@@ -42,12 +42,12 @@
       <li>
         <span><%= t(".cars_vacant") %></span>
         <hr />
-        <p><%= t(".car_count", count: car_park.cars.vacant.size)%></p>
+        <p><%= t(".car_count", count: car_park.vacant_cars_count)%></p>
       </li>
       <li>
         <span><%= t(".cars_in_rent") %></span>
         <hr />
-        <p><%= t(".car_count", count: car_park.cars.occupied.size)%></p>
+        <p><%= t(".car_count", count: car_park.occupied_cars_count)%></p>
       </li>
       <li>
         <span><%= t(".cars_in_repair") %></span>

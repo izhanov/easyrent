@@ -66,4 +66,16 @@ class CarPark < ApplicationRecord
   def ie?
     kind == "ie"
   end
+
+  def vacant_cars_count
+    bookings.size.positive? ? cars.vacant.size : cars.size
+  end
+
+  def booked_cars_count
+    bookings.size.positive? ? cars.booked.size : 0
+  end
+
+  def occupied_cars_count
+    bookings.size.positive? ? cars.occupied.size : 0
+  end
 end
