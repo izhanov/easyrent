@@ -32,6 +32,9 @@
 
       <div class="col">
         <%= f.submit t(".search"), class: "base-button base-button--info base-button--sm" %>
+        <%= link_to office_car_bookings_path, class: "base-button base-button--grey base-button--sm" do %>
+          <%= t(".reset") %>
+        <% end %>
       </div>
     <% end %>
 

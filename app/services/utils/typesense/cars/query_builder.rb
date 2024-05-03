@@ -14,8 +14,9 @@ module Utils
         def call
           query_params = {
             q: query,
-            query_by: "plate_number, owner.id, mark.title, status",
-            query_by_weights: "5, 4, 3, 3",
+            query_by: "plate_number, owner.id, mark.title, mark.synonyms, status",
+            query_by_weights: "5, 4, 3, 4, 3",
+            infix: "always, off, always, always, always",
             per_page: 50
           }
 

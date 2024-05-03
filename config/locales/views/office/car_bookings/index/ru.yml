@@ -3,3 +3,4 @@ ru:
     car_bookings:
       index:
         search: "Поиск"
+        reset: "Сбросить"

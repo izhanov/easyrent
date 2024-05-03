@@ -3,3 +3,4 @@ en:
     car_bookings:
       index:
         search: "Search"
+        reset: "Reset"

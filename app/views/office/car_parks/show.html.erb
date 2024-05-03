@@ -16,6 +16,9 @@
         </div>
 
         <%= f.submit t(".search") %>
+        <%= link_to office_car_park_path(@car_park), class: "base-button base-button--grey base-button--sm" do %>
+          <%= t(".reset") %>
+        <% end %>
       <% end %>
     </div>
 

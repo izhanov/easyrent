@@ -15,6 +15,7 @@ ru:
         cars: "Автомобили"
         settings: "Настройки"
         search: "Поиск"
+        reset: "Сбросить"
         go: "Перейти"
         table:
           header:

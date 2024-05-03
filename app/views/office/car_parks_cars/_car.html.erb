@@ -2,7 +2,7 @@
   <td><%= car.id %></td>
   <td><%= link_to car.mark_title, office_car_park_car_path(car.owner, car), class: "link link-dark" %></td>
   <td><%= car.plate_number %></td>
-  <td><%= localize_status_type(car.status) %></td>
+  <td><%= localize_status_type(car.current_status) %></td>
   <td><%= car.owner.title %></td>
   <td class="base-table__settings-col">
     <div class="dropdown options-dropdown">

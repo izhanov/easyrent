@@ -12,6 +12,7 @@ en:
         cars: "Cars"
         settings: "Settings"
         search: "Search"
+        reset: "Reset"
         go: "Go"
         table:
           header:
