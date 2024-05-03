@@ -5,7 +5,6 @@ module Operations
     module BookingsAcceptance
       class AcceptTheCar < Base
         def call(params, booking, responsible)
-          # yield its_time_to_accept_the_car?(booking)
           params = normalize_numbers(params)
           validated_params = yield validate(params.to_h)
           booking = yield commit(validated_params.to_h, booking, responsible)
@@ -13,14 +12,6 @@ module Operations
         end
 
         private
-
-        def its_time_to_accept_the_car?(booking)
-          if booking.ends_at.to_date <= Date.current
-            Success(true)
-          else
-            Failure[:its_not_time_to_accept_the_car, {}]
-          end
-        end
 
         def validate(params)
           validation = Validations::Office::BookingsAcceptance::AcceptTheCar.new.call(params)
