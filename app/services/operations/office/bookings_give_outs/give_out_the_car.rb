@@ -5,6 +5,7 @@ module Operations
     module BookingsGiveOuts
       class GiveOutTheCar < Base
         def call(params, booking, responsible)
+          yield its_time_to_give_out?(booking)
           params = normalize_numbers(params)
           validated_params = yield validate(params.to_h)
           booking = yield commit(validated_params.to_h, booking, responsible)
@@ -12,6 +13,14 @@ module Operations
         end
 
         private
+
+        def its_time_to_give_out?(booking)
+          if booking.starts_at.to_date <= Date.current
+            Success(true)
+          else
+            Failure[:its_not_time_to_give_out_the_car, {}]
+          end
+        end
 
         def validate(params)
           validation = Validations::Office::BookingsGiveOuts::GiveOutTheCar.new.call(params)
