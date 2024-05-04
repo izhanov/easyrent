@@ -98,7 +98,7 @@ module Office
     def query_params
       return params.require(:q).permit(:query, :car_park_id, :status).to_h.deep_symbolize_keys if params[:q]
 
-      {}
+      {car_park_id: @car_park.id}
     end
   end
 end
