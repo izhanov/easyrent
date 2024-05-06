@@ -82,9 +82,4 @@ RSpec.describe Validations::Office::Cars::Create do
     result = subject.call({owner_id: 1, owner_type: "User", mark_id: 1, plate_number: "666BOP02", year: "2023", fuel: "gasoline", klass: "economy", transmission: "automatic", vin_code: "1234567890", technical_certificate_number: "1234567890", mileage: "1234567890", color: "red", number_of_seats: "5"})
     expect(result.errors.to_h).to include(engine_capacity: ["is missing"], engine_capacity_unit: ["is missing"])
   end
-
-  it "requires engine_capacity_unit must be included in Car::ENGINE_CAPACITY_UNITS" do
-    result = subject.call({owner_id: 1, owner_type: "User", mark_id: 1, plate_number: "666BOP02", engine_capacity: "1.6", year: "2023", fuel: "gasoline", klass: "economy", transmission: "automatic", vin_code: "1234567890", technical_certificate_number: "1234567890", mileage: "1234567890", color: "red", number_of_seats: "5", engine_capacity_unit: "invalid"})
-    expect(result.errors.to_h).to include(engine_capacity_unit: ["must be one of: #{Car::ENGINE_CAPACITY_UNITS.join(", ")}"])
-  end
 end

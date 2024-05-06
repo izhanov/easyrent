@@ -26,11 +26,15 @@ module Validations
         end
 
         rule(:engine_capacity, :fuel) do
-          key.failure(:gt?) unless values[:fuel] == "electric"
+          unless values[:fuel] == "electric"
+            key.failure(:gt?) if values[:engine_capacity].nil? || values[:engine_capacity] <= 0
+          end
         end
 
         rule(:tank_volume, :fuel) do
-          key.failure(:gt?) unless values[:fuel] == "electric"
+          unless values[:fuel] == "electric"
+            key.failure(:gt?) if values[:tank_volume].nil? || values[:tank_volume] <= 0
+          end
         end
       end
     end
