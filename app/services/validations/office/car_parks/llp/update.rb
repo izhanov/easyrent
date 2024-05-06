@@ -8,7 +8,7 @@ module Validations
           params do
             optional(:legal_address).value(:string)
             optional(:bank_code).value(:string, included_in?: Utils::Banks::CODES.values)
-            optional(:benificiary_code).value(:date)
+            optional(:benificiary_code).value(:string)
             optional(:service_phone).value(:string)
           end
 
