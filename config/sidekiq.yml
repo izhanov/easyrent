@@ -10,4 +10,4 @@ production:
   :schedule:
     bookings_rent_end:
       cron: "0 18 * * *"
-      class:
+      class: "OfficeJobs::Bookings::RentEndJob"
