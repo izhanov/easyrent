@@ -22,7 +22,7 @@ module Operations
         def commit(params, booking, responsible)
           booking.with_lock do
             actual_ends_at = params[:actual_ends_at]
-            Operations::Office::Bookings::ReturnTheDeposit.new.call(booking, responsible, actual_ends_at)
+            Operations::Office::Bookings::Complete.new.call(booking, responsible, actual_ends_at)
             BookingAcceptanceAppendix.create!(
               booking: booking,
               **params.except(:actual_ends_at)

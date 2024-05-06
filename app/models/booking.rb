@@ -68,13 +68,13 @@ class Booking < ApplicationRecord
   scope :by_status, ->(status) { where(status: status) }
 
   scope :nearest_to_give_out, -> do
-    where(arel_table[:status].eq("give_out_the_car")).order(
+    where(arel_table[:status].in(["give_out_the_car", "confirmed", "initial"])).order(
       by_nearest_to_now_order(arel_table[:starts_at]) # See app/models/concerns/arel_helpers/bookings.rb
     )
   end
 
   scope :nearest_to_accept, -> do
-    where(arel_table[:status].eq("accept_the_car").or(arel_table[:status].eq("end_the_rent")))
+    where(arel_table[:status].in(["start_the_rent", "end_the_rent"]))
       .order(
         by_nearest_to_now_order(arel_table[:ends_at]) # See app/models/concerns/arel_helpers/bookings.rb
       )

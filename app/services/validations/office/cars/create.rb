@@ -9,8 +9,8 @@ module Validations
           required(:owner_type).filled(:string)
           required(:mark_id).filled(:integer)
           required(:year).filled(:integer, gt?: 1920)
-          required(:engine_capacity).filled(:decimal, gt?: 0)
-          required(:engine_capacity_unit).filled(:string, included_in?: Car::ENGINE_CAPACITY_UNITS)
+          required(:engine_capacity).value(:decimal)
+          required(:engine_capacity_unit).value(:string)
           required(:fuel).filled(:string, included_in?: Car::FUEL_TYPES)
           required(:plate_number).filled(:string)
           required(:klass).filled(:string, included_in?: Car::KLASS_TYPES)
@@ -20,9 +20,17 @@ module Validations
           required(:mileage).filled(:integer, gt?: 0)
           required(:color).filled(:string)
           required(:number_of_seats).filled(:integer, gt?: 0)
-          required(:tank_volume).filled(:integer, gt?: 0)
+          required(:tank_volume).value(:integer)
           required(:over_mileage_price).filled(:decimal, gt?: 0)
           optional(:photos_attributes).value(:hash)
+        end
+
+        rule(:engine_capacity, :fuel) do
+          key.failure(:gt?) unless values[:fuel] == "electric"
+        end
+
+        rule(:tank_volume, :fuel) do
+          key.failure(:gt?) unless values[:fuel] == "electric"
         end
       end
     end
