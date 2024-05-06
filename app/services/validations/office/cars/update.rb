@@ -7,8 +7,8 @@ module Validations
         params do
           required(:plate_number).filled(:string)
           required(:year).filled(:integer, gt?: 1920)
-          required(:engine_capacity).filled(:decimal, gt?: 0)
-          required(:engine_capacity_unit).filled(:string, included_in?: Car::ENGINE_CAPACITY_UNITS)
+          required(:engine_capacity).value(:decimal)
+          required(:engine_capacity_unit).value(:string)
           required(:fuel).filled(:string, included_in?: Car::FUEL_TYPES)
           required(:klass).filled(:string, included_in?: Car::KLASS_TYPES)
           required(:transmission).filled(:string, included_in?: Car::TRANSMISSION_TYPES)
