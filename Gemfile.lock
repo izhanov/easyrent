@@ -224,6 +224,10 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    htmltoword (1.1.1)
+      actionpack
+      nokogiri
+      rubyzip (>= 1.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -368,6 +372,7 @@ GEM
     ruby-vips (2.2.0)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
     shoulda-matchers (6.0.0)
@@ -459,6 +464,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2.0)
   faker (~> 3.2.2)
   gretel!
+  htmltoword (~> 1.1.1)
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
