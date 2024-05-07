@@ -20,6 +20,18 @@ module Validations
           required(:tank_volume).filled(:integer, gt?: 0)
           required(:over_mileage_price).filled(:decimal, gt?: 0)
         end
+
+        rule(:engine_capacity, :fuel) do
+          unless values[:fuel] == "electric"
+            key.failure(:gt?) if values[:engine_capacity].nil? || values[:engine_capacity] <= 0
+          end
+        end
+
+        rule(:tank_volume, :fuel) do
+          unless values[:fuel] == "electric"
+            key.failure(:gt?) if values[:tank_volume].nil? || values[:tank_volume] <= 0
+          end
+        end
       end
     end
   end
