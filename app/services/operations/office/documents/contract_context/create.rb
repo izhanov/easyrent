@@ -39,17 +39,36 @@ module Operations
           end
 
           def contract_params(car_park, contract, client)
+            booking = contract.booking
+            car = contract.booking.car
+            offer = booking.offer
+
             {
               "contract" => {
                 "number" => contract.number,
-                "date" => contract.date
+                "date" => contract.date,
+                "rental_amount" => contract.cost_per_day * contract.rental_days,
+                "total_amount" => contract.total_amount,
+                "pledge_amount" => contract.pledge_amount,
+                "prepayment_amount" => contract.prepayment_amount,
+                "services_total_amount" => contract.services_total_amount,
+                "permissible_mileage_limit" => contract.permissible_mileage_limit,
+                "cost_per_day" => contract.cost_per_day,
+                "rental_days" => contract.rental_days,
+                "pledge_return_method" => contract.pledge_return_method,
+                "pledge_return_date" => contract.pledge_return_date,
+                "pledge_return_requisites" => contract.pledge_return_requisites,
+                "services" => collect_services(booking),
+                "manager" => ""
               },
               "client" => {
                 "full_name" => client.full_name,
                 "identification_number" => client.identification_number,
                 "passport_number" => client.passport_number,
                 "phone" => client.phone,
-                "email" => client.email
+                "email" => client.email,
+                "driving_license" => client.driving_license,
+                "driving_license_issued_date" => client.driving_license_issued_date.strftime("%d.%m.%Y")
               },
               "car_park" => {
                 "title" => car_park.title,
@@ -62,6 +81,33 @@ module Operations
                 "kbe" => car_park.benificiary_code,
                 "email" => car_park.email,
                 "bank_name" => car_park.bank_name
+              },
+              "offer" => {
+                "title" => offer.title,
+                "price" => contract.cost_per_day
+              },
+              "booking" => {
+                "starts_at" => booking.starts_at.strftime("%d.%m.%Y %H:%M"),
+                "ends_at" => booking.ends_at.strftime("%d.%m.%Y %H:%M"),
+                "pickup_location" => booking.pickup_location,
+                "drop_off_location" => booking.drop_off_location,
+                "vip_service" => {
+                  "title" => booking_vip_service(booking)[:title],
+                  "price" => booking_vip_service(booking)[:price]
+                },
+                "prepayment_method" => booking.prepayment_method,
+                "prepayment_amount" => booking.prepayment_amount,
+                "payment_method" => booking.payment_method,
+                "payment_amount" => contract.total_amount,
+                "remain_payment_amount" => contract.total_amount - booking.prepayment_amount
+              },
+              "car" => {
+                "title" => car.mark_title,
+                "vin_code" => car.vin_code,
+                "plate_number" => car.plate_number,
+                "year" => car.year,
+                "over_mileage_price" => car.over_mileage_price,
+                "technical_certificate_number" => car.technical_certificate_number
               }
             }
           end
