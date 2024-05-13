@@ -149,6 +149,15 @@ module Operations
               ]
             end.compact
           end
+
+          def booking_vip_service(booking)
+            booking.services.each_with_object({}) do |(service_id, price), service|
+              if AdditionalService.find_by(id: service_id)&.vip_service? && BigDecimal(price).positive?
+                service[:title] = AdditionalService.find_by(id: service_id).title_ru
+                service[:price] = BigDecimal(price)
+              end
+            end
+          end
         end
       end
     end
