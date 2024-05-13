@@ -134,6 +134,21 @@ module Operations
               }
             )
           end
+
+          def collect_services(booking)
+            start_number = 8
+            booking.services.map do |(service_id, price)|
+              service = AdditionalService.find_by(id: service_id)
+              next unless service && BigDecimal(price).positive?  && !service.vip_service?
+              [
+                start_number += 1,
+                service.title_ru,
+                BigDecimal(price),
+                booking.contract.rental_days,
+                BigDecimal(price) * booking.contract.rental_days
+              ]
+            end.compact
+          end
         end
       end
     end
