@@ -6,6 +6,7 @@ en:
       available_cars: "Available cars"
       bookings: "Bookings"
       document_templates: "Document templates"
+      booking_calendar: "Booking Calendar"
       edit_user: "Edit user"
       all_bookings: "All bookings"
       to_give_out_bookings: "To give out bookings"

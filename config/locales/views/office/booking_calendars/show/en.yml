@@ -1,0 +1,10 @@
+en:
+  office:
+    booking_calendars:
+      show:
+        car_park: "Car park"
+        month: "Month"
+        submit: "Submit"
+        reset: "Reset"
+        car: "Car"
+        date: "Date"

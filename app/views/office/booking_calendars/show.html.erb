@@ -1,0 +1,68 @@
+<div class="mt-3">
+  <%= form_with url: office_booking_calendar_path, html: {class: "row"}, method: :get do |f| %>
+    <div class="col-4">
+      <div class="input-group">
+        <%= f.label t(".car_park"), class: "input-group-text" %>
+        <%= f.select "q[car_park_id]", options_for_select(
+          current_office_user.car_parks.map { |car_park| [car_park.title, car_park.id] },
+          selected: params.dig(:q, :car_park_id)
+        ), {include_blank: false}, class: "form-select" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="input-group">
+        <%= f.text_field "q[query]", value: params.dig(:q, :query), class: "form-control", placeholder: "Введите гос. номер или марку авто" %>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="input-group">
+        <%= f.label t(".month"), class: "input-group-text" %>
+        <%= f.text_field "q[month]", value: params.dig(:q, :month), placeholder: localize(Date.current, format: "%B %Y"), class: "flatpickr form-control" %>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <%= f.submit t(".submit"), class: "base-button base-button--info base-button--sm" %>
+      <%= link_to t(".reset"), office_booking_calendar_path, class: "base-button base-button--grey base-button--sm" %>
+    </div>
+  <% end %>
+
+  <div class="mt-3 w-50">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            <%= t(".car") %>
+          </th>
+          <% @month.each do |day| %>
+            <th>
+              <%= day.strftime("%a %d") %>
+            </th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @cars.each do |car| %>
+          <tr>
+            <td>
+              <%= car.mark_title %>
+              <%= car.plate_number %>
+            </td>
+            <% @month.each do |day| %>
+              <td>
+                <% booking = car.bookings.find { |booking| (booking.starts_at.to_date..booking.ends_at.to_date).include?(day) } %>
+                <% if booking %>
+                  <%= "\xE2\x9C\x85" %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1%>

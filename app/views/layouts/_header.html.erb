@@ -67,6 +67,12 @@
               <%= t(".document_templates") %>
             <% end %>
           </div>
+
+          <div class="dropdown header__navbar-item">
+            <%= active_link_to office_booking_calendar_path, class: "header__navbar-item-title", class_active: "header__navbar-item--active" do %>
+              <%= t(".booking_calendar") %>
+            <% end %>
+          </div>
         </nav>
       <% end %>
     </div>

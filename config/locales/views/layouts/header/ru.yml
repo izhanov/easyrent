@@ -6,6 +6,7 @@ ru:
       available_cars: "Наличие автомобилей"
       bookings: "Заявки"
       document_templates: "Шаблоны документов"
+      booking_calendar: "Календарь бронирования"
       edit_user: "Редактировать пользователя"
       all_bookings: "Бронирования"
       to_give_out_bookings: "Выдача"

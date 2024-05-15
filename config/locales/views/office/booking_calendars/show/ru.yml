@@ -1,0 +1,10 @@
+ru:
+  office:
+    booking_calendars:
+      show:
+        car_park: "Автопарк"
+        month: "Месяц"
+        submit: "Показать"
+        reset: "Сбросить"
+        car: "Автомобиль"
+        date: "Дата"

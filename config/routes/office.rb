@@ -39,6 +39,7 @@ namespace :office do
   end
 
   resources :car_parks_cars, only: %i[index]
+  resource :booking_calendar
 
   resources :comments, only: [:new, :create]
 
