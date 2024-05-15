@@ -8,6 +8,7 @@ module Office
         q: params.dig(:q, :query),
         query_by: "plate_number, mark.title, color, vin_code, klass, mark.synonyms",
         infix: "always, always, always, always, always, always",
+        per_page: 250
       )
       @pagy, @cars = pagy(current_office_user.cars.where(id: @q.pluck(:id), owner_id: params.dig(:q, :car_park_id) || current_office_user.car_parks.first.id))
       @bookings = Booking.where(car_id: @cars.ids).group_by(&:car_id)

@@ -4,8 +4,8 @@
       <div class="input-group">
         <%= f.label t(".car_park"), class: "input-group-text" %>
         <%= f.select "q[car_park_id]", options_for_select(
-          current_office_user.car_parks.map { |car_park| [car_park.title, car_park.id] },
-          selected: params.dig(:q, :car_park_id) || current_office_user.car_parks.first&.id
+          current_office_user.car_parks.order(id: :asc).map { |car_park| [car_park.title, car_park.id] },
+          selected: params.dig(:q, :car_park_id) || current_office_user.car_parks.order(id: :asc).first&.id
         ), {include_blank: false}, class: "form-select" %>
       </div>
     </div>
