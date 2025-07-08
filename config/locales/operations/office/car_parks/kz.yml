@@ -1,0 +1,16 @@
+kz:
+  operations:
+    office:
+      car_parks:
+        create:
+          success: Автокөлік паркі сәтті түрде жасалды.
+          errors:
+            validation_error: Тексеру қатесі.
+            uniqueness_violation: BIN/IIN және сұраныс префиксі бірегей болуы тиіс.
+        update:
+          success: Автокөлік паркі сәтті түрде жаңартылды.
+          errors:
+            validation_error: Тексеру қатесі.
+            uniqueness_violation: BIN/IIN және сұраныс префиксі бірегей болуы тиіс.
+        destroy:
+          success: Автокөлік паркі сәтті түрде жойылды.

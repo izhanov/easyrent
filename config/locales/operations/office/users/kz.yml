@@ -1,0 +1,11 @@
+kz:
+  operations:
+    office:
+      users:
+        create:
+          success: Пайдаланушы сәтті түрде жасалды.
+        update:
+          success: Пайдаланушы сәтті түрде жаңартылды.
+        change_password:
+          success: Құпия сөз сәтті түрде өзгертілді.
+          user_not_found: Пайдаланушы табылмады.

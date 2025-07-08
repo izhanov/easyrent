@@ -1,0 +1,14 @@
+kz:
+  operations:
+    office:
+      car_inspections:
+        create:
+          success: Автокөлік тексерісі сәтті түрде жасалды.
+          errors:
+            validation_error: Автокөлік тексерісі тексеру қателерімен жасалмады.
+        update:
+          success: Автокөлік тексерісі сәтті түрде жаңартылды.
+          errors:
+            validation_error: Автокөлік тексерісі тексеру қателерімен жаңартылмады.
+        destroy:
+          success: Автокөлік тексерісі сәтті түрде жойылды.

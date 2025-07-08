@@ -1,0 +1,15 @@
+kz:
+  operations:
+    office:
+      offers:
+        create:
+          success: Ұсыныс сәтті түрде жасалды.
+          errors:
+            validation_error: Жасау кезінде тексеру қатесі.
+            uniqueness_violation: Ұсыныс бұрыннан бар.
+        update:
+          success: Ұсыныс сәтті түрде жаңартылды.
+          errors:
+            validation_error: Жаңарту кезінде тексеру қатесі.
+        destroy:
+          success: Ұсыныс сәтті түрде жойылды.

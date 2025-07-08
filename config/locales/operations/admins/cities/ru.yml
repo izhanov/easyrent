@@ -3,15 +3,14 @@ ru:
     admins:
       cities:
         create:
-          success: "Город успешно создан."
+          success: Город успешно создан.
           errors:
-            validation_error: "Ошибка валидации."
-            uniqueness_violation: "Город с таким названием уже существует."
+            validation_error: Ошибка валидации.
+            uniqueness_violation: Город с таким названием уже существует.
         update:
-          success: "Город успешно обновлен."
+          success: Город успешно обновлен.
           errors:
-            validation_error: "Ошибка валидации."
-            uniqueness_violation: "Город с таким названием уже существует."
+            validation_error: Ошибка валидации.
+            uniqueness_violation: Город с таким названием уже существует.
         destroy:
-          success: "Город успешно удален."
-
+          success: Город успешно удален.

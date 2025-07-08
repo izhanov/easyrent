@@ -1,0 +1,11 @@
+de:
+  operations:
+    office:
+      users:
+        create:
+          success: Der Benutzer wurde erfolgreich erstellt.
+        update:
+          success: Der Benutzer wurde erfolgreich aktualisiert.
+        change_password:
+          success: Das Passwort wurde erfolgreich geändert.
+          user_not_found: Benutzer nicht gefunden.

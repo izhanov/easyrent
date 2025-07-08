@@ -1,0 +1,10 @@
+de:
+  operations:
+    office:
+      car_insurances:
+        create:
+          success: Die Fahrzeugversicherung wurde erfolgreich erstellt.
+        update:
+          success: Die Fahrzeugversicherung wurde erfolgreich aktualisiert.
+        destroy:
+          success: Die Fahrzeugversicherung wurde erfolgreich gelöscht.

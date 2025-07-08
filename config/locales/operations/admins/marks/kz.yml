@@ -1,0 +1,15 @@
+kz:
+  operations:
+    admins:
+      marks:
+        create:
+          success: Марка сәтті түрде жасалды.
+          errors:
+            validation_error: Тексеру қатесі.
+            uniqueness_violation: Марка бұрыннан бар.
+        update:
+          success: Марка сәтті түрде жаңартылды.
+          errors:
+            validation_error: Тексеру қатесі.
+        destroy:
+          success: Марка сәтті түрде жойылды.

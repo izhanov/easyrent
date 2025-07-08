@@ -3,14 +3,14 @@ ru:
     office:
       car_parks:
         create:
-          success: "Автопарк успешно создан"
+          success: Автопарк успешно создан.
           errors:
-            validation_error: "Ошибка валидации"
-            uniqueness_violation: "БИН/ИИН и префикс заявки должны быть уникальными"
+            validation_error: Ошибка валидации.
+            uniqueness_violation: БИН/ИИН и префикс заявки должны быть уникальными.
         update:
-          success: "Автопарк успешно обновлен"
+          success: Автопарк успешно обновлен.
           errors:
-            validation_error: "Ошибка валидации"
-            uniqueness_violation: "БИН/ИИН и префикс заявки должны быть уникальными"
+            validation_error: Ошибка валидации.
+            uniqueness_violation: БИН/ИИН и префикс заявки должны быть уникальными.
         destroy:
-          success: "Автопарк успешно удален"
+          success: Автопарк успешно удален.

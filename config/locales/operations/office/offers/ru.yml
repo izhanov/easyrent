@@ -3,12 +3,13 @@ ru:
     office:
       offers:
         create:
-          success: "Тариф успешно создано."
+          success: Тариф успешно создан.
           errors:
-            validation_error: "Ошибка валидации при создании."
+            validation_error: Ошибка валидации при создании.
+            uniqueness_violation: Тариф уже существует.
         update:
-          success: "Тариф успешно обновлено."
+          success: Тариф успешно обновлен.
           errors:
-            validation_error: "Ошибка валидации при обновлении."
+            validation_error: Ошибка валидации при обновлении.
         destroy:
-          success: "Тариф успешно удалено."
+          success: Тариф успешно удален.

@@ -1,0 +1,15 @@
+de:
+  operations:
+    office:
+      offers:
+        create:
+          success: Das Angebot wurde erfolgreich erstellt.
+          errors:
+            validation_error: Validierungsfehler bei der Erstellung.
+            uniqueness_violation: Das Angebot existiert bereits.
+        update:
+          success: Das Angebot wurde erfolgreich aktualisiert.
+          errors:
+            validation_error: Validierungsfehler bei der Aktualisierung.
+        destroy:
+          success: Das Angebot wurde erfolgreich gelöscht.

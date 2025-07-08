@@ -1,0 +1,9 @@
+de:
+  operations:
+    office:
+      bookings_give_outs:
+        give_out_the_car:
+          success: Das Auto wurde erfolgreich ausgegeben.
+          errors:
+            its_not_time_to_give_out_the_car: Es ist nicht Zeit, das Auto auszuhändigen.
+            validation_error: Validierungsfehler.

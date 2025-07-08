@@ -1,0 +1,9 @@
+kz:
+  operations:
+    office:
+      bookings_give_outs:
+        give_out_the_car:
+          success: Автокөлік сәтті түрде берілді.
+          errors:
+            its_not_time_to_give_out_the_car: Автокөлікті беру уақыты емес.
+            validation_error: Тексеру қатесі.
