@@ -2,6 +2,8 @@
 
 The project addresses business management issues in the car rental industry.
 
+"What Is Dead May Never Die" – Ironborn prayer
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
