@@ -1,0 +1,16 @@
+de:
+  operations:
+    office:
+      bookings:
+        create:
+          success: Buchung erfolgreich erstellt.
+          car_is_not_vacant: 'Auto ist nicht verfügbar. Gebucht: %{booked_dates}'
+        update:
+          success: Buchung erfolgreich aktualisiert.
+          errors:
+            car_is_not_vacant: Auto ist nicht verfügbar.
+        change_status:
+          success: Status erfolgreich geändert.
+          errors:
+            validation_error: Validierungsfehler.
+            invalid_status: Ungültiger Status.

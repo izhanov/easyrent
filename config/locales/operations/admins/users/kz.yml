@@ -1,0 +1,15 @@
+kz:
+  operations:
+    admins:
+      users:
+        create:
+          success: Пайдаланушы сәтті түрде жасалды.
+          errors:
+            validation_error: Тексеру қатесі.
+            uniqueness_violation: Мұндай email-мен пайдаланушы бұрыннан бар.
+        update:
+          success: Пайдаланушы сәтті түрде жаңартылды.
+          errors:
+            validation_error: Тексеру қатесі.
+        destroy:
+          success: Пайдаланушы сәтті түрде жойылды.

@@ -1,0 +1,16 @@
+kz:
+  operations:
+    admins:
+      brands:
+        create:
+          success: Бренд сәтті түрде жасалды.
+          errors:
+            validation_error: Тексеру қатесі.
+            uniqueness_violation: Бренд бұрыннан бар.
+        update:
+          success: Бренд сәтті түрде жаңартылды.
+          errors:
+            validation_error: Тексеру қатесі.
+            uniqueness_violation: Бренд бұрыннан бар.
+        destroy:
+          success: Бренд сәтті түрде жойылды.

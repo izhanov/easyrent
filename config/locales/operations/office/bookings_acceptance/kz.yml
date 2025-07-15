@@ -1,0 +1,9 @@
+kz:
+  operations:
+    office:
+      bookings_acceptance:
+        accept_the_car:
+          success: Автокөлік сәтті түрде қабылданды.
+          errors:
+            its_not_time_to_accept_the_car: Автокөлікті беру уақыты емес.
+            validation_error: Тексеру қатесі.

@@ -3,13 +3,13 @@ ru:
     admins:
       users:
         create:
-          success: "Пользователь успешно создан."
+          success: Пользователь успешно создан.
           errors:
-            validation_error: "Ошибка валидации при создании."
-            uniqueness_violation: "Пользователь с таким email уже существует."
+            validation_error: Ошибка валидации при создании.
+            uniqueness_violation: Пользователь с таким email уже существует.
         update:
-          success: "Пользователь успешно обновлен."
+          success: Пользователь успешно обновлен.
           errors:
-            validation_error: "Ошибка валидации при обновлении."
+            validation_error: Ошибка валидации при обновлении.
         destroy:
-          success: "Пользователь успешно удален."
+          success: Пользователь успешно удален.

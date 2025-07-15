@@ -1,0 +1,16 @@
+kz:
+  operations:
+    office:
+      cars:
+        create:
+          success: Автокөлік сәтті түрде жасалды.
+          errors:
+            validation_error: Жасау кезінде тексеру қатесі.
+            uniqueness_violation: Автокөлік бұрыннан бар.
+        update:
+          success: Автокөлік сәтті түрде жаңартылды.
+          errors:
+            validation_error: Жаңарту кезінде тексеру қатесі.
+            uniqueness_violation: Автокөлік бұрыннан бар.
+        destroy:
+          success: Автокөлік сәтті түрде жойылды.

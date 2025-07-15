@@ -1,0 +1,16 @@
+de:
+  operations:
+    office:
+      cars:
+        create:
+          success: Das Auto wurde erfolgreich erstellt.
+          errors:
+            validation_error: Validierungsfehler bei der Erstellung.
+            uniqueness_violation: Das Auto existiert bereits.
+        update:
+          success: Das Auto wurde erfolgreich aktualisiert.
+          errors:
+            validation_error: Validierungsfehler bei der Aktualisierung.
+            uniqueness_violation: Das Auto existiert bereits.
+        destroy:
+          success: Das Auto wurde erfolgreich gelöscht.

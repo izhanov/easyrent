@@ -3,14 +3,14 @@ ru:
     office:
       bookings:
         create:
-          success: "Бронирование успешно создано"
-          car_is_not_vacant: "Автомобиль не свободен. Забронирован на даты: %{booked_dates}"
+          success: Бронирование успешно создано.
+          car_is_not_vacant: 'Автомобиль не свободен. Забронирован на даты: %{booked_dates}'
         update:
-          success: "Бронирование успешно обновлено"
+          success: Бронирование успешно обновлено.
           errors:
-            car_is_not_vacant: "Автомобиль не свободен."
+            car_is_not_vacant: Автомобиль не свободен.
         change_status:
-          success: "Статус успешно изменен"
+          success: Статус успешно изменен.
           errors:
-            validation_error: "Ошибка валидации"
-            invalid_status: "Неверный статус"
+            validation_error: Ошибка валидации.
+            invalid_status: Неверный статус.

@@ -3,14 +3,14 @@ ru:
     admins:
       brands:
         create:
-          success: "Марка успешно создана."
+          success: Марка успешно создана.
           errors:
-            validation_error: "Ошибка валидации при создании."
-            uniqueness_violation: "Марка уже существует."
+            validation_error: Ошибка валидации при создании.
+            uniqueness_violation: Марка уже существует.
         update:
-          success: "Марка успешно обновлена."
+          success: Марка успешно обновлена.
           errors:
-            validation_error: "Ошибка валидации при обновлении."
-            uniqueness_violation: "Марка уже существует."
+            validation_error: Ошибка валидации при обновлении.
+            uniqueness_violation: Марка уже существует.
         destroy:
-          success: "Марка успешно удалена."
+          success: Марка успешно удалена.

@@ -1,0 +1,16 @@
+kz:
+  operations:
+    admins:
+      cities:
+        create:
+          success: Қала сәтті түрде жасалды.
+          errors:
+            validation_error: Тексеру қатесі.
+            uniqueness_violation: Мұндай атаумен қала бұрыннан бар.
+        update:
+          success: Қала сәтті түрде жаңартылды.
+          errors:
+            validation_error: Тексеру қатесі.
+            uniqueness_violation: Мұндай атаумен қала бұрыннан бар.
+        destroy:
+          success: Қала сәтті түрде жойылды.

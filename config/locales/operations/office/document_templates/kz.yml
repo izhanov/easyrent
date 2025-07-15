@@ -1,0 +1,14 @@
+kz:
+  operations:
+    office:
+      document_templates:
+        create:
+          success: Құжат шаблоны сәтті түрде жасалды.
+          errors:
+            validation_error: Құжат шаблоны тексеру қателерімен жасалмады.
+        update:
+          success: Құжат шаблоны сәтті түрде жаңартылды.
+          errors:
+            validation_error: Құжат шаблоны тексеру қателерімен жаңартылмады.
+        destroy:
+          success: Құжат шаблоны сәтті түрде жойылды.

@@ -1,0 +1,10 @@
+kz:
+  operations:
+    office:
+      car_insurances:
+        create:
+          success: Автокөлік сақтандыруы сәтті түрде жасалды.
+        update:
+          success: Автокөлік сақтандыруы сәтті түрде жаңартылды.
+        destroy:
+          success: Автокөлік сақтандыруы сәтті түрде жойылды.

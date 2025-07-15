@@ -1,0 +1,16 @@
+kz:
+  operations:
+    office:
+      bookings:
+        create:
+          success: Бронь сәтті түрде жасалды.
+          car_is_not_vacant: 'Автокөлік бос емес. Броньдалған: %{booked_dates}'
+        update:
+          success: Бронь сәтті түрде жаңартылды.
+          errors:
+            car_is_not_vacant: Автокөлік бос емес.
+        change_status:
+          success: Статус сәтті түрде өзгертілді.
+          errors:
+            validation_error: Тексеру қатесі.
+            invalid_status: Жарамсыз статус.

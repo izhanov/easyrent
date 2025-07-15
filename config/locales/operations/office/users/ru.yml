@@ -3,10 +3,9 @@ ru:
     office:
       users:
         create:
-          success: "Пользователь успешно создан."
+          success: Пользователь успешно создан.
         update:
-          success: "Пользователь успешно обновлен."
+          success: Пользователь успешно обновлен.
         change_password:
-          success: "Пароль успешно изменен."
-          user_not_found: "Пользователь не найден."
-
+          success: Пароль успешно изменен.
+          user_not_found: Пользователь не найден.
